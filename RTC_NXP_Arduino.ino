@@ -12,8 +12,9 @@
  */
 
 #include <time.h>
-#include <Wire.h>
-#include <I2C_device.h>
+#include "RTC_NXP.h"
+
+PCF2131_I2C rtc;
 
 void setup() {
   Serial.begin(9600);
@@ -58,7 +59,7 @@ void loop() {
 
   //  time(&ltime);
   //  ltime = time(NULL);
-  ltime = setTime();
+  ltime = rtc.time( NULL );
   Serial.print("time : ");
   Serial.println(ltime);
 
