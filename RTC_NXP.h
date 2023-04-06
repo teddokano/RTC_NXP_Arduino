@@ -87,8 +87,7 @@ public:
 	bool oscillator_stop( void );
 
 	time_t rtc_time( void );
-	int rtc_set( struct tm	now_tm );
-
+	int rtc_set( struct tm* now_tm );
 };
 
 #endif //	ARDUINO_LED_DRIVER_NXP_ARD_H

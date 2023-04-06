@@ -14,6 +14,8 @@
 #include <time.h>
 #include "RTC_NXP.h"
 
+void set_time(void);
+
 PCF2131_I2C rtc;
 
 void setup() {
@@ -23,8 +25,10 @@ void setup() {
   Wire.begin();
 
   if (rtc.oscillator_stop()) {
-    Serial.println("==== oscillator_stop detected ====");
+    Serial.println("==== oscillator_stop detected :( ====");
+    set_time();
   } else {
+    Serial.println("RTC was kept running :)");
   }
 }
 
@@ -33,8 +37,31 @@ void loop() {
 
   current_time = rtc.time(NULL);
   Serial.print("time : ");
-  Serial.println(current_time);
+  Serial.print(current_time);
+  Serial.print("    ");
   Serial.println(ctime(&current_time));
 
   delay(1000);
+}
+
+void set_time(void) {
+  /*  !!!! "strptime()" is not available in Arduino's "time.h" !!!!
+  const char* current_time  = "2023-4-7 05:25:30";
+  const char* format  = "%Y-%m-%d %H:%M:%S";
+  struct tm	tmv;
+  strptime( current_time, format, &tmv );
+  */
+
+  struct tm now_tm;
+
+  now_tm.tm_year = 2023 - 1900;
+  now_tm.tm_mon = 4 - 1;  // It needs to be '3' if April
+  now_tm.tm_mday = 7;
+  now_tm.tm_hour = 5;
+  now_tm.tm_min = 37;
+  now_tm.tm_sec = 30;
+
+  rtc.rtc_set(&now_tm);
+
+  Serial.println("RTC got time information");
 }

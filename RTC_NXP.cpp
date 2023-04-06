@@ -56,7 +56,7 @@ time_t PCF2131_I2C::rtc_time()
    return now_time;
 }
 
-int PCF2131_I2C::rtc_set( struct tm	now_tm )
+int PCF2131_I2C::rtc_set( struct tm* now_tmp )
 {
 	time_t		now_time;
 	struct tm*	cnv_tmp;
@@ -64,15 +64,14 @@ int PCF2131_I2C::rtc_set( struct tm	now_tm )
 	uint8_t		bf[ 8 ];
 
 	bf[ 0 ]	= 0;
-	bf[ 1 ]	= dec2bcd( now_tm.tm_sec  );
-	bf[ 2 ]	= dec2bcd( now_tm.tm_min  );
-	bf[ 3 ]	= dec2bcd( now_tm.tm_hour );
-	bf[ 4 ]	= dec2bcd( now_tm.tm_mday );
-	bf[ 6 ]	= dec2bcd( now_tm.tm_mon  ) + 1;
-	bf[ 7 ]	= dec2bcd( now_tm.tm_year ) - 100;
-	now_tm.tm_isdst	= 0;
+	bf[ 1 ]	= dec2bcd( now_tmp->tm_sec  );
+	bf[ 2 ]	= dec2bcd( now_tmp->tm_min  );
+	bf[ 3 ]	= dec2bcd( now_tmp->tm_hour );
+	bf[ 4 ]	= dec2bcd( now_tmp->tm_mday );
+	bf[ 6 ]	= dec2bcd( now_tmp->tm_mon  ) + 1;
+	bf[ 7 ]	= dec2bcd( now_tmp->tm_year ) - 100;
 
-	now_time	= mktime(&now_tm);
+	now_time	= mktime( now_tmp );
 	cnv_tmp		= localtime( &now_time );
 	bf[ 5 ]		= dec2bcd( cnv_tmp->tm_wday);
 	
