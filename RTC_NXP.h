@@ -44,6 +44,7 @@ public:
 	 */
 	time_t time( time_t* tp );
 	virtual time_t rtc_time( void )	= 0;
+	virtual bool oscillator_stop( void )	= 0;
 
 protected:
 	static uint8_t	bcd2dec( uint8_t v );
@@ -83,8 +84,10 @@ public:
 //	virtual void begin( float current =  0.1, board env = NONE, bool buffered = false );
 //	virtual void init( float current )	= 0;
 
+	bool oscillator_stop( void );
+
 	time_t rtc_time( void );
-	time_t rtc_set( void );
+	int rtc_set( struct tm	now_tm );
 
 };
 

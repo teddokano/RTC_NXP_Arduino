@@ -56,27 +56,37 @@ time_t PCF2131_I2C::rtc_time()
    return now_time;
 }
 
-time_t PCF2131_I2C::rtc_set( void )
+int PCF2131_I2C::rtc_set( struct tm	now_tm )
 {
-	struct tm	now_tm;
+	time_t		now_time;
 	struct tm*	cnv_tmp;
-	time_t		newtime;
-	
-	now_tm.tm_sec	= 29;
-	now_tm.tm_min	= 32;
-	now_tm.tm_hour	= 15;
-	now_tm.tm_mday	= 7;
-	now_tm.tm_mon	= 3;
-	now_tm.tm_year	= 2023 - 1900;
+
+	uint8_t		bf[ 8 ];
+
+	bf[ 0 ]	= 0;
+	bf[ 1 ]	= dec2bcd( now_tm.tm_sec  );
+	bf[ 2 ]	= dec2bcd( now_tm.tm_min  );
+	bf[ 3 ]	= dec2bcd( now_tm.tm_hour );
+	bf[ 4 ]	= dec2bcd( now_tm.tm_mday );
+	bf[ 6 ]	= dec2bcd( now_tm.tm_mon  ) + 1;
+	bf[ 7 ]	= dec2bcd( now_tm.tm_year ) - 100;
 	now_tm.tm_isdst	= 0;
 
-	newtime	= mktime(&now_tm);
-	cnv_tmp	= localtime( &newtime );
+	now_time	= mktime(&now_tm);
+	cnv_tmp		= localtime( &now_time );
+	bf[ 5 ]		= dec2bcd( cnv_tmp->tm_wday);
 	
-	Serial.println( "PCF2131_I2C" );
-	Serial.println( cnv_tmp->tm_wday );
-	Serial.println( cnv_tmp->tm_yday );
+	bit_op8( Control_1, ~0x28, 0x20 );
+	bit_op8( SR_Reset,  (uint8_t)(~0x80), 0x80 );
 
-   return newtime;
+	reg_w( _100th_Seconds, bf, sizeof( bf ) );
+
+	bit_op8( Control_1, ~0x20, 0x00 );
+	
+	return 0;
 }
 
+bool PCF2131_I2C::oscillator_stop( void )
+{
+	return read_r8( Seconds ) & 0x80;
+}
