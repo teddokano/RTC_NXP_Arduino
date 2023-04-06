@@ -37,8 +37,7 @@ PCF2131_I2C::~PCF2131_I2C()
 time_t PCF2131_I2C::rtc_time()
 {
 	struct tm	now_tm;
-	struct tm*	cnv_tmp;
-	time_t		newtime;
+	time_t		now_time;
 
 	uint8_t		bf[ 8 ];
 	
@@ -52,14 +51,9 @@ time_t PCF2131_I2C::rtc_time()
 	now_tm.tm_year	= bcd2dec( bf[ 7 ] ) + 100;
 	now_tm.tm_isdst	= 0;
 
-	newtime	= mktime(&now_tm);
-	cnv_tmp	= localtime( &newtime );
+	now_time	= mktime(&now_tm);
 	
-	Serial.println( "PCF2131_I2C" );
-	Serial.println( cnv_tmp->tm_wday );
-	Serial.println( cnv_tmp->tm_yday );
-
-   return newtime;
+   return now_time;
 }
 
 time_t PCF2131_I2C::rtc_set( void )
