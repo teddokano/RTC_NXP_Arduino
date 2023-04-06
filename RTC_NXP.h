@@ -46,6 +46,8 @@ public:
 	virtual time_t rtc_time( void )	= 0;
 
 protected:
+	static uint8_t	bcd2dec( uint8_t v );
+	static uint8_t	dec2bcd( uint8_t v );
 private:
 };
 
@@ -57,7 +59,7 @@ private:
  *
  */
 
-class PCF2131_I2C : public RTC_NXP
+class PCF2131_I2C : public RTC_NXP, public I2C_device
 {
 public:
 	enum reg_num {
@@ -75,13 +77,14 @@ public:
 		Watchdg_tim_ctl, Watchdg_tim_val
 	};
 	
-	PCF2131_I2C();
+	PCF2131_I2C( uint8_t i2c_address = (0xA6 >> 1) );
 	virtual ~PCF2131_I2C();
 	
 //	virtual void begin( float current =  0.1, board env = NONE, bool buffered = false );
 //	virtual void init( float current )	= 0;
 
 	time_t rtc_time( void );
+	time_t rtc_set( void );
 
 };
 
