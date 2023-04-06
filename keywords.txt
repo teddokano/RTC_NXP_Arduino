@@ -1,0 +1,28 @@
+##########
+# classes
+##########
+
+RTC_NXP	KEYWORD1
+PCF2131	KEYWORD1
+
+##########
+# methods and functions
+##########
+
+begin	KEYWORD2
+init	KEYWORD2
+time	KEYWORD2
+
+##########
+# register names
+##########
+
+ALLCALLADR	KEYWORD3
+
+	
+##########
+# constants
+##########
+
+NONE	LITERAL1
+ARDUINO_SHIELD	LITERAL1
