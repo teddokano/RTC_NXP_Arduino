@@ -54,6 +54,7 @@ public:
 	virtual void alarm( alarm_setting digit, int val )	= 0;
 	virtual void alarm_clear( void )	= 0;
 	virtual void alarm_disable( void )	= 0;
+	virtual void int_clear( void )	= 0;
 
 protected:
 	static uint8_t	bcd2dec( uint8_t v );
@@ -110,7 +111,8 @@ public:
 	void alarm( alarm_setting digit, int val, int int_sel );
 	void alarm_clear( void );
 	void alarm_disable( void );
-	
+	void int_clear( void );
+
 	void periodic_interrupt_enable( periodic_int_select sel, int int_sel = 0 );
 	
 private:

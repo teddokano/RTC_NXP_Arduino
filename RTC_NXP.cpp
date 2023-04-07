@@ -112,6 +112,21 @@ void PCF2131_base::alarm_disable( void )
 	_bit_op8( Control_2, ~0x02, 0x00 );
 }
 
+void PCF2131_base::int_clear( void )
+{
+	uint8_t	rv[ 3 ];
+	_reg_r( Control_2, rv, sizeof( rv ) );
+
+	if ( rv[ 0 ] & 0x90 )	// if interrupt flag set in Control_2
+		_reg_w( Control_2, rv[ 0 ] & ~((rv[ 0 ] & 0x90) | 0x49) );	// datasheet 7.11.5
+	
+	if ( rv[ 1 ] & 0x08 )	// if interrupt flag set in Control_3
+		_reg_w( Control_3, rv[ 1 ] & ~(0x08) );
+	
+	if ( rv[ 2 ] & 0xF0 )	// if interrupt flag set in Control_4
+		_reg_w( Control_4, rv[ 2 ] & ~(rv[ 2 ] & 0xF0) );
+}
+
 void PCF2131_base::periodic_interrupt_enable( periodic_int_select sel, int int_sel )
 {
 	if ( !sel ) {
