@@ -42,7 +42,6 @@ bool PCF2131_base::oscillator_stop( void )
 time_t PCF2131_base::rtc_time()
 {
 	struct tm	now_tm;
-	time_t		now_time;
 
 	uint8_t		bf[ 8 ];
 	
@@ -56,9 +55,7 @@ time_t PCF2131_base::rtc_time()
 	now_tm.tm_year	= bcd2dec( bf[ 7 ] ) + 100;
 	now_tm.tm_isdst	= 0;
 
-	now_time	= mktime(&now_tm);
-	
-   return now_time;
+   return mktime(&now_tm);
 }
 
 int PCF2131_base::rtc_set( struct tm* now_tmp )
@@ -110,6 +107,45 @@ void PCF2131_base::alarm_clear( void )
 void PCF2131_base::alarm_disable( void )
 {
 	_bit_op8( Control_2, ~0x02, 0x00 );
+}
+
+void PCF2131_base::timestamp( int num, timestanp_setting ts_setting, int int_sel )
+{
+	const int r_ofst	= 7;
+	const int fst		= ts_setting ? 0x80 : 0x00;
+	
+	num	-=1;
+
+	uint8_t	reg	= Timestp_ctl1 + num * r_ofst;
+	uint8_t	v	= ~(0x01 << (3 - num));
+
+	_bit_op8( reg, (uint8_t)(~0x80), fst );
+	_bit_op8( int_mask_reg[ int_sel ][ 1 ], v, v );
+}
+
+time_t PCF2131_base::timestamp( int num )
+{
+	const int r_ofst	= 7;
+
+	num	-=1;
+
+	uint8_t	reg	= Timestp_ctl1 + num * r_ofst;
+	uint8_t	v[ 7 ];
+	
+	_reg_r( reg, v, sizeof( v ) );
+	
+	struct tm	ts_tm;
+
+	ts_tm.tm_sec	= bcd2dec( v[ 1 ] );
+	ts_tm.tm_min	= bcd2dec( v[ 2 ] );
+	ts_tm.tm_hour	= bcd2dec( v[ 3 ] );
+	ts_tm.tm_mday	= bcd2dec( v[ 4 ] );
+	ts_tm.tm_mon	= bcd2dec( v[ 5 ] ) - 1;
+	ts_tm.tm_year	= bcd2dec( v[ 6 ] ) + 100;
+	ts_tm.tm_isdst	= 0;
+
+   return mktime(&ts_tm);
+
 }
 
 void PCF2131_base::int_clear( void )

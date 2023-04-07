@@ -73,7 +73,7 @@ void loop() {
     time_t current_time = rtc.time(NULL);
     Serial.print("time:");
     Serial.print(current_time);
-    Serial.print("- ");
+    Serial.print(" ");
     Serial.println(ctime(&current_time));
   }
 }

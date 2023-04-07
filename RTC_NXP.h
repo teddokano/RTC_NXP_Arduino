@@ -98,6 +98,10 @@ public:
 		EVERY_SECOND,
 		EVERY_MINUTE,
 	};
+	enum timestanp_setting {
+		LAST,
+		FIRST,
+	};
 
 	PCF2131_base();
 	virtual ~PCF2131_base();
@@ -111,6 +115,10 @@ public:
 	void alarm( alarm_setting digit, int val, int int_sel );
 	void alarm_clear( void );
 	void alarm_disable( void );
+	
+	void timestamp( int num, timestanp_setting ts_setting, int int_sel = 0 );
+	time_t timestamp( int num );
+	
 	void int_clear( void );
 	void int_clear( uint8_t* state_p );
 
