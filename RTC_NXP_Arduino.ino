@@ -14,11 +14,13 @@
 #include <time.h>
 #include "RTC_NXP.h"
 
+
+
 void set_time(void);
 
 //#define INTERFACE_I2C
 
-#ifdef  INTERFACE_I2C
+#ifdef INTERFACE_I2C
 #pragma message "########## COMPILING FOR PCF2131 with I2C INTERFACE ##########"
 PCF2131_I2C rtc;
 #else
@@ -26,12 +28,17 @@ PCF2131_I2C rtc;
 PCF2131_SPI rtc;
 #endif
 
+
+const uint8_t interruptPin = 2;
+bool int_flag = false;
+
+
 void setup() {
   Serial.begin(9600);
 
-#ifdef  INTERFACE_I2C
+#ifdef INTERFACE_I2C
   Serial.println("\n***** Hello, PCF2131! (I2C interface)*****");
-Wire.begin();
+  Wire.begin();
 #else
   Serial.println("\n***** Hello, PCF2131! (SPI interface) *****");
   SPI.begin();
@@ -44,18 +51,26 @@ Wire.begin();
   } else {
     Serial.println("RTC was kept running :)");
   }
+
+  pinMode(interruptPin, INPUT_PULLUP);
+  attachInterrupt(digitalPinToInterrupt(interruptPin), pin_int_callback, FALLING);
+
+  rtc.periodic_interrupt_enable( PCF2131_base::EVERY_SECOND );
 }
 
 void loop() {
-  time_t current_time = 0;
+  if (int_flag) {
+    int_flag = false;
 
-  current_time = rtc.time(NULL);
-  Serial.print("time : ");
-  Serial.print(current_time);
-  Serial.print("    ");
-  Serial.println(ctime(&current_time));
+    uint8_t state[ 3 ];
+    rtc.int_clear( state );
 
-  delay(1000);
+    time_t current_time = rtc.time(NULL);
+    Serial.print("time : ");
+    Serial.print(current_time);
+    Serial.print("    ");
+    Serial.println(ctime(&current_time));
+  }
 }
 
 void set_time(void) {
@@ -78,4 +93,9 @@ void set_time(void) {
   rtc.rtc_set(&now_tm);
 
   Serial.println("RTC got time information");
+}
+
+void pin_int_callback() {
+  int_flag = true;
+  //  sensor.clear();
 }

@@ -112,10 +112,9 @@ void PCF2131_base::alarm_disable( void )
 	_bit_op8( Control_2, ~0x02, 0x00 );
 }
 
-void PCF2131_base::int_clear( void )
+void PCF2131_base::int_clear( uint8_t* rv )
 {
-	uint8_t	rv[ 3 ];
-	_reg_r( Control_2, rv, sizeof( rv ) );
+	_reg_r( Control_2, rv, 3 );
 
 	if ( rv[ 0 ] & 0x90 )	// if interrupt flag set in Control_2
 		_reg_w( Control_2, rv[ 0 ] & ~((rv[ 0 ] & 0x90) | 0x49) );	// datasheet 7.11.5
@@ -129,6 +128,14 @@ void PCF2131_base::int_clear( void )
 
 void PCF2131_base::periodic_interrupt_enable( periodic_int_select sel, int int_sel )
 {
+	Serial.print("Control_1 : ");
+	Serial.println(	_reg_r( Control_1 ), HEX );
+	Serial.print("INT_A_MASK1 : ");
+	Serial.println(	_reg_r( int_mask_reg[ 0 ][ 0 ] ), HEX );
+	Serial.print("INT_B_MASK1 : ");
+	Serial.println(	_reg_r( int_mask_reg[ 1 ][ 0 ] ), HEX );
+	Serial.println(	int_mask_reg[ int_sel ][ 0 ], HEX );
+
 	if ( !sel ) {
 		_bit_op8( Control_1, ~0x03, 0x00 );
 		_bit_op8( int_mask_reg[ int_sel ][ 0 ], ~0x30, 0x30 );
@@ -137,8 +144,17 @@ void PCF2131_base::periodic_interrupt_enable( periodic_int_select sel, int int_s
 	
 	uint8_t v	= (sel == EVERY_MINUTE) ? 0x02 : 0x01;
 
+	v=3;
 	_bit_op8( Control_1, ~0x03, v );
-	_bit_op8( int_mask_reg[ int_sel ][ 0 ], ~0x30, v << 4 );
+	_bit_op8( int_mask_reg[ int_sel ][ 0 ], ~0x30, ~(v << 4) );
+	
+	Serial.print("Control_1 : ");
+	Serial.println(	_reg_r( Control_1 ), HEX );
+	Serial.print("INT_A_MASK1 : ");
+	Serial.println(	_reg_r( int_mask_reg[ 0 ][ 0 ] ), HEX );
+	Serial.print("INT_B_MASK1 : ");
+	Serial.println(	_reg_r( int_mask_reg[ 1 ][ 0 ] ), HEX );
+
 }
 
 
