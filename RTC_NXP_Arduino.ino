@@ -58,6 +58,7 @@ void setup() {
   attachInterrupt(digitalPinToInterrupt(interruptPin), pin_int_callback, FALLING);
 
   rtc.periodic_interrupt_enable(PCF2131_base::EVERY_SECOND);
+  rtc.alarm( PCF2131_base::SECOND, 15 );
 }
 
 
@@ -113,13 +114,14 @@ void int_cause_monitor(uint8_t* status) {
   Serial.print(", ");
 
   if (status[0] & 0x80) {
-    Serial.print("INT:every Min/Sec, ");
+    Serial.print("INT:every min/sec, ");
   }
   if (status[0] & 0x40) {
     Serial.print("INT:watchdog, ");
   }
   if (status[0] & 0x10) {
     Serial.print("INT:alarm, ");
+  Serial.print("########## ALARM ########## ");
   }
   if (status[1] & 0x08) {
     Serial.print("INT:battery switch over, ");
