@@ -57,6 +57,11 @@ void setup() {
   pinMode(interruptPin, INPUT_PULLUP);
   attachInterrupt(digitalPinToInterrupt(interruptPin), pin_int_callback, FALLING);
 
+  rtc.timestamp(1, PCF2131_base::LAST);
+  rtc.timestamp(2, PCF2131_base::LAST);
+  rtc.timestamp(3, PCF2131_base::LAST);
+  rtc.timestamp(4, PCF2131_base::LAST);
+
   rtc.periodic_interrupt_enable(PCF2131_base::EVERY_SECOND);
   rtc.alarm( PCF2131_base::SECOND, 15 );
 }
