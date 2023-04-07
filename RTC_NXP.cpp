@@ -26,15 +26,15 @@ uint8_t	RTC_NXP::dec2bcd( uint8_t v )
 	return ((v / 10) << 4) + (v % 10);
 }
 
-PCF2131_I2C::PCF2131_I2C( uint8_t i2c_address ) : I2C_device( i2c_address )
+PCF2131_base::PCF2131_base()
 {
 }
 
-PCF2131_I2C::~PCF2131_I2C()
+PCF2131_base::~PCF2131_base()
 {
 }
 
-time_t PCF2131_I2C::rtc_time()
+time_t PCF2131_base::rtc_time()
 {
 	struct tm	now_tm;
 	time_t		now_time;
@@ -56,7 +56,7 @@ time_t PCF2131_I2C::rtc_time()
    return now_time;
 }
 
-int PCF2131_I2C::rtc_set( struct tm* now_tmp )
+int PCF2131_base::rtc_set( struct tm* now_tmp )
 {
 	time_t		now_time;
 	struct tm*	cnv_tmp;
@@ -85,9 +85,22 @@ int PCF2131_I2C::rtc_set( struct tm* now_tmp )
 	return 0;
 }
 
-bool PCF2131_I2C::oscillator_stop( void )
+bool PCF2131_base::oscillator_stop( void )
 {
 	return r_reg( Seconds ) & 0x80;
+}
+
+
+
+
+
+
+PCF2131_I2C::PCF2131_I2C( uint8_t i2c_address ) : I2C_device( i2c_address )
+{
+}
+
+PCF2131_I2C::~PCF2131_I2C()
+{
 }
 
 void PCF2131_I2C::w_seq( uint8_t reg, uint8_t *vp, int len )
@@ -114,3 +127,99 @@ void PCF2131_I2C::ow_reg( uint8_t reg, uint8_t mask, uint8_t val )
 {
 	bit_op8( reg, mask, val );
 }
+
+
+
+PCF2131_SPI::PCF2131_SPI()
+{
+}
+
+PCF2131_SPI::~PCF2131_SPI()
+{
+}
+
+void PCF2131_SPI::w_seq( uint8_t reg, uint8_t *vp, int len )
+{
+	reg_w( reg, vp, len );
+}
+
+void PCF2131_SPI::r_seq( uint8_t reg, uint8_t *vp, int len )
+{
+	reg_r( reg, vp, len );
+}
+
+void PCF2131_SPI::w_reg( uint8_t reg, uint8_t val )
+{
+	reg_w( reg, val );
+}
+
+uint8_t PCF2131_SPI::r_reg( uint8_t reg )
+{
+	return 	reg_r( reg );
+}
+
+void PCF2131_SPI::ow_reg( uint8_t reg, uint8_t mask, uint8_t val )
+{
+	bit_op8( reg, mask, val );
+}
+
+void SPI_for_RTC::txrx( uint8_t *data, uint16_t size )
+{
+	digitalWrite( SS, LOW );
+	SPI.transfer( data, size );
+	digitalWrite( SS, HIGH );
+}
+
+void SPI_for_RTC::reg_w( uint8_t reg_adr, uint8_t *data, uint16_t size )
+{
+	uint8_t	v[ size + 1 ];
+	
+	v[ 0 ]	= reg_adr;
+	memcpy( v + 1, data, size );
+	
+	txrx( v, sizeof( v ) );
+}
+
+void SPI_for_RTC::reg_w( uint8_t reg_adr, uint8_t data )
+{
+	uint8_t	v[]	= { reg_adr, data };
+	
+	txrx( v, sizeof( v ) );
+}
+
+void SPI_for_RTC::reg_r( uint8_t reg_adr, uint8_t *data, uint16_t size )
+{
+	uint8_t	v[ size + 1 ] = { 0xFF };
+	
+	v[ 0 ]	= (uint8_t)(reg_adr | 0x80);
+	
+	txrx( v, sizeof( v ) );
+	
+	memcpy( data, v + 1, size );
+}
+
+uint8_t	SPI_for_RTC::reg_r( uint8_t reg_adr )
+{
+	uint8_t	v[]	= { (uint8_t)(reg_adr | 0x80), 0xFF };
+	
+	txrx( v, sizeof( v ) );
+	
+	return v[ 1 ];
+}
+
+void SPI_for_RTC::write_r8( uint8_t reg, uint8_t val )
+{
+	reg_w( reg, val );
+}
+
+uint8_t SPI_for_RTC::read_r8( uint8_t reg )
+{
+	return reg_r( reg );
+}
+
+void SPI_for_RTC::bit_op8(  uint8_t reg,  uint8_t mask,  uint8_t value )
+{
+	uint8_t	tmp	= reg_r( reg ) & mask;
+	reg_w( reg, tmp | value );
+}
+

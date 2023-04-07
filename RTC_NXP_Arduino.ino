@@ -16,13 +16,15 @@
 
 void set_time(void);
 
-PCF2131_I2C rtc;
+//PCF2131_I2C rtc;
+PCF2131_SPI rtc;
 
 void setup() {
   Serial.begin(9600);
   Serial.println("\n***** Hello, PCF2131! *****");
 
-  Wire.begin();
+//  Wire.begin();
+  SPI.begin();
 
   if (rtc.oscillator_stop()) {
     Serial.println("==== oscillator_stop detected :( ====");

@@ -63,7 +63,7 @@ private:
  *
  */
 
-class PCF2131_I2C : public RTC_NXP, public I2C_device
+class PCF2131_base : public RTC_NXP
 {
 public:
 	enum reg_num {
@@ -81,14 +81,21 @@ public:
 		Watchdg_tim_ctl, Watchdg_tim_val
 	};
 	
-	PCF2131_I2C( uint8_t i2c_address = (0xA6 >> 1) );
-	virtual ~PCF2131_I2C();
+	PCF2131_base();
+	virtual ~PCF2131_base();
 	
 	bool oscillator_stop( void );
 
 	time_t rtc_time( void );
 	int rtc_set( struct tm* now_tm );
+};
 
+class PCF2131_I2C : public PCF2131_base, public I2C_device
+{
+public:
+	PCF2131_I2C( uint8_t i2c_address = (0xA6 >> 1) );
+	virtual ~PCF2131_I2C();
+	
 private:
 	void w_seq( uint8_t reg, uint8_t *vp, int len );
 	void r_seq( uint8_t reg, uint8_t *vp, int len );
@@ -98,3 +105,91 @@ private:
 };
 
 #endif //	ARDUINO_LED_DRIVER_NXP_ARD_H
+
+
+class SPI_for_RTC
+{
+public:
+	/** Send data
+	 * 
+	 * @param data pointer to data buffer
+	 * @param size data size
+	 * @param stop option: generating STOP-condition after transaction. Defailt: true
+	 * @return transferred data size
+	 */
+	void txrx( uint8_t *data, uint16_t size );
+
+	/** Multiple register write
+	 * 
+	 * @param reg register index/address/pointer
+	 * @param data pointer to data buffer
+	 * @param size data size
+	 * @return transferred data size
+	 */
+	void reg_w( uint8_t reg_adr, uint8_t *data, uint16_t size );
+
+	/** Single register write
+	 * 
+	 * @param reg register index/address/pointer
+	 * @param data pointer to data buffer
+	 * @param size data size
+	 * @return transferred data size
+	 */
+	void reg_w( uint8_t reg_adr, uint8_t data );
+
+	/** Multiple register read
+	 * 
+	 * @param reg register index/address/pointer
+	 * @param data pointer to data buffer
+	 * @param size data size
+	 * @return transferred data size
+	 */
+	void reg_r( uint8_t reg_adr, uint8_t *data, uint16_t size );
+
+	/** Single register read
+	 * 
+	 * @param reg register index/address/pointer
+	 * @return read data
+	 */
+	uint8_t	reg_r( uint8_t reg_adr );
+
+	/** Register write, 8 bit
+	 *
+	 * @param reg register index/address/pointer
+	 * @param val data value
+	 */
+	void write_r8( uint8_t reg, uint8_t val );
+
+	/** Register read, 8 bit
+	 *
+	 * @param reg register index/address/pointer
+	 * @return data value
+	 */
+	uint8_t read_r8( uint8_t reg );
+
+	/** Register overwriting with bit-mask
+	 *	
+	 *	Register can be updated by bit level
+	 *
+	 * @param reg register index/address/pointer
+	 * @param mask bit-mask to protect overwriting
+	 * @param value value to overwrite
+	 */
+	void bit_op8(  uint8_t reg,  uint8_t mask,  uint8_t value );
+};
+
+class PCF2131_SPI : public PCF2131_base, public SPI_for_RTC
+{
+public:
+	PCF2131_SPI();
+	virtual ~PCF2131_SPI();
+	
+private:
+	void txrx( uint8_t *data, uint16_t size );
+	void w_seq( uint8_t reg, uint8_t *vp, int len );
+	void r_seq( uint8_t reg, uint8_t *vp, int len );
+	void w_reg( uint8_t reg, uint8_t val );
+	uint8_t r_reg( uint8_t reg );
+	void ow_reg( uint8_t reg, uint8_t mask, uint8_t val );
+};
+
