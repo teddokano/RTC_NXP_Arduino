@@ -34,6 +34,11 @@ PCF2131_base::~PCF2131_base()
 {
 }
 
+bool PCF2131_base::oscillator_stop( void )
+{
+	return _reg_r( Seconds ) & 0x80;
+}
+
 time_t PCF2131_base::rtc_time()
 {
 	struct tm	now_tm;
@@ -85,12 +90,27 @@ int PCF2131_base::rtc_set( struct tm* now_tmp )
 	return 0;
 }
 
-bool PCF2131_base::oscillator_stop( void )
+void PCF2131_base::alarm( alarm_setting digit, int val )
 {
-	return _reg_r( Seconds ) & 0x80;
+	alarm( digit, val, 0 );
 }
 
+void PCF2131_base::alarm( alarm_setting digit, int val, int int_sel )
+{
+	_reg_w( Second_alarm + digit, dec2bcd( val ) );
+	_bit_op8( int_mask_reg[ int_sel ][ 0 ], ~0x04, 0x00 );
+	_bit_op8( Control_2, ~0x02, 0x02 );
+}
 
+void PCF2131_base::alarm_clear( void )
+{
+	_bit_op8( Control_2, ~0x10, 0x00 );	
+}
+
+void PCF2131_base::alarm_disable( void )
+{
+	_bit_op8( Control_2, ~0x02, 0x00 );
+}
 
 
 

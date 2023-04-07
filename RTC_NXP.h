@@ -31,6 +31,14 @@ public:
 		NONE,
 		ARDUINO_SHIELD,
 	};
+	enum alarm_setting {
+		SECOND,
+		MINUTE,
+		HOUR,
+		DAY,
+		WEEKDAY,
+	};
+
 	
 	RTC_NXP();
 	virtual ~RTC_NXP();
@@ -42,6 +50,10 @@ public:
 	time_t time( time_t* tp );
 	virtual time_t rtc_time( void )	= 0;
 	virtual bool oscillator_stop( void )	= 0;
+	
+	virtual void alarm( alarm_setting digit, int val )	= 0;
+	virtual void alarm_clear( void )	= 0;
+	virtual void alarm_disable( void )	= 0;
 
 protected:
 	static uint8_t	bcd2dec( uint8_t v );
@@ -88,7 +100,20 @@ public:
 
 	time_t rtc_time( void );
 	int rtc_set( struct tm* now_tm );
+	
+	void alarm( alarm_setting digit, int val );
+	void alarm( alarm_setting digit, int val, int int_sel );
+	void alarm_clear( void );
+	void alarm_disable( void );
+private:
+	const int int_mask_reg[ 2 ][ 2 ]	= {
+		{ INT_A_MASK1, INT_A_MASK2, },
+		{ INT_B_MASK1, INT_B_MASK2, },
+	};
 };
+
+
+
 
 class PCF2131_I2C : public PCF2131_base, public I2C_device
 {
