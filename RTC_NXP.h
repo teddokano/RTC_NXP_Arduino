@@ -34,9 +34,6 @@ public:
 	
 	RTC_NXP();
 	virtual ~RTC_NXP();
-//	virtual void reg_access( uint8_t reg, uint8_t val  )	= 0;
-//	virtual void reg_access( uint8_t reg, uint8_t *vp, int len )	= 0;
-
 	/** time
 	 *
 	 * @param tp pointer to time_t variable
@@ -49,6 +46,12 @@ public:
 protected:
 	static uint8_t	bcd2dec( uint8_t v );
 	static uint8_t	dec2bcd( uint8_t v );
+
+	virtual void w_seq( uint8_t reg, uint8_t *vp, int len )	= 0;
+	virtual void r_seq( uint8_t reg, uint8_t *vp, int len )	= 0;
+	virtual void w_reg( uint8_t reg, uint8_t val )	= 0;
+	virtual uint8_t r_reg( uint8_t reg )	= 0;
+	virtual void ow_reg( uint8_t reg, uint8_t mask, uint8_t val )	= 0;
 private:
 };
 
@@ -81,13 +84,17 @@ public:
 	PCF2131_I2C( uint8_t i2c_address = (0xA6 >> 1) );
 	virtual ~PCF2131_I2C();
 	
-//	virtual void begin( float current =  0.1, board env = NONE, bool buffered = false );
-//	virtual void init( float current )	= 0;
-
 	bool oscillator_stop( void );
 
 	time_t rtc_time( void );
 	int rtc_set( struct tm* now_tm );
+
+private:
+	void w_seq( uint8_t reg, uint8_t *vp, int len );
+	void r_seq( uint8_t reg, uint8_t *vp, int len );
+	void w_reg( uint8_t reg, uint8_t val );
+	uint8_t r_reg( uint8_t reg );
+	void ow_reg( uint8_t reg, uint8_t mask, uint8_t val );
 };
 
 #endif //	ARDUINO_LED_DRIVER_NXP_ARD_H

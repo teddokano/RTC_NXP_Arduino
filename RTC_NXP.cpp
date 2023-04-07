@@ -41,7 +41,7 @@ time_t PCF2131_I2C::rtc_time()
 
 	uint8_t		bf[ 8 ];
 	
-	reg_r( _100th_Seconds, bf, sizeof( bf ) );
+	r_seq( _100th_Seconds, bf, sizeof( bf ) );
 	
 	now_tm.tm_sec	= bcd2dec( bf[ 1 ] );
 	now_tm.tm_min	= bcd2dec( bf[ 2 ] );
@@ -62,7 +62,7 @@ int PCF2131_I2C::rtc_set( struct tm* now_tmp )
 	struct tm*	cnv_tmp;
 
 	uint8_t		bf[ 8 ];
-
+	
 	bf[ 0 ]	= 0;
 	bf[ 1 ]	= dec2bcd( now_tmp->tm_sec  );
 	bf[ 2 ]	= dec2bcd( now_tmp->tm_min  );
@@ -75,17 +75,42 @@ int PCF2131_I2C::rtc_set( struct tm* now_tmp )
 	cnv_tmp		= localtime( &now_time );
 	bf[ 5 ]		= dec2bcd( cnv_tmp->tm_wday);
 	
-	bit_op8( Control_1, ~0x28, 0x20 );
-	bit_op8( SR_Reset,  (uint8_t)(~0x80), 0x80 );
+	ow_reg( Control_1, ~0x28, 0x20 );
+	ow_reg( SR_Reset,  (uint8_t)(~0x80), 0x80 );
 
-	reg_w( _100th_Seconds, bf, sizeof( bf ) );
+	w_seq( _100th_Seconds, bf, sizeof( bf ) );
 
-	bit_op8( Control_1, ~0x20, 0x00 );
+	ow_reg( Control_1, ~0x20, 0x00 );
 	
 	return 0;
 }
 
 bool PCF2131_I2C::oscillator_stop( void )
 {
-	return read_r8( Seconds ) & 0x80;
+	return r_reg( Seconds ) & 0x80;
+}
+
+void PCF2131_I2C::w_seq( uint8_t reg, uint8_t *vp, int len )
+{
+	reg_w( reg, vp, len );
+}
+
+void PCF2131_I2C::r_seq( uint8_t reg, uint8_t *vp, int len )
+{
+	reg_r( reg, vp, len );
+}
+
+void PCF2131_I2C::w_reg( uint8_t reg, uint8_t val )
+{
+	reg_w( reg, val );
+}
+
+uint8_t PCF2131_I2C::r_reg( uint8_t reg )
+{
+	return 	reg_r( reg );
+}
+
+void PCF2131_I2C::ow_reg( uint8_t reg, uint8_t mask, uint8_t val )
+{
+	bit_op8( reg, mask, val );
 }
