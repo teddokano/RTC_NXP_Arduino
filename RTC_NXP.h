@@ -236,4 +236,3 @@ private:
 	uint8_t _reg_r( uint8_t reg );
 	void _bit_op8( uint8_t reg, uint8_t mask, uint8_t val );
 };
-

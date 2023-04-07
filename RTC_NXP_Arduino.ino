@@ -63,7 +63,7 @@ void setup() {
   rtc.timestamp(4, PCF2131_base::LAST);
 
   rtc.periodic_interrupt_enable(PCF2131_base::EVERY_SECOND);
-  rtc.alarm( PCF2131_base::SECOND, 15 );
+  rtc.alarm(PCF2131_base::SECOND, 15);
 }
 
 
@@ -126,7 +126,7 @@ void int_cause_monitor(uint8_t* status) {
   }
   if (status[0] & 0x10) {
     Serial.print("INT:alarm, ");
-  Serial.print("########## ALARM ########## ");
+    Serial.print("########## ALARM ########## ");
   }
   if (status[1] & 0x08) {
     Serial.print("INT:battery switch over, ");
@@ -134,16 +134,21 @@ void int_cause_monitor(uint8_t* status) {
   if (status[1] & 0x04) {
     Serial.print("INT:battery low, ");
   }
-  if (status[2] & 0x80) {
-    Serial.print("INT:timestamp1, ");
-  }
-  if (status[2] & 0x40) {
-    Serial.print("INT:timestamp2, ");
-  }
-  if (status[2] & 0x20) {
-    Serial.print("INT:timestamp3, ");
-  }
-  if (status[2] & 0x10) {
-    Serial.print("INT:timestamp4, ");
+  if (status[2] & 0xF0) {
+    for (int i = 0; i < 4; i++) {
+      if (status[2] & (0x80 >> i)) {
+        Serial.print("INT:timestamp");
+        Serial.print(i + 1);
+        Serial.print(", ");
+      }
+    }
+    Serial.println("");
+    for (int i = 0; i < 4; i++) {
+      Serial.print("  TIMESTAMP");
+      Serial.print(i + 1);
+      Serial.print(": ");
+      time_t ts = rtc.timestamp(i + 1);
+      Serial.println(ctime(&ts));
+    }
   }
 }
