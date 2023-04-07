@@ -47,11 +47,11 @@ protected:
 	static uint8_t	bcd2dec( uint8_t v );
 	static uint8_t	dec2bcd( uint8_t v );
 
-	virtual void w_seq( uint8_t reg, uint8_t *vp, int len )	= 0;
-	virtual void r_seq( uint8_t reg, uint8_t *vp, int len )	= 0;
-	virtual void w_reg( uint8_t reg, uint8_t val )	= 0;
-	virtual uint8_t r_reg( uint8_t reg )	= 0;
-	virtual void ow_reg( uint8_t reg, uint8_t mask, uint8_t val )	= 0;
+	virtual void _reg_w( uint8_t reg, uint8_t *vp, int len )	= 0;
+	virtual void _reg_r( uint8_t reg, uint8_t *vp, int len )	= 0;
+	virtual void _reg_w( uint8_t reg, uint8_t val )	= 0;
+	virtual uint8_t _reg_r( uint8_t reg )	= 0;
+	virtual void _bit_op8( uint8_t reg, uint8_t mask, uint8_t val )	= 0;
 private:
 };
 
@@ -97,11 +97,11 @@ public:
 	virtual ~PCF2131_I2C();
 	
 private:
-	void w_seq( uint8_t reg, uint8_t *vp, int len );
-	void r_seq( uint8_t reg, uint8_t *vp, int len );
-	void w_reg( uint8_t reg, uint8_t val );
-	uint8_t r_reg( uint8_t reg );
-	void ow_reg( uint8_t reg, uint8_t mask, uint8_t val );
+	void _reg_w( uint8_t reg, uint8_t *vp, int len );
+	void _reg_r( uint8_t reg, uint8_t *vp, int len );
+	void _reg_w( uint8_t reg, uint8_t val );
+	uint8_t _reg_r( uint8_t reg );
+	void _bit_op8( uint8_t reg, uint8_t mask, uint8_t val );
 };
 
 #endif //	ARDUINO_LED_DRIVER_NXP_ARD_H
@@ -186,10 +186,10 @@ public:
 	
 private:
 	void txrx( uint8_t *data, uint16_t size );
-	void w_seq( uint8_t reg, uint8_t *vp, int len );
-	void r_seq( uint8_t reg, uint8_t *vp, int len );
-	void w_reg( uint8_t reg, uint8_t val );
-	uint8_t r_reg( uint8_t reg );
-	void ow_reg( uint8_t reg, uint8_t mask, uint8_t val );
+	void _reg_w( uint8_t reg, uint8_t *vp, int len );
+	void _reg_r( uint8_t reg, uint8_t *vp, int len );
+	void _reg_w( uint8_t reg, uint8_t val );
+	uint8_t _reg_r( uint8_t reg );
+	void _bit_op8( uint8_t reg, uint8_t mask, uint8_t val );
 };
 

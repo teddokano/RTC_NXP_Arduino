@@ -16,15 +16,27 @@
 
 void set_time(void);
 
-//PCF2131_I2C rtc;
+//#define INTERFACE_I2C
+
+#ifdef  INTERFACE_I2C
+#pragma message "########## COMPILING FOR PCF2131 with I2C INTERFACE ##########"
+PCF2131_I2C rtc;
+#else
+#pragma message "########## COMPILING FOR PCF2131 with SPI INTERFACE ##########"
 PCF2131_SPI rtc;
+#endif
 
 void setup() {
   Serial.begin(9600);
-  Serial.println("\n***** Hello, PCF2131! *****");
 
-//  Wire.begin();
+#ifdef  INTERFACE_I2C
+  Serial.println("\n***** Hello, PCF2131! (I2C interface)*****");
+Wire.begin();
+#else
+  Serial.println("\n***** Hello, PCF2131! (SPI interface) *****");
   SPI.begin();
+#endif
+
 
   if (rtc.oscillator_stop()) {
     Serial.println("==== oscillator_stop detected :( ====");
@@ -59,8 +71,8 @@ void set_time(void) {
   now_tm.tm_year = 2023 - 1900;
   now_tm.tm_mon = 4 - 1;  // It needs to be '3' if April
   now_tm.tm_mday = 7;
-  now_tm.tm_hour = 5;
-  now_tm.tm_min = 37;
+  now_tm.tm_hour = 18;
+  now_tm.tm_min = 52;
   now_tm.tm_sec = 30;
 
   rtc.rtc_set(&now_tm);

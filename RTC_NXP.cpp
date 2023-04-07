@@ -41,7 +41,7 @@ time_t PCF2131_base::rtc_time()
 
 	uint8_t		bf[ 8 ];
 	
-	r_seq( _100th_Seconds, bf, sizeof( bf ) );
+	_reg_r( _100th_Seconds, bf, sizeof( bf ) );
 	
 	now_tm.tm_sec	= bcd2dec( bf[ 1 ] );
 	now_tm.tm_min	= bcd2dec( bf[ 2 ] );
@@ -68,26 +68,26 @@ int PCF2131_base::rtc_set( struct tm* now_tmp )
 	bf[ 2 ]	= dec2bcd( now_tmp->tm_min  );
 	bf[ 3 ]	= dec2bcd( now_tmp->tm_hour );
 	bf[ 4 ]	= dec2bcd( now_tmp->tm_mday );
-	bf[ 6 ]	= dec2bcd( now_tmp->tm_mon  ) + 1;
-	bf[ 7 ]	= dec2bcd( now_tmp->tm_year ) - 100;
+	bf[ 6 ]	= dec2bcd( now_tmp->tm_mon + 1 );
+	bf[ 7 ]	= dec2bcd( now_tmp->tm_year - 100 );
 
 	now_time	= mktime( now_tmp );
 	cnv_tmp		= localtime( &now_time );
 	bf[ 5 ]		= dec2bcd( cnv_tmp->tm_wday);
 	
-	ow_reg( Control_1, ~0x28, 0x20 );
-	ow_reg( SR_Reset,  (uint8_t)(~0x80), 0x80 );
+	_bit_op8( Control_1, ~0x28, 0x20 );
+	_bit_op8( SR_Reset,  (uint8_t)(~0x80), 0x80 );
 
-	w_seq( _100th_Seconds, bf, sizeof( bf ) );
+	_reg_w( _100th_Seconds, bf, sizeof( bf ) );
 
-	ow_reg( Control_1, ~0x20, 0x00 );
+	_bit_op8( Control_1, ~0x20, 0x00 );
 	
 	return 0;
 }
 
 bool PCF2131_base::oscillator_stop( void )
 {
-	return r_reg( Seconds ) & 0x80;
+	return _reg_r( Seconds ) & 0x80;
 }
 
 
@@ -103,27 +103,27 @@ PCF2131_I2C::~PCF2131_I2C()
 {
 }
 
-void PCF2131_I2C::w_seq( uint8_t reg, uint8_t *vp, int len )
+void PCF2131_I2C::_reg_w( uint8_t reg, uint8_t *vp, int len )
 {
 	reg_w( reg, vp, len );
 }
 
-void PCF2131_I2C::r_seq( uint8_t reg, uint8_t *vp, int len )
+void PCF2131_I2C::_reg_r( uint8_t reg, uint8_t *vp, int len )
 {
 	reg_r( reg, vp, len );
 }
 
-void PCF2131_I2C::w_reg( uint8_t reg, uint8_t val )
+void PCF2131_I2C::_reg_w( uint8_t reg, uint8_t val )
 {
 	reg_w( reg, val );
 }
 
-uint8_t PCF2131_I2C::r_reg( uint8_t reg )
+uint8_t PCF2131_I2C::_reg_r( uint8_t reg )
 {
 	return 	reg_r( reg );
 }
 
-void PCF2131_I2C::ow_reg( uint8_t reg, uint8_t mask, uint8_t val )
+void PCF2131_I2C::_bit_op8( uint8_t reg, uint8_t mask, uint8_t val )
 {
 	bit_op8( reg, mask, val );
 }
@@ -138,27 +138,27 @@ PCF2131_SPI::~PCF2131_SPI()
 {
 }
 
-void PCF2131_SPI::w_seq( uint8_t reg, uint8_t *vp, int len )
+void PCF2131_SPI::_reg_w( uint8_t reg, uint8_t *vp, int len )
 {
 	reg_w( reg, vp, len );
 }
 
-void PCF2131_SPI::r_seq( uint8_t reg, uint8_t *vp, int len )
+void PCF2131_SPI::_reg_r( uint8_t reg, uint8_t *vp, int len )
 {
 	reg_r( reg, vp, len );
 }
 
-void PCF2131_SPI::w_reg( uint8_t reg, uint8_t val )
+void PCF2131_SPI::_reg_w( uint8_t reg, uint8_t val )
 {
 	reg_w( reg, val );
 }
 
-uint8_t PCF2131_SPI::r_reg( uint8_t reg )
+uint8_t PCF2131_SPI::_reg_r( uint8_t reg )
 {
 	return 	reg_r( reg );
 }
 
-void PCF2131_SPI::ow_reg( uint8_t reg, uint8_t mask, uint8_t val )
+void PCF2131_SPI::_bit_op8( uint8_t reg, uint8_t mask, uint8_t val )
 {
 	bit_op8( reg, mask, val );
 }
