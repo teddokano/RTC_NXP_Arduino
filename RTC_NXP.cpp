@@ -112,7 +112,19 @@ void PCF2131_base::alarm_disable( void )
 	_bit_op8( Control_2, ~0x02, 0x00 );
 }
 
+void PCF2131_base::periodic_interrupt_enable( periodic_int_select sel, int int_sel )
+{
+	if ( !sel ) {
+		_bit_op8( Control_1, ~0x03, 0x00 );
+		_bit_op8( int_mask_reg[ int_sel ][ 0 ], ~0x30, 0x30 );
+		return;
+	}
+	
+	uint8_t v	= (sel == EVERY_MINUTE) ? 0x02 : 0x01;
 
+	_bit_op8( Control_1, ~0x03, v );
+	_bit_op8( int_mask_reg[ int_sel ][ 0 ], ~0x30, v << 4 );
+}
 
 
 PCF2131_I2C::PCF2131_I2C( uint8_t i2c_address ) : I2C_device( i2c_address )

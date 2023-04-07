@@ -92,7 +92,12 @@ public:
 		INT_A_MASK1, INT_A_MASK2, INT_B_MASK1, INT_B_MASK2,
 		Watchdg_tim_ctl, Watchdg_tim_val
 	};
-	
+	enum periodic_int_select {
+		DISABLE,
+		EVERY_SECOND,
+		EVERY_MINUTE,
+	};
+
 	PCF2131_base();
 	virtual ~PCF2131_base();
 	
@@ -105,6 +110,9 @@ public:
 	void alarm( alarm_setting digit, int val, int int_sel );
 	void alarm_clear( void );
 	void alarm_disable( void );
+	
+	void periodic_interrupt_enable( periodic_int_select sel, int int_sel = 0 );
+	
 private:
 	const int int_mask_reg[ 2 ][ 2 ]	= {
 		{ INT_A_MASK1, INT_A_MASK2, },
