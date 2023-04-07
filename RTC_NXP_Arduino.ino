@@ -15,8 +15,9 @@
 #include "RTC_NXP.h"
 
 
-
+void pin_int_callback();
 void set_time(void);
+void int_cause_monitor(uint8_t* status);
 
 //#define INTERFACE_I2C
 
@@ -52,23 +53,26 @@ void setup() {
     Serial.println("RTC was kept running :)");
   }
 
+  rtc.int_clear();
   pinMode(interruptPin, INPUT_PULLUP);
   attachInterrupt(digitalPinToInterrupt(interruptPin), pin_int_callback, FALLING);
 
-  rtc.periodic_interrupt_enable( PCF2131_base::EVERY_SECOND );
+  rtc.periodic_interrupt_enable(PCF2131_base::EVERY_SECOND);
 }
+
 
 void loop() {
   if (int_flag) {
     int_flag = false;
 
-    uint8_t state[ 3 ];
-    rtc.int_clear( state );
+    uint8_t status[3];
+    rtc.int_clear(status);
+    int_cause_monitor(status);
 
     time_t current_time = rtc.time(NULL);
-    Serial.print("time : ");
+    Serial.print("time:");
     Serial.print(current_time);
-    Serial.print("    ");
+    Serial.print("- ");
     Serial.println(ctime(&current_time));
   }
 }
@@ -97,5 +101,42 @@ void set_time(void) {
 
 void pin_int_callback() {
   int_flag = true;
-  //  sensor.clear();
+}
+
+void int_cause_monitor(uint8_t* status) {
+  Serial.print("status:");
+
+  for (int i = 0; i < 3; i++) {
+    Serial.print(" ");
+    Serial.print(status[i], HEX);
+  }
+  Serial.print(", ");
+
+  if (status[0] & 0x80) {
+    Serial.print("INT:every Min/Sec, ");
+  }
+  if (status[0] & 0x40) {
+    Serial.print("INT:watchdog, ");
+  }
+  if (status[0] & 0x10) {
+    Serial.print("INT:alarm, ");
+  }
+  if (status[1] & 0x08) {
+    Serial.print("INT:battery switch over, ");
+  }
+  if (status[1] & 0x04) {
+    Serial.print("INT:battery low, ");
+  }
+  if (status[2] & 0x80) {
+    Serial.print("INT:timestamp1, ");
+  }
+  if (status[2] & 0x40) {
+    Serial.print("INT:timestamp2, ");
+  }
+  if (status[2] & 0x20) {
+    Serial.print("INT:timestamp3, ");
+  }
+  if (status[2] & 0x10) {
+    Serial.print("INT:timestamp4, ");
+  }
 }

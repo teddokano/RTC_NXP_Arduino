@@ -112,6 +112,12 @@ void PCF2131_base::alarm_disable( void )
 	_bit_op8( Control_2, ~0x02, 0x00 );
 }
 
+void PCF2131_base::int_clear( void )
+{
+	uint8_t dummy[ 3 ];
+	int_clear( dummy );
+}
+
 void PCF2131_base::int_clear( uint8_t* rv )
 {
 	_reg_r( Control_2, rv, 3 );
@@ -128,14 +134,6 @@ void PCF2131_base::int_clear( uint8_t* rv )
 
 void PCF2131_base::periodic_interrupt_enable( periodic_int_select sel, int int_sel )
 {
-	Serial.print("Control_1 : ");
-	Serial.println(	_reg_r( Control_1 ), HEX );
-	Serial.print("INT_A_MASK1 : ");
-	Serial.println(	_reg_r( int_mask_reg[ 0 ][ 0 ] ), HEX );
-	Serial.print("INT_B_MASK1 : ");
-	Serial.println(	_reg_r( int_mask_reg[ 1 ][ 0 ] ), HEX );
-	Serial.println(	int_mask_reg[ int_sel ][ 0 ], HEX );
-
 	if ( !sel ) {
 		_bit_op8( Control_1, ~0x03, 0x00 );
 		_bit_op8( int_mask_reg[ int_sel ][ 0 ], ~0x30, 0x30 );
@@ -147,14 +145,6 @@ void PCF2131_base::periodic_interrupt_enable( periodic_int_select sel, int int_s
 	v=3;
 	_bit_op8( Control_1, ~0x03, v );
 	_bit_op8( int_mask_reg[ int_sel ][ 0 ], ~0x30, ~(v << 4) );
-	
-	Serial.print("Control_1 : ");
-	Serial.println(	_reg_r( Control_1 ), HEX );
-	Serial.print("INT_A_MASK1 : ");
-	Serial.println(	_reg_r( int_mask_reg[ 0 ][ 0 ] ), HEX );
-	Serial.print("INT_B_MASK1 : ");
-	Serial.println(	_reg_r( int_mask_reg[ 1 ][ 0 ] ), HEX );
-
 }
 
 
