@@ -318,3 +318,96 @@ void SPI_for_RTC::bit_op8(  uint8_t reg,  uint8_t mask,  uint8_t value )
 	reg_w( reg, tmp | value );
 }
 
+PCF85063A::PCF85063A( uint8_t i2c_address ) : I2C_device( i2c_address )
+{
+}
+
+PCF85063A::~PCF85063A()
+{	
+}
+
+void PCF85063A::begin( void )
+{
+}
+
+void PCF85063A::set( struct tm* now_tmp )
+{
+	time_t		now_time;
+	struct tm*	cnv_tmp;
+
+	uint8_t		bf[ 7 ];
+	
+	bf[ 0 ]	= dec2bcd( now_tmp->tm_sec  );
+	bf[ 1 ]	= dec2bcd( now_tmp->tm_min  );
+	bf[ 2 ]	= dec2bcd( now_tmp->tm_hour );
+	bf[ 3 ]	= dec2bcd( now_tmp->tm_mday );
+	bf[ 5 ]	= dec2bcd( now_tmp->tm_mon + 1 );
+	bf[ 6 ]	= dec2bcd( now_tmp->tm_year - 100 );
+
+	now_time	= mktime( now_tmp );
+	cnv_tmp		= localtime( &now_time );
+	bf[ 4 ]		= dec2bcd( cnv_tmp->tm_wday);
+	
+	bit_op8( Control_1, ~0x20, 0x20 );
+	reg_w( Seconds, bf, sizeof( bf ) );
+	bit_op8( Control_1, ~0x20, 0x00 );
+}
+
+bool PCF85063A::oscillator_stop( void )
+{
+	return reg_r( Seconds ) & 0x80;
+}
+
+void PCF85063A::alarm( alarm_setting digit, int val )
+{
+	
+}
+
+void PCF85063A::alarm_clear( void )
+{
+	
+}
+
+void PCF85063A::alarm_disable( void )
+{
+	
+}
+
+void PCF85063A::int_clear( void )
+{
+	
+}
+
+time_t PCF85063A::rtc_time( void )
+{
+	struct tm	now_tm;
+
+	uint8_t		bf[ 7 ];
+	
+	reg_r( Seconds, bf, sizeof( bf ) );
+	
+	now_tm.tm_sec	= bcd2dec( bf[ 0 ] );
+	now_tm.tm_min	= bcd2dec( bf[ 1 ] );
+	now_tm.tm_hour	= bcd2dec( bf[ 2 ] );
+	now_tm.tm_mday	= bcd2dec( bf[ 3 ] );
+	now_tm.tm_mon	= bcd2dec( bf[ 5 ] ) - 1;
+	now_tm.tm_year	= bcd2dec( bf[ 6 ] ) + 100;
+	now_tm.tm_isdst	= 0;
+
+   return mktime(&now_tm);
+}
+
+
+/*
+ForFutureExtention::ForFutureExtention(){}
+ForFutureExtention::~ForFutureExtention(){}
+void ForFutureExtention::begin( void ){}
+void ForFutureExtention::set( struct tm* now_tm ){}
+bool ForFutureExtention::oscillator_stop( void ){}
+void ForFutureExtention::alarm( alarm_setting digit, int val ){}
+void ForFutureExtention::alarm_clear( void ){}
+void ForFutureExtention::alarm_disable( void ){}
+void ForFutureExtention::int_clear( void ){}
+time_t ForFutureExtention::rtc_time( void ){}
+*/
+

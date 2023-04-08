@@ -40,7 +40,6 @@ public:
 		WEEKDAY,
 	};
 
-	
 	/** Constructor */
 	RTC_NXP();
 
@@ -109,21 +108,6 @@ protected:
 	 * @return BCD value
 	 */
 	static uint8_t	dec2bcd( uint8_t v );
-	
-	/** Proxy method for interface  (pure virtual method) */
-	virtual void _reg_w( uint8_t reg, uint8_t *vp, int len )	= 0;
-
-	/** Proxy method for interface  (pure virtual method) */
-	virtual void _reg_r( uint8_t reg, uint8_t *vp, int len )	= 0;
-
-	/** Proxy method for interface  (pure virtual method) */
-	virtual void _reg_w( uint8_t reg, uint8_t val )	= 0;
-
-	/** Proxy method for interface  (pure virtual method) */
-	virtual uint8_t _reg_r( uint8_t reg )	= 0;
-
-	/** Proxy method for interface  (pure virtual method) */
-	virtual void _bit_op8( uint8_t reg, uint8_t mask, uint8_t val )	= 0;
 };
 
 
@@ -245,7 +229,23 @@ public:
 	 * @param int_sel Interrupt output selector. ) for INT_A, 1 for INT_B
 	 */
 	void periodic_interrupt_enable( periodic_int_select sel, int int_sel = 0 );
-	
+
+protected:
+	/** Proxy method for interface  (pure virtual method) */
+	virtual void _reg_w( uint8_t reg, uint8_t *vp, int len )	= 0;
+
+	/** Proxy method for interface  (pure virtual method) */
+	virtual void _reg_r( uint8_t reg, uint8_t *vp, int len )	= 0;
+
+	/** Proxy method for interface  (pure virtual method) */
+	virtual void _reg_w( uint8_t reg, uint8_t val )	= 0;
+
+	/** Proxy method for interface  (pure virtual method) */
+	virtual uint8_t _reg_r( uint8_t reg )	= 0;
+
+	/** Proxy method for interface  (pure virtual method) */
+	virtual void _bit_op8( uint8_t reg, uint8_t mask, uint8_t val )	= 0;
+
 private:
 	const int int_mask_reg[ 2 ][ 2 ]	= {
 		{ INT_A_MASK1, INT_A_MASK2, },
@@ -400,5 +400,121 @@ private:
 	/** Proxy method for interface */
 	void _bit_op8( uint8_t reg, uint8_t mask, uint8_t val );
 };
+
+/** PCF85063A class
+ *	
+ *	PCF85063A class driver
+ *
+ *  @class PCF85063A
+ */
+
+class PCF85063A : public RTC_NXP, public I2C_device
+{
+public:
+	enum reg_num {
+		Control_1, Control_2,
+		Offset,
+		RAM_byte,
+		Seconds, Minutes, Hours, Days, Weekdays, Months, Years,
+		Second_alarm, Minute_alarm, Hour_alarm, Day_alarm, Weekday_alarm,
+		Timer_value, Timer_mode
+	};
+	/** Constructor */
+	PCF85063A( uint8_t i2c_address = (0xA2 >> 1) );
+
+	/** Destructor */
+	virtual ~PCF85063A();
+	
+	/** Initializer */
+	void begin( void );
+	
+	/** set
+	 * 
+	 * @param now_tm struct to set calendar and time in RTC
+	 */
+	void set( struct tm* now_tm );
+
+	/** Detector for oscillation stop
+	 * 
+	 * @return true, if the OSF (Oscillator Stop Flag) is set
+	 */
+	bool oscillator_stop( void );
+	
+	/** Alarm setting
+	 * 
+	 * @param digit to specify which parameter to set: SECOND, MINUTE, HOUR, DAY, WEEKDAY in 'enum alarm_setting'. Set 0x80 to disabling
+	 */
+	void alarm( alarm_setting digit, int val );
+
+	/** Alarm clearing
+	 */
+	void alarm_clear( void );
+
+	/** Alarm interrupt disable
+	 */
+	void alarm_disable( void );
+
+	/** Interrupt clear
+	 */
+	void int_clear( void );
+
+protected:
+	/** rtc_time
+	 * 
+	 * @return time_t returns RTC time in time_t format
+	 */
+	time_t rtc_time( void );
+};
+
+class ForFutureExtention : public RTC_NXP, public I2C_device
+{
+public:
+	/** Constructor */
+	ForFutureExtention();
+
+	/** Destructor */
+	virtual ~ForFutureExtention();
+	
+	/** Initializer */
+	void begin( void );
+	
+	/** set
+	 * 
+	 * @param now_tm struct to set calendar and time in RTC
+	 */
+	void set( struct tm* now_tm );
+
+	/** Detector for oscillation stop
+	 * 
+	 * @return true, if the OSF (Oscillator Stop Flag) is set
+	 */
+	bool oscillator_stop( void );
+	
+	/** Alarm setting
+	 * 
+	 * @param digit to specify which parameter to set: SECOND, MINUTE, HOUR, DAY, WEEKDAY in 'enum alarm_setting'. Set 0x80 to disabling
+	 */
+	void alarm( alarm_setting digit, int val );
+
+	/** Alarm clearing
+	 */
+	void alarm_clear( void );
+
+	/** Alarm interrupt disable
+	 */
+	void alarm_disable( void );
+
+	/** Interrupt clear
+	 */
+	void int_clear( void );
+
+protected:
+	/** rtc_time
+	 * 
+	 * @return time_t returns RTC time in time_t format
+	 */
+	time_t rtc_time( void );
+};
+
 
 #endif //	ARDUINO_LED_DRIVER_NXP_ARD_H
