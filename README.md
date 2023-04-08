@@ -1,7 +1,7 @@
 # RTC_NXP_Arduino
 
 Class library for RTC device operation.  
-PCF2131 and PCF85063A are supported.  
+PCF2131, PCF85063A and PCF85063TP are supported.  
 On PCF2131, both I²C and SPI can be used for interfacing MCU. 
 
 <!--

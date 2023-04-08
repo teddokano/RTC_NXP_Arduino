@@ -408,7 +408,7 @@ private:
  *  @class PCF85063A
  */
 
-class PCF85063A : public RTC_NXP, public I2C_device
+class PCF85063_base : public RTC_NXP\
 {
 public:
 	enum reg_num {
@@ -420,10 +420,10 @@ public:
 		Timer_value, Timer_mode
 	};
 	/** Constructor */
-	PCF85063A( uint8_t i2c_address = (0xA2 >> 1) );
+	PCF85063_base();
 
 	/** Destructor */
-	virtual ~PCF85063A();
+	virtual ~PCF85063_base();
 	
 	/** Initializer */
 	void begin( void );
@@ -472,6 +472,79 @@ protected:
 	 * @return time_t returns RTC time in time_t format
 	 */
 	time_t rtc_time( void );
+
+	/** Proxy method for interface  (pure virtual method) */
+	virtual void _reg_w( uint8_t reg, uint8_t *vp, int len )	= 0;
+
+	/** Proxy method for interface  (pure virtual method) */
+	virtual void _reg_r( uint8_t reg, uint8_t *vp, int len )	= 0;
+
+	/** Proxy method for interface  (pure virtual method) */
+	virtual void _reg_w( uint8_t reg, uint8_t val )	= 0;
+
+	/** Proxy method for interface  (pure virtual method) */
+	virtual uint8_t _reg_r( uint8_t reg )	= 0;
+
+	/** Proxy method for interface  (pure virtual method) */
+	virtual void _bit_op8( uint8_t reg, uint8_t mask, uint8_t val )	= 0;
+};
+
+class PCF85063A : public PCF85063_base, public I2C_device
+{
+public:
+	PCF85063A( uint8_t i2c_address = (0xA2 >> 1) );
+
+	/** Destructor */
+	virtual ~PCF85063A();
+	
+private:
+	/** Proxy method for interface */
+	void _reg_w( uint8_t reg, uint8_t *vp, int len );
+
+	/** Proxy method for interface */
+	void _reg_r( uint8_t reg, uint8_t *vp, int len );
+
+	/** Proxy method for interface */
+	void _reg_w( uint8_t reg, uint8_t val );
+
+	/** Proxy method for interface */
+	uint8_t _reg_r( uint8_t reg );
+
+	/** Proxy method for interface */
+	void _bit_op8( uint8_t reg, uint8_t mask, uint8_t val );
+};
+
+class PCF85063TP : public PCF85063A
+{
+public:
+	PCF85063TP( uint8_t i2c_address = (0xA2 >> 1) );
+
+	/** Destructor */
+	virtual ~PCF85063TP();
+	
+	void alarm( alarm_setting digit, int val );
+
+	/** Alarm clearing
+	 *	Method overriding to disable this feature (Hardware is not supporting)
+	 */
+	void alarm_clear( void );
+
+	/** Alarm interrupt disable
+	 *	Method overriding to disable this feature (Hardware is not supporting)
+	 */
+	void alarm_disable( void );
+
+	/** Interrupt clear
+	 *	Method overriding to disable this feature (Hardware is not supporting)
+	 */
+	uint8_t int_clear( void );
+
+	
+	/** Timer setting
+	 *	Method overriding to disable this feature (Hardware is not supporting)
+	 */
+	float timer( float period );
+
 };
 
 class ForFutureExtention : public RTC_NXP, public I2C_device

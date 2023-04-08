@@ -1,18 +1,18 @@
 #include "RTC_NXP.h"
 
-PCF85063A::PCF85063A( uint8_t i2c_address ) : I2C_device( i2c_address )
+PCF85063_base::PCF85063_base()
 {
 }
 
-PCF85063A::~PCF85063A()
+PCF85063_base::~PCF85063_base()
 {	
 }
 
-void PCF85063A::begin( void )
+void PCF85063_base::begin( void )
 {
 }
 
-void PCF85063A::set( struct tm* now_tmp )
+void PCF85063_base::set( struct tm* now_tmp )
 {
 	time_t		now_time;
 	struct tm*	cnv_tmp;
@@ -30,42 +30,42 @@ void PCF85063A::set( struct tm* now_tmp )
 	cnv_tmp		= localtime( &now_time );
 	bf[ 4 ]		= dec2bcd( cnv_tmp->tm_wday);
 	
-	bit_op8( Control_1, ~0x20, 0x20 );
-	reg_w( Seconds, bf, sizeof( bf ) );
-	bit_op8( Control_1, ~0x20, 0x00 );
+	_bit_op8( Control_1, ~0x20, 0x20 );
+	_reg_w( Seconds, bf, sizeof( bf ) );
+	_bit_op8( Control_1, ~0x20, 0x00 );
 }
 
-bool PCF85063A::oscillator_stop( void )
+bool PCF85063_base::oscillator_stop( void )
 {
-	return reg_r( Seconds ) & 0x80;
+	return _reg_r( Seconds ) & 0x80;
 }
 
-void PCF85063A::alarm( alarm_setting digit, int val )
+void PCF85063_base::alarm( alarm_setting digit, int val )
 {
 	int	v = (val == 0x80) ? 0x80 : dec2bcd( val );
-	reg_w( Second_alarm + digit, v );
-	bit_op8( Control_2, (uint8_t)(~0x80), 0x80 );
+	_reg_w( Second_alarm + digit, v );
+	_bit_op8( Control_2, (uint8_t)(~0x80), 0x80 );
 }
 
-void PCF85063A::alarm_clear( void )
+void PCF85063_base::alarm_clear( void )
 {
 	//	will be implemented later
 }
 
-void PCF85063A::alarm_disable( void )
+void PCF85063_base::alarm_disable( void )
 {
-	bit_op8( Control_2, (uint8_t)(~0x80), 0x00 );	
+	_bit_op8( Control_2, (uint8_t)(~0x80), 0x00 );	
 }
 
-uint8_t PCF85063A::int_clear( void )
+uint8_t PCF85063_base::int_clear( void )
 {
-	uint8_t v = reg_r( Control_2 );
-	reg_w( Control_2, v & ~0x48 );
+	uint8_t v = _reg_r( Control_2 );
+	_reg_w( Control_2, v & ~0x48 );
 
 	return v;
 }
 
-float PCF85063A::timer( float period )
+float PCF85063_base::timer( float period )
 {
 	float	sf[] = { 1 / 4096.0, 1 / 64.0, 1.0, 60 };
 	int		tcf;
@@ -91,19 +91,19 @@ float PCF85063A::timer( float period )
 	Serial.println( "" );
 #endif
 	
-	reg_w( Timer_value, v );
-	reg_w( Timer_mode, tcf << 3 | 0x06 );
+	_reg_w( Timer_value, v );
+	_reg_w( Timer_mode, tcf << 3 | 0x06 );
 	
 	return v * sf[tcf];
 }
 
-time_t PCF85063A::rtc_time( void )
+time_t PCF85063_base::rtc_time( void )
 {
 	struct tm	now_tm;
 
 	uint8_t		bf[ 7 ];
 	
-	reg_r( Seconds, bf, sizeof( bf ) );
+	_reg_r( Seconds, bf, sizeof( bf ) );
 	
 	now_tm.tm_sec	= bcd2dec( bf[ 0 ] );
 	now_tm.tm_min	= bcd2dec( bf[ 1 ] );
@@ -114,4 +114,38 @@ time_t PCF85063A::rtc_time( void )
 	now_tm.tm_isdst	= 0;
 
    return mktime(&now_tm);
+}
+
+
+PCF85063A::PCF85063A( uint8_t i2c_address ) : I2C_device( i2c_address )
+{
+}
+
+PCF85063A::~PCF85063A()
+{	
+}
+
+void PCF85063A::_reg_w( uint8_t reg, uint8_t *vp, int len )
+{
+	reg_w( reg, vp, len );
+}
+
+void PCF85063A::_reg_r( uint8_t reg, uint8_t *vp, int len )
+{
+	reg_r( reg, vp, len );
+}
+
+void PCF85063A::_reg_w( uint8_t reg, uint8_t val )
+{
+	reg_w( reg, val );
+}
+
+uint8_t PCF85063A::_reg_r( uint8_t reg )
+{
+	return 	reg_r( reg );
+}
+
+void PCF85063A::_bit_op8( uint8_t reg, uint8_t mask, uint8_t val )
+{
+	bit_op8( reg, mask, val );
 }
