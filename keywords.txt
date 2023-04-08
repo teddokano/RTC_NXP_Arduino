@@ -3,22 +3,92 @@
 ##########
 
 RTC_NXP	KEYWORD1
-PCF2131	KEYWORD1
+PCF2131_I2C	KEYWORD1
+PCF2131_SPI	KEYWORD1
+PCF85063A	KEYWORD1
 
 ##########
 # methods and functions
 ##########
 
 begin	KEYWORD2
-init	KEYWORD2
 time	KEYWORD2
+set	KEYWORD2
+oscillator_stop	KEYWORD2
+alarm	KEYWORD2
+alarm_clear	KEYWORD2
+alarm_disable	KEYWORD2
+int_clear	KEYWORD2
+rtc_time	KEYWORD2
+bcd2dec	KEYWORD2
+dec2bcd	KEYWORD2
+timestamp	KEYWORD2
+timer	KEYWORD2
 
 ##########
 # register names
 ##########
 
-ALLCALLADR	KEYWORD3
-
+Aging_offset	KEYWORD3
+CLKOUT_ctl	KEYWORD3
+Control_1	KEYWORD3
+Control_2	KEYWORD3
+Control_3	KEYWORD3
+Control_4	KEYWORD3
+Control_5	KEYWORD3
+Day_alarm	KEYWORD3
+Day_timestp1	KEYWORD3
+Day_timestp2	KEYWORD3
+Day_timestp3	KEYWORD3
+Day_timestp4	KEYWORD3
+Days	KEYWORD3
+Hour_alarm	KEYWORD3
+Hour_timestp1	KEYWORD3
+Hour_timestp2	KEYWORD3
+Hour_timestp3	KEYWORD3
+Hour_timestp4	KEYWORD3
+Hours	KEYWORD3
+INT_A_MASK1	KEYWORD3
+INT_A_MASK2	KEYWORD3
+INT_B_MASK1	KEYWORD3
+INT_B_MASK2	KEYWORD3
+Min_timestp1	KEYWORD3
+Min_timestp2	KEYWORD3
+Min_timestp3	KEYWORD3
+Min_timestp4	KEYWORD3
+Minute_alarm	KEYWORD3
+Minutes	KEYWORD3
+Mon_timestp1	KEYWORD3
+Mon_timestp2	KEYWORD3
+Mon_timestp3	KEYWORD3
+Mon_timestp4	KEYWORD3
+Months	KEYWORD3
+Offset	KEYWORD3
+RAM_byte	KEYWORD3
+SR_Reset	KEYWORD3
+Sec_timestp1	KEYWORD3
+Sec_timestp2	KEYWORD3
+Sec_timestp3	KEYWORD3
+Sec_timestp4	KEYWORD3
+Second_alarm	KEYWORD3
+Seconds	KEYWORD3
+Timer_mode	KEYWORD3
+Timer_value	KEYWORD3
+Timestp_ctl1	KEYWORD3
+Timestp_ctl2	KEYWORD3
+Timestp_ctl3	KEYWORD3
+Timestp_ctl4	KEYWORD3
+Watchdg_tim_ctl	KEYWORD3
+Watchdg_tim_val	KEYWORD3
+Weekday_alarm	KEYWORD3
+Weekdays	KEYWORD3
+Year_timestp1	KEYWORD3
+Year_timestp2	KEYWORD3
+Year_timestp3	KEYWORD3
+Year_timestp4	KEYWORD3
+Years	KEYWORD3
+_100th_Seconds	KEYWORD3
+	KEYWORD3
 	
 ##########
 # constants
@@ -26,3 +96,13 @@ ALLCALLADR	KEYWORD3
 
 NONE	LITERAL1
 ARDUINO_SHIELD	LITERAL1
+SECOND	LITERAL1
+MINUTE	LITERAL1
+HOUR	LITERAL1
+DAY	LITERAL1
+WEEKDAY	LITERAL1
+DISABLE	LITERAL1
+EVERY_SECOND	LITERAL1
+EVERY_MINUTE	LITERAL1
+LAST	LITERAL1
+FIRST	LITERAL1
