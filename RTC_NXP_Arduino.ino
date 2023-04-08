@@ -15,24 +15,33 @@
 #include "RTC_NXP.h"
 
 
-void pin_int_callback();
 void set_time(void);
 void int_cause_monitor(uint8_t* status);
 
 //#define INTERFACE_I2C
 
 #ifdef INTERFACE_I2C
-#pragma message "########## COMPILING FOR PCF2131 with I2C INTERFACE ##########"
+#pragma message : == == == == == COMPILING FOR PCF2131 with I2C INTERFACE == == == == ==
 PCF2131_I2C rtc;
 #else
-#pragma message "########## COMPILING FOR PCF2131 with SPI INTERFACE ##########"
+#pragma message : == == == == == COMPILING FOR PCF2131 with SPI INTERFACE == == == == ==
 PCF2131_SPI rtc;
 #endif
 
+#pragma message : TO RUN THIS SKETCH ON ARDUINO UNO R3P AND CF2131 - ARD BOARDS, PIN8 and PIN9 MUST BE SHORTED TO HANDLE INTERRUPT CORRECTLY
 
-const uint8_t interruptPin = 2;
-bool int_flag = false;
+const uint8_t intPin0 = 2;
+const uint8_t intPin1 = 3;
+bool int_flag0 = false;
+bool int_flag1 = false;
 
+void pin_int_callback0() {
+  int_flag0 = true;
+}
+
+void pin_int_callback1() {
+  int_flag1 = true;
+}
 
 void setup() {
   Serial.begin(9600);
@@ -45,6 +54,7 @@ void setup() {
   SPI.begin();
 #endif
 
+  rtc.begin();
 
   if (rtc.oscillator_stop()) {
     Serial.println("==== oscillator_stop detected :( ====");
@@ -54,32 +64,35 @@ void setup() {
   }
 
   rtc.int_clear();
-  pinMode(interruptPin, INPUT_PULLUP);
-  attachInterrupt(digitalPinToInterrupt(interruptPin), pin_int_callback, FALLING);
+  pinMode(intPin0, INPUT_PULLUP);
+  pinMode(intPin1, INPUT_PULLUP);
+  attachInterrupt(digitalPinToInterrupt(intPin0), pin_int_callback0, FALLING);
+  attachInterrupt(digitalPinToInterrupt(intPin1), pin_int_callback1, FALLING);
 
-  rtc.timestamp(1, PCF2131_base::LAST);
-  rtc.timestamp(2, PCF2131_base::LAST);
-  rtc.timestamp(3, PCF2131_base::LAST);
-  rtc.timestamp(4, PCF2131_base::LAST);
+  rtc.timestamp(1, PCF2131_base::LAST, 1);
+  rtc.timestamp(2, PCF2131_base::LAST, 1);
+  rtc.timestamp(3, PCF2131_base::LAST, 1);
+  rtc.timestamp(4, PCF2131_base::LAST, 1);
 
   rtc.periodic_interrupt_enable(PCF2131_base::EVERY_SECOND);
-  rtc.alarm(PCF2131_base::SECOND, 15);
+  rtc.alarm(PCF2131_base::SECOND, 15, 1);
 }
 
 
 void loop() {
-  if (int_flag) {
-    int_flag = false;
+  if (int_flag0 || int_flag1) {
+    if (int_flag0) {
+      int_flag0 = false;
+      Serial.print("[INT-A] ");
+    }
+    if (int_flag1) {
+      int_flag1 = false;
+      Serial.print("[INT-B] ");
+    }
 
     uint8_t status[3];
     rtc.int_clear(status);
     int_cause_monitor(status);
-
-    time_t current_time = rtc.time(NULL);
-    Serial.print("time:");
-    Serial.print(current_time);
-    Serial.print(" ");
-    Serial.println(ctime(&current_time));
   }
 }
 
@@ -105,10 +118,6 @@ void set_time(void) {
   Serial.println("RTC got time information");
 }
 
-void pin_int_callback() {
-  int_flag = true;
-}
-
 void int_cause_monitor(uint8_t* status) {
   Serial.print("status:");
 
@@ -120,29 +129,34 @@ void int_cause_monitor(uint8_t* status) {
 
   if (status[0] & 0x80) {
     Serial.print("INT:every min/sec, ");
+
+    time_t current_time = rtc.time(NULL);
+    Serial.print("time:");
+    Serial.print(current_time);
+    Serial.print(" ");
+    Serial.println(ctime(&current_time));
   }
   if (status[0] & 0x40) {
-    Serial.print("INT:watchdog, ");
+    Serial.print("INT:watchdog");
   }
   if (status[0] & 0x10) {
-    Serial.print("INT:alarm, ");
-    Serial.print("########## ALARM ########## ");
+    Serial.print("INT:alarm ");
+    Serial.println("########## ALARM ########## ");
   }
   if (status[1] & 0x08) {
-    Serial.print("INT:battery switch over, ");
+    Serial.print("INT:battery switch over");
   }
   if (status[1] & 0x04) {
-    Serial.print("INT:battery low, ");
+    Serial.print("INT:battery low");
   }
   if (status[2] & 0xF0) {
     for (int i = 0; i < 4; i++) {
       if (status[2] & (0x80 >> i)) {
         Serial.print("INT:timestamp");
         Serial.print(i + 1);
-        Serial.print(", ");
+        Serial.println("");
       }
     }
-    Serial.println("");
     for (int i = 0; i < 4; i++) {
       Serial.print("  TIMESTAMP");
       Serial.print(i + 1);

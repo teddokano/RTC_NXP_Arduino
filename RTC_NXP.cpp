@@ -34,6 +34,12 @@ PCF2131_base::~PCF2131_base()
 {
 }
 
+void PCF2131_base::begin( void )
+{
+	int_clear();
+}
+
+
 bool PCF2131_base::oscillator_stop( void )
 {
 	return _reg_r( Seconds ) & 0x80;
@@ -117,10 +123,19 @@ void PCF2131_base::timestamp( int num, timestanp_setting ts_setting, int int_sel
 	num	-=1;
 
 	uint8_t	reg	= Timestp_ctl1 + num * r_ofst;
-	uint8_t	v	= ~(0x01 << (3 - num));
 
 	_bit_op8( reg, (uint8_t)(~0x80), fst );
-	_bit_op8( int_mask_reg[ int_sel ][ 1 ], v, v );
+	_bit_op8( int_mask_reg[ int_sel ][ 1 ], ~(0x1 << (3 - num)), (0x0 << (3 - num)) );
+
+	_bit_op8( Control_5, ~(0x1 << (7 - num)), (0x1 << (7 - num)) );
+	
+	Serial.println("timestamp");
+//	Serial.println(_reg_r(INT_A_MASK1), HEX);
+	Serial.println(_reg_r(INT_A_MASK2), HEX);
+	Serial.println(_reg_r(Control_5), HEX);
+//	Serial.println(_reg_r(INT_B_MASK1), HEX);
+//	Serial.println(_reg_r(INT_B_MASK2), HEX);
+	
 }
 
 time_t PCF2131_base::timestamp( int num )

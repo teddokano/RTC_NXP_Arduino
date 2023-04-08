@@ -42,6 +42,9 @@ public:
 	
 	RTC_NXP();
 	virtual ~RTC_NXP();
+	
+	virtual void begin( void )	= 0;
+	
 	/** time
 	 *
 	 * @param tp pointer to time_t variable
@@ -106,6 +109,8 @@ public:
 	PCF2131_base();
 	virtual ~PCF2131_base();
 	
+	void begin( void );
+
 	bool oscillator_stop( void );
 
 	time_t rtc_time( void );
