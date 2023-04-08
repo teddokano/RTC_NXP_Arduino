@@ -36,29 +36,24 @@ void setup() {
     Serial.println("---- RTC has beeing kept running! :) ----");
   }
 
-#if 1
   rtc.int_clear();
   pinMode(intPin, INPUT_PULLUP);
   attachInterrupt(digitalPinToInterrupt(intPin), pin_int_callback, FALLING);
 
-  //  rtc.alarm( PCF85063A::SECOND, 37 );
+  rtc.alarm(PCF85063A::SECOND, 37);
   rtc.timer(1.0);
-#endif
+  rtc.timer(1.1);
+  rtc.timer(254);
+  rtc.timer(255);
+  rtc.timer(256);
 }
 
 void loop() {
-#if 1
-
   if (int_flag) {
     int_flag = false;
     Serial.print("[INT] ");
     int_cause_monitor(rtc.int_clear());
   }
-
-#else
-  int_cause_monitor(0x08);
-  delay(1000);
-#endif
 }
 
 void set_time(void) {

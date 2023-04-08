@@ -462,8 +462,9 @@ public:
 	/** Timer setting
 	 * 
 	 * @param period timer interval in second
+	 * @return actual timer set value in second
 	 */
-	void timer( float period );
+	float timer( float period );
 
 protected:
 	/** rtc_time

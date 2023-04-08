@@ -366,7 +366,7 @@ void PCF85063A::alarm( alarm_setting digit, int val )
 {
 	int	v = (val == 0x80) ? 0x80 : dec2bcd( val );
 	reg_w( Second_alarm + digit, v );
-	bit_op8( Control_1, (uint8_t)(~0x80), 0x80 );
+	bit_op8( Control_2, (uint8_t)(~0x80), 0x80 );
 }
 
 void PCF85063A::alarm_clear( void )
@@ -376,7 +376,7 @@ void PCF85063A::alarm_clear( void )
 
 void PCF85063A::alarm_disable( void )
 {
-	bit_op8( Control_1, (uint8_t)(~0x80), 0x00 );	
+	bit_op8( Control_2, (uint8_t)(~0x80), 0x00 );	
 }
 
 uint8_t PCF85063A::int_clear( void )
@@ -387,21 +387,21 @@ uint8_t PCF85063A::int_clear( void )
 	return v;
 }
 
-void PCF85063A::timer( float period )
+float PCF85063A::timer( float period )
 {
 	float	sf[] = { 1 / 4096.0, 1 / 64.0, 1.0, 60 };
 	int		tcf;
 	
 	period	= ((255 * 60.0) < period) ? 255 * 60.0 : period;
 	
-	for ( tcf = 3; 0 < tcf; tcf-- ) {
-		if ( sf[ tcf ] < period )
+	for ( tcf = 0; tcf < 4; tcf++ ) {
+		if ( period <= sf[ tcf ] * 255 )
 			break;
 	}
 
-
-	
 	uint8_t	v	= (uint8_t)(period / sf[ tcf ]);
+
+#if 0
 	Serial.print("  period:");
 	Serial.print( period, 10 );
 	Serial.print("  tcf:");
@@ -411,12 +411,12 @@ void PCF85063A::timer( float period )
 	Serial.print("  v*tcf:");
 	Serial.print( v * sf[tcf], 10 );
 	Serial.println( "" );
+#endif
+	
 	reg_w( Timer_value, v );
 	reg_w( Timer_mode, tcf << 3 | 0x06 );
-
 	
-	
-	return v;
+	return v * sf[tcf];
 }
 
 time_t PCF85063A::rtc_time( void )
