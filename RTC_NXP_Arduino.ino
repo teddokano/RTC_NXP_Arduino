@@ -1,53 +1,64 @@
-/** PCA9955B LED driver operation sample
+/** PCF85063A RTC operation sample
  *  
- *  This sample code is showing PCA9955B LED driver operation with PWM value setting change.
- *  The ledd.pwm() takes channel number and PWM ratio. 
+ *  This sample code is showing PCF85063A RTC operation.
  *
  *  @author  Tedd OKANO
  *
  *  Released under the MIT license License
  *
- *  About PCA9955B:
- *    https://www.nxp.jp/products/power-management/lighting-driver-and-controller-ics/led-drivers/24-channel-spi-serial-bus-32-ma-5-5-v-constant-current-led-driver:PCA9955B
+ *  About PCF85063A:
+ *    https://www.nxp.com/products/peripherals-and-logic/signal-chain/real-time-clocks/rtcs-with-ic-bus/tiny-real-time-clock-calendar-with-alarm-function-and-ic-bus:PCF85063A   
  */
 
 #include <time.h>
 #include "RTC_NXP.h"
 
 void set_time(void);
+void int_cause_monitor(uint8_t status);
 
 PCF85063A rtc;
 
+const uint8_t intPin = 2;
+bool int_flag = false;
+
+void pin_int_callback() {
+  int_flag = true;
+}
+
 void setup() {
   Serial.begin(9600);
-
-#ifdef  INTERFACE_I2C
-  Serial.println("\n***** Hello, PCF2131! (I2C interface)*****");
-Wire.begin();
-#else
-  Serial.println("\n***** Hello, PCF2131! (SPI interface) *****");
-  SPI.begin();
-#endif
-
+  Serial.println("\n***** Hello, PCF85063A! *****");
 
   if (rtc.oscillator_stop()) {
     Serial.println("==== oscillator_stop detected :( ====");
     set_time();
   } else {
-    Serial.println("RTC was kept running :)");
+    Serial.println("---- RTC has beeing kept running! :) ----");
   }
+
+#if 1
+  rtc.int_clear();
+  pinMode(intPin, INPUT_PULLUP);
+  attachInterrupt(digitalPinToInterrupt(intPin), pin_int_callback, FALLING);
+
+  //  rtc.alarm( PCF85063A::SECOND, 37 );
+  rtc.timer(1.0);
+#endif
 }
 
 void loop() {
-  time_t current_time = 0;
+#if 1
 
-  current_time = rtc.time(NULL);
-  Serial.print("time : ");
-  Serial.print(current_time);
-  Serial.print("    ");
-  Serial.println(ctime(&current_time));
+  if (int_flag) {
+    int_flag = false;
+    Serial.print("[INT] ");
+    int_cause_monitor(rtc.int_clear());
+  }
 
+#else
+  int_cause_monitor(0x08);
   delay(1000);
+#endif
 }
 
 void set_time(void) {
@@ -70,4 +81,25 @@ void set_time(void) {
   rtc.set(&now_tm);
 
   Serial.println("RTC got time information");
+}
+
+void int_cause_monitor(uint8_t status) {
+  Serial.print("status:");
+  Serial.print(status, HEX);
+
+  Serial.print(", ");
+
+  if (status & 0x08) {
+    Serial.print("INT:timer, ");
+
+    time_t current_time = rtc.time(NULL);
+    Serial.print("time:");
+    Serial.print(current_time);
+    Serial.print(" ");
+    Serial.println(ctime(&current_time));
+  }
+  if (status & 0x40) {
+    Serial.print("INT:alarm ");
+    Serial.println("########## ALARM ########## ");
+  }
 }

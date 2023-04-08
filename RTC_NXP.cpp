@@ -154,13 +154,15 @@ time_t PCF2131_base::timestamp( int num )
 
 }
 
-void PCF2131_base::int_clear( void )
+uint8_t PCF2131_base::int_clear( void )
 {
 	uint8_t dummy[ 3 ];
 	int_clear( dummy );
+	
+	return 0; // dummy
 }
 
-void PCF2131_base::int_clear( uint8_t* rv )
+uint8_t PCF2131_base::int_clear( uint8_t* rv )
 {
 	_reg_r( Control_2, rv, 3 );
 
@@ -172,6 +174,8 @@ void PCF2131_base::int_clear( uint8_t* rv )
 	
 	if ( rv[ 2 ] & 0xF0 )	// if interrupt flag set in Control_4
 		_reg_w( Control_4, rv[ 2 ] & ~(rv[ 2 ] & 0xF0) );
+
+	return 0; // dummy
 }
 
 void PCF2131_base::periodic_interrupt_enable( periodic_int_select sel, int int_sel )
@@ -360,22 +364,59 @@ bool PCF85063A::oscillator_stop( void )
 
 void PCF85063A::alarm( alarm_setting digit, int val )
 {
-	
+	int	v = (val == 0x80) ? 0x80 : dec2bcd( val );
+	reg_w( Second_alarm + digit, v );
+	bit_op8( Control_1, (uint8_t)(~0x80), 0x80 );
 }
 
 void PCF85063A::alarm_clear( void )
 {
-	
+	//	will be implemented later
 }
 
 void PCF85063A::alarm_disable( void )
 {
-	
+	bit_op8( Control_1, (uint8_t)(~0x80), 0x00 );	
 }
 
-void PCF85063A::int_clear( void )
+uint8_t PCF85063A::int_clear( void )
 {
+	uint8_t v = reg_r( Control_2 );
+	reg_w( Control_2, v & ~0x48 );
+
+	return v;
+}
+
+void PCF85063A::timer( float period )
+{
+	float	sf[] = { 1 / 4096.0, 1 / 64.0, 1.0, 60 };
+	int		tcf;
 	
+	period	= ((255 * 60.0) < period) ? 255 * 60.0 : period;
+	
+	for ( tcf = 3; 0 < tcf; tcf-- ) {
+		if ( sf[ tcf ] < period )
+			break;
+	}
+
+
+	
+	uint8_t	v	= (uint8_t)(period / sf[ tcf ]);
+	Serial.print("  period:");
+	Serial.print( period, 10 );
+	Serial.print("  tcf:");
+	Serial.print( tcf );
+	Serial.print("  v:");
+	Serial.print( v );
+	Serial.print("  v*tcf:");
+	Serial.print( v * sf[tcf], 10 );
+	Serial.println( "" );
+	reg_w( Timer_value, v );
+	reg_w( Timer_mode, tcf << 3 | 0x06 );
+
+	
+	
+	return v;
 }
 
 time_t PCF85063A::rtc_time( void )
@@ -407,7 +448,7 @@ bool ForFutureExtention::oscillator_stop( void ){}
 void ForFutureExtention::alarm( alarm_setting digit, int val ){}
 void ForFutureExtention::alarm_clear( void ){}
 void ForFutureExtention::alarm_disable( void ){}
-void ForFutureExtention::int_clear( void ){}
+uint8_t ForFutureExtention::int_clear( void ){}
 time_t ForFutureExtention::rtc_time( void ){}
 */
 

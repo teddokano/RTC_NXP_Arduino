@@ -86,7 +86,7 @@ public:
 
 	/** Interrupt clear (pure virtual method)
 	 */
-	virtual void int_clear( void )	= 0;
+	virtual uint8_t int_clear( void )	= 0;
 
 protected:
 	/** rtc_time (pure virtual method)
@@ -217,11 +217,11 @@ public:
 	
 	/** Interrupt clear
 	 */
-	void int_clear( void );
+	uint8_t int_clear( void );
 
 	/** Interrupt clear
 	 */
-	void int_clear( uint8_t* state_p );
+	uint8_t int_clear( uint8_t* state_p );
 
 	/** Enabling every second/minute interrupt
 	 * 
@@ -456,7 +456,14 @@ public:
 
 	/** Interrupt clear
 	 */
-	void int_clear( void );
+	uint8_t int_clear( void );
+
+	
+	/** Timer setting
+	 * 
+	 * @param period timer interval in second
+	 */
+	void timer( float period );
 
 protected:
 	/** rtc_time
@@ -506,7 +513,7 @@ public:
 
 	/** Interrupt clear
 	 */
-	void int_clear( void );
+	uint8_t int_clear( void );
 
 protected:
 	/** rtc_time
