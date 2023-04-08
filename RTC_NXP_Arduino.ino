@@ -113,7 +113,7 @@ void set_time(void) {
   now_tm.tm_min = 52;
   now_tm.tm_sec = 30;
 
-  rtc.rtc_set(&now_tm);
+  rtc.set(&now_tm);
 
   Serial.println("RTC got time information");
 }

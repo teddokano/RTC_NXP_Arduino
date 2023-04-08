@@ -64,7 +64,7 @@ time_t PCF2131_base::rtc_time()
    return mktime(&now_tm);
 }
 
-int PCF2131_base::rtc_set( struct tm* now_tmp )
+void PCF2131_base::set( struct tm* now_tmp )
 {
 	time_t		now_time;
 	struct tm*	cnv_tmp;
@@ -89,8 +89,6 @@ int PCF2131_base::rtc_set( struct tm* now_tmp )
 	_reg_w( _100th_Seconds, bf, sizeof( bf ) );
 
 	_bit_op8( Control_1, ~0x20, 0x00 );
-	
-	return 0;
 }
 
 void PCF2131_base::alarm( alarm_setting digit, int val )
@@ -100,7 +98,8 @@ void PCF2131_base::alarm( alarm_setting digit, int val )
 
 void PCF2131_base::alarm( alarm_setting digit, int val, int int_sel )
 {
-	_reg_w( Second_alarm + digit, dec2bcd( val ) );
+	int	v = (val == 0x80) ? 0x80 : dec2bcd( val );
+	_reg_w( Second_alarm + digit, v );
 	_bit_op8( int_mask_reg[ int_sel ][ 0 ], ~0x04, 0x00 );
 	_bit_op8( Control_2, ~0x02, 0x02 );
 }
@@ -128,14 +127,6 @@ void PCF2131_base::timestamp( int num, timestanp_setting ts_setting, int int_sel
 	_bit_op8( int_mask_reg[ int_sel ][ 1 ], ~(0x1 << (3 - num)), (0x0 << (3 - num)) );
 
 	_bit_op8( Control_5, ~(0x1 << (7 - num)), (0x1 << (7 - num)) );
-	
-	Serial.println("timestamp");
-//	Serial.println(_reg_r(INT_A_MASK1), HEX);
-	Serial.println(_reg_r(INT_A_MASK2), HEX);
-	Serial.println(_reg_r(Control_5), HEX);
-//	Serial.println(_reg_r(INT_B_MASK1), HEX);
-//	Serial.println(_reg_r(INT_B_MASK2), HEX);
-	
 }
 
 time_t PCF2131_base::timestamp( int num )
