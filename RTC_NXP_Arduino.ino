@@ -42,10 +42,6 @@ void setup() {
 
   rtc.alarm(PCF85063A::SECOND, 37);
   rtc.timer(1.0);
-  rtc.timer(1.1);
-  rtc.timer(254);
-  rtc.timer(255);
-  rtc.timer(256);
 }
 
 void loop() {
