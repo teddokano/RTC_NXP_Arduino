@@ -575,6 +575,8 @@ public:
 		TSR2_hr_xx_xx_00 = 0x19, TSR2_hr_xx_00_xx, TSR2_hr_00_xx_xx, Reserved3, 
 		TSR3_hr_xx_xx_00 = 0x1F, TSR3_hr_xx_00_xx, TSR3_hr_00_xx_xx, Reserved4, 	
 	};
+	
+	/** Alarm setting digit selection descriptor */
 	enum alarm_setting_85263A {
 		SECOND,
 		MINUTE,
@@ -584,6 +586,13 @@ public:
 		MINUTE2,
 		HOUR2,
 		WEEKDAY2,
+	};
+	
+	/** Periodic interrupt selection descriptor */
+	enum periodic_int_select {
+		DISABLE,
+		EVERY_SECOND,
+		EVERY_MINUTE,
 	};
 
 	/** Constructor */
@@ -618,8 +627,16 @@ public:
 	 * 
 	 * @param digit to specify which parameter to set: SECOND, MINUTE, HOUR, DAY, WEEKDAY in 'enum alarm_setting'
 	 * @param val Setting value. Set 0x80 to disabling
+	 * @param int_sel Interrupt output selector. ) for INT_A, 1 for INT_B
 	 */
-	void alarm( alarm_setting_85263A digit, int val );
+	void alarm( alarm_setting digit, int val, int int_sel );
+
+	/** Alarm setting
+	 * 
+	 * @param digit to specify which parameter to set: SECOND, MINUTE, HOUR, DAY, WEEKDAY in 'enum alarm_setting'
+	 * @param val Setting value. Set 0x80 to disabling
+	 */
+	void alarm( alarm_setting_85263A digit, int val, int int_sel = 0 );
 
 	/** Alarm clearing
 	 */
@@ -639,8 +656,14 @@ public:
 	 */
 	time_t rtc_time( void );
 
+	/** Enabling every second/minute interrupt
+	 * 
+	 * @param sel choose DISABLE, EVERY_SECOND or EVERY_MINUTE in 'enum periodic_int_select'
+	 */
+	void periodic_interrupt_enable( periodic_int_select sel, int int_sel = 0 );
+
 private:
-	void set_alarm( int digit, int val );
+	void set_alarm( int digit, int val, int int_sel );
 };
 
 class ForFutureExtention : public RTC_NXP, public I2C_device
