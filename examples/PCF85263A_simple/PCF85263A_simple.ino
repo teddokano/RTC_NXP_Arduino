@@ -6,8 +6,8 @@
  *
  *  Released under the MIT license License
  *
- *  About PCF2131:
- *    https://www.nxp.com/products/peripherals-and-logic/signal-chain/real-time-clocks/rtcs-with-temperature-compensation/nano-power-highly-accurate-rtc-with-integrated-quartz-crystal:PCF2131   
+ *  About PCF85263A:
+ *    https://www.nxp.com/products/peripherals-and-logic/signal-chain/real-time-clocks/rtcs-with-ic-bus/tiny-real-time-clock-calendar-with-alarm-function-battery-switch-over-time-stamp-input-and-ic-bus:PCF85263A   
  */
 
 #include <time.h>
@@ -15,11 +15,11 @@
 
 void set_time(void);
 
-PCF2131_I2C rtc;
+PCF85263A rtc;
 
 void setup() {
   Serial.begin(9600);
-  Serial.println("\n***** Hello, PCF2131! (I2C interface)*****");
+  Serial.println("\n***** Hello, PCF85263A! *****");
 
   Wire.begin();
 

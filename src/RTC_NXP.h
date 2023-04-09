@@ -72,7 +72,8 @@ public:
 	
 	/** Alarm setting (pure virtual method)
 	 * 
-	 * @param digit to specify which parameter to set: SECOND, MINUTE, HOUR, DAY, WEEKDAY in 'enum alarm_setting'. Set 0x80 to disabling
+	 * @param digit to specify which parameter to set: SECOND, MINUTE, HOUR, DAY, WEEKDAY in 'enum alarm_setting'
+	 * @param val Setting value. Set 0x80 to disabling
 	 */
 	virtual void alarm( alarm_setting digit, int val )	= 0;
 
@@ -180,14 +181,14 @@ public:
 	/** Alarm setting
 	 * 
 	 * @param digit to specify which parameter to set: SECOND, MINUTE, HOUR, DAY, WEEKDAY in 'enum alarm_setting'
-	 * @param val Set 0x80 to disabling
+	 * @param val Setting value. Set 0x80 to disabling
 	 */
 	void alarm( alarm_setting digit, int val );
 
 	/** Alarm setting
 	 * 
 	 * @param digit to specify which parameter to set: SECOND, MINUTE, HOUR, DAY, WEEKDAY in 'enum alarm_setting'
-	 * @param val Set 0x80 to disabling
+	 * @param val Setting value. Set 0x80 to disabling
 	 * @param int_sel Interrupt output selector. ) for INT_A, 1 for INT_B
 	 */
 	void alarm( alarm_setting digit, int val, int int_sel );
@@ -442,7 +443,8 @@ public:
 	
 	/** Alarm setting
 	 * 
-	 * @param digit to specify which parameter to set: SECOND, MINUTE, HOUR, DAY, WEEKDAY in 'enum alarm_setting'. Set 0x80 to disabling
+	 * @param digit to specify which parameter to set: SECOND, MINUTE, HOUR, DAY, WEEKDAY in 'enum alarm_setting'
+	 * @param val Setting value. Set 0x80 to disabling
 	 */
 	void alarm( alarm_setting digit, int val );
 
@@ -522,6 +524,9 @@ public:
 	/** Destructor */
 	virtual ~PCF85063TP();
 	
+	/** Alarm setting
+	 *	Method overriding to disable this feature (Hardware is not supporting)
+	 */
 	void alarm( alarm_setting digit, int val );
 
 	/** Alarm clearing
@@ -571,11 +576,11 @@ public:
 		TSR3_hr_xx_xx_00 = 0x1F, TSR3_hr_xx_00_xx, TSR3_hr_00_xx_xx, Reserved4, 	
 	};
 	enum alarm_setting_85263A {
-		SECOND1,
-		MINUTE1,
-		HOUR1,
-		DAY1,
-		MONTH1,
+		SECOND,
+		MINUTE,
+		HOUR,
+		DAY,
+		MONTH,
 		MINUTE2,
 		HOUR2,
 		WEEKDAY2,
@@ -604,9 +609,17 @@ public:
 	
 	/** Alarm setting
 	 * 
-	 * @param digit to specify which parameter to set: SECOND, MINUTE, HOUR, DAY, WEEKDAY in 'enum alarm_setting'. Set 0x80 to disabling
+	 * @param digit to specify which parameter to set: SECOND, MINUTE, HOUR, DAY, WEEKDAY in 'enum alarm_setting'
+	 * @param val Setting value. Set 0x80 to disabling
 	 */
 	void alarm( alarm_setting digit, int val );
+
+	/** Alarm setting
+	 * 
+	 * @param digit to specify which parameter to set: SECOND, MINUTE, HOUR, DAY, WEEKDAY in 'enum alarm_setting'
+	 * @param val Setting value. Set 0x80 to disabling
+	 */
+	void alarm( alarm_setting_85263A digit, int val );
 
 	/** Alarm clearing
 	 */
@@ -625,6 +638,9 @@ public:
 	 * @return time_t returns RTC time in time_t format
 	 */
 	time_t rtc_time( void );
+
+private:
+	void set_alarm( int digit, int val );
 };
 
 class ForFutureExtention : public RTC_NXP, public I2C_device

@@ -46,20 +46,29 @@ bool PCF85263A::oscillator_stop( void )
 
 void PCF85263A::alarm( alarm_setting digit, int val )
 {
+	if ( WEEKDAY == digit ) {
+		Serial.println("*** 'WEEKDAY' for PCF85263A is unsupported alarm setting ***");		
+		return;
+	}
 
+	set_alarm( digit, val );
 }
 
-#if 0
-void PCF85263A::alarm( alarm_setting digit, int val )
+void PCF85263A::alarm( alarm_setting_85263A digit, int val )
+{
+	set_alarm( digit, val );
+}
+
+void PCF85263A::set_alarm( int digit, int val )
 {
 	uint8_t	en;
-	
+
 	en	= ((val & 80) ? 0x0 : 0x1) << digit;
 	
-	reg_r( Second_alarm1 + digit, val );
-	bit_op8( Alarm_enables, ~en, en );
+	reg_w( Second_alarm1 + digit, val );
+	bit_op8( Alarm_enables, ~en, en );	
 }
-#endif
+
 void PCF85263A::alarm_clear( void ){}
 void PCF85263A::alarm_disable( void )
 {
