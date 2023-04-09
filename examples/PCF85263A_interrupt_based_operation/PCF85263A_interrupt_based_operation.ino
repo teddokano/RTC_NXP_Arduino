@@ -1,6 +1,6 @@
-/** PCF2131 RTC operation sample
+/** PCF85263A RTC operation sample
  *  
- *  This sample code is showing PCF2131 RTC operation using I2C interface
+ *  This sample code is showing PCF85263A RTC operation with INTA and INT_B interrupts
  *
  *  @author  Tedd OKANO
  *
@@ -52,8 +52,8 @@ void setup() {
   attachInterrupt(digitalPinToInterrupt(intPin0), pin_int_callback0, FALLING);
   attachInterrupt(digitalPinToInterrupt(intPin1), pin_int_callback1, FALLING);
 
-  rtc.alarm(RTC_NXP::SECOND, 37, 1);
-  rtc.periodic_interrupt_enable(PCF85263A::EVERY_SECOND);
+  rtc.alarm(RTC_NXP::SECOND, 37);
+  rtc.periodic_interrupt_enable(PCF85263A::EVERY_SECOND, 1);
 }
 
 void loop() {
