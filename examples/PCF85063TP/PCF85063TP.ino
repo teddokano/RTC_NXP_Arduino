@@ -21,6 +21,8 @@ void setup() {
   Serial.begin(9600);
   Serial.println("\n***** Hello, PCF85063TP! *****");
 
+  Wire.begin();
+
   if (rtc.oscillator_stop()) {
     Serial.println("==== oscillator_stop detected :( ====");
     set_time();

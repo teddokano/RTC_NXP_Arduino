@@ -18,16 +18,24 @@ void int_cause_monitor(uint8_t status);
 
 PCF85263A rtc;
 
-const uint8_t intPin = 2;
-bool int_flag = false;
+const uint8_t intPin0 = 2;
+const uint8_t intPin1 = 3;
+bool int_flag0 = false;
+bool int_flag1 = false;
 
-void pin_int_callback() {
-  int_flag = true;
+void pin_int_callback0() {
+  int_flag0 = true;
+}
+
+void pin_int_callback1() {
+  int_flag1 = true;
 }
 
 void setup() {
   Serial.begin(9600);
-  Serial.println("\n***** Hello, PCF85063A! *****");
+  Serial.println("\n***** Hello, PCF85263A! *****");
+
+  Wire.begin();
 
   if (rtc.oscillator_stop()) {
     Serial.println("==== oscillator_stop detected :( ====");
@@ -36,17 +44,30 @@ void setup() {
     Serial.println("---- RTC has beeing kept running! :) ----");
   }
 
+  rtc.bit_op8(PCF85263A::Pin_IO, (uint8_t)(~0x80), 0x80);  // Disabling CLK output
+  rtc.bit_op8(PCF85263A::Pin_IO, ~0x0C, 0x1 << 2);         // Enabling INT_B output
+  rtc.bit_op8(PCF85263A::Pin_IO, ~0x03, 0x2);              // Enabling INT_A output
+  
   rtc.int_clear();
-  pinMode(intPin, INPUT_PULLUP);
-  attachInterrupt(digitalPinToInterrupt(intPin), pin_int_callback, FALLING);
+  pinMode(intPin0, INPUT_PULLUP);
+  pinMode(intPin1, INPUT_PULLUP);
+  attachInterrupt(digitalPinToInterrupt(intPin0), pin_int_callback0, FALLING);
+  attachInterrupt(digitalPinToInterrupt(intPin1), pin_int_callback1, FALLING);
 
-  rtc.alarm(RTC_NXP::SECOND, 37);
+  rtc.alarm(RTC_NXP::SECOND, 37, 1);
+  rtc.periodic_interrupt_enable(PCF85263A::EVERY_SECOND);
 }
 
 void loop() {
-  if (int_flag) {
-    int_flag = false;
-    Serial.print("[INT] ");
+  if (int_flag0 || int_flag1) {
+    if (int_flag0) {
+      int_flag0 = false;
+      Serial.print("[INT-A] ");
+    }
+    if (int_flag1) {
+      int_flag1 = false;
+      Serial.print("[INT-B] ");
+    }
     int_cause_monitor(rtc.int_clear());
   }
 }
@@ -79,8 +100,8 @@ void int_cause_monitor(uint8_t status) {
 
   Serial.print(", ");
 
-  if (status & 0x08) {
-    Serial.print("INT:timer, ");
+  if (status & 0x80) {
+    Serial.print("INT:Periodic_Interrupt, ");
 
     time_t current_time = rtc.time(NULL);
     Serial.print("time:");
@@ -89,7 +110,26 @@ void int_cause_monitor(uint8_t status) {
     Serial.println(ctime(&current_time));
   }
   if (status & 0x40) {
-    Serial.print("INT:alarm ");
-    Serial.println("########## ALARM ########## ");
+    Serial.print("INT:Alarm2 ");
+    Serial.println("########## ALARM2 ########## ");
+  }
+  if (status & 0x20) {
+    Serial.print("INT:Alarm1 ");
+    Serial.println("########## ALARM1 ########## ");
+  }
+  if (status & 0x10) {
+    Serial.print("INT:WatchDog ");
+  }
+  if (status & 0x08) {
+    Serial.print("INT:Battery_Switch ");
+  }
+  if (status & 0x04) {
+    Serial.print("INT:Timestamp_Register_3_event ");
+  }
+  if (status & 0x02) {
+    Serial.print("INT:Timestamp_Register_2_event ");
+  }
+  if (status & 0x01) {
+    Serial.print("INT:Timestamp_Register_1_event ");
   }
 }
