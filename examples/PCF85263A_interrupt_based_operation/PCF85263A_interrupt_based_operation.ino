@@ -44,10 +44,8 @@ void setup() {
     Serial.println("---- RTC has beeing kept running! :) ----");
   }
 
-  rtc.bit_op8(PCF85263A::Pin_IO, (uint8_t)(~0x80), 0x80);  // Disabling CLK output
-  rtc.bit_op8(PCF85263A::Pin_IO, ~0x0C, 0x1 << 2);         // Enabling INT_B output
-  rtc.bit_op8(PCF85263A::Pin_IO, ~0x03, 0x2);              // Enabling INT_A output
-  
+  rtc.pin_congfig(PCF85263A::INTA_INTTERRUPT, PCF85263A::INTB_INTTERRUPT);
+
   rtc.int_clear();
   pinMode(intPin0, INPUT_PULLUP);
   pinMode(intPin1, INPUT_PULLUP);

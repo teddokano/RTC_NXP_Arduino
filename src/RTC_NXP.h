@@ -594,7 +594,18 @@ public:
 		EVERY_SECOND,
 		EVERY_MINUTE,
 	};
-
+	enum inta {
+		INTA_CLKOUT,
+		INTA_BATTERY_MODE_INDICATION,
+		INTA_INTTERRUPT,
+		INTA_HIGH_Z,
+	};
+	enum intb {
+		INTB_DISABLE,
+		INTB_INTTERRUPT,
+		INTB_CLKOUT,
+		INTB_INPUTMODE,
+	};
 	/** Constructor */
 	PCF85263A( uint8_t i2c_address = (0xA2 >> 1) );
 
@@ -661,6 +672,13 @@ public:
 	 * @param sel choose DISABLE, EVERY_SECOND or EVERY_MINUTE in 'enum periodic_int_select'
 	 */
 	void periodic_interrupt_enable( periodic_int_select sel, int int_sel = 0 );
+
+	/** Pin configuration
+	 * 
+	 * @param cfg_a To choose INT_A pin congiguration: Use CLKOUT, BATTERY_MODE_INDICATION, INTTERRUPT or HIGH_Z
+	 * @param cfg_b To choose INT_A pin congiguration: Use DISABLE, INTTERRUPT, CLKOUT or INPUTMODE
+	 */
+	void pin_congfig(inta cfg_a, intb cfg_b);
 
 private:
 	void set_alarm( int digit, int val, int int_sel );
