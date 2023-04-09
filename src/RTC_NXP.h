@@ -408,7 +408,7 @@ private:
  *  @class PCF85063A
  */
 
-class PCF85063_base : public RTC_NXP\
+class PCF85063_base : public RTC_NXP
 {
 public:
 	enum reg_num {
@@ -545,6 +545,86 @@ public:
 	 */
 	float timer( float period );
 
+};
+
+class PCF85263A : public RTC_NXP, public I2C_device
+{
+public:
+	enum reg_num {
+		_100th_seconds, Seconds, Minutes, Hours, Days, Weekdays, Months, Years,
+		Second_alarm1, Minute_alarm1, Hour_alarm1, Day_alarm1, Month_alarm1,
+		Minute_alarm2, Hour_alarm2, Weekday_alarm2,
+		Alarm_enables,
+		TSR1_seconds, TSR1_minutes, TSR1_hours, TSR1_days, TSR1_months, TSR1_years,
+		TSR2_seconds, TSR2_minutes, TSR2_hours, TSR2_days, TSR2_months, TSR2_years,
+		TSR3_seconds, TSR3_minutes, TSR3_hours, TSR3_days, TSR3_months, TSR3_years,
+		TSR_mode,
+		Offset, Oscillator, Battery_switch, Pin_IO, Function,
+		INTA_enable, INTB_enable, Flags,
+		RAM_byte, WatchDog, Stop_enable, Resets,
+
+		Hours_xx_xx_00 = 0x03, Hours_xx_00_xx, Hours_00_xx_xx, Reserved0, Reserved1, 
+		Second_alm1, Minute_alm1, Hr_xx_xx_00_alm1, Hr_xx_00_xx_alm1, Hr_00_xx_xx_alm1, 
+		Minute_alm2, Hr_xx_00_alm2, Hr_00_xx_alm2, 
+		TSR1_hr_xx_xx_00 = 0x13, TSR1_hr_xx_00_xx, TSR1_hr_00_xx_xx, Reserved2, 
+		TSR2_hr_xx_xx_00 = 0x19, TSR2_hr_xx_00_xx, TSR2_hr_00_xx_xx, Reserved3, 
+		TSR3_hr_xx_xx_00 = 0x1F, TSR3_hr_xx_00_xx, TSR3_hr_00_xx_xx, Reserved4, 	
+	};
+	enum alarm_setting_85263A {
+		SECOND1,
+		MINUTE1,
+		HOUR1,
+		DAY1,
+		MONTH1,
+		MINUTE2,
+		HOUR2,
+		WEEKDAY2,
+	};
+
+	/** Constructor */
+	PCF85263A( uint8_t i2c_address = (0xA2 >> 1) );
+
+	/** Destructor */
+	virtual ~PCF85263A();
+	
+	/** Initializer */
+	void begin( void );
+	
+	/** set
+	 * 
+	 * @param now_tm struct to set calendar and time in RTC
+	 */
+	void set( struct tm* now_tm );
+
+	/** Detector for oscillation stop
+	 * 
+	 * @return true, if the OSF (Oscillator Stop Flag) is set
+	 */
+	bool oscillator_stop( void );
+	
+	/** Alarm setting
+	 * 
+	 * @param digit to specify which parameter to set: SECOND, MINUTE, HOUR, DAY, WEEKDAY in 'enum alarm_setting'. Set 0x80 to disabling
+	 */
+	void alarm( alarm_setting digit, int val );
+
+	/** Alarm clearing
+	 */
+	void alarm_clear( void );
+
+	/** Alarm interrupt disable
+	 */
+	void alarm_disable( void );
+
+	/** Interrupt clear
+	 */
+	uint8_t int_clear( void );
+
+	/** rtc_time
+	 * 
+	 * @return time_t returns RTC time in time_t format
+	 */
+	time_t rtc_time( void );
 };
 
 class ForFutureExtention : public RTC_NXP, public I2C_device
