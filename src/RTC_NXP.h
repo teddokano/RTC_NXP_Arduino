@@ -693,7 +693,13 @@ public:
 	 * 
 	 * @param setting To choose options: Compose value by ORing next constants: TS_PULLUP_80K, TS_PULLUP_40K, TSL_ACTIVE_HIGH, TSL_ACTIVE_LOW, TSIM_CMOS and TSIM_MECHANICAL
 	 */
-	void ts_congfig(ts_in setting);
+	void ts_congfig(int setting);
+	
+	/** Timestamp register read
+	 * 
+	 * @param num timestamp index
+	 */
+	time_t timestamp( int num );
 
 private:
 	void set_alarm( int digit, int val, int int_sel );

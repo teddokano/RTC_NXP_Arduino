@@ -39,26 +39,23 @@ void setup() {
   }
 
   rtc.pin_congfig(PCF85263A::INTA_INTTERRUPT, PCF85263A::INTB_INPUT_MODE);
-  rtc.ts_congfig(PCF85263A::TSL_ACTIVE_LOW, TSIM_MECHANICAL);
+  rtc.ts_congfig(PCF85263A::TSL_ACTIVE_LOW | PCF85263A::TSIM_MECHANICAL);
+  rtc.reg_w(PCF85263A::TSR_mode, (0x04 << 2) | 0x1);
+
+  Serial.println(rtc.reg_r(PCF85263A::TSR_mode),HEX);
 
   rtc.int_clear();
   pinMode(intPin0, INPUT_PULLUP);
   attachInterrupt(digitalPinToInterrupt(intPin0), pin_int_callback0, FALLING);
-  
+
   rtc.alarm(RTC_NXP::SECOND, 37);
-  rtc.periodic_interrupt_enable(PCF85263A::EVERY_SECOND, 1);
+  rtc.periodic_interrupt_enable(PCF85263A::EVERY_SECOND);
 }
 
 void loop() {
-  if (int_flag0 || int_flag1) {
-    if (int_flag0) {
-      int_flag0 = false;
-      Serial.print("[INT-A] ");
-    }
-    if (int_flag1) {
-      int_flag1 = false;
-      Serial.print("[INT-B] ");
-    }
+  if (int_flag0) {
+    int_flag0 = false;
+    Serial.print("[INT] ");
     int_cause_monitor(rtc.int_clear());
   }
 }
@@ -114,13 +111,24 @@ void int_cause_monitor(uint8_t status) {
   if (status & 0x08) {
     Serial.print("INT:Battery_Switch ");
   }
-  if (status & 0x04) {
-    Serial.print("INT:Timestamp_Register_3_event ");
-  }
-  if (status & 0x02) {
-    Serial.print("INT:Timestamp_Register_2_event ");
-  }
-  if (status & 0x01) {
-    Serial.print("INT:Timestamp_Register_1_event ");
+  if (status & 0x07) {
+    if (status & 0x04)
+      Serial.print("INT:Timestamp_Register_3_event ");
+    if (status & 0x02)
+      Serial.print("INT:Timestamp_Register_2_event ");
+    if (status & 0x01)
+      Serial.print("INT:Timestamp_Register_1_event ");
+
+    time_t ts;
+
+    Serial.println("");
+
+    for (int i = 0; i < 3; i++) {
+      ts = rtc.timestamp(i);
+      Serial.print("  timestamp");
+      Serial.print(i + 1);
+      Serial.print(": ");
+      Serial.println(ctime(&ts));
+    }
   }
 }

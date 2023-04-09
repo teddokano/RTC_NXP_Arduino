@@ -18,7 +18,6 @@ void PCF85263A::set( struct tm* now_tmp )
 	
 	time_t		now_time;
 	struct tm*	cnv_tmp;
-
 	uint8_t		bf[ 10 ];
 	
 	bf[ 0 ]	= 0x01;
@@ -99,7 +98,6 @@ uint8_t PCF85263A::int_clear( void )
 time_t PCF85263A::rtc_time( void )
 {
 	struct tm	now_tm;
-
 	uint8_t		bf[ 8 ];
 	
 	reg_r( _100th_seconds, bf, sizeof( bf ) );
@@ -112,7 +110,7 @@ time_t PCF85263A::rtc_time( void )
 	now_tm.tm_year	= bcd2dec( bf[ 7 ] ) + 100;
 	now_tm.tm_isdst	= 0;
 
-   return mktime(&now_tm);
+   return mktime( &now_tm );
 }
 
 void PCF85263A::periodic_interrupt_enable( periodic_int_select sel, int int_sel )
@@ -128,7 +126,29 @@ void PCF85263A::pin_congfig( inta cfg_a, intb cfg_b )
 	bit_op8(Pin_IO, ~0x0F, (cfg_b << 2) | cfg_a);
 }
 
-void PCF85263A::ts_congfig(ts_in setting)
+void PCF85263A::ts_congfig( int setting )
 {
 	bit_op8( Pin_IO, 0x0F, setting );
+	bit_op8( INTA_enable, ~0x04, 0x04 );	
+}
+
+time_t PCF85263A::timestamp( int num )
+{
+	struct tm	ts_tm;
+	uint8_t		bf[ 6 ];
+	const int	offset	= 6;
+	
+	reg_r( TSR1_seconds + offset * num, bf, sizeof( bf ) );
+
+	ts_tm.tm_sec	= bcd2dec( bf[ 0 ] );
+	ts_tm.tm_min	= bcd2dec( bf[ 1 ] );
+	ts_tm.tm_hour	= bcd2dec( bf[ 2 ] );
+	ts_tm.tm_mday	= bcd2dec( bf[ 3 ] );
+	ts_tm.tm_mon	= bcd2dec( bf[ 4 ] ) - 1;
+	ts_tm.tm_year	= bcd2dec( bf[ 5 ] ) + 100;
+	ts_tm.tm_isdst	= 0;
+
+   return mktime( &ts_tm );
+
+	
 }
