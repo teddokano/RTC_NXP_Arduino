@@ -70,7 +70,7 @@ void PCF85263A::set_alarm( int digit, int val, int int_sel )
 
 	en	= ((val & 80) ? 0x0 : 0x1) << digit;
 	
-	reg_w( Second_alarm1 + digit, val );
+	reg_w( Second_alarm1 + digit, dec2bcd( val ) );
 	bit_op8( Alarm_enables, ~en, en );
 	
 	uint8_t en_bit	= (digit < 5) ? 0x10 : 0x80;
@@ -123,7 +123,12 @@ void PCF85263A::periodic_interrupt_enable( periodic_int_select sel, int int_sel 
 	bit_op8( INTA_enable + int_sel, ~0x40, (sel ? 1 : 0) << 6 );
 }
 
-void PCF85263A::pin_congfig(inta cfg_a, intb cfg_b) 
+void PCF85263A::pin_congfig( inta cfg_a, intb cfg_b ) 
 {
 	bit_op8(Pin_IO, ~0x0F, (cfg_b << 2) | cfg_a);
+}
+
+void PCF85263A::ts_congfig(ts_in setting)
+{
+	bit_op8( Pin_IO, 0x0F, setting );
 }

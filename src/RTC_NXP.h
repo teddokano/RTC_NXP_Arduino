@@ -604,8 +604,17 @@ public:
 		INTB_DISABLE,
 		INTB_INTTERRUPT,
 		INTB_CLKOUT,
-		INTB_INPUTMODE,
+		INTB_INPUT_MODE,
 	};
+	enum ts_in {
+		TS_PULLUP_80K	= 0x00,
+		TS_PULLUP_40K	= 0x40,
+		TSL_ACTIVE_HIGH	= 0x00,
+		TSL_ACTIVE_LOW	= 0x20,
+		TSIM_CMOS		= 0x00,
+		TSIM_MECHANICAL	= 0x10,
+	};
+
 	/** Constructor */
 	PCF85263A( uint8_t i2c_address = (0xA2 >> 1) );
 
@@ -679,6 +688,12 @@ public:
 	 * @param cfg_b To choose INT_A pin congiguration: Use DISABLE, INTTERRUPT, CLKOUT or INPUTMODE
 	 */
 	void pin_congfig(inta cfg_a, intb cfg_b);
+	
+	/** Timestamp pin configuration
+	 * 
+	 * @param setting To choose options: Compose value by ORing next constants: TS_PULLUP_80K, TS_PULLUP_40K, TSL_ACTIVE_HIGH, TSL_ACTIVE_LOW, TSIM_CMOS and TSIM_MECHANICAL
+	 */
+	void ts_congfig(ts_in setting);
 
 private:
 	void set_alarm( int digit, int val, int int_sel );
