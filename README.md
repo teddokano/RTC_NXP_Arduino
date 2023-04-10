@@ -4,8 +4,8 @@ RTC device operation sample code for [Arduino](https://www.arduino.cc)
 > **Note**
 This library works with [`I2C_device`](https://github.com/teddokano/I2C_device_Arduino) library together. Please be sure the `I2C_device` library is imported in your environment before trying to build. 
 
-![Boards](https://github.com/teddokano/additional_files/blob/main/RTC_NXP_Arduino/boards.jpg)  
-_PCF2131-ARD, PCF85063AT-ARD and PCF85063TP-ARD : Arduino® Shield Evaluation Board for RTCs_
+![Boards](https://github.com/teddokano/additional_files/blob/main/RTC_NXP_Arduino/boards4.jpg)  
+_PCF2131-ARD, PCF85063TP-ARD, PCF85063AT-ARD and PCF85263ATL-ARD : Arduino® Shield Evaluation Board for RTCs_
 
 
 ## What is this?
