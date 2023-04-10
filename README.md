@@ -27,7 +27,7 @@ Serial.println( ctime( &current_time ) );  // Result will appear like -> "Sun Ap
 ```
 
 ## Supported devices
-PCF2131, PCF85063A and PCF85063TP are supported.  
+PCF2131, PCF85063A, PCF85063TP and PCF85263A are supported.  
 On PCF2131, both I²C and SPI can be used for interfacing MCU. 
 
 Type#|Features|Interface|Evaluation board
@@ -35,6 +35,7 @@ Type#|Features|Interface|Evaluation board
 [PCF2131](https://www.nxp.com/products/peripherals-and-logic/signal-chain/real-time-clocks/rtcs-with-temperature-compensation/nano-power-highly-accurate-rtc-with-integrated-quartz-crystal:PCF2131)	|Nano-Power Highly Accurate RTC with Integrated Quartz Crystal	|I²C and SPI	|[PCF2131/PCA2131 Arduino® Shield Evaluation Board](https://www.nxp.com/design/development-boards/analog-toolbox/arduino-shields-solutions/pcf2131-pca2131-arduino-shield-evaluation-board:PCF2131-ARD)
 [PCF85063A](https://www.nxp.com/products/peripherals-and-logic/signal-chain/real-time-clocks/rtcs-with-ic-bus/tiny-real-time-clock-calendar-with-alarm-function-and-ic-bus:PCF85063A)					|Tiny Real-Time Clock/Calendar with Alarm Function				|I²C			|[PCF85063AT-ARD Arduino® Shield Evaluation Board](https://www.nxp.com/design/development-boards/analog-toolbox/arduino-shields-solutions/pcf85063at-ard-arduino-shield-tiny-real-time-clock:PCF85063AT-ARD)
 [PCF85063TP](https://www.nxp.com/products/peripherals-and-logic/signal-chain/real-time-clocks/rtcs-with-ic-bus/tiny-real-time-clock-calendar:PCF85063TP)												|Tiny Real-Time Clock/Calendar									|I²C			|[PCF85063TP-ARD Arduino® Shield Evaluation Board](https://www.nxp.com/design/development-boards/analog-toolbox/arduino-shields-solutions/pcf85063tp-ard-arduino-shield-evaluation-board:PCF85063TP-ARD)
+[PCF85263A](https://www.nxp.com/products/peripherals-and-logic/signal-chain/real-time-clocks/rtcs-with-ic-bus/tiny-real-time-clock-calendar-with-alarm-function-battery-switch-over-time-stamp-input-and-ic-bus:PCF85263A)|Tiny Real-Time Clock/Calendar with Alarm Function, Battery Switch-Over, Time Stamp Input	|I²C|[PCF85263ATL-ARD Arduino® Shield Evaluation Board](https://www.nxp.com/design/development-boards/analog-toolbox/arduino-shields-solutions/pcf85263atl-ard-arduino-shield-tiny-real-time-clock:PCF85263ATL-ARD)
 
 ## Code sample
 
@@ -95,12 +96,15 @@ After library install, Choose menu on Arduino-IDE: `File`→`Examples`→`RTC_NX
 
 Sketch|Target|Feature
 ---|---|---
-PCF2131_simple_I2C	|PCF2131	|**Simple** sample for just getting current time **via I²C** in every second
-PCF2131_simple_SPI	|PCF2131	|**Simple** sample for just getting current time **via SPI** in every second
-PCF2131_interrupt_based_operation	|PCF2131	|Interrupt based operation: Demonstrates second/minute, alarm and timestamp features.<br/>**IMPORTANT:** On the PCF2131-ARD shield board, **short D8<-->D2 and D9<-->D3 pins**
-PCF85063A_simple	|PCF85063A	|**Simple** sample for just getting current time **via I²C** in every second
-PCF85063A_interrupt_based_operation	|PCF85063A	|Interrupt based operation: Demonstrates timer and alarm features
-PCF85063TP			|PCF85063TP	|**Simple** sample for just getting current time **via I²C** in every second
+PCF2131_simple_I2C					|PCF2131	|**Simple** sample for just getting current time **via I²C** in every second
+PCF2131_simple_SPI					|PCF2131	|**Simple** sample for just getting current time **via SPI** in every second
+PCF2131_interrupt_based_operation	|PCF2131	|**Interrupt based** operation: Demonstrates second/minute, alarm and timestamp features.<br/>**IMPORTANT:** On the PCF2131-ARD shield board, **short D8<-->D2 and D9<-->D3 pins**
+PCF85063A_simple					|PCF85063A	|**Simple** sample for just getting current time **via I²C** in every second
+PCF85063A_interrupt_based_operation	|PCF85063A	|**Interrupt based** operation: Demonstrates timer and alarm features
+PCF85063TP							|PCF85063TP	|**Simple** sample for just getting current time **via I²C** in every second
+PCF85263A_simple					|PCF85263A	|**Simple** sample for just getting current time **via I²C** in every second
+PCF85263A_interrupt_based_operation	|PCF85263A	|**Interrupt based** operation: Demonstrates using 2 interrupt lines
+PCF85263A_timestamp					|PCF85263A	|**Timestamp** operation: Demonstrates timestamp feature
 
 # Document
 

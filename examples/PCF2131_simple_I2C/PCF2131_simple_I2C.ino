@@ -19,7 +19,7 @@ PCF2131_I2C rtc;
 
 void setup() {
   Serial.begin(9600);
-  Serial.println("\n***** Hello, PCF2131! (I2C interface)*****");
+  Serial.println("\n***** Hello, PCF2131! (I2C interface) *****");
 
   Wire.begin();
 

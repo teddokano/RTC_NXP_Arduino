@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['timestanp_5fsetting_0',['timestanp_setting',['../class_p_c_f2131__base.html#a3644f18bdf03663c7fb9abcadf23e608',1,'PCF2131_base']]]
+  ['reg_5fnum_0',['reg_num',['../class_p_c_f2131__base.html#a0fd899261d4545458659c330d15dab23',1,'PCF2131_base']]]
 ];

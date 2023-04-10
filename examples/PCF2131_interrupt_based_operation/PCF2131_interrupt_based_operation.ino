@@ -55,7 +55,7 @@ void setup() {
   Serial.begin(9600);
 
 #ifdef INTERFACE_I2C
-  Serial.println("\n***** Hello, PCF2131! (I2C interface)*****");
+  Serial.println("\n***** Hello, PCF2131! (I2C interface) *****");
   Wire.begin();
 #else
   Serial.println("\n***** Hello, PCF2131! (SPI interface) *****");
@@ -83,7 +83,7 @@ void setup() {
   rtc.timestamp(4, PCF2131_base::LAST, 1);
 
   rtc.periodic_interrupt_enable(PCF2131_base::EVERY_SECOND);
-  rtc.alarm(PCF2131_base::SECOND, 15, 1);
+  rtc.alarm(PCF2131_base::SECOND, 37, 1);
 
   Serial.println("    *** If it seems the demo is not working, check the INT pins ***");
   Serial.println("    ***   D2<--->D8, D3<--->D9 are needed to be connected       ***");

@@ -594,18 +594,24 @@ public:
 		EVERY_SECOND,
 		EVERY_MINUTE,
 	};
+
+	/** INT_A pin setting descriptor */
 	enum inta {
 		INTA_CLKOUT,
 		INTA_BATTERY_MODE_INDICATION,
 		INTA_INTTERRUPT,
 		INTA_HIGH_Z,
 	};
+
+	/** INT_B pin setting descriptor */
 	enum intb {
 		INTB_DISABLE,
 		INTB_INTTERRUPT,
 		INTB_CLKOUT,
 		INTB_INPUT_MODE,
 	};
+
+	/** Timestamp pin input setting descriptor */
 	enum ts_in {
 		TS_PULLUP_80K	= 0x00,
 		TS_PULLUP_40K	= 0x40,

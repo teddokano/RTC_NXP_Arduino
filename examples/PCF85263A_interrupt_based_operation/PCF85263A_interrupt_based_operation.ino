@@ -11,7 +11,7 @@
  */
 
 #include <time.h>
-#include "RTC_NXP.h"
+#include <RTC_NXP.h>
 
 void set_time(void);
 void int_cause_monitor(uint8_t status);

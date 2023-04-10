@@ -11,7 +11,7 @@
  */
 
 #include <time.h>
-#include "RTC_NXP.h"
+#include <RTC_NXP.h>
 
 void set_time(void);
 void int_cause_monitor(uint8_t status);
@@ -40,7 +40,13 @@ void setup() {
 
   rtc.pin_congfig(PCF85263A::INTA_INTTERRUPT, PCF85263A::INTB_INPUT_MODE);
   rtc.ts_congfig(PCF85263A::TSL_ACTIVE_LOW | PCF85263A::TSIM_MECHANICAL);
-  rtc.reg_w(PCF85263A::TSR_mode, (0x04 << 2) | 0x1);
+
+  //  TSR_mode setting:
+  //  Even if it is set to capture "First TS pin event", this sketch will show the timestamp as Last event. 
+  //  Becase when the interrupt happened, the monitoring routine clears the timestamp flag. 
+  //  The event after clearing the flag, it will be recorded as first event. 
+  //  See section 7.7, datasheet
+  rtc.reg_w(PCF85263A::TSR_mode, (0x2 << 6) | (0x5 << 2) | 0x1);  // TSR3M:LB, TSR2M:LE, TSR0M:FE
 
   Serial.println(rtc.reg_r(PCF85263A::TSR_mode),HEX);
 
