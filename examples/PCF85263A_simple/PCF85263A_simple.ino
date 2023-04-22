@@ -1,6 +1,6 @@
-/** PCF2131 RTC operation sample
+/** PCF85263A RTC operation sample
  *  
- *  This sample code is showing PCF2131 RTC operation using I2C interface
+ *  This sample code is showing PCF85263A RTC operation
  *
  *  @author  Tedd OKANO
  *
@@ -10,8 +10,8 @@
  *    https://www.nxp.com/products/peripherals-and-logic/signal-chain/real-time-clocks/rtcs-with-ic-bus/tiny-real-time-clock-calendar-with-alarm-function-battery-switch-over-time-stamp-input-and-ic-bus:PCF85263A   
  */
 
+#include <PCF85263A.h>
 #include <time.h>
-#include <RTC_NXP.h>
 
 void set_time(void);
 

@@ -10,8 +10,8 @@
  *    https://www.nxp.com/products/peripherals-and-logic/signal-chain/real-time-clocks/rtcs-with-ic-bus/tiny-real-time-clock-calendar:PCF85063TP  
  */
 
+#include <PCF85063TP.h>
 #include <time.h>
-#include <RTC_NXP.h>
 
 void set_time(void);
 

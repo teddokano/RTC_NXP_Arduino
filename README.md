@@ -16,8 +16,8 @@ It returns a value in the systems time stamp format of 'time.h'.
 To display the calendar/time, it can be written in this way. 
 
 ```cpp
+#include <PCF2131_I2C.h>  // including PCF2131_I2C class
 #include <time.h>
-#include <RTC_NXP.h>  // including PCF2131_I2C class
 
 PCF2131_I2C rtc;
 ...
@@ -29,21 +29,22 @@ Serial.println( ctime( &current_time ) );  // Result will appear like -> "Sun Ap
 ## Supported devices
 PCF2131, PCF85063A, PCF85063TP and PCF85263A are supported.  
 On PCF2131, both I²C and SPI can be used for interfacing MCU. 
+Include device name header file (`PCF85063A.h`, `PCF85063TP.h`, `PCF85063TP.h` and for PCF2131, `PCF2131_I2C.h`, `PCF2131_SPI.h`) to use those class libraries. 
 
-Type#|Features|Interface|Evaluation board
----|---|---|---
-[PCF2131](https://www.nxp.com/products/peripherals-and-logic/signal-chain/real-time-clocks/rtcs-with-temperature-compensation/nano-power-highly-accurate-rtc-with-integrated-quartz-crystal:PCF2131)	|Nano-Power Highly Accurate RTC with Integrated Quartz Crystal	|I²C and SPI	|[PCF2131/PCA2131 Arduino® Shield Evaluation Board](https://www.nxp.com/design/development-boards/analog-toolbox/arduino-shields-solutions/pcf2131-pca2131-arduino-shield-evaluation-board:PCF2131-ARD)
-[PCF85063A](https://www.nxp.com/products/peripherals-and-logic/signal-chain/real-time-clocks/rtcs-with-ic-bus/tiny-real-time-clock-calendar-with-alarm-function-and-ic-bus:PCF85063A)					|Tiny Real-Time Clock/Calendar with Alarm Function				|I²C			|[PCF85063AT-ARD Arduino® Shield Evaluation Board](https://www.nxp.com/design/development-boards/analog-toolbox/arduino-shields-solutions/pcf85063at-ard-arduino-shield-tiny-real-time-clock:PCF85063AT-ARD)
-[PCF85063TP](https://www.nxp.com/products/peripherals-and-logic/signal-chain/real-time-clocks/rtcs-with-ic-bus/tiny-real-time-clock-calendar:PCF85063TP)												|Tiny Real-Time Clock/Calendar									|I²C			|[PCF85063TP-ARD Arduino® Shield Evaluation Board](https://www.nxp.com/design/development-boards/analog-toolbox/arduino-shields-solutions/pcf85063tp-ard-arduino-shield-evaluation-board:PCF85063TP-ARD)
-[PCF85263A](https://www.nxp.com/products/peripherals-and-logic/signal-chain/real-time-clocks/rtcs-with-ic-bus/tiny-real-time-clock-calendar-with-alarm-function-battery-switch-over-time-stamp-input-and-ic-bus:PCF85263A)|Tiny Real-Time Clock/Calendar with Alarm Function, Battery Switch-Over, Time Stamp Input	|I²C|[PCF85263ATL-ARD Arduino® Shield Evaluation Board](https://www.nxp.com/design/development-boards/analog-toolbox/arduino-shields-solutions/pcf85263atl-ard-arduino-shield-tiny-real-time-clock:PCF85263ATL-ARD)
+Type#|Header file|Features|Interface|Evaluation board
+---|---|---|---|---
+[PCF2131](https://www.nxp.com/products/peripherals-and-logic/signal-chain/real-time-clocks/rtcs-with-temperature-compensation/nano-power-highly-accurate-rtc-with-integrated-quartz-crystal:PCF2131)	|`PCF2131_I2C.h`<br/>`PCF2131_SPI.h`	|Nano-Power Highly Accurate RTC with Integrated Quartz Crystal	|I²C and SPI	|[PCF2131/PCA2131 Arduino® Shield Evaluation Board](https://www.nxp.com/design/development-boards/analog-toolbox/arduino-shields-solutions/pcf2131-pca2131-arduino-shield-evaluation-board:PCF2131-ARD)
+[PCF85063A](https://www.nxp.com/products/peripherals-and-logic/signal-chain/real-time-clocks/rtcs-with-ic-bus/tiny-real-time-clock-calendar-with-alarm-function-and-ic-bus:PCF85063A)					|`PCF85063A.h`	|Tiny Real-Time Clock/Calendar with Alarm Function				|I²C			|[PCF85063AT-ARD Arduino® Shield Evaluation Board](https://www.nxp.com/design/development-boards/analog-toolbox/arduino-shields-solutions/pcf85063at-ard-arduino-shield-tiny-real-time-clock:PCF85063AT-ARD)
+[PCF85063TP](https://www.nxp.com/products/peripherals-and-logic/signal-chain/real-time-clocks/rtcs-with-ic-bus/tiny-real-time-clock-calendar:PCF85063TP)												|`PCF85063TP.h`		|Tiny Real-Time Clock/Calendar									|I²C			|[PCF85063TP-ARD Arduino® Shield Evaluation Board](https://www.nxp.com/design/development-boards/analog-toolbox/arduino-shields-solutions/pcf85063tp-ard-arduino-shield-evaluation-board:PCF85063TP-ARD)
+[PCF85263A](https://www.nxp.com/products/peripherals-and-logic/signal-chain/real-time-clocks/rtcs-with-ic-bus/tiny-real-time-clock-calendar-with-alarm-function-battery-switch-over-time-stamp-input-and-ic-bus:PCF85263A)	|`PCF85263A.h`		|Tiny Real-Time Clock/Calendar with Alarm Function, Battery Switch-Over, Time Stamp Input	|I²C|[PCF85263ATL-ARD Arduino® Shield Evaluation Board](https://www.nxp.com/design/development-boards/analog-toolbox/arduino-shields-solutions/pcf85263atl-ard-arduino-shield-tiny-real-time-clock:PCF85263ATL-ARD)
 
 ## Code sample
 
 ```cpp
 // Very simple sample to use the 'PCF2131-ARD : Arduino® Shield Evaluation Board'
 
+#include <PCF2131_I2C.h>
 #include <time.h>
-#include <RTC_NXP.h>
 
 void set_time(void);
 

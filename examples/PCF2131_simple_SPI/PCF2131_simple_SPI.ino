@@ -10,8 +10,8 @@
  *    https://www.nxp.com/products/peripherals-and-logic/signal-chain/real-time-clocks/rtcs-with-temperature-compensation/nano-power-highly-accurate-rtc-with-integrated-quartz-crystal:PCF2131   
  */
 
+#include <PCF2131_SPI.h>
 #include <time.h>
-#include <RTC_NXP.h>
 
 void set_time(void);
 
