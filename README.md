@@ -107,6 +107,17 @@ PCF85263A_simple					|PCF85263A	|**Simple** sample for just getting current time
 PCF85263A_interrupt_based_operation	|PCF85263A	|**Interrupt based** operation: Demonstrates using 2 interrupt lines
 PCF85263A_timestamp					|PCF85263A	|**Timestamp** operation: Demonstrates timestamp feature
 
+### TIPS
+If you need to use different I²C bus on Arduino, it can be done like this. This sample shows how the `Wire1` on Arduino Due can be operated.  
+```cpp
+include <PCF2131_I2C.h>
+
+PCF2131_I2C rtc(Wire1);
+
+void setup() {
+  Wire1.begin();
+```
+
 # Document
 
 For details of the library, please find descriptions in [this document](https://teddokano.github.io/RTC_NXP_Arduino/annotated.html).
