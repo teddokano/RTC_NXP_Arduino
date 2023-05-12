@@ -4,6 +4,10 @@ PCF2131_I2C::PCF2131_I2C( uint8_t i2c_address ) : I2C_device( i2c_address )
 {
 }
 
+PCF2131_I2C::PCF2131_I2C( TwoWire& wire, uint8_t i2c_address ) : I2C_device( wire, i2c_address )
+{
+}
+
 PCF2131_I2C::~PCF2131_I2C()
 {
 }

@@ -268,6 +268,9 @@ public:
 	/** Constructor */
 	PCF2131_I2C( uint8_t i2c_address = (0xA6 >> 1) );
 
+	/** Constructor */
+	PCF2131_I2C( TwoWire& wire, uint8_t i2c_address = (0xA6 >> 1) );
+
 	/** Destructor */
 	virtual ~PCF2131_I2C();
 	
@@ -306,7 +309,7 @@ public:
 	 * @param stop option: generating STOP-condition after transaction. Defailt: true
 	 * @return transferred data size
 	 */
-	void txrx( uint8_t *data, uint16_t size );
+	void txrx( uint8_t *data, int size );
 
 	/** Multiple register write
 	 * 
@@ -315,7 +318,7 @@ public:
 	 * @param size data size
 	 * @return transferred data size
 	 */
-	void reg_w( uint8_t reg_adr, uint8_t *data, uint16_t size );
+	void reg_w( uint8_t reg_adr, uint8_t *data, int size );
 
 	/** Single register write
 	 * 
@@ -333,7 +336,7 @@ public:
 	 * @param size data size
 	 * @return transferred data size
 	 */
-	void reg_r( uint8_t reg_adr, uint8_t *data, uint16_t size );
+	void reg_r( uint8_t reg_adr, uint8_t *data, int size );
 
 	/** Single register read
 	 * 
@@ -494,7 +497,11 @@ protected:
 class PCF85063A : public PCF85063_base, public I2C_device
 {
 public:
+	/** Constructor */
 	PCF85063A( uint8_t i2c_address = (0xA2 >> 1) );
+
+	/** Constructor */
+	PCF85063A( TwoWire& wire, uint8_t i2c_address = (0xA2 >> 1) );
 
 	/** Destructor */
 	virtual ~PCF85063A();
@@ -519,7 +526,11 @@ private:
 class PCF85063TP : public PCF85063A
 {
 public:
+	/** Constructor */
 	PCF85063TP( uint8_t i2c_address = (0xA2 >> 1) );
+
+	/** Constructor */
+	PCF85063TP( TwoWire& wire, uint8_t i2c_address = (0xA2 >> 1) );
 
 	/** Destructor */
 	virtual ~PCF85063TP();
@@ -623,6 +634,9 @@ public:
 
 	/** Constructor */
 	PCF85263A( uint8_t i2c_address = (0xA2 >> 1) );
+
+	/** Constructor */
+	PCF85263A( TwoWire& wire, uint8_t i2c_address = (0xA2 >> 1) );
 
 	/** Destructor */
 	virtual ~PCF85263A();

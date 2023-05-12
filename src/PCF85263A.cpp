@@ -4,6 +4,10 @@ PCF85263A::PCF85263A( uint8_t i2c_address ) : I2C_device( i2c_address )
 {
 }
 
+PCF85263A::PCF85263A( TwoWire& wire, uint8_t i2c_address ) : I2C_device( wire, i2c_address )
+{
+}
+
 PCF85263A::~PCF85263A()
 {
 }

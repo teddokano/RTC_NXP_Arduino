@@ -121,6 +121,10 @@ PCF85063A::PCF85063A( uint8_t i2c_address ) : I2C_device( i2c_address )
 {
 }
 
+PCF85063A::PCF85063A( TwoWire& wire, uint8_t i2c_address ) : I2C_device( wire, i2c_address )
+{
+}
+
 PCF85063A::~PCF85063A()
 {	
 }

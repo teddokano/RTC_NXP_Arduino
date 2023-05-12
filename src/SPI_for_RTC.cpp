@@ -1,13 +1,13 @@
 #include "RTC_NXP.h"
 
-void SPI_for_RTC::txrx( uint8_t *data, uint16_t size )
+void SPI_for_RTC::txrx( uint8_t *data, int size )
 {
 	digitalWrite( SS, LOW );
 	SPI.transfer( data, size );
 	digitalWrite( SS, HIGH );
 }
 
-void SPI_for_RTC::reg_w( uint8_t reg_adr, uint8_t *data, uint16_t size )
+void SPI_for_RTC::reg_w( uint8_t reg_adr, uint8_t *data, int size )
 {
 	uint8_t	v[ size + 1 ];
 	
@@ -24,9 +24,11 @@ void SPI_for_RTC::reg_w( uint8_t reg_adr, uint8_t data )
 	txrx( v, sizeof( v ) );
 }
 
-void SPI_for_RTC::reg_r( uint8_t reg_adr, uint8_t *data, uint16_t size )
+void SPI_for_RTC::reg_r( uint8_t reg_adr, uint8_t *data, int size )
 {
-	uint8_t	v[ size + 1 ] = { 0xFF };
+	uint8_t	v[ size + 1 ];
+	
+	for ( int i = 0; i < size + 1; i++ ) v[ i ]	= 0xFF;
 	
 	v[ 0 ]	= (uint8_t)(reg_adr | 0x80);
 	
