@@ -19,9 +19,12 @@ PCF2131_I2C rtc;
 
 void setup() {
   Serial.begin(9600);
-  Serial.println("\n***** Hello, PCF2131! (I2C interface) *****");
+  while (!Serial)
+    ;
 
   Wire.begin();
+
+  Serial.println("\n***** Hello, PCF2131! (I2C interface) *****");
 
   if (rtc.oscillator_stop()) {
     Serial.println("==== oscillator_stop detected :( ====");

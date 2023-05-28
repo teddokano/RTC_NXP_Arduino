@@ -37,7 +37,7 @@ PCF2131_I2C rtc;
 PCF2131_SPI rtc;
 #endif
 
-#pragma message : TO RUN THIS SKETCH ON ARDUINO UNO R3P AND PCF2131-ARD BOARDS, PIN8 and PIN9 MUST BE SHORTED TO PIN2 and PIN3(RESPECTIVELY) TO HANDLE INTERRUPT CORRECTLY
+#pragma message : TO RUN THIS SKETCH ON ARDUINO UNO R3P AND PCF2131 - ARD BOARDS, PIN8 and PIN9 MUST BE SHORTED TO PIN2 and PIN3(RESPECTIVELY) TO HANDLE INTERRUPT CORRECTLY
 
 const uint8_t intPin0 = 2;
 const uint8_t intPin1 = 3;
@@ -54,6 +54,8 @@ void pin_int_callback1() {
 
 void setup() {
   Serial.begin(9600);
+  while (!Serial)
+    ;
 
 #ifdef INTERFACE_I2C
   Serial.println("\n***** Hello, PCF2131! (I2C interface) *****");

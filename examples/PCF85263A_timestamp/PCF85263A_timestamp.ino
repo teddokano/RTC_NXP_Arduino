@@ -27,9 +27,12 @@ void pin_int_callback0() {
 
 void setup() {
   Serial.begin(9600);
-  Serial.println("\n***** Hello, PCF85263A! *****");
+  while (!Serial)
+    ;
 
   Wire.begin();
+
+  Serial.println("\n***** Hello, PCF85263A! *****");
 
   if (rtc.oscillator_stop()) {
     Serial.println("==== oscillator_stop detected :( ====");
@@ -42,13 +45,13 @@ void setup() {
   rtc.ts_congfig(PCF85263A::TSL_ACTIVE_LOW | PCF85263A::TSIM_MECHANICAL);
 
   //  TSR_mode setting:
-  //  Even if it is set to capture "First TS pin event", this sketch will show the timestamp as Last event. 
-  //  Becase when the interrupt happened, the monitoring routine clears the timestamp flag. 
-  //  The event after clearing the flag, it will be recorded as first event. 
+  //  Even if it is set to capture "First TS pin event", this sketch will show the timestamp as Last event.
+  //  Becase when the interrupt happened, the monitoring routine clears the timestamp flag.
+  //  The event after clearing the flag, it will be recorded as first event.
   //  See section 7.7, datasheet
   rtc.reg_w(PCF85263A::TSR_mode, (0x2 << 6) | (0x5 << 2) | 0x1);  // TSR3M:LB, TSR2M:LE, TSR0M:FE
 
-  Serial.println(rtc.reg_r(PCF85263A::TSR_mode),HEX);
+  Serial.println(rtc.reg_r(PCF85263A::TSR_mode), HEX);
 
   rtc.int_clear();
   pinMode(intPin0, INPUT_PULLUP);

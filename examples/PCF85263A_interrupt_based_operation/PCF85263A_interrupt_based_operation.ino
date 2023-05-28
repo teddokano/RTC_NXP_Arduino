@@ -33,9 +33,12 @@ void pin_int_callback1() {
 
 void setup() {
   Serial.begin(9600);
-  Serial.println("\n***** Hello, PCF85263A! *****");
+  while (!Serial)
+    ;
 
   Wire.begin();
+
+  Serial.println("\n***** Hello, PCF85263A! *****");
 
   if (rtc.oscillator_stop()) {
     Serial.println("==== oscillator_stop detected :( ====");

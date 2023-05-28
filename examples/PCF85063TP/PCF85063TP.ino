@@ -19,9 +19,12 @@ PCF85063TP rtc;
 
 void setup() {
   Serial.begin(9600);
-  Serial.println("\n***** Hello, PCF85063TP! *****");
+  while (!Serial)
+    ;
 
   Wire.begin();
+
+  Serial.println("\n***** Hello, PCF85063TP! *****");
 
   if (rtc.oscillator_stop()) {
     Serial.println("==== oscillator_stop detected :( ====");

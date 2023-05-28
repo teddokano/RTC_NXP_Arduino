@@ -19,9 +19,12 @@ PCF2131_SPI rtc;
 
 void setup() {
   Serial.begin(9600);
-  Serial.println("\n***** Hello, PCF2131! (SPI interface) *****");
+  while (!Serial)
+    ;
 
   SPI.begin();
+
+  Serial.println("\n***** Hello, PCF2131! (SPI interface) *****");
 
   if (rtc.oscillator_stop()) {
     Serial.println("==== oscillator_stop detected :( ====");

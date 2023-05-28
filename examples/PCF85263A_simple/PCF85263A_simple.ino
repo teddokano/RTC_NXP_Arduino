@@ -19,9 +19,12 @@ PCF85263A rtc;
 
 void setup() {
   Serial.begin(9600);
-  Serial.println("\n***** Hello, PCF85263A! *****");
+  while (!Serial)
+    ;
 
   Wire.begin();
+
+  Serial.println("\n***** Hello, PCF85263A! *****");
 
   if (rtc.oscillator_stop()) {
     Serial.println("==== oscillator_stop detected :( ====");
