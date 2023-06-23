@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">RTC_NXP_Arduino<span id="projectnumber">&#160;0.5.1</span>
+   <div id="projectname">RTC_NXP_Arduino<span id="projectnumber">&#160;0.5.2</span>
    </div>
    <div id="projectbrief">LED driver device operation sample code for Arduino</div>
   </td>
@@ -93,30 +93,33 @@ $(function() {
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="keywordtype">void</span> PCF2131_I2C::_reg_w( uint8_t reg, uint8_t *vp, <span class="keywordtype">int</span> len )</div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>{</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    reg_w( reg, vp, len );</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    <a class="code hl_function" href="class_p_c_f2131___i2_c.html#afabf6641b3120072829dc764f6f516f7">reg_w</a>( reg, vp, len );</div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>}</div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="keywordtype">void</span> PCF2131_I2C::_reg_r( uint8_t reg, uint8_t *vp, <span class="keywordtype">int</span> len )</div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>{</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    reg_r( reg, vp, len );</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <a class="code hl_function" href="class_p_c_f2131___i2_c.html#ad5886d555d037c247d7ab58da8a9e356">reg_r</a>( reg, vp, len );</div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>}</div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="keywordtype">void</span> PCF2131_I2C::_reg_w( uint8_t reg, uint8_t val )</div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>{</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    reg_w( reg, val );</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <a class="code hl_function" href="class_p_c_f2131___i2_c.html#afabf6641b3120072829dc764f6f516f7">reg_w</a>( reg, val );</div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>}</div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>uint8_t PCF2131_I2C::_reg_r( uint8_t reg )</div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>{</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <span class="keywordflow">return</span>  reg_r( reg );</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <span class="keywordflow">return</span>  <a class="code hl_function" href="class_p_c_f2131___i2_c.html#ad5886d555d037c247d7ab58da8a9e356">reg_r</a>( reg );</div>
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>}</div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="keywordtype">void</span> PCF2131_I2C::_bit_op8( uint8_t reg, uint8_t mask, uint8_t val )</div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>{</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    bit_op8( reg, mask, val );</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <a class="code hl_function" href="class_p_c_f2131___i2_c.html#a03491ce41c27666997e438a4b6aa1772">bit_op8</a>( reg, mask, val );</div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>}</div>
+<div class="ttc" id="aclass_p_c_f2131___i2_c_html_a03491ce41c27666997e438a4b6aa1772"><div class="ttname"><a href="class_p_c_f2131___i2_c.html#a03491ce41c27666997e438a4b6aa1772">PCF2131_I2C::bit_op8</a></div><div class="ttdeci">void bit_op8(uint8_t reg, uint8_t mask, uint8_t value)</div></div>
 <div class="ttc" id="aclass_p_c_f2131___i2_c_html_a985ec451e07b03626584aa6bcb0de450"><div class="ttname"><a href="class_p_c_f2131___i2_c.html#a985ec451e07b03626584aa6bcb0de450">PCF2131_I2C::PCF2131_I2C</a></div><div class="ttdeci">PCF2131_I2C(uint8_t i2c_address=(0xA6 &gt; &gt; 1))</div><div class="ttdef"><b>Definition</b> <a href="_p_c_f2131___i2_c_8cpp_source.html#l00003">PCF2131_I2C.cpp:3</a></div></div>
 <div class="ttc" id="aclass_p_c_f2131___i2_c_html_ac0ff7f442437ec27dd0a786ee083c132"><div class="ttname"><a href="class_p_c_f2131___i2_c.html#ac0ff7f442437ec27dd0a786ee083c132">PCF2131_I2C::~PCF2131_I2C</a></div><div class="ttdeci">virtual ~PCF2131_I2C()</div><div class="ttdef"><b>Definition</b> <a href="_p_c_f2131___i2_c_8cpp_source.html#l00011">PCF2131_I2C.cpp:11</a></div></div>
+<div class="ttc" id="aclass_p_c_f2131___i2_c_html_ad5886d555d037c247d7ab58da8a9e356"><div class="ttname"><a href="class_p_c_f2131___i2_c.html#ad5886d555d037c247d7ab58da8a9e356">PCF2131_I2C::reg_r</a></div><div class="ttdeci">void reg_r(uint8_t reg_adr, uint8_t *data, int size)</div></div>
+<div class="ttc" id="aclass_p_c_f2131___i2_c_html_afabf6641b3120072829dc764f6f516f7"><div class="ttname"><a href="class_p_c_f2131___i2_c.html#afabf6641b3120072829dc764f6f516f7">PCF2131_I2C::reg_w</a></div><div class="ttdeci">void reg_w(uint8_t reg_adr, uint8_t *data, int size)</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

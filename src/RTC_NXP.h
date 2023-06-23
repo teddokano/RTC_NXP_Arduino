@@ -123,7 +123,7 @@ protected:
 class PCF2131_base : public RTC_NXP
 {
 public:
-	/** register addresses */
+	/** Name of the PCF2131 registers */
 	enum reg_num {
 		Control_1, Control_2, Control_3, Control_4, Control_5,
 		SR_Reset,
@@ -156,7 +156,9 @@ public:
 	/** Destructor */
 	virtual ~PCF2131_base();
 	
-	/** Initializer */
+	/** Initializer 
+	 * Clears penginf interrupt
+	 */
 	void begin( void );
 
 	/** Detector for oscillation stop
@@ -265,15 +267,196 @@ private:
 class PCF2131_I2C : public PCF2131_base, public I2C_device
 {
 public:
-	/** Constructor */
+	/** Create a PCF2131_I2C instance specified address
+	 *
+	 * @param i2c_address I2C-bus address (default: (0xBC>>1))
+	 */
 	PCF2131_I2C( uint8_t i2c_address = (0xA6 >> 1) );
 
-	/** Constructor */
+	/** Create a PCF2131_I2C instance connected to specified I2C pins with specified address
+	 *
+	 * @param wire TwoWire instance
+	 * @param i2c_address I2C-bus address (default: (0xBC>>1))
+	 */
 	PCF2131_I2C( TwoWire& wire, uint8_t i2c_address = (0xA6 >> 1) );
 
 	/** Destructor */
 	virtual ~PCF2131_I2C();
 	
+#if DOXYGEN_ONLY
+	/** Name of the PCF2131 registers */
+	enum reg_num {
+		Control_1, Control_2, Control_3, Control_4, Control_5,
+		SR_Reset,
+		_100th_Seconds, Seconds, Minutes,Hours, Days, Weekdays, Months, Years,
+		Second_alarm, Minute_alarm, Hour_alarm, Day_alarm, Weekday_alarm,
+		CLKOUT_ctl,
+		Timestp_ctl1, Sec_timestp1, Min_timestp1, Hour_timestp1, Day_timestp1, Mon_timestp1, Year_timestp1,
+		Timestp_ctl2, Sec_timestp2, Min_timestp2, Hour_timestp2, Day_timestp2, Mon_timestp2, Year_timestp2,
+		Timestp_ctl3, Sec_timestp3, Min_timestp3, Hour_timestp3, Day_timestp3, Mon_timestp3, Year_timestp3,
+		Timestp_ctl4, Sec_timestp4, Min_timestp4, Hour_timestp4, Day_timestp4, Mon_timestp4, Year_timestp4,
+		Aging_offset,
+		INT_A_MASK1, INT_A_MASK2, INT_B_MASK1, INT_B_MASK2,
+		Watchdg_tim_ctl, Watchdg_tim_val
+	};
+	/** Periodic interrupt selection descriptor */
+	enum periodic_int_select {
+		DISABLE,
+		EVERY_SECOND,
+		EVERY_MINUTE,
+	};
+	/** Timestamp setting descriptor */
+	enum timestanp_setting {
+		LAST,
+		FIRST,
+	};
+
+	/** time
+	 * 
+	 *	"time()" in "time.h" compatible method for RTC
+	 *
+	 * @param tp pointer to time_t variable
+	 * @return time_t value of current time
+	 */
+	time_t time( time_t* tp );
+
+	/** Initializer 
+	 * Just clears penginf interrupt
+	 */
+	void begin( void );
+
+	/** Detector for oscillation stop
+	 * 
+	 * @return true, if the OSF (Oscillator Stop Flag) is set
+	 */
+	bool oscillator_stop( void );
+
+	/** time
+	 * 
+	 * @return time_t value of current time
+	 */
+	time_t rtc_time( void );
+
+	/** set
+	 * 
+	 * @param now_tm struct to set calendar and time in RTC
+	 */
+	void set( struct tm* now_tm );
+	
+	
+	/** Alarm setting
+	 * 
+	 * @param digit to specify which parameter to set: SECOND, MINUTE, HOUR, DAY, WEEKDAY in 'enum alarm_setting'
+	 * @param val Setting value. Set 0x80 to disabling
+	 */
+	void alarm( alarm_setting digit, int val );
+
+	/** Alarm setting
+	 * 
+	 * @param digit to specify which parameter to set: SECOND, MINUTE, HOUR, DAY, WEEKDAY in 'enum alarm_setting'
+	 * @param val Setting value. Set 0x80 to disabling
+	 * @param int_sel Interrupt output selector. ) for INT_A, 1 for INT_B
+	 */
+	void alarm( alarm_setting digit, int val, int int_sel );
+
+	/** Alarm interrupt disable
+	 */
+	void alarm_clear( void );
+
+	/** Interrupt clear
+	 */
+	void alarm_disable( void );
+	
+	/** Timestamp setting
+	 * 
+	 * @param num timestamp number: 1~4
+	 * @param ts_setting event recording option. Choose LAST or FIRST in 'enum timestanp_setting'
+	 * @param int_sel Interrupt output selector. ) for INT_A, 1 for INT_B
+	 */
+	void timestamp( int num, timestanp_setting ts_setting, int int_sel = 0 );
+
+	/** Getting timestamp info
+	 * 
+	 * @param num timestamp number: 1~4
+	 * @return time_t
+	 */
+	time_t timestamp( int num );
+	
+	/** Interrupt clear
+	 */
+	uint8_t int_clear( void );
+
+	/** Interrupt clear
+	 */
+	uint8_t int_clear( uint8_t* state_p );
+
+	/** Enabling every second/minute interrupt
+	 * 
+	 * @param sel choose DISABLE, EVERY_SECOND or EVERY_MINUTE in 'enum periodic_int_select'
+	 * @param int_sel Interrupt output selector. ) for INT_A, 1 for INT_B
+	 */
+	void periodic_interrupt_enable( periodic_int_select sel, int int_sel = 0 );
+	
+	/** Multiple register write
+	 * 
+	 * @param reg register index/address/pointer
+	 * @param data pointer to data buffer
+	 * @param size data size
+	 * @return transferred data size
+	 */
+	void reg_w( uint8_t reg_adr, uint8_t *data, int size );
+
+	/** Single register write
+	 * 
+	 * @param reg register index/address/pointer
+	 * @param data pointer to data buffer
+	 * @param size data size
+	 * @return transferred data size
+	 */
+	void reg_w( uint8_t reg_adr, uint8_t data );
+
+	/** Multiple register read
+	 * 
+	 * @param reg register index/address/pointer
+	 * @param data pointer to data buffer
+	 * @param size data size
+	 * @return transferred data size
+	 */
+	void reg_r( uint8_t reg_adr, uint8_t *data, int size );
+
+	/** Single register read
+	 * 
+	 * @param reg register index/address/pointer
+	 * @return read data
+	 */
+	uint8_t	reg_r( uint8_t reg_adr );
+
+	/** Register write, 8 bit
+	 *
+	 * @param reg register index/address/pointer
+	 * @param val data value
+	 */
+	void write_r8( uint8_t reg, uint8_t val );
+
+	/** Register read, 8 bit
+	 *
+	 * @param reg register index/address/pointer
+	 * @return data value
+	 */
+	uint8_t read_r8( uint8_t reg );
+
+	/** Register overwriting with bit-mask
+	 *	
+	 *	Register can be updated by bit level
+	 *
+	 * @param reg register index/address/pointer
+	 * @param mask bit-mask to protect overwriting
+	 * @param value value to overwrite
+	 */
+	void bit_op8(  uint8_t reg,  uint8_t mask,  uint8_t value );
+	
+#endif	//	DOXYGEN_ONLY
+
 private:
 	/** Proxy method for interface */
 	void _reg_w( uint8_t reg, uint8_t *vp, int len );
@@ -380,11 +563,127 @@ public:
 class PCF2131_SPI : public PCF2131_base, public SPI_for_RTC
 {
 public:
-	/** Constructor */
+	/** Create a PCF2131_SPI instance */
 	PCF2131_SPI();
 
 	/** Destructor */
 	virtual ~PCF2131_SPI();
+
+#if DOXYGEN_ONLY
+	/** Name of the PCF2131 registers */
+	enum reg_num {
+		Control_1, Control_2, Control_3, Control_4, Control_5,
+		SR_Reset,
+		_100th_Seconds, Seconds, Minutes,Hours, Days, Weekdays, Months, Years,
+		Second_alarm, Minute_alarm, Hour_alarm, Day_alarm, Weekday_alarm,
+		CLKOUT_ctl,
+		Timestp_ctl1, Sec_timestp1, Min_timestp1, Hour_timestp1, Day_timestp1, Mon_timestp1, Year_timestp1,
+		Timestp_ctl2, Sec_timestp2, Min_timestp2, Hour_timestp2, Day_timestp2, Mon_timestp2, Year_timestp2,
+		Timestp_ctl3, Sec_timestp3, Min_timestp3, Hour_timestp3, Day_timestp3, Mon_timestp3, Year_timestp3,
+		Timestp_ctl4, Sec_timestp4, Min_timestp4, Hour_timestp4, Day_timestp4, Mon_timestp4, Year_timestp4,
+		Aging_offset,
+		INT_A_MASK1, INT_A_MASK2, INT_B_MASK1, INT_B_MASK2,
+		Watchdg_tim_ctl, Watchdg_tim_val
+	};
+	/** Periodic interrupt selection descriptor */
+	enum periodic_int_select {
+		DISABLE,
+		EVERY_SECOND,
+		EVERY_MINUTE,
+	};
+	/** Timestamp setting descriptor */
+	enum timestanp_setting {
+		LAST,
+		FIRST,
+	};
+
+	/** time
+	 * 
+	 *	"time()" in "time.h" compatible method for RTC
+	 *
+	 * @param tp pointer to time_t variable
+	 * @return time_t value of current time
+	 */
+	time_t time( time_t* tp );
+
+	/** Initializer 
+	 * Just clears penginf interrupt
+	 */
+	void begin( void );
+
+	/** Detector for oscillation stop
+	 * 
+	 * @return true, if the OSF (Oscillator Stop Flag) is set
+	 */
+	bool oscillator_stop( void );
+
+	/** time
+	 * 
+	 * @return time_t value of current time
+	 */
+	time_t rtc_time( void );
+
+	/** set
+	 * 
+	 * @param now_tm struct to set calendar and time in RTC
+	 */
+	void set( struct tm* now_tm );
+	
+	
+	/** Alarm setting
+	 * 
+	 * @param digit to specify which parameter to set: SECOND, MINUTE, HOUR, DAY, WEEKDAY in 'enum alarm_setting'
+	 * @param val Setting value. Set 0x80 to disabling
+	 */
+	void alarm( alarm_setting digit, int val );
+
+	/** Alarm setting
+	 * 
+	 * @param digit to specify which parameter to set: SECOND, MINUTE, HOUR, DAY, WEEKDAY in 'enum alarm_setting'
+	 * @param val Setting value. Set 0x80 to disabling
+	 * @param int_sel Interrupt output selector. ) for INT_A, 1 for INT_B
+	 */
+	void alarm( alarm_setting digit, int val, int int_sel );
+
+	/** Alarm interrupt disable
+	 */
+	void alarm_clear( void );
+
+	/** Interrupt clear
+	 */
+	void alarm_disable( void );
+	
+	/** Timestamp setting
+	 * 
+	 * @param num timestamp number: 1~4
+	 * @param ts_setting event recording option. Choose LAST or FIRST in 'enum timestanp_setting'
+	 * @param int_sel Interrupt output selector. ) for INT_A, 1 for INT_B
+	 */
+	void timestamp( int num, timestanp_setting ts_setting, int int_sel = 0 );
+
+	/** Getting timestamp info
+	 * 
+	 * @param num timestamp number: 1~4
+	 * @return time_t
+	 */
+	time_t timestamp( int num );
+	
+	/** Interrupt clear
+	 */
+	uint8_t int_clear( void );
+
+	/** Interrupt clear
+	 */
+	uint8_t int_clear( uint8_t* state_p );
+
+	/** Enabling every second/minute interrupt
+	 * 
+	 * @param sel choose DISABLE, EVERY_SECOND or EVERY_MINUTE in 'enum periodic_int_select'
+	 * @param int_sel Interrupt output selector. ) for INT_A, 1 for INT_B
+	 */
+	void periodic_interrupt_enable( periodic_int_select sel, int int_sel = 0 );
+	
+#endif	//	DOXYGEN_ONLY
 	
 private:
 //	void txrx( uint8_t *data, uint16_t size );
@@ -415,6 +714,7 @@ private:
 class PCF85063_base : public RTC_NXP
 {
 public:
+	/** Name of the PCF85063 registers */
 	enum reg_num {
 		Control_1, Control_2,
 		Offset,
@@ -423,13 +723,16 @@ public:
 		Second_alarm, Minute_alarm, Hour_alarm, Day_alarm, Weekday_alarm,
 		Timer_value, Timer_mode
 	};
+	
 	/** Constructor */
 	PCF85063_base();
 
 	/** Destructor */
 	virtual ~PCF85063_base();
 	
-	/** Initializer */
+	/** Initializer but nothing done with this menthod in this version. 
+	 * Don't need to call
+	 */
 	void begin( void );
 	
 	/** set
@@ -497,15 +800,146 @@ protected:
 class PCF85063A : public PCF85063_base, public I2C_device
 {
 public:
-	/** Constructor */
+	/** Create a PCF85063A instance with specified address
+	 *
+	 * @param i2c_address I2C-bus address (default: (0xBC>>1))
+	 */
 	PCF85063A( uint8_t i2c_address = (0xA2 >> 1) );
 
-	/** Constructor */
+	/** Create a PCF85063A instance connected to specified I2C pins with specified address
+	 *
+	 * @param wire TwoWire instance
+	 * @param i2c_address I2C-bus address (default: (0xBC>>1))
+	 */
 	PCF85063A( TwoWire& wire, uint8_t i2c_address = (0xA2 >> 1) );
 
 	/** Destructor */
 	virtual ~PCF85063A();
+
+#if DOXYGEN_ONLY
+	/** Name of the PCF85063A registers */
+	enum reg_num {
+		Control_1, Control_2,
+		Offset,
+		RAM_byte,
+		Seconds, Minutes, Hours, Days, Weekdays, Months, Years,
+		Second_alarm, Minute_alarm, Hour_alarm, Day_alarm, Weekday_alarm,
+		Timer_value, Timer_mode
+	};
+
+	/** time
+	 * 
+	 *	"time()" in "time.h" compatible method for RTC
+	 *
+	 * @param tp pointer to time_t variable
+	 * @return time_t value of current time
+	 */
+	time_t time( time_t* tp );
+
+	/** Initializer but nothing done with this menthod in this version. 
+	 * Don't need to call
+	 */
+	void begin( void );
 	
+	/** set
+	 * 
+	 * @param now_tm struct to set calendar and time in RTC
+	 */
+	void set( struct tm* now_tm );
+
+	/** Detector for oscillation stop
+	 * 
+	 * @return true, if the OSF (Oscillator Stop Flag) is set
+	 */
+	bool oscillator_stop( void );
+	
+	/** Alarm setting
+	 * 
+	 * @param digit to specify which parameter to set: SECOND, MINUTE, HOUR, DAY, WEEKDAY in 'enum alarm_setting'
+	 * @param val Setting value. Set 0x80 to disabling
+	 */
+	void alarm( alarm_setting digit, int val );
+
+	/** Alarm clearing
+	 */
+	void alarm_clear( void );
+
+	/** Alarm interrupt disable
+	 */
+	void alarm_disable( void );
+
+	/** Interrupt clear
+	 */
+	uint8_t int_clear( void );
+
+	
+	/** Timer setting
+	 * 
+	 * @param period timer interval in second
+	 * @return actual timer set value in second
+	 */
+	float timer( float period );
+	
+	/** Multiple register write
+	 * 
+	 * @param reg register index/address/pointer
+	 * @param data pointer to data buffer
+	 * @param size data size
+	 * @return transferred data size
+	 */
+	void reg_w( uint8_t reg_adr, uint8_t *data, int size );
+
+	/** Single register write
+	 * 
+	 * @param reg register index/address/pointer
+	 * @param data pointer to data buffer
+	 * @param size data size
+	 * @return transferred data size
+	 */
+	void reg_w( uint8_t reg_adr, uint8_t data );
+
+	/** Multiple register read
+	 * 
+	 * @param reg register index/address/pointer
+	 * @param data pointer to data buffer
+	 * @param size data size
+	 * @return transferred data size
+	 */
+	void reg_r( uint8_t reg_adr, uint8_t *data, int size );
+
+	/** Single register read
+	 * 
+	 * @param reg register index/address/pointer
+	 * @return read data
+	 */
+	uint8_t	reg_r( uint8_t reg_adr );
+
+	/** Register write, 8 bit
+	 *
+	 * @param reg register index/address/pointer
+	 * @param val data value
+	 */
+	void write_r8( uint8_t reg, uint8_t val );
+
+	/** Register read, 8 bit
+	 *
+	 * @param reg register index/address/pointer
+	 * @return data value
+	 */
+	uint8_t read_r8( uint8_t reg );
+
+	/** Register overwriting with bit-mask
+	 *	
+	 *	Register can be updated by bit level
+	 *
+	 * @param reg register index/address/pointer
+	 * @param mask bit-mask to protect overwriting
+	 * @param value value to overwrite
+	 */
+	void bit_op8(  uint8_t reg,  uint8_t mask,  uint8_t value );
+
+#endif	//	DOXYGEN_ONLY
+
 private:
 	/** Proxy method for interface */
 	void _reg_w( uint8_t reg, uint8_t *vp, int len );
@@ -526,46 +960,122 @@ private:
 class PCF85063TP : public PCF85063A
 {
 public:
-	/** Constructor */
+	/** Create a PCF85063TP instance with specified address
+	 *
+	 * @param i2c_address I2C-bus address (default: (0xBC>>1))
+	 */
 	PCF85063TP( uint8_t i2c_address = (0xA2 >> 1) );
 
-	/** Constructor */
+	/** Create a PCF85063TP instance connected to specified I2C pins with specified address
+	 *
+	 * @param wire TwoWire instance
+	 * @param i2c_address I2C-bus address (default: (0xBC>>1))
+	 */
 	PCF85063TP( TwoWire& wire, uint8_t i2c_address = (0xA2 >> 1) );
 
 	/** Destructor */
 	virtual ~PCF85063TP();
 	
-	/** Alarm setting
-	 *	Method overriding to disable this feature (Hardware is not supporting)
+#if DOXYGEN_ONLY
+	/** Name of the PCF85063TP registers */
+	enum reg_num {
+		Control_1, Control_2,
+		Offset,
+		RAM_byte,
+		Seconds, Minutes, Hours, Days, Weekdays, Months, Years,
+	};
+	/** time
+	 * 
+	 *	"time()" in "time.h" compatible method for RTC
+	 *
+	 * @param tp pointer to time_t variable
+	 * @return time_t value of current time
 	 */
-	void alarm( alarm_setting digit, int val );
-
-	/** Alarm clearing
-	 *	Method overriding to disable this feature (Hardware is not supporting)
-	 */
-	void alarm_clear( void );
-
-	/** Alarm interrupt disable
-	 *	Method overriding to disable this feature (Hardware is not supporting)
-	 */
-	void alarm_disable( void );
-
-	/** Interrupt clear
-	 *	Method overriding to disable this feature (Hardware is not supporting)
-	 */
-	uint8_t int_clear( void );
-
+	time_t time( time_t* tp );
 	
-	/** Timer setting
-	 *	Method overriding to disable this feature (Hardware is not supporting)
+	/** Initializer but nothing done with this menthod in this version. 
+	 * Don't need to call
 	 */
-	float timer( float period );
+	void begin( void );
+	
+	/** set
+	 * 
+	 * @param now_tm struct to set calendar and time in RTC
+	 */
+	void set( struct tm* now_tm );
+
+	/** Detector for oscillation stop
+	 * 
+	 * @return true, if the OSF (Oscillator Stop Flag) is set
+	 */
+	bool oscillator_stop( void );
+	
+	/** Multiple register write
+	 * 
+	 * @param reg register index/address/pointer
+	 * @param data pointer to data buffer
+	 * @param size data size
+	 * @return transferred data size
+	 */
+	void reg_w( uint8_t reg_adr, uint8_t *data, int size );
+
+	/** Single register write
+	 * 
+	 * @param reg register index/address/pointer
+	 * @param data pointer to data buffer
+	 * @param size data size
+	 * @return transferred data size
+	 */
+	void reg_w( uint8_t reg_adr, uint8_t data );
+
+	/** Multiple register read
+	 * 
+	 * @param reg register index/address/pointer
+	 * @param data pointer to data buffer
+	 * @param size data size
+	 * @return transferred data size
+	 */
+	void reg_r( uint8_t reg_adr, uint8_t *data, int size );
+
+	/** Single register read
+	 * 
+	 * @param reg register index/address/pointer
+	 * @return read data
+	 */
+	uint8_t	reg_r( uint8_t reg_adr );
+
+	/** Register write, 8 bit
+	 *
+	 * @param reg register index/address/pointer
+	 * @param val data value
+	 */
+	void write_r8( uint8_t reg, uint8_t val );
+
+	/** Register read, 8 bit
+	 *
+	 * @param reg register index/address/pointer
+	 * @return data value
+	 */
+	uint8_t read_r8( uint8_t reg );
+
+	/** Register overwriting with bit-mask
+	 *	
+	 *	Register can be updated by bit level
+	 *
+	 * @param reg register index/address/pointer
+	 * @param mask bit-mask to protect overwriting
+	 * @param value value to overwrite
+	 */
+	void bit_op8(  uint8_t reg,  uint8_t mask,  uint8_t value );
+
+#endif	//	DOXYGEN_ONLY
 
 };
 
 class PCF85263A : public RTC_NXP, public I2C_device
 {
 public:
+	/** Name of the PCF85263A registers */
 	enum reg_num {
 		_100th_seconds, Seconds, Minutes, Hours, Days, Weekdays, Months, Years,
 		Second_alarm1, Minute_alarm1, Hour_alarm1, Day_alarm1, Month_alarm1,
@@ -632,16 +1142,26 @@ public:
 		TSIM_MECHANICAL	= 0x10,
 	};
 
-	/** Constructor */
+	/** Create a PCF85263A instance with specified address
+	 *
+	 * @param wire TwoWire instance
+	 * @param i2c_address I2C-bus address (default: (0xBC>>1))
+	 */
 	PCF85263A( uint8_t i2c_address = (0xA2 >> 1) );
 
-	/** Constructor */
+	/** Create a PCF85263A instance connected to specified I2C pins with specified address
+	 *
+	 * @param wire TwoWire instance
+	 * @param i2c_address I2C-bus address (default: (0xBC>>1))
+	 */
 	PCF85263A( TwoWire& wire, uint8_t i2c_address = (0xA2 >> 1) );
 
 	/** Destructor */
 	virtual ~PCF85263A();
 	
-	/** Initializer */
+	/** Initializer but nothing done with this menthod in this version. 
+	 * Don't need to call
+	 */
 	void begin( void );
 	
 	/** set
@@ -721,6 +1241,76 @@ public:
 	 */
 	time_t timestamp( int num );
 
+#if DOXYGEN_ONLY
+	/** time
+	 * 
+	 *	"time()" in "time.h" compatible method for RTC
+	 *
+	 * @param tp pointer to time_t variable
+	 * @return time_t value of current time
+	 */
+	time_t time( time_t* tp );
+	
+	/** Multiple register write
+	 * 
+	 * @param reg register index/address/pointer
+	 * @param data pointer to data buffer
+	 * @param size data size
+	 * @return transferred data size
+	 */
+	void reg_w( uint8_t reg_adr, uint8_t *data, int size );
+
+	/** Single register write
+	 * 
+	 * @param reg register index/address/pointer
+	 * @param data pointer to data buffer
+	 * @param size data size
+	 * @return transferred data size
+	 */
+	void reg_w( uint8_t reg_adr, uint8_t data );
+
+	/** Multiple register read
+	 * 
+	 * @param reg register index/address/pointer
+	 * @param data pointer to data buffer
+	 * @param size data size
+	 * @return transferred data size
+	 */
+	void reg_r( uint8_t reg_adr, uint8_t *data, int size );
+
+	/** Single register read
+	 * 
+	 * @param reg register index/address/pointer
+	 * @return read data
+	 */
+	uint8_t	reg_r( uint8_t reg_adr );
+
+	/** Register write, 8 bit
+	 *
+	 * @param reg register index/address/pointer
+	 * @param val data value
+	 */
+	void write_r8( uint8_t reg, uint8_t val );
+
+	/** Register read, 8 bit
+	 *
+	 * @param reg register index/address/pointer
+	 * @return data value
+	 */
+	uint8_t read_r8( uint8_t reg );
+
+	/** Register overwriting with bit-mask
+	 *	
+	 *	Register can be updated by bit level
+	 *
+	 * @param reg register index/address/pointer
+	 * @param mask bit-mask to protect overwriting
+	 * @param value value to overwrite
+	 */
+	void bit_op8(  uint8_t reg,  uint8_t mask,  uint8_t value );
+
+#endif	//	DOXYGEN_ONLY
+
 private:
 	void set_alarm( int digit, int val, int int_sel );
 };
@@ -734,7 +1324,9 @@ public:
 	/** Destructor */
 	virtual ~ForFutureExtention();
 	
-	/** Initializer */
+	/** Initializer but nothing done with this menthod in this version. 
+	 * Don't need to call
+	 */
 	void begin( void );
 	
 	/** set
@@ -766,6 +1358,77 @@ public:
 	/** Interrupt clear
 	 */
 	uint8_t int_clear( void );
+
+	
+#if DOXYGEN_ONLY
+	/** time
+	 * 
+	 *	"time()" in "time.h" compatible method for RTC
+	 *
+	 * @param tp pointer to time_t variable
+	 * @return time_t value of current time
+	 */
+	time_t time( time_t* tp );
+	
+	/** Multiple register write
+	 * 
+	 * @param reg register index/address/pointer
+	 * @param data pointer to data buffer
+	 * @param size data size
+	 * @return transferred data size
+	 */
+	void reg_w( uint8_t reg_adr, uint8_t *data, int size );
+
+	/** Single register write
+	 * 
+	 * @param reg register index/address/pointer
+	 * @param data pointer to data buffer
+	 * @param size data size
+	 * @return transferred data size
+	 */
+	void reg_w( uint8_t reg_adr, uint8_t data );
+
+	/** Multiple register read
+	 * 
+	 * @param reg register index/address/pointer
+	 * @param data pointer to data buffer
+	 * @param size data size
+	 * @return transferred data size
+	 */
+	void reg_r( uint8_t reg_adr, uint8_t *data, int size );
+
+	/** Single register read
+	 * 
+	 * @param reg register index/address/pointer
+	 * @return read data
+	 */
+	uint8_t	reg_r( uint8_t reg_adr );
+
+	/** Register write, 8 bit
+	 *
+	 * @param reg register index/address/pointer
+	 * @param val data value
+	 */
+	void write_r8( uint8_t reg, uint8_t val );
+
+	/** Register read, 8 bit
+	 *
+	 * @param reg register index/address/pointer
+	 * @return data value
+	 */
+	uint8_t read_r8( uint8_t reg );
+
+	/** Register overwriting with bit-mask
+	 *	
+	 *	Register can be updated by bit level
+	 *
+	 * @param reg register index/address/pointer
+	 * @param mask bit-mask to protect overwriting
+	 * @param value value to overwrite
+	 */
+	void bit_op8(  uint8_t reg,  uint8_t mask,  uint8_t value );
+
+#endif	//	DOXYGEN_ONLY
 
 protected:
 	/** rtc_time

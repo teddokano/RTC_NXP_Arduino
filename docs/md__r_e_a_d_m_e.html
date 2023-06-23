@@ -21,7 +21,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">RTC_NXP_Arduino<span id="projectnumber">&#160;0.5.1</span>
+   <div id="projectname">RTC_NXP_Arduino<span id="projectnumber">&#160;0.5.2</span>
    </div>
    <div id="projectbrief">LED driver device operation sample code for Arduino</div>
   </td>
@@ -93,10 +93,10 @@ What is this?</h1>
 <div class="line"><a class="code hl_class" href="class_p_c_f2131___i2_c.html">PCF2131_I2C</a> rtc;</div>
 <div class="line">...</div>
 <div class="line">..</div>
-<div class="line">current_time = rtc.<a class="code hl_function" href="class_r_t_c___n_x_p.html#af54044d244e13f40522a7e8cc1d16416">time</a>( NULL );</div>
+<div class="line">current_time = rtc.<a class="code hl_function" href="class_p_c_f2131___i2_c.html#aa1ce66a7f0e82c41f590382653f42fb1">time</a>( NULL );</div>
 <div class="line">Serial.println( ctime( &amp;current_time ) );  <span class="comment">// Result will appear like -&gt; &quot;Sun Apr 09 07:11:37 2023&quot;</span></div>
-<div class="ttc" id="aclass_p_c_f2131___i2_c_html"><div class="ttname"><a href="class_p_c_f2131___i2_c.html">PCF2131_I2C</a></div><div class="ttdef"><b>Definition</b> <a href="_r_t_c___n_x_p_8h_source.html#l00265">RTC_NXP.h:266</a></div></div>
-<div class="ttc" id="aclass_r_t_c___n_x_p_html_af54044d244e13f40522a7e8cc1d16416"><div class="ttname"><a href="class_r_t_c___n_x_p.html#af54044d244e13f40522a7e8cc1d16416">RTC_NXP::time</a></div><div class="ttdeci">time_t time(time_t *tp)</div><div class="ttdef"><b>Definition</b> <a href="_r_t_c___n_x_p_8cpp_source.html#l00011">RTC_NXP.cpp:11</a></div></div>
+<div class="ttc" id="aclass_p_c_f2131___i2_c_html"><div class="ttname"><a href="class_p_c_f2131___i2_c.html">PCF2131_I2C</a></div><div class="ttdef"><b>Definition</b> <a href="_r_t_c___n_x_p_8h_source.html#l00267">RTC_NXP.h:268</a></div></div>
+<div class="ttc" id="aclass_p_c_f2131___i2_c_html_aa1ce66a7f0e82c41f590382653f42fb1"><div class="ttname"><a href="class_p_c_f2131___i2_c.html#aa1ce66a7f0e82c41f590382653f42fb1">PCF2131_I2C::time</a></div><div class="ttdeci">time_t time(time_t *tp)</div></div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md2"></a>
 Supported devices</h1>
 <p>PCF2131, <a class="el" href="class_p_c_f85063_a.html">PCF85063A</a>, <a class="el" href="class_p_c_f85063_t_p.html">PCF85063TP</a> and <a class="el" href="class_p_c_f85263_a.html">PCF85263A</a> are supported. <br  />
@@ -126,12 +126,12 @@ Code sample</h1>
 <div class="line"><a class="code hl_class" href="class_p_c_f2131___i2_c.html">PCF2131_I2C</a> rtc;</div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">void</span> setup() {</div>
-<div class="line">  Serial.<a class="code hl_function" href="class_p_c_f2131__base.html#a1ac0a4e9344e5be9396939e99eed6a04">begin</a>(9600);</div>
+<div class="line">  Serial.<a class="code hl_function" href="class_p_c_f2131___i2_c.html#abf3b2ab8da628a05a40ee073af918ac6">begin</a>(9600);</div>
 <div class="line">  Serial.println(<span class="stringliteral">&quot;\n***** Hello, PCF2131! (I2C interface)*****&quot;</span>);</div>
 <div class="line"> </div>
 <div class="line">  Wire.begin();</div>
 <div class="line"> </div>
-<div class="line">  <span class="keywordflow">if</span> (rtc.<a class="code hl_function" href="class_p_c_f2131__base.html#ac5e4cedd352865e8083805b5978e62e0">oscillator_stop</a>()) {</div>
+<div class="line">  <span class="keywordflow">if</span> (rtc.<a class="code hl_function" href="class_p_c_f2131___i2_c.html#a5735b1001c8bc9ea095fe027fcb7a386">oscillator_stop</a>()) {</div>
 <div class="line">    Serial.println(<span class="stringliteral">&quot;==== oscillator_stop detected :( ====&quot;</span>);</div>
 <div class="line">    set_time();</div>
 <div class="line">  } <span class="keywordflow">else</span> {</div>
@@ -142,7 +142,7 @@ Code sample</h1>
 <div class="line"><span class="keywordtype">void</span> loop() {</div>
 <div class="line">  time_t current_time = 0;</div>
 <div class="line"> </div>
-<div class="line">  current_time = rtc.<a class="code hl_function" href="class_r_t_c___n_x_p.html#af54044d244e13f40522a7e8cc1d16416">time</a>(NULL);</div>
+<div class="line">  current_time = rtc.<a class="code hl_function" href="class_p_c_f2131___i2_c.html#aa1ce66a7f0e82c41f590382653f42fb1">time</a>(NULL);</div>
 <div class="line">  Serial.print(<span class="stringliteral">&quot;time : &quot;</span>);</div>
 <div class="line">  Serial.print(current_time);</div>
 <div class="line">  Serial.print(<span class="stringliteral">&quot;, &quot;</span>);</div>
@@ -152,8 +152,8 @@ Code sample</h1>
 <div class="line">}</div>
 <div class="line">...</div>
 <div class="line">..</div>
-<div class="ttc" id="aclass_p_c_f2131__base_html_a1ac0a4e9344e5be9396939e99eed6a04"><div class="ttname"><a href="class_p_c_f2131__base.html#a1ac0a4e9344e5be9396939e99eed6a04">PCF2131_base::begin</a></div><div class="ttdeci">void begin(void)</div><div class="ttdef"><b>Definition</b> <a href="_p_c_f2131__base_8cpp_source.html#l00011">PCF2131_base.cpp:11</a></div></div>
-<div class="ttc" id="aclass_p_c_f2131__base_html_ac5e4cedd352865e8083805b5978e62e0"><div class="ttname"><a href="class_p_c_f2131__base.html#ac5e4cedd352865e8083805b5978e62e0">PCF2131_base::oscillator_stop</a></div><div class="ttdeci">bool oscillator_stop(void)</div><div class="ttdef"><b>Definition</b> <a href="_p_c_f2131__base_8cpp_source.html#l00017">PCF2131_base.cpp:17</a></div></div>
+<div class="ttc" id="aclass_p_c_f2131___i2_c_html_a5735b1001c8bc9ea095fe027fcb7a386"><div class="ttname"><a href="class_p_c_f2131___i2_c.html#a5735b1001c8bc9ea095fe027fcb7a386">PCF2131_I2C::oscillator_stop</a></div><div class="ttdeci">bool oscillator_stop(void)</div></div>
+<div class="ttc" id="aclass_p_c_f2131___i2_c_html_abf3b2ab8da628a05a40ee073af918ac6"><div class="ttname"><a href="class_p_c_f2131___i2_c.html#abf3b2ab8da628a05a40ee073af918ac6">PCF2131_I2C::begin</a></div><div class="ttdeci">void begin(void)</div></div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md4"></a>
 Getting started</h1>
 <p>Use Library manager in Arduino IDE for easy install</p>
