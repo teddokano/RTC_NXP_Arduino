@@ -23,6 +23,7 @@ void setup() {
     ;
 
   SPI.begin();
+  pinMode(SS, OUTPUT);  //  Required for UNO R4
 
   Serial.println("\n***** Hello, PCF2131! (SPI interface) *****");
 
