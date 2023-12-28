@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['dec2bcd_0',['dec2bcd',['../class_r_t_c___n_x_p.html#aca19044b8b7d4a8837d0e7e1f856cac9',1,'RTC_NXP']]]
+  ['code_0',['List of sample code',['../md__r_e_a_d_m_e.html#autotoc_md8',1,'']]],
+  ['code_20sample_1',['Code sample',['../md__r_e_a_d_m_e.html#autotoc_md3',1,'']]]
 ];
