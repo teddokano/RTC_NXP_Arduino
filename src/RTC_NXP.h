@@ -1324,9 +1324,9 @@ public:
 		Day_of_the_Week, Day_of_the_Month, Month, Year,
 		Control_Register, Status_Register,
 		CLKOUT_Control,
-		2nd_Control_Register,
+		_2nd_Control_Register,
 		Scratchpad, Version_Register, 
-		Vendor_ID_Register, Model Register,
+		Vendor_ID_Register, Model_Register,
 		Offset, Oscillator, 
 		Access_config, 
 		Sec_timestp, Min_timestp, Hour_timestp, DayWk_timestp, DayMon_timestp, Mon_timestp, Year_timestp, 
@@ -1379,7 +1379,7 @@ public:
 	 * @param digit to specify which parameter to set: SECOND, MINUTE, HOUR in 'enum alarm_setting_85053A'
 	 * @param val Setting value. Set 0x80 to disabling
 	 */
-	void alarm( alarm_setting_85053A digit, int val );
+	void alarm( alarm_setting digit, int val );
 
 	/** Alarm clearing
 	 */

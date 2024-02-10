@@ -35,7 +35,7 @@ bool PCF85053A::oscillator_stop( void )
 	bit_op8( Status_Register, ~0x40, 0x40 );
 }
 
-void PCF85053A::alarm( alarm_setting_85263A digit, int val )
+void PCF85053A::alarm( alarm_setting digit, int val )
 {
 	uint8_t	en;
 
