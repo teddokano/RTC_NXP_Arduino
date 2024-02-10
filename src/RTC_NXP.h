@@ -5,8 +5,8 @@
  *  Released under the MIT license License
  */
 
-#ifndef ARDUINO_LED_DRIVER_NXP_ARD_H
-#define ARDUINO_LED_DRIVER_NXP_ARD_H
+#ifndef ARDUINO_RTC_DRIVER_NXP_ARD_H
+#define ARDUINO_RTC_DRIVER_NXP_ARD_H
 
 #include <Arduino.h>
 #include <stdint.h>
@@ -1439,4 +1439,4 @@ protected:
 };
 
 
-#endif //	ARDUINO_LED_DRIVER_NXP_ARD_H
+#endif //	ARDUINO_RTC_DRIVER_NXP_ARD_H
