@@ -26,6 +26,20 @@ void setup() {
 
   Serial.println("\n***** Hello, PCF85063A! *****");
 
+  //  Set read/write access right to primary I2C bus
+  //  For Arduino R3 and R4 are having I2C bus on A4/A5 and D14/15
+  //    but those (A4 and D14, A5 and D15) pins are tied together.
+  //    https://forum.arduino.cc/t/using-i2c-and-adc-on-a4-a5-and-d14-d15/531156
+  //
+  //  So if user need to operate primary and secondary I2C buses
+  //    on the PCF85053A, hardware must be changed properly
+  //  Next line is not required to operate PCF85053A on Arduino
+  //    R3 and R4 because of reason above, but to make sure and
+  //    show the steps to give read/write accress right to
+  //    the primary I2C bus
+
+  rtc.bit_op8(PCF85053A::Control_Register, ~0x01, 0x01);
+
   if (rtc.oscillator_stop()) {
     Serial.println("==== oscillator_stop detected :( ====");
     set_time();
