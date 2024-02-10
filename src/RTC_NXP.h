@@ -1315,6 +1315,161 @@ private:
 	void set_alarm( int digit, int val, int int_sel );
 };
 
+class PCF85053A : public RTC_NXP, public I2C_device
+{
+public:
+	/** Name of the PCF85053A registers */
+	enum reg_num {
+		Seconds, Seconds_alarm, Minutes, Minutes_alarm, Hours, Hours_alarm, 
+		Day_of_the_Week, Day_of_the_Month, Month, Year,
+		Control_Register, Status_Register,
+		CLKOUT_Control,
+		2nd_Control_Register,
+		Scratchpad, Version_Register, 
+		Vendor_ID_Register, Model Register,
+		Offset, Oscillator, 
+		Access_config, 
+		Sec_timestp, Min_timestp, Hour_timestp, DayWk_timestp, DayMon_timestp, Mon_timestp, Year_timestp, 
+		R_code1, R_code2	
+	};
+	
+	/** Alarm setting digit selection descriptor */
+	enum alarm_setting_85053A {
+		SECOND	= 1,
+		MINUTE	= 3,
+		HOUR	= 5,
+	};
+	
+	/** Create a PCF85053A instance with specified address
+	 *
+	 * @param wire TwoWire instance
+	 * @param i2c_address I2C-bus address (default: (0xBC>>1))
+	 */
+	PCF85053A( uint8_t i2c_address = (0xDE >> 1) );
+
+	/** Create a PCF85053A instance connected to specified I2C pins with specified address
+	 *
+	 * @param wire TwoWire instance
+	 * @param i2c_address I2C-bus address (default: (0xBC>>1))
+	 */
+	PCF85053A( TwoWire& wire, uint8_t i2c_address = (0xDE >> 1) );
+
+	/** Destructor */
+	virtual ~PCF85053A();
+	
+	/** Initializer but nothing done with this menthod in this version. 
+	 * Don't need to call
+	 */
+	void begin( void );
+	
+	/** set
+	 * 
+	 * @param now_tm struct to set calendar and time in RTC
+	 */
+	void set( struct tm* now_tm );
+
+	/** Detector for oscillation stop
+	 * 
+	 * @return true, if the OSF (Oscillator Stop Flag) is set
+	 */
+	bool oscillator_stop( void );
+	
+	/** Alarm setting
+	 * 
+	 * @param digit to specify which parameter to set: SECOND, MINUTE, HOUR in 'enum alarm_setting_85053A'
+	 * @param val Setting value. Set 0x80 to disabling
+	 */
+	void alarm( alarm_setting_85053A digit, int val );
+
+	/** Alarm clearing
+	 */
+	void alarm_clear( void );
+
+	/** Alarm interrupt disable
+	 */
+	void alarm_disable( void );
+
+	/** Interrupt clear
+	 */
+	uint8_t int_clear( void );
+
+	/** rtc_time
+	 * 
+	 * @return time_t returns RTC time in time_t format
+	 */
+	time_t rtc_time( void );
+
+#if DOXYGEN_ONLY
+	/** time
+	 * 
+	 *	"time()" in "time.h" compatible method for RTC
+	 *
+	 * @param tp pointer to time_t variable
+	 * @return time_t value of current time
+	 */
+	time_t time( time_t* tp );
+	
+	/** Multiple register write
+	 * 
+	 * @param reg register index/address/pointer
+	 * @param data pointer to data buffer
+	 * @param size data size
+	 * @return transferred data size
+	 */
+	void reg_w( uint8_t reg_adr, uint8_t *data, int size );
+
+	/** Single register write
+	 * 
+	 * @param reg register index/address/pointer
+	 * @param data pointer to data buffer
+	 * @param size data size
+	 * @return transferred data size
+	 */
+	void reg_w( uint8_t reg_adr, uint8_t data );
+
+	/** Multiple register read
+	 * 
+	 * @param reg register index/address/pointer
+	 * @param data pointer to data buffer
+	 * @param size data size
+	 * @return transferred data size
+	 */
+	void reg_r( uint8_t reg_adr, uint8_t *data, int size );
+
+	/** Single register read
+	 * 
+	 * @param reg register index/address/pointer
+	 * @return read data
+	 */
+	uint8_t	reg_r( uint8_t reg_adr );
+
+	/** Register write, 8 bit
+	 *
+	 * @param reg register index/address/pointer
+	 * @param val data value
+	 */
+	void write_r8( uint8_t reg, uint8_t val );
+
+	/** Register read, 8 bit
+	 *
+	 * @param reg register index/address/pointer
+	 * @return data value
+	 */
+	uint8_t read_r8( uint8_t reg );
+
+	/** Register overwriting with bit-mask
+	 *	
+	 *	Register can be updated by bit level
+	 *
+	 * @param reg register index/address/pointer
+	 * @param mask bit-mask to protect overwriting
+	 * @param value value to overwrite
+	 */
+	void bit_op8(  uint8_t reg,  uint8_t mask,  uint8_t value );
+
+#endif	//	DOXYGEN_ONLY
+};
+
 class ForFutureExtention : public RTC_NXP, public I2C_device
 {
 public:
