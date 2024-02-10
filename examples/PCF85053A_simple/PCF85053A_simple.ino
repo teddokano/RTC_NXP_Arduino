@@ -10,12 +10,12 @@
  *    https://www.nxp.com/products/peripherals-and-logic/signal-chain/real-time-clocks/rtcs-with-ic-bus/tiny-real-time-clock-calendar-with-alarm-function-and-ic-bus:PCF85063A   
  */
 
-#include <PCF85063A.h>
+#include <PCF85053A.h>
 #include <time.h>
 
 void set_time(void);
 
-PCF85063A rtc;
+PCF85053A rtc;
 
 void setup() {
   Serial.begin(9600);
@@ -56,9 +56,9 @@ void set_time(void) {
 
   struct tm now_tm;
 
-  now_tm.tm_year = 2023 - 1900;
-  now_tm.tm_mon = 4 - 1;  // It needs to be '3' if April
-  now_tm.tm_mday = 7;
+  now_tm.tm_year = 2024 - 1900;
+  now_tm.tm_mon = 2 - 1;  // It needs to be '3' if April
+  now_tm.tm_mday = 11;
   now_tm.tm_hour = 18;
   now_tm.tm_min = 52;
   now_tm.tm_sec = 30;
