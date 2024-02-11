@@ -1,6 +1,6 @@
 /** PCF85053A RTC operation sample
  *  
- *  This sample code is showing PCF85053A RTC operation.
+ *  This sample code is showing PCF85263A RTC operation with INTA and INT_B interrupts
  *
  *  @author  Tedd OKANO
  *
@@ -17,6 +17,13 @@ void set_time(void);
 
 PCF85053A rtc;
 
+const uint8_t intPin = 2;
+bool int_flag = false;
+
+void pin_int_callback() {
+  int_flag = true;
+}
+
 void setup() {
   Serial.begin(9600);
   while (!Serial)
@@ -24,7 +31,7 @@ void setup() {
 
   Wire.begin();
 
-  Serial.println("\n***** Hello, PCF85053A! *****");
+  Serial.println("\n***** Hello, PCF85063A! *****");
 
   //  Set read/write access right to primary I2C bus
   //  For Arduino R3 and R4 are having I2C bus on A4/A5 and D14/15
@@ -46,6 +53,12 @@ void setup() {
   } else {
     Serial.println("---- RTC has beeing kept running! :) ----");
   }
+
+  rtc.int_clear();
+  pinMode(intPin, INPUT_PULLUP);
+  attachInterrupt(digitalPinToInterrupt(intPin), pin_int_callback, FALLING);
+
+  rtc.alarm(RTC_NXP::SECOND, (seconds(rtc.time(NULL))+5)%60);
 }
 
 void loop() {
@@ -55,7 +68,16 @@ void loop() {
   Serial.print("time : ");
   Serial.print(current_time);
   Serial.print(", ");
-  Serial.println(ctime(&current_time));
+  Serial.print(ctime(&current_time));
+
+  if (int_flag) {
+    rtc.int_clear();
+    int_flag = false;
+    Serial.print(" --- ALARM int happened ");
+    rtc.alarm(RTC_NXP::SECOND, (seconds(current_time)+5)%60);
+  }
+
+  Serial.println("");
 
   delay(1000);
 }
@@ -80,4 +102,8 @@ void set_time(void) {
   rtc.set(&now_tm);
 
   Serial.println("RTC got time information");
+}
+
+int seconds(time_t now_t) {
+  return localtime(&now_t)->tm_sec;
 }

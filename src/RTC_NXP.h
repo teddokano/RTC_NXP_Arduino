@@ -1333,13 +1333,6 @@ public:
 		R_code1, R_code2	
 	};
 	
-	/** Alarm setting digit selection descriptor */
-	enum alarm_setting_85053A {
-		SECOND	= 1,
-		MINUTE	= 3,
-		HOUR	= 5,
-	};
-	
 	/** Create a PCF85053A instance with specified address
 	 *
 	 * @param wire TwoWire instance
@@ -1468,6 +1461,10 @@ public:
 	void bit_op8(  uint8_t reg,  uint8_t mask,  uint8_t value );
 
 #endif	//	DOXYGEN_ONLY
+	
+private:
+	static inline constexpr uint8_t alarm_offsets[]	= { 1, 3, 5 };
+	//int alarm_offsets[];
 };
 
 class ForFutureExtention : public RTC_NXP, public I2C_device

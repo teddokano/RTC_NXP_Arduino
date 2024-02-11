@@ -37,17 +37,14 @@ bool PCF85053A::oscillator_stop( void )
 
 void PCF85053A::alarm( alarm_setting digit, int val )
 {
-	uint8_t	en;
-
-	reg_w( digit, dec2bcd( val ) );
+	reg_w( alarm_offsets[ digit ], dec2bcd( val ) );
 	bit_op8( Control_Register, ~0x08, 0x08 );
 }
 
 void PCF85053A::alarm_clear( void )
 {
-	reg_w( PCF85263A::SECOND, 0xFF );
-	reg_w( PCF85263A::MINUTE, 0xFF );
-	reg_w( PCF85263A::HOUR, 0xFF );
+	for ( auto i = 0; i < sizeof( alarm_offsets ); i++ )
+		reg_w( i, 0xFF );
 }
 
 void PCF85053A::alarm_disable( void )
@@ -80,3 +77,5 @@ time_t PCF85053A::rtc_time( void )
 
    return mktime( &now_tm );
 }
+
+//constexpr int PCF85053A::alarm_offsets[]	= { 1, 3, 5 };
