@@ -101,12 +101,12 @@ Sketch|Target|Feature
 PCF2131_simple_I2C					|PCF2131	|**Simple** sample for just getting current time **via I²C** in every second
 PCF2131_simple_SPI					|PCF2131	|**Simple** sample for just getting current time **via SPI** in every second
 PCF2131_interrupt_based_operation	|PCF2131	|**Interrupt based** operation: Demonstrates second/minute, alarm and timestamp features.<br/>**IMPORTANT:** On the PCF2131-ARD shield board, **short D8<-->D2 and D9<-->D3 pins**
-PCF85053A_simple					|PCF85053A	|**Simple** sample for just getting current time **via I²C** in every second
+PCF85053A_simple					|PCF85053A	|**Simple** sample for just getting current time in every second
 PCF85053A_interrupt_based_operation	|PCF85053A	|**Interrupt based** operation: Demonstrates alarm feature
-PCF85063A_simple					|PCF85063A	|**Simple** sample for just getting current time **via I²C** in every second
+PCF85063A_simple					|PCF85063A	|**Simple** sample for just getting current time in every second
 PCF85063A_interrupt_based_operation	|PCF85063A	|**Interrupt based** operation: Demonstrates timer and alarm features
-PCF85063TP							|PCF85063TP	|**Simple** sample for just getting current time **via I²C** in every second
-PCF85263A_simple					|PCF85263A	|**Simple** sample for just getting current time **via I²C** in every second
+PCF85063TP							|PCF85063TP	|**Simple** sample for just getting current time in every second
+PCF85263A_simple					|PCF85263A	|**Simple** sample for just getting current time in every second
 PCF85263A_interrupt_based_operation	|PCF85263A	|**Interrupt based** operation: Demonstrates using 2 interrupt lines
 PCF85263A_timestamp					|PCF85263A	|**Timestamp** operation: Demonstrates timestamp feature
 
@@ -134,6 +134,6 @@ Library|Feature|Target devices|Required library
 [LCDDriver_NXP_Arduino](https://github.com/teddokano/LCDDriver_NXP_Arduino)		|LCD driver libraries				|PCA8561						|[I2C_device_Arduino](https://github.com/teddokano/I2C_device_Arduino)
 [LEDDriver_NXP_Arduino](https://github.com/teddokano/LEDDriver_NXP_Arduino)		|LED driver libraries				|PCA9955B, PCA9956B, PCA9957	|[I2C_device_Arduino](https://github.com/teddokano/I2C_device_Arduino)
 [MUX_SW_NXP_Arduino](https://github.com/teddokano/MUX_SW_NXP_Arduino)			|I²C mux/switch libraries			|PCA9846						|[I2C_device_Arduino](https://github.com/teddokano/I2C_device_Arduino)
-[RTC_NXP_Arduino](https://github.com/teddokano/RTC_NXP_Arduino)					|RTC libraries						|PCF2131, PCF85063A				|[I2C_device_Arduino](https://github.com/teddokano/I2C_device_Arduino)
-[TempSensor_NXP_Arduino](https://github.com/teddokano/TempSensor_NXP_Arduino)	|Temperature sensor libraries		|LM75B, PCT2075, P3T1085		|[I2C_device_Arduino](https://github.com/teddokano/I2C_device_Arduino)
+[RTC_NXP_Arduino](https://github.com/teddokano/RTC_NXP_Arduino)					|RTC libraries						|PCF2131, PCF85053A, PCF85063A, PCF85063TP, PCF85263A	|[I2C_device_Arduino](https://github.com/teddokano/I2C_device_Arduino)
+[TempSensor_NXP_Arduino](https://github.com/teddokano/TempSensor_NXP_Arduino)	|Temperature sensor libraries		|LM75B, P3T1084, P3T1085, P3T1035, P3T2030, PCT2075	|[I2C_device_Arduino](https://github.com/teddokano/I2C_device_Arduino)
 [I2C_device_Arduino](https://github.com/teddokano/I2C_device_Arduino)			|Base library for I²C operations	|none (can be applied as base class for all I²C targets)|---
