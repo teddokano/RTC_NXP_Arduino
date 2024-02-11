@@ -1463,8 +1463,8 @@ public:
 #endif	//	DOXYGEN_ONLY
 	
 private:
-	static inline constexpr uint8_t alarm_offsets[]	= { 1, 3, 5 };
-	//int alarm_offsets[];
+	//static inline constexpr uint8_t alarm_offsets[]	= { 1, 3, 5 };
+	static int alarm_offsets[ 3 ];
 };
 
 class ForFutureExtention : public RTC_NXP, public I2C_device

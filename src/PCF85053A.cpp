@@ -43,8 +43,9 @@ void PCF85053A::alarm( alarm_setting digit, int val )
 
 void PCF85053A::alarm_clear( void )
 {
-	for ( auto i = 0; i < sizeof( alarm_offsets ); i++ )
-		reg_w( i, 0xFF );
+	reg_w( alarm_offsets[ SECOND ], 0xFF );
+	reg_w( alarm_offsets[ MINUTE ], 0xFF );
+	reg_w( alarm_offsets[ HOUR   ], 0xFF );
 }
 
 void PCF85053A::alarm_disable( void )
@@ -78,4 +79,4 @@ time_t PCF85053A::rtc_time( void )
    return mktime( &now_tm );
 }
 
-//constexpr int PCF85053A::alarm_offsets[]	= { 1, 3, 5 };
+int PCF85053A::alarm_offsets[ 3 ]	= { 1, 3, 5 };
