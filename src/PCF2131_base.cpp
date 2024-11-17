@@ -88,7 +88,7 @@ void PCF2131_base::alarm_disable( void )
 	_bit_op8( Control_2, ~0x02, 0x00 );
 }
 
-void PCF2131_base::timestamp( int num, timestanp_setting ts_setting, int int_sel )
+void PCF2131_base::timestamp( int num, timestamp_setting ts_setting, int int_sel )
 {
 	const int r_ofst	= 7;
 	const int fst		= ts_setting ? 0x80 : 0x00;

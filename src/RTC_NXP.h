@@ -145,7 +145,7 @@ public:
 		EVERY_MINUTE,
 	};
 	/** Timestamp setting descriptor */
-	enum timestanp_setting {
+	enum timestamp_setting {
 		LAST,
 		FIRST,
 	};
@@ -206,10 +206,10 @@ public:
 	/** Timestamp setting
 	 * 
 	 * @param num timestamp number: 1~4
-	 * @param ts_setting event recording option. Choose LAST or FIRST in 'enum timestanp_setting'
+	 * @param ts_setting event recording option. Choose LAST or FIRST in 'enum timestamp_setting'
 	 * @param int_sel Interrupt output selector. ) for INT_A, 1 for INT_B
 	 */
-	void timestamp( int num, timestanp_setting ts_setting, int int_sel = 0 );
+	void timestamp( int num, timestamp_setting ts_setting, int int_sel = 0 );
 
 	/** Getting timestamp info
 	 * 
@@ -306,7 +306,7 @@ public:
 		EVERY_MINUTE,
 	};
 	/** Timestamp setting descriptor */
-	enum timestanp_setting {
+	enum timestamp_setting {
 		LAST,
 		FIRST,
 	};
@@ -370,10 +370,10 @@ public:
 	/** Timestamp setting
 	 * 
 	 * @param num timestamp number: 1~4
-	 * @param ts_setting event recording option. Choose LAST or FIRST in 'enum timestanp_setting'
+	 * @param ts_setting event recording option. Choose LAST or FIRST in 'enum timestamp_setting'
 	 * @param int_sel Interrupt output selector. ) for INT_A, 1 for INT_B
 	 */
-	void timestamp( int num, timestanp_setting ts_setting, int int_sel = 0 );
+	void timestamp( int num, timestamp_setting ts_setting, int int_sel = 0 );
 
 	/** Getting timestamp info
 	 * 
@@ -592,7 +592,7 @@ public:
 		EVERY_MINUTE,
 	};
 	/** Timestamp setting descriptor */
-	enum timestanp_setting {
+	enum timestamp_setting {
 		LAST,
 		FIRST,
 	};
@@ -656,10 +656,10 @@ public:
 	/** Timestamp setting
 	 * 
 	 * @param num timestamp number: 1~4
-	 * @param ts_setting event recording option. Choose LAST or FIRST in 'enum timestanp_setting'
+	 * @param ts_setting event recording option. Choose LAST or FIRST in 'enum timestamp_setting'
 	 * @param int_sel Interrupt output selector. ) for INT_A, 1 for INT_B
 	 */
-	void timestamp( int num, timestanp_setting ts_setting, int int_sel = 0 );
+	void timestamp( int num, timestamp_setting ts_setting, int int_sel = 0 );
 
 	/** Getting timestamp info
 	 * 
