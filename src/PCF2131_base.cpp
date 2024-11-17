@@ -176,3 +176,9 @@ void PCF2131_base::reset()
 {
     _reg_w(SR_Reset, 0b00101100);
 }
+
+void PCF2131_base::otp_refresh()
+{
+    _bit_op8(CLKOUT_ctl, ~0b00100000, 0b00000000);
+    _bit_op8(CLKOUT_ctl, ~0b00100000, 0b00100000);
+}

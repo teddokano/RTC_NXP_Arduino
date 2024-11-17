@@ -255,6 +255,10 @@ public:
 	 */
     void reset();
 
+    /** Perform OTP refresh (loads factory-provided calibration data stored in EPROM)
+	 */
+    void otp_refresh();
+
 protected:
 	/** Proxy method for interface  (pure virtual method) */
 	virtual void _reg_w( uint8_t reg, uint8_t *vp, int len )	= 0;
