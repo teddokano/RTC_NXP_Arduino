@@ -171,3 +171,8 @@ void PCF2131_base::set_clock_out(clock_out_frequency freq)
 {
     _bit_op8(CLKOUT_ctl, ~0b00000111, freq);
 }
+
+void PCF2131_base::reset()
+{
+    _reg_w(SR_Reset, 0b00101100);
+}

@@ -251,6 +251,10 @@ public:
 	 */
     void set_clock_out(clock_out_frequency freq);
 
+    /** Trigger software reset
+	 */
+    void reset();
+
 protected:
 	/** Proxy method for interface  (pure virtual method) */
 	virtual void _reg_w( uint8_t reg, uint8_t *vp, int len )	= 0;
