@@ -115,7 +115,7 @@ protected:
 /** PCF2131_base class
  *	
  *	A base class for PCF2131
- *	Implementing register operation with abstarcted interface
+ *	Implementing register operation with abstracted interface
  *
  *  @class PCF2131_base
  */
@@ -149,6 +149,18 @@ public:
 		LAST,
 		FIRST,
 	};
+    /** Clock output frequency descriptor */
+    enum clock_out_frequency
+    {
+        FREQ_32768_HZ,
+        FREQ_16384_HZ,
+        FREQ_8192_HZ,
+        FREQ_4096_HZ,
+        FREQ_2048_HZ,
+        FREQ_1024_HZ,
+        FREQ_1_HZ,
+        FREQ_DISABLE
+    };
 
 	/** Constructor */
 	PCF2131_base();
@@ -232,6 +244,12 @@ public:
 	 * @param int_sel Interrupt output selector. ) for INT_A, 1 for INT_B
 	 */
 	void periodic_interrupt_enable( periodic_int_select sel, int int_sel = 0 );
+
+    /** Set clock output (CLKOUT)
+	 *
+	 * @param freq choose desired clock output (CLKOUT) frequency in 'enum clock_out_frequency'
+	 */
+    void set_clock_out(clock_out_frequency freq);
 
 protected:
 	/** Proxy method for interface  (pure virtual method) */

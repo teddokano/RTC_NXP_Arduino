@@ -166,3 +166,8 @@ void PCF2131_base::periodic_interrupt_enable( periodic_int_select sel, int int_s
 	_bit_op8( Control_1, ~0x03, v );
 	_bit_op8( int_mask_reg[ int_sel ][ 0 ], ~0x30, ~(v << 4) );
 }
+
+void PCF2131_base::set_clock_out(clock_out_frequency freq)
+{
+    _bit_op8(CLKOUT_ctl, ~0b00000111, freq);
+}
