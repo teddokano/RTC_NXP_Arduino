@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['timestanp_5fsetting_0',['timestanp_setting',['../class_p_c_f2131__base.html#a3644f18bdf03663c7fb9abcadf23e608',1,'PCF2131_base::timestanp_setting'],['../class_p_c_f2131___i2_c.html#a3e70159bdedd2c5ac1007a6e8a3134d3',1,'PCF2131_I2C::timestanp_setting'],['../class_p_c_f2131___s_p_i.html#a9dcd358c84d6dca06af05140f6fb8e40',1,'PCF2131_SPI::timestanp_setting']]],
-  ['ts_5fin_1',['ts_in',['../class_p_c_f85263_a.html#a5a002fd033a255abadc485673a13f632',1,'PCF85263A']]]
+  ['reg_5fnum_0',['reg_num',['../class_p_c_f2131__base.html#a0fd899261d4545458659c330d15dab23',1,'PCF2131_base::reg_num'],['../class_p_c_f2131___i2_c.html#af467b538b42497fa7ed325197121d51f',1,'PCF2131_I2C::reg_num'],['../class_p_c_f2131___s_p_i.html#a6e03fcbac8c34777d85a1e4d2e289d0a',1,'PCF2131_SPI::reg_num'],['../class_p_c_f85063__base.html#a441dff5e03751a42d0c71f13cde2a7f7',1,'PCF85063_base::reg_num'],['../class_p_c_f85063_a.html#a333ae3efab81b1835fd2271c86fd05c6',1,'PCF85063A::reg_num'],['../class_p_c_f85063_t_p.html#af9b9dcc35b7c177a214ecf9ac5972218',1,'PCF85063TP::reg_num'],['../class_p_c_f85263_a.html#aa8b27745f67151341314514efb025411',1,'PCF85263A::reg_num'],['../class_p_c_f85053_a.html#ab7f4ad9c87ac514866160f256eb7af1e',1,'PCF85053A::reg_num']]]
 ];
