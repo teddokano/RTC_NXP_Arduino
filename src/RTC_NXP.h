@@ -115,7 +115,7 @@ protected:
 /** PCF2131_base class
  *	
  *	A base class for PCF2131
- *	Implementing register operation with abstarcted interface
+ *	Implementing register operation with abstracted interface
  *
  *  @class PCF2131_base
  */
@@ -145,10 +145,22 @@ public:
 		EVERY_MINUTE,
 	};
 	/** Timestamp setting descriptor */
-	enum timestanp_setting {
+	enum timestamp_setting {
 		LAST,
 		FIRST,
 	};
+    /** Clock output frequency descriptor */
+    enum clock_out_frequency
+    {
+        FREQ_32768_HZ,
+        FREQ_16384_HZ,
+        FREQ_8192_HZ,
+        FREQ_4096_HZ,
+        FREQ_2048_HZ,
+        FREQ_1024_HZ,
+        FREQ_1_HZ,
+        FREQ_DISABLE
+    };
 
 	/** Constructor */
 	PCF2131_base();
@@ -206,10 +218,10 @@ public:
 	/** Timestamp setting
 	 * 
 	 * @param num timestamp number: 1~4
-	 * @param ts_setting event recording option. Choose LAST or FIRST in 'enum timestanp_setting'
+	 * @param ts_setting event recording option. Choose LAST or FIRST in 'enum timestamp_setting'
 	 * @param int_sel Interrupt output selector. ) for INT_A, 1 for INT_B
 	 */
-	void timestamp( int num, timestanp_setting ts_setting, int int_sel = 0 );
+	void timestamp( int num, timestamp_setting ts_setting, int int_sel = 0 );
 
 	/** Getting timestamp info
 	 * 
@@ -232,6 +244,20 @@ public:
 	 * @param int_sel Interrupt output selector. ) for INT_A, 1 for INT_B
 	 */
 	void periodic_interrupt_enable( periodic_int_select sel, int int_sel = 0 );
+
+    /** Set clock output (CLKOUT)
+	 *
+	 * @param freq choose desired clock output (CLKOUT) frequency in 'enum clock_out_frequency'
+	 */
+    void set_clock_out(clock_out_frequency freq);
+
+    /** Trigger software reset
+	 */
+    void reset();
+
+    /** Perform OTP refresh (loads factory-provided calibration data stored in EPROM)
+	 */
+    void otp_refresh();
 
 protected:
 	/** Proxy method for interface  (pure virtual method) */
@@ -306,7 +332,7 @@ public:
 		EVERY_MINUTE,
 	};
 	/** Timestamp setting descriptor */
-	enum timestanp_setting {
+	enum timestamp_setting {
 		LAST,
 		FIRST,
 	};
@@ -370,10 +396,10 @@ public:
 	/** Timestamp setting
 	 * 
 	 * @param num timestamp number: 1~4
-	 * @param ts_setting event recording option. Choose LAST or FIRST in 'enum timestanp_setting'
+	 * @param ts_setting event recording option. Choose LAST or FIRST in 'enum timestamp_setting'
 	 * @param int_sel Interrupt output selector. ) for INT_A, 1 for INT_B
 	 */
-	void timestamp( int num, timestanp_setting ts_setting, int int_sel = 0 );
+	void timestamp( int num, timestamp_setting ts_setting, int int_sel = 0 );
 
 	/** Getting timestamp info
 	 * 
@@ -592,7 +618,7 @@ public:
 		EVERY_MINUTE,
 	};
 	/** Timestamp setting descriptor */
-	enum timestanp_setting {
+	enum timestamp_setting {
 		LAST,
 		FIRST,
 	};
@@ -656,10 +682,10 @@ public:
 	/** Timestamp setting
 	 * 
 	 * @param num timestamp number: 1~4
-	 * @param ts_setting event recording option. Choose LAST or FIRST in 'enum timestanp_setting'
+	 * @param ts_setting event recording option. Choose LAST or FIRST in 'enum timestamp_setting'
 	 * @param int_sel Interrupt output selector. ) for INT_A, 1 for INT_B
 	 */
-	void timestamp( int num, timestanp_setting ts_setting, int int_sel = 0 );
+	void timestamp( int num, timestamp_setting ts_setting, int int_sel = 0 );
 
 	/** Getting timestamp info
 	 * 

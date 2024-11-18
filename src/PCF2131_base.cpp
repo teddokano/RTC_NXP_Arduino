@@ -88,7 +88,7 @@ void PCF2131_base::alarm_disable( void )
 	_bit_op8( Control_2, ~0x02, 0x00 );
 }
 
-void PCF2131_base::timestamp( int num, timestanp_setting ts_setting, int int_sel )
+void PCF2131_base::timestamp( int num, timestamp_setting ts_setting, int int_sel )
 {
 	const int r_ofst	= 7;
 	const int fst		= ts_setting ? 0x80 : 0x00;
@@ -165,4 +165,20 @@ void PCF2131_base::periodic_interrupt_enable( periodic_int_select sel, int int_s
 	v=3;
 	_bit_op8( Control_1, ~0x03, v );
 	_bit_op8( int_mask_reg[ int_sel ][ 0 ], ~0x30, ~(v << 4) );
+}
+
+void PCF2131_base::set_clock_out(clock_out_frequency freq)
+{
+    _bit_op8(CLKOUT_ctl, ~0b00000111, freq);
+}
+
+void PCF2131_base::reset()
+{
+    _reg_w(SR_Reset, 0b00101100);
+}
+
+void PCF2131_base::otp_refresh()
+{
+    _bit_op8(CLKOUT_ctl, ~0b00100000, 0b00000000);
+    _bit_op8(CLKOUT_ctl, ~0b00100000, 0b00100000);
 }
