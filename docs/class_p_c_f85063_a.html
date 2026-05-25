@@ -106,8 +106,6 @@ document.addEventListener('DOMContentLoaded', () => {
   <div class="headertitle"><div class="title">PCF85063A Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
-
-<p><code>#include &lt;<a class="el" href="_r_t_c___n_x_p_8h_source.html">RTC_NXP.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for PCF85063A:</div>
 <div class="dyncontent">
@@ -226,10 +224,8 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:aca19044b8b7d4a8837d0e7e1f856cac9 pro_static_methods_class_r_t_c___n_x_p" id="r_aca19044b8b7d4a8837d0e7e1f856cac9"><td class="memItemLeft">static uint8_t&#160;</td><td class="memItemRight"><a class="el" href="class_r_t_c___n_x_p.html#aca19044b8b7d4a8837d0e7e1f856cac9">dec2bcd</a> (uint8_t v)</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock"><p><a class="el" href="class_p_c_f85063_a.html">PCF85063A</a> class</p>
-<p><a class="el" href="class_p_c_f85063_a.html">PCF85063A</a> class driver </p>
-
-<p class="definition">Definition at line <a class="el" href="_r_t_c___n_x_p_8h_source.html#l00826">826</a> of file <a class="el" href="_r_t_c___n_x_p_8h_source.html">RTC_NXP.h</a>.</p>
+<div class="textblock">
+<p class="definition">Definition at line <a class="el" href="_r_t_c___n_x_p_8h_source.html#l00816">816</a> of file <a class="el" href="_r_t_c___n_x_p_8h_source.html">RTC_NXP.h</a>.</p>
 </div><a name="doc-enum-members" id="doc-enum-members"></a><h2 id="header-doc-enum-members" class="groupheader">Member Enumeration Documentation</h2>
 <a id="a333ae3efab81b1835fd2271c86fd05c6" name="a333ae3efab81b1835fd2271c86fd05c6"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a333ae3efab81b1835fd2271c86fd05c6">&#9670;&#160;</a></span>reg_num</h2>
@@ -244,7 +240,7 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 <p>Name of the <a class="el" href="class_p_c_f85063_a.html">PCF85063A</a> registers </p>
 
-<p class="definition">Definition at line <a class="el" href="_r_t_c___n_x_p_8h_source.html#l00847">847</a> of file <a class="el" href="_r_t_c___n_x_p_8h_source.html">RTC_NXP.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_r_t_c___n_x_p_8h_source.html#l00837">837</a> of file <a class="el" href="_r_t_c___n_x_p_8h_source.html">RTC_NXP.h</a>.</p>
 
 </div>
 </div>
@@ -266,7 +262,7 @@ Additional Inherited Members</h2></td></tr>
 <p>Create a <a class="el" href="class_p_c_f85063_a.html">PCF85063A</a> instance with specified address</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">i2c_address</td><td>I2C-bus address (default: (0xBC&gt;&gt;1)) </td></tr>
+    <tr><td class="paramname">i2c_address</td><td>I2C-bus address (default: (0xA2&gt;&gt;1)) </td></tr>
   </table>
   </dd>
 </dl>
@@ -299,7 +295,7 @@ Additional Inherited Members</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">wire</td><td>TwoWire instance </td></tr>
-    <tr><td class="paramname">i2c_address</td><td>I2C-bus address (default: (0xBC&gt;&gt;1)) </td></tr>
+    <tr><td class="paramname">i2c_address</td><td>I2C-bus address (default: (0xA2&gt;&gt;1)) </td></tr>
   </table>
   </dd>
 </dl>
@@ -454,7 +450,7 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Initializer but nothing done with this menthod in this version. Don't need to call </p>
+<p>Initializer but nothing done with this method in this version. Don't need to call </p>
 
 <p>Reimplemented from <a class="el" href="class_p_c_f85063__base.html#a9506fdf04fb7492ec6c052d4f71c27a3">PCF85063_base</a>.</p>
 
@@ -639,7 +635,6 @@ Additional Inherited Members</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>transferred data size </dd></dl>
 
 </div>
 </div>
@@ -675,7 +670,6 @@ Additional Inherited Members</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>transferred data size </dd></dl>
 
 </div>
 </div>
@@ -700,13 +694,11 @@ Additional Inherited Members</h2></td></tr>
 <p>Single register write</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">reg</td><td>register index/address/pointer </td></tr>
-    <tr><td class="paramname">data</td><td>pointer to data buffer </td></tr>
-    <tr><td class="paramname">size</td><td>data size </td></tr>
+    <tr><td class="paramname">reg_adr</td><td>register index/address/pointer </td></tr>
+    <tr><td class="paramname">data</td><td>register value </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>transferred data size </dd></dl>
 
 </div>
 </div>

@@ -168,8 +168,8 @@ public:
 	/** Destructor */
 	virtual ~PCF2131_base();
 	
-	/** Initializer 
-	 * Clears penginf interrupt
+	/** Initializer
+	 * Clears pending interrupt
 	 */
 	void begin( void );
 
@@ -203,15 +203,15 @@ public:
 	 * 
 	 * @param digit to specify which parameter to set: SECOND, MINUTE, HOUR, DAY, WEEKDAY in 'enum alarm_setting'
 	 * @param val Setting value. Set 0x80 to disabling
-	 * @param int_sel Interrupt output selector. ) for INT_A, 1 for INT_B
+	 * @param int_sel Interrupt output selector. 0 for INT_A, 1 for INT_B
 	 */
 	void alarm( alarm_setting digit, int val, int int_sel );
 
-	/** Alarm interrupt disable
+	/** Alarm clearing
 	 */
 	void alarm_clear( void );
 
-	/** Interrupt clear
+	/** Alarm interrupt disable
 	 */
 	void alarm_disable( void );
 	
@@ -219,7 +219,7 @@ public:
 	 * 
 	 * @param num timestamp number: 1~4
 	 * @param ts_setting event recording option. Choose LAST or FIRST in 'enum timestamp_setting'
-	 * @param int_sel Interrupt output selector. ) for INT_A, 1 for INT_B
+	 * @param int_sel Interrupt output selector. 0 for INT_A, 1 for INT_B
 	 */
 	void timestamp( int num, timestamp_setting ts_setting, int int_sel = 0 );
 
@@ -241,7 +241,7 @@ public:
 	/** Enabling every second/minute interrupt
 	 * 
 	 * @param sel choose DISABLE, EVERY_SECOND or EVERY_MINUTE in 'enum periodic_int_select'
-	 * @param int_sel Interrupt output selector. ) for INT_A, 1 for INT_B
+	 * @param int_sel Interrupt output selector. 0 for INT_A, 1 for INT_B
 	 */
 	void periodic_interrupt_enable( periodic_int_select sel, int int_sel = 0 );
 
@@ -295,14 +295,14 @@ class PCF2131_I2C : public PCF2131_base, public I2C_device
 public:
 	/** Create a PCF2131_I2C instance specified address
 	 *
-	 * @param i2c_address I2C-bus address (default: (0xBC>>1))
+	 * @param i2c_address I2C-bus address (default: (0xA6>>1))
 	 */
 	PCF2131_I2C( uint8_t i2c_address = (0xA6 >> 1) );
 
 	/** Create a PCF2131_I2C instance connected to specified I2C pins with specified address
 	 *
 	 * @param wire TwoWire instance
-	 * @param i2c_address I2C-bus address (default: (0xBC>>1))
+	 * @param i2c_address I2C-bus address (default: (0xA6>>1))
 	 */
 	PCF2131_I2C( TwoWire& wire, uint8_t i2c_address = (0xA6 >> 1) );
 
@@ -347,7 +347,7 @@ public:
 	time_t time( time_t* tp );
 
 	/** Initializer 
-	 * Just clears penginf interrupt
+	 * Just clears pending interrupt
 	 */
 	void begin( void );
 
@@ -381,15 +381,15 @@ public:
 	 * 
 	 * @param digit to specify which parameter to set: SECOND, MINUTE, HOUR, DAY, WEEKDAY in 'enum alarm_setting'
 	 * @param val Setting value. Set 0x80 to disabling
-	 * @param int_sel Interrupt output selector. ) for INT_A, 1 for INT_B
+	 * @param int_sel Interrupt output selector. 0 for INT_A, 1 for INT_B
 	 */
 	void alarm( alarm_setting digit, int val, int int_sel );
 
-	/** Alarm interrupt disable
+	/** Alarm clearing
 	 */
 	void alarm_clear( void );
 
-	/** Interrupt clear
+	/** Alarm interrupt disable
 	 */
 	void alarm_disable( void );
 	
@@ -397,7 +397,7 @@ public:
 	 * 
 	 * @param num timestamp number: 1~4
 	 * @param ts_setting event recording option. Choose LAST or FIRST in 'enum timestamp_setting'
-	 * @param int_sel Interrupt output selector. ) for INT_A, 1 for INT_B
+	 * @param int_sel Interrupt output selector. 0 for INT_A, 1 for INT_B
 	 */
 	void timestamp( int num, timestamp_setting ts_setting, int int_sel = 0 );
 
@@ -419,7 +419,7 @@ public:
 	/** Enabling every second/minute interrupt
 	 * 
 	 * @param sel choose DISABLE, EVERY_SECOND or EVERY_MINUTE in 'enum periodic_int_select'
-	 * @param int_sel Interrupt output selector. ) for INT_A, 1 for INT_B
+	 * @param int_sel Interrupt output selector. 0 for INT_A, 1 for INT_B
 	 */
 	void periodic_interrupt_enable( periodic_int_select sel, int int_sel = 0 );
 	
@@ -428,16 +428,13 @@ public:
 	 * @param reg register index/address/pointer
 	 * @param data pointer to data buffer
 	 * @param size data size
-	 * @return transferred data size
 	 */
 	void reg_w( uint8_t reg_adr, uint8_t *data, int size );
 
 	/** Single register write
 	 * 
-	 * @param reg register index/address/pointer
-	 * @param data pointer to data buffer
-	 * @param size data size
-	 * @return transferred data size
+	 * @param reg_adr register index/address/pointer
+	 * @param data register value
 	 */
 	void reg_w( uint8_t reg_adr, uint8_t data );
 
@@ -446,7 +443,6 @@ public:
 	 * @param reg register index/address/pointer
 	 * @param data pointer to data buffer
 	 * @param size data size
-	 * @return transferred data size
 	 */
 	void reg_r( uint8_t reg_adr, uint8_t *data, int size );
 
@@ -512,11 +508,9 @@ class SPI_for_RTC
 {
 public:
 	/** Send data
-	 * 
+	 *
 	 * @param data pointer to data buffer
 	 * @param size data size
-	 * @param stop option: generating STOP-condition after transaction. Defailt: true
-	 * @return transferred data size
 	 */
 	void txrx( uint8_t *data, int size );
 
@@ -525,16 +519,13 @@ public:
 	 * @param reg register index/address/pointer
 	 * @param data pointer to data buffer
 	 * @param size data size
-	 * @return transferred data size
 	 */
 	void reg_w( uint8_t reg_adr, uint8_t *data, int size );
 
 	/** Single register write
 	 * 
-	 * @param reg register index/address/pointer
-	 * @param data pointer to data buffer
-	 * @param size data size
-	 * @return transferred data size
+	 * @param reg_adr register index/address/pointer
+	 * @param data register value
 	 */
 	void reg_w( uint8_t reg_adr, uint8_t data );
 
@@ -543,7 +534,6 @@ public:
 	 * @param reg register index/address/pointer
 	 * @param data pointer to data buffer
 	 * @param size data size
-	 * @return transferred data size
 	 */
 	void reg_r( uint8_t reg_adr, uint8_t *data, int size );
 
@@ -633,7 +623,7 @@ public:
 	time_t time( time_t* tp );
 
 	/** Initializer 
-	 * Just clears penginf interrupt
+	 * Just clears pending interrupt
 	 */
 	void begin( void );
 
@@ -667,15 +657,15 @@ public:
 	 * 
 	 * @param digit to specify which parameter to set: SECOND, MINUTE, HOUR, DAY, WEEKDAY in 'enum alarm_setting'
 	 * @param val Setting value. Set 0x80 to disabling
-	 * @param int_sel Interrupt output selector. ) for INT_A, 1 for INT_B
+	 * @param int_sel Interrupt output selector. 0 for INT_A, 1 for INT_B
 	 */
 	void alarm( alarm_setting digit, int val, int int_sel );
 
-	/** Alarm interrupt disable
+	/** Alarm clearing
 	 */
 	void alarm_clear( void );
 
-	/** Interrupt clear
+	/** Alarm interrupt disable
 	 */
 	void alarm_disable( void );
 	
@@ -683,7 +673,7 @@ public:
 	 * 
 	 * @param num timestamp number: 1~4
 	 * @param ts_setting event recording option. Choose LAST or FIRST in 'enum timestamp_setting'
-	 * @param int_sel Interrupt output selector. ) for INT_A, 1 for INT_B
+	 * @param int_sel Interrupt output selector. 0 for INT_A, 1 for INT_B
 	 */
 	void timestamp( int num, timestamp_setting ts_setting, int int_sel = 0 );
 
@@ -705,7 +695,7 @@ public:
 	/** Enabling every second/minute interrupt
 	 * 
 	 * @param sel choose DISABLE, EVERY_SECOND or EVERY_MINUTE in 'enum periodic_int_select'
-	 * @param int_sel Interrupt output selector. ) for INT_A, 1 for INT_B
+	 * @param int_sel Interrupt output selector. 0 for INT_A, 1 for INT_B
 	 */
 	void periodic_interrupt_enable( periodic_int_select sel, int int_sel = 0 );
 	
@@ -730,11 +720,11 @@ private:
 	void _bit_op8( uint8_t reg, uint8_t mask, uint8_t val );
 };
 
-/** PCF85063A class
- *	
- *	PCF85063A class driver
+/** PCF85063_base class
  *
- *  @class PCF85063A
+ *	A base class for PCF85063A and PCF85063TP
+ *
+ *  @class PCF85063_base
  */
 
 class PCF85063_base : public RTC_NXP
@@ -756,7 +746,7 @@ public:
 	/** Destructor */
 	virtual ~PCF85063_base();
 	
-	/** Initializer but nothing done with this menthod in this version. 
+	/** Initializer but nothing done with this method in this version. 
 	 * Don't need to call
 	 */
 	void begin( void );
@@ -828,14 +818,14 @@ class PCF85063A : public PCF85063_base, public I2C_device
 public:
 	/** Create a PCF85063A instance with specified address
 	 *
-	 * @param i2c_address I2C-bus address (default: (0xBC>>1))
+	 * @param i2c_address I2C-bus address (default: (0xA2>>1))
 	 */
 	PCF85063A( uint8_t i2c_address = (0xA2 >> 1) );
 
 	/** Create a PCF85063A instance connected to specified I2C pins with specified address
 	 *
 	 * @param wire TwoWire instance
-	 * @param i2c_address I2C-bus address (default: (0xBC>>1))
+	 * @param i2c_address I2C-bus address (default: (0xA2>>1))
 	 */
 	PCF85063A( TwoWire& wire, uint8_t i2c_address = (0xA2 >> 1) );
 
@@ -862,7 +852,7 @@ public:
 	 */
 	time_t time( time_t* tp );
 
-	/** Initializer but nothing done with this menthod in this version. 
+	/** Initializer but nothing done with this method in this version. 
 	 * Don't need to call
 	 */
 	void begin( void );
@@ -911,16 +901,13 @@ public:
 	 * @param reg register index/address/pointer
 	 * @param data pointer to data buffer
 	 * @param size data size
-	 * @return transferred data size
 	 */
 	void reg_w( uint8_t reg_adr, uint8_t *data, int size );
 
 	/** Single register write
 	 * 
-	 * @param reg register index/address/pointer
-	 * @param data pointer to data buffer
-	 * @param size data size
-	 * @return transferred data size
+	 * @param reg_adr register index/address/pointer
+	 * @param data register value
 	 */
 	void reg_w( uint8_t reg_adr, uint8_t data );
 
@@ -929,7 +916,6 @@ public:
 	 * @param reg register index/address/pointer
 	 * @param data pointer to data buffer
 	 * @param size data size
-	 * @return transferred data size
 	 */
 	void reg_r( uint8_t reg_adr, uint8_t *data, int size );
 
@@ -988,14 +974,14 @@ class PCF85063TP : public PCF85063A
 public:
 	/** Create a PCF85063TP instance with specified address
 	 *
-	 * @param i2c_address I2C-bus address (default: (0xBC>>1))
+	 * @param i2c_address I2C-bus address (default: (0xA2>>1))
 	 */
 	PCF85063TP( uint8_t i2c_address = (0xA2 >> 1) );
 
 	/** Create a PCF85063TP instance connected to specified I2C pins with specified address
 	 *
 	 * @param wire TwoWire instance
-	 * @param i2c_address I2C-bus address (default: (0xBC>>1))
+	 * @param i2c_address I2C-bus address (default: (0xA2>>1))
 	 */
 	PCF85063TP( TwoWire& wire, uint8_t i2c_address = (0xA2 >> 1) );
 
@@ -1019,7 +1005,7 @@ public:
 	 */
 	time_t time( time_t* tp );
 	
-	/** Initializer but nothing done with this menthod in this version. 
+	/** Initializer but nothing done with this method in this version. 
 	 * Don't need to call
 	 */
 	void begin( void );
@@ -1041,16 +1027,13 @@ public:
 	 * @param reg register index/address/pointer
 	 * @param data pointer to data buffer
 	 * @param size data size
-	 * @return transferred data size
 	 */
 	void reg_w( uint8_t reg_adr, uint8_t *data, int size );
 
 	/** Single register write
 	 * 
-	 * @param reg register index/address/pointer
-	 * @param data pointer to data buffer
-	 * @param size data size
-	 * @return transferred data size
+	 * @param reg_adr register index/address/pointer
+	 * @param data register value
 	 */
 	void reg_w( uint8_t reg_adr, uint8_t data );
 
@@ -1059,7 +1042,6 @@ public:
 	 * @param reg register index/address/pointer
 	 * @param data pointer to data buffer
 	 * @param size data size
-	 * @return transferred data size
 	 */
 	void reg_r( uint8_t reg_adr, uint8_t *data, int size );
 
@@ -1170,22 +1152,21 @@ public:
 
 	/** Create a PCF85263A instance with specified address
 	 *
-	 * @param wire TwoWire instance
-	 * @param i2c_address I2C-bus address (default: (0xBC>>1))
+	 * @param i2c_address I2C-bus address (default: (0xA2>>1))
 	 */
 	PCF85263A( uint8_t i2c_address = (0xA2 >> 1) );
 
 	/** Create a PCF85263A instance connected to specified I2C pins with specified address
 	 *
 	 * @param wire TwoWire instance
-	 * @param i2c_address I2C-bus address (default: (0xBC>>1))
+	 * @param i2c_address I2C-bus address (default: (0xA2>>1))
 	 */
 	PCF85263A( TwoWire& wire, uint8_t i2c_address = (0xA2 >> 1) );
 
 	/** Destructor */
 	virtual ~PCF85263A();
 	
-	/** Initializer but nothing done with this menthod in this version. 
+	/** Initializer but nothing done with this method in this version. 
 	 * Don't need to call
 	 */
 	void begin( void );
@@ -1213,14 +1194,15 @@ public:
 	 * 
 	 * @param digit to specify which parameter to set: SECOND, MINUTE, HOUR, DAY, WEEKDAY in 'enum alarm_setting'
 	 * @param val Setting value. Set 0x80 to disabling
-	 * @param int_sel Interrupt output selector. ) for INT_A, 1 for INT_B
+	 * @param int_sel Interrupt output selector. 0 for INT_A, 1 for INT_B
 	 */
 	void alarm( alarm_setting digit, int val, int int_sel );
 
 	/** Alarm setting
-	 * 
-	 * @param digit to specify which parameter to set: SECOND, MINUTE, HOUR, DAY, WEEKDAY in 'enum alarm_setting'
+	 *
+	 * @param digit to specify which parameter to set in 'enum alarm_setting_85263A'
 	 * @param val Setting value. Set 0x80 to disabling
+	 * @param int_sel Interrupt output selector. 0 for INT_A, 1 for INT_B
 	 */
 	void alarm( alarm_setting_85263A digit, int val, int int_sel = 0 );
 
@@ -1243,15 +1225,16 @@ public:
 	time_t rtc_time( void );
 
 	/** Enabling every second/minute interrupt
-	 * 
+	 *
 	 * @param sel choose DISABLE, EVERY_SECOND or EVERY_MINUTE in 'enum periodic_int_select'
+	 * @param int_sel Interrupt output selector. 0 for INT_A, 1 for INT_B
 	 */
 	void periodic_interrupt_enable( periodic_int_select sel, int int_sel = 0 );
 
 	/** Pin configuration
 	 * 
-	 * @param cfg_a To choose INT_A pin congiguration: Use CLKOUT, BATTERY_MODE_INDICATION, INTTERRUPT or HIGH_Z
-	 * @param cfg_b To choose INT_A pin congiguration: Use DISABLE, INTTERRUPT, CLKOUT or INPUTMODE
+	 * @param cfg_a To choose INT_A pin configuration: Use CLKOUT, BATTERY_MODE_INDICATION, INTTERRUPT or HIGH_Z
+	 * @param cfg_b To choose INT_B pin configuration: Use DISABLE, INTTERRUPT, CLKOUT or INPUT_MODE
 	 */
 	void pin_congfig(inta cfg_a, intb cfg_b);
 	
@@ -1282,16 +1265,13 @@ public:
 	 * @param reg register index/address/pointer
 	 * @param data pointer to data buffer
 	 * @param size data size
-	 * @return transferred data size
 	 */
 	void reg_w( uint8_t reg_adr, uint8_t *data, int size );
 
 	/** Single register write
 	 * 
-	 * @param reg register index/address/pointer
-	 * @param data pointer to data buffer
-	 * @param size data size
-	 * @return transferred data size
+	 * @param reg_adr register index/address/pointer
+	 * @param data register value
 	 */
 	void reg_w( uint8_t reg_adr, uint8_t data );
 
@@ -1300,7 +1280,6 @@ public:
 	 * @param reg register index/address/pointer
 	 * @param data pointer to data buffer
 	 * @param size data size
-	 * @return transferred data size
 	 */
 	void reg_r( uint8_t reg_adr, uint8_t *data, int size );
 
@@ -1361,22 +1340,21 @@ public:
 	
 	/** Create a PCF85053A instance with specified address
 	 *
-	 * @param wire TwoWire instance
-	 * @param i2c_address I2C-bus address (default: (0xBC>>1))
+	 * @param i2c_address I2C-bus address (default: (0xDE>>1))
 	 */
 	PCF85053A( uint8_t i2c_address = (0xDE >> 1) );
 
 	/** Create a PCF85053A instance connected to specified I2C pins with specified address
 	 *
 	 * @param wire TwoWire instance
-	 * @param i2c_address I2C-bus address (default: (0xBC>>1))
+	 * @param i2c_address I2C-bus address (default: (0xDE>>1))
 	 */
 	PCF85053A( TwoWire& wire, uint8_t i2c_address = (0xDE >> 1) );
 
 	/** Destructor */
 	virtual ~PCF85053A();
 	
-	/** Initializer but nothing done with this menthod in this version. 
+	/** Initializer but nothing done with this method in this version. 
 	 * Don't need to call
 	 */
 	void begin( void );
@@ -1395,7 +1373,7 @@ public:
 	
 	/** Alarm setting
 	 * 
-	 * @param digit to specify which parameter to set: SECOND, MINUTE, HOUR in 'enum alarm_setting_85053A'
+	 * @param digit to specify which parameter to set: SECOND, MINUTE, HOUR in 'enum alarm_setting'
 	 * @param val Setting value. Set 0x80 to disabling
 	 */
 	void alarm( alarm_setting digit, int val );
@@ -1433,16 +1411,13 @@ public:
 	 * @param reg register index/address/pointer
 	 * @param data pointer to data buffer
 	 * @param size data size
-	 * @return transferred data size
 	 */
 	void reg_w( uint8_t reg_adr, uint8_t *data, int size );
 
 	/** Single register write
 	 * 
-	 * @param reg register index/address/pointer
-	 * @param data pointer to data buffer
-	 * @param size data size
-	 * @return transferred data size
+	 * @param reg_adr register index/address/pointer
+	 * @param data register value
 	 */
 	void reg_w( uint8_t reg_adr, uint8_t data );
 
@@ -1451,7 +1426,6 @@ public:
 	 * @param reg register index/address/pointer
 	 * @param data pointer to data buffer
 	 * @param size data size
-	 * @return transferred data size
 	 */
 	void reg_r( uint8_t reg_adr, uint8_t *data, int size );
 
@@ -1502,7 +1476,7 @@ public:
 	/** Destructor */
 	virtual ~ForFutureExtention();
 	
-	/** Initializer but nothing done with this menthod in this version. 
+	/** Initializer but nothing done with this method in this version. 
 	 * Don't need to call
 	 */
 	void begin( void );
@@ -1553,16 +1527,13 @@ public:
 	 * @param reg register index/address/pointer
 	 * @param data pointer to data buffer
 	 * @param size data size
-	 * @return transferred data size
 	 */
 	void reg_w( uint8_t reg_adr, uint8_t *data, int size );
 
 	/** Single register write
 	 * 
-	 * @param reg register index/address/pointer
-	 * @param data pointer to data buffer
-	 * @param size data size
-	 * @return transferred data size
+	 * @param reg_adr register index/address/pointer
+	 * @param data register value
 	 */
 	void reg_w( uint8_t reg_adr, uint8_t data );
 
@@ -1571,7 +1542,6 @@ public:
 	 * @param reg register index/address/pointer
 	 * @param data pointer to data buffer
 	 * @param size data size
-	 * @return transferred data size
 	 */
 	void reg_r( uint8_t reg_adr, uint8_t *data, int size );
 

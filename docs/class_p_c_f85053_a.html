@@ -206,7 +206,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_r_t_c___n_x_p_8h_source.html#l01344">1344</a> of file <a class="el" href="_r_t_c___n_x_p_8h_source.html">RTC_NXP.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_r_t_c___n_x_p_8h_source.html#l01323">1323</a> of file <a class="el" href="_r_t_c___n_x_p_8h_source.html">RTC_NXP.h</a>.</p>
 </div><a name="doc-enum-members" id="doc-enum-members"></a><h2 id="header-doc-enum-members" class="groupheader">Member Enumeration Documentation</h2>
 <a id="ab7f4ad9c87ac514866160f256eb7af1e" name="ab7f4ad9c87ac514866160f256eb7af1e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab7f4ad9c87ac514866160f256eb7af1e">&#9670;&#160;</a></span>reg_num</h2>
@@ -221,7 +221,7 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 <p>Name of the <a class="el" href="class_p_c_f85053_a.html">PCF85053A</a> registers </p>
 
-<p class="definition">Definition at line <a class="el" href="_r_t_c___n_x_p_8h_source.html#l01348">1348</a> of file <a class="el" href="_r_t_c___n_x_p_8h_source.html">RTC_NXP.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_r_t_c___n_x_p_8h_source.html#l01327">1327</a> of file <a class="el" href="_r_t_c___n_x_p_8h_source.html">RTC_NXP.h</a>.</p>
 
 </div>
 </div>
@@ -243,8 +243,7 @@ Additional Inherited Members</h2></td></tr>
 <p>Create a <a class="el" href="class_p_c_f85053_a.html">PCF85053A</a> instance with specified address</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">wire</td><td>TwoWire instance </td></tr>
-    <tr><td class="paramname">i2c_address</td><td>I2C-bus address (default: (0xBC&gt;&gt;1)) </td></tr>
+    <tr><td class="paramname">i2c_address</td><td>I2C-bus address (default: (0xDE&gt;&gt;1)) </td></tr>
   </table>
   </dd>
 </dl>
@@ -275,7 +274,7 @@ Additional Inherited Members</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">wire</td><td>TwoWire instance </td></tr>
-    <tr><td class="paramname">i2c_address</td><td>I2C-bus address (default: (0xBC&gt;&gt;1)) </td></tr>
+    <tr><td class="paramname">i2c_address</td><td>I2C-bus address (default: (0xDE&gt;&gt;1)) </td></tr>
   </table>
   </dd>
 </dl>
@@ -342,7 +341,7 @@ Additional Inherited Members</h2></td></tr>
 <p>Alarm setting</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">digit</td><td>to specify which parameter to set: SECOND, MINUTE, HOUR in 'enum alarm_setting_85053A' </td></tr>
+    <tr><td class="paramname">digit</td><td>to specify which parameter to set: SECOND, MINUTE, HOUR in 'enum <a class="el" href="class_r_t_c___n_x_p.html#aa11396067a7c0e240e169d4862539866">alarm_setting</a>' </td></tr>
     <tr><td class="paramname">val</td><td>Setting value. Set 0x80 to disabling </td></tr>
   </table>
   </dd>
@@ -436,7 +435,7 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Initializer but nothing done with this menthod in this version. Don't need to call </p>
+<p>Initializer but nothing done with this method in this version. Don't need to call </p>
 
 <p>Implements <a class="el" href="class_r_t_c___n_x_p.html#a0ecd5bc4bc1fad16abb6c6b682c2480f">RTC_NXP</a>.</p>
 
@@ -625,7 +624,6 @@ Additional Inherited Members</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>transferred data size </dd></dl>
 
 <p class="reference">Referenced by <a class="el" href="_p_c_f85053_a_8cpp_source.html#l00056">int_clear()</a>, <a class="el" href="_p_c_f85053_a_8cpp_source.html#l00032">oscillator_stop()</a>, and <a class="el" href="_p_c_f85053_a_8cpp_source.html#l00064">rtc_time()</a>.</p>
 
@@ -663,7 +661,6 @@ Additional Inherited Members</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>transferred data size </dd></dl>
 
 <p class="reference">Referenced by <a class="el" href="_p_c_f85053_a_8cpp_source.html#l00038">alarm()</a>, <a class="el" href="_p_c_f85053_a_8cpp_source.html#l00044">alarm_clear()</a>, <a class="el" href="_p_c_f85053_a_8cpp_source.html#l00056">int_clear()</a>, and <a class="el" href="_p_c_f85053_a_8cpp_source.html#l00009">set()</a>.</p>
 
@@ -690,13 +687,11 @@ Additional Inherited Members</h2></td></tr>
 <p>Single register write</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">reg</td><td>register index/address/pointer </td></tr>
-    <tr><td class="paramname">data</td><td>pointer to data buffer </td></tr>
-    <tr><td class="paramname">size</td><td>data size </td></tr>
+    <tr><td class="paramname">reg_adr</td><td>register index/address/pointer </td></tr>
+    <tr><td class="paramname">data</td><td>register value </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>transferred data size </dd></dl>
 
 </div>
 </div>

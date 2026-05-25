@@ -132,7 +132,7 @@ Public Member Functions</h2></td></tr>
 <div class="textblock"><p><a class="el" href="class_s_p_i__for___r_t_c.html">SPI_for_RTC</a> class</p>
 <p>SPI interface operation for RTC devices </p>
 
-<p class="definition">Definition at line <a class="el" href="_r_t_c___n_x_p_8h_source.html#l00511">511</a> of file <a class="el" href="_r_t_c___n_x_p_8h_source.html">RTC_NXP.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_r_t_c___n_x_p_8h_source.html#l00507">507</a> of file <a class="el" href="_r_t_c___n_x_p_8h_source.html">RTC_NXP.h</a>.</p>
 </div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
 <a id="a806bd01c01359650e2d045e74fd5d3c2" name="a806bd01c01359650e2d045e74fd5d3c2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a806bd01c01359650e2d045e74fd5d3c2">&#9670;&#160;</a></span>bit_op8()</h2>
@@ -258,7 +258,6 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>transferred data size </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="_s_p_i__for___r_t_c_8cpp_source.html#l00027">27</a> of file <a class="el" href="_s_p_i__for___r_t_c_8cpp_source.html">SPI_for_RTC.cpp</a>.</p>
 
@@ -298,7 +297,6 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>transferred data size </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="_s_p_i__for___r_t_c_8cpp_source.html#l00010">10</a> of file <a class="el" href="_s_p_i__for___r_t_c_8cpp_source.html">SPI_for_RTC.cpp</a>.</p>
 
@@ -327,13 +325,11 @@ Public Member Functions</h2></td></tr>
 <p>Single register write</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">reg</td><td>register index/address/pointer </td></tr>
-    <tr><td class="paramname">data</td><td>pointer to data buffer </td></tr>
-    <tr><td class="paramname">size</td><td>data size </td></tr>
+    <tr><td class="paramname">reg_adr</td><td>register index/address/pointer </td></tr>
+    <tr><td class="paramname">data</td><td>register value </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>transferred data size </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="_s_p_i__for___r_t_c_8cpp_source.html#l00020">20</a> of file <a class="el" href="_s_p_i__for___r_t_c_8cpp_source.html">SPI_for_RTC.cpp</a>.</p>
 
@@ -362,11 +358,9 @@ Public Member Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">data</td><td>pointer to data buffer </td></tr>
     <tr><td class="paramname">size</td><td>data size </td></tr>
-    <tr><td class="paramname">stop</td><td>option: generating STOP-condition after transaction. Defailt: true </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>transferred data size </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="_s_p_i__for___r_t_c_8cpp_source.html#l00003">3</a> of file <a class="el" href="_s_p_i__for___r_t_c_8cpp_source.html">SPI_for_RTC.cpp</a>.</p>
 

@@ -630,7 +630,7 @@ Additional Inherited Members</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">digit</td><td>to specify which parameter to set: SECOND, MINUTE, HOUR, DAY, WEEKDAY in 'enum <a class="el" href="class_r_t_c___n_x_p.html#aa11396067a7c0e240e169d4862539866">alarm_setting</a>' </td></tr>
     <tr><td class="paramname">val</td><td>Setting value. Set 0x80 to disabling </td></tr>
-    <tr><td class="paramname">int_sel</td><td>Interrupt output selector. ) for INT_A, 1 for INT_B </td></tr>
+    <tr><td class="paramname">int_sel</td><td>Interrupt output selector. 0 for INT_A, 1 for INT_B </td></tr>
   </table>
   </dd>
 </dl>
@@ -661,7 +661,7 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Alarm interrupt disable </p>
+<p>Alarm clearing </p>
 
 <p>Implements <a class="el" href="class_r_t_c___n_x_p.html#ae57ace46169081c925f4dc56b02b1dc2">RTC_NXP</a>.</p>
 
@@ -693,7 +693,7 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Interrupt clear </p>
+<p>Alarm interrupt disable </p>
 
 <p>Implements <a class="el" href="class_r_t_c___n_x_p.html#a4e99b9bc5317ea17e46cb15d600f3ff5">RTC_NXP</a>.</p>
 
@@ -725,7 +725,7 @@ Additional Inherited Members</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Initializer Clears penginf interrupt </p>
+<p>Initializer Clears pending interrupt </p>
 
 <p>Implements <a class="el" href="class_r_t_c___n_x_p.html#a0ecd5bc4bc1fad16abb6c6b682c2480f">RTC_NXP</a>.</p>
 
@@ -864,7 +864,7 @@ Additional Inherited Members</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">sel</td><td>choose DISABLE, EVERY_SECOND or EVERY_MINUTE in 'enum <a class="el" href="#a32856d5cf716d3b5f2b466c6de4849bf">periodic_int_select</a>' </td></tr>
-    <tr><td class="paramname">int_sel</td><td>Interrupt output selector. ) for INT_A, 1 for INT_B </td></tr>
+    <tr><td class="paramname">int_sel</td><td>Interrupt output selector. 0 for INT_A, 1 for INT_B </td></tr>
   </table>
   </dd>
 </dl>
@@ -1045,7 +1045,7 @@ Additional Inherited Members</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">num</td><td>timestamp number: 1~4 </td></tr>
     <tr><td class="paramname">ts_setting</td><td>event recording option. Choose LAST or FIRST in 'enum <a class="el" href="#a0285f08aba6bfa062f41f2f436c4aa8f">timestamp_setting</a>' </td></tr>
-    <tr><td class="paramname">int_sel</td><td>Interrupt output selector. ) for INT_A, 1 for INT_B </td></tr>
+    <tr><td class="paramname">int_sel</td><td>Interrupt output selector. 0 for INT_A, 1 for INT_B </td></tr>
   </table>
   </dd>
 </dl>
