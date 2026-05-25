@@ -29,6 +29,7 @@ void setup() {
 
   if (rtc.oscillator_stop()) {
     Serial.println("==== oscillator_stop detected :( ====");
+    rtc.reg_w(PCF2131_SPI::Control_3, 0x00);  //  Battery switch-over function is enabled in standard mode and battery low detection function is enabled
     set_time();
   } else {
     Serial.println("---- RTC has beeing kept running! :) ----");
@@ -42,7 +43,7 @@ void loop() {
   Serial.print("time : ");
   Serial.print(current_time);
   Serial.print(", ");
-  Serial.println(ctime(&current_time));
+  Serial.print(ctime(&current_time));
 
   delay(1000);
 }
