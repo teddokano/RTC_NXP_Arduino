@@ -65,7 +65,7 @@ uint8_t PCF85063_base::int_clear( void )
 	return v;
 }
 
-float PCF85063_base::timer( float period )
+float PCF85063_base::timer( float period, bool pulse )
 {
 	float	sf[] = { 1 / 4096.0, 1 / 64.0, 1.0, 60 };
 	int		tcf;
@@ -90,9 +90,16 @@ float PCF85063_base::timer( float period )
 	Serial.print( v * sf[tcf], 10 );
 	Serial.println( "" );
 #endif
+
+#define	TE		0x04	//	timer enable
+#define	TIE		0x02	//	timer interrupt enable
+#define	TI_TP	0x01	//	timer interrupt mode 0=flag/1=pulse
+	
+	
+	uint8_t modes = TE | TIE | (pulse ? TI_TP : 0);
 	
 	_reg_w( Timer_value, v );
-	_reg_w( Timer_mode, tcf << 3 | 0x06 );
+	_reg_w( Timer_mode, tcf << 3 | modes );
 	
 	return v * sf[tcf];
 }
