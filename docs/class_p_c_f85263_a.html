@@ -27,7 +27,7 @@ mermaid.initialize({ startOnLoad: true, theme: theme });
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">RTC_NXP_Arduino<span id="projectnumber">&#160;1.1.4</span>
+   <div id="projectname">RTC_NXP_Arduino<span id="projectnumber">&#160;1.2.0</span>
    </div>
    <div id="projectbrief">RTC driver device operation sample code for Arduino</div>
   </td>
@@ -230,11 +230,11 @@ Public Types</h2></td></tr>
  }</td></tr>
 <tr class="memitem:a8cd044df48a2001ac2514e5a2dd8dad6" id="r_a8cd044df48a2001ac2514e5a2dd8dad6"><td class="memItemLeft">enum &#160;</td><td class="memItemRight"><a class="el" href="#a8cd044df48a2001ac2514e5a2dd8dad6">inta</a> { <b>INTA_CLKOUT</b>
 , <b>INTA_BATTERY_MODE_INDICATION</b>
-, <b>INTA_INTTERRUPT</b>
+, <b>INTA_INTERRUPT</b>
 , <b>INTA_HIGH_Z</b>
  }</td></tr>
 <tr class="memitem:a1816caad9f3a66240bd899c2a2d6d2ae" id="r_a1816caad9f3a66240bd899c2a2d6d2ae"><td class="memItemLeft">enum &#160;</td><td class="memItemRight"><a class="el" href="#a1816caad9f3a66240bd899c2a2d6d2ae">intb</a> { <b>INTB_DISABLE</b>
-, <b>INTB_INTTERRUPT</b>
+, <b>INTB_INTERRUPT</b>
 , <b>INTB_CLKOUT</b>
 , <b>INTB_INPUT_MODE</b>
  }</td></tr>
@@ -278,8 +278,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a33e66e2dc3995f1f1d70d90db9432e20" id="r_a33e66e2dc3995f1f1d70d90db9432e20"><td class="memItemLeft">uint8_t&#160;</td><td class="memItemRight"><a class="el" href="#a33e66e2dc3995f1f1d70d90db9432e20">int_clear</a> (void)</td></tr>
 <tr class="memitem:aeb95373e246e282bbc7ca98b15fbe7ea" id="r_aeb95373e246e282bbc7ca98b15fbe7ea"><td class="memItemLeft">time_t&#160;</td><td class="memItemRight"><a class="el" href="#aeb95373e246e282bbc7ca98b15fbe7ea">rtc_time</a> (void)</td></tr>
 <tr class="memitem:a3316e2fa3c299e0895bd57b1c14178a1" id="r_a3316e2fa3c299e0895bd57b1c14178a1"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a3316e2fa3c299e0895bd57b1c14178a1">periodic_interrupt_enable</a> (<a class="el" href="#ada70b814df16b266ea08c9cb30804396">periodic_int_select</a> sel, int int_sel=0)</td></tr>
-<tr class="memitem:a0639de735886ca92b24cd8b000344ef5" id="r_a0639de735886ca92b24cd8b000344ef5"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a0639de735886ca92b24cd8b000344ef5">pin_congfig</a> (<a class="el" href="#a8cd044df48a2001ac2514e5a2dd8dad6">inta</a> cfg_a, <a class="el" href="#a1816caad9f3a66240bd899c2a2d6d2ae">intb</a> cfg_b)</td></tr>
-<tr class="memitem:a13f1e1e5b55f4e8106c61c818604045f" id="r_a13f1e1e5b55f4e8106c61c818604045f"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a13f1e1e5b55f4e8106c61c818604045f">ts_congfig</a> (int setting)</td></tr>
+<tr class="memitem:ad40882d708a5cbb684be39833e398227" id="r_ad40882d708a5cbb684be39833e398227"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#ad40882d708a5cbb684be39833e398227">pin_config</a> (<a class="el" href="#a8cd044df48a2001ac2514e5a2dd8dad6">inta</a> cfg_a, <a class="el" href="#a1816caad9f3a66240bd899c2a2d6d2ae">intb</a> cfg_b)</td></tr>
+<tr class="memitem:a762af5877219fe11b323f035101058d6" id="r_a762af5877219fe11b323f035101058d6"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a762af5877219fe11b323f035101058d6">ts_config</a> (int setting)</td></tr>
 <tr class="memitem:a64007834aedbd9a052f176339ff53b2c" id="r_a64007834aedbd9a052f176339ff53b2c"><td class="memItemLeft">time_t&#160;</td><td class="memItemRight"><a class="el" href="#a64007834aedbd9a052f176339ff53b2c">timestamp</a> (int num)</td></tr>
 <tr class="memitem:afd975b90b8712da5300ed9b3a7075845" id="r_afd975b90b8712da5300ed9b3a7075845"><td class="memItemLeft">time_t&#160;</td><td class="memItemRight"><a class="el" href="#afd975b90b8712da5300ed9b3a7075845">time</a> (time_t *tp)</td></tr>
 <tr class="memitem:ad899c2d5abeb65cf5dda80b1538fde9a" id="r_ad899c2d5abeb65cf5dda80b1538fde9a"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#ad899c2d5abeb65cf5dda80b1538fde9a">reg_w</a> (uint8_t reg_adr, uint8_t *data, int size)</td></tr>
@@ -734,7 +734,7 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 
-<p class="reference">Referenced by <a class="el" href="_p_c_f85263_a_8cpp_source.html#l00088">alarm_disable()</a>, <a class="el" href="_p_c_f85263_a_8cpp_source.html#l00120">periodic_interrupt_enable()</a>, <a class="el" href="_p_c_f85263_a_8cpp_source.html#l00128">pin_congfig()</a>, and <a class="el" href="_p_c_f85263_a_8cpp_source.html#l00133">ts_congfig()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="_p_c_f85263_a_8cpp_source.html#l00088">alarm_disable()</a>, <a class="el" href="_p_c_f85263_a_8cpp_source.html#l00120">periodic_interrupt_enable()</a>, <a class="el" href="_p_c_f85263_a_8cpp_source.html#l00128">pin_config()</a>, and <a class="el" href="_p_c_f85263_a_8cpp_source.html#l00133">ts_config()</a>.</p>
 
 </div>
 </div>
@@ -830,14 +830,14 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="a0639de735886ca92b24cd8b000344ef5" name="a0639de735886ca92b24cd8b000344ef5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0639de735886ca92b24cd8b000344ef5">&#9670;&#160;</a></span>pin_congfig()</h2>
+<a id="ad40882d708a5cbb684be39833e398227" name="ad40882d708a5cbb684be39833e398227"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad40882d708a5cbb684be39833e398227">&#9670;&#160;</a></span>pin_config()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void PCF85263A::pin_congfig </td>
+          <td class="memname">void PCF85263A::pin_config </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="#a8cd044df48a2001ac2514e5a2dd8dad6">inta</a></td>          <td class="paramname"><span class="paramname"><em>cfg_a</em></span>, </td>
         </tr>
@@ -851,8 +851,8 @@ Additional Inherited Members</h2></td></tr>
 <p>Pin configuration</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">cfg_a</td><td>To choose INT_A pin configuration: Use CLKOUT, BATTERY_MODE_INDICATION, INTTERRUPT or HIGH_Z </td></tr>
-    <tr><td class="paramname">cfg_b</td><td>To choose INT_B pin configuration: Use DISABLE, INTTERRUPT, CLKOUT or INPUT_MODE </td></tr>
+    <tr><td class="paramname">cfg_a</td><td>To choose INT_A pin configuration: Use CLKOUT, BATTERY_MODE_INDICATION, INTERRUPT or HIGH_Z </td></tr>
+    <tr><td class="paramname">cfg_b</td><td>To choose INT_B pin configuration: Use DISABLE, INTERRUPT, CLKOUT or INPUT_MODE </td></tr>
   </table>
   </dd>
 </dl>
@@ -1133,14 +1133,14 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="a13f1e1e5b55f4e8106c61c818604045f" name="a13f1e1e5b55f4e8106c61c818604045f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a13f1e1e5b55f4e8106c61c818604045f">&#9670;&#160;</a></span>ts_congfig()</h2>
+<a id="a762af5877219fe11b323f035101058d6" name="a762af5877219fe11b323f035101058d6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a762af5877219fe11b323f035101058d6">&#9670;&#160;</a></span>ts_config()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void PCF85263A::ts_congfig </td>
+          <td class="memname">void PCF85263A::ts_config </td>
           <td>(</td>
           <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>setting</em></span></td><td>)</td>
           <td></td>

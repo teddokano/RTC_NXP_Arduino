@@ -44,10 +44,10 @@ void setup() {
     Serial.println("==== oscillator_stop detected :( ====");
     set_time();
   } else {
-    Serial.println("---- RTC has beeing kept running! :) ----");
+    Serial.println("---- RTC has been kept running! :) ----");
   }
 
-  rtc.pin_congfig(PCF85263A::INTA_INTTERRUPT, PCF85263A::INTB_INTTERRUPT);
+  rtc.pin_config(PCF85263A::INTA_INTERRUPT, PCF85263A::INTB_INTERRUPT);
 
   rtc.int_clear();
   pinMode(intPin0, INPUT_PULLUP);

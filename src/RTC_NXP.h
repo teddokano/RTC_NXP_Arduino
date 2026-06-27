@@ -1186,14 +1186,14 @@ public:
 	enum inta {
 		INTA_CLKOUT,
 		INTA_BATTERY_MODE_INDICATION,
-		INTA_INTTERRUPT,
+		INTA_INTERRUPT,
 		INTA_HIGH_Z,
 	};
 
 	/** INT_B pin setting descriptor */
 	enum intb {
 		INTB_DISABLE,
-		INTB_INTTERRUPT,
+		INTB_INTERRUPT,
 		INTB_CLKOUT,
 		INTB_INPUT_MODE,
 	};
@@ -1291,16 +1291,16 @@ public:
 
 	/** Pin configuration
 	 * 
-	 * @param cfg_a To choose INT_A pin configuration: Use CLKOUT, BATTERY_MODE_INDICATION, INTTERRUPT or HIGH_Z
-	 * @param cfg_b To choose INT_B pin configuration: Use DISABLE, INTTERRUPT, CLKOUT or INPUT_MODE
+	 * @param cfg_a To choose INT_A pin configuration: Use CLKOUT, BATTERY_MODE_INDICATION, INTERRUPT or HIGH_Z
+	 * @param cfg_b To choose INT_B pin configuration: Use DISABLE, INTERRUPT, CLKOUT or INPUT_MODE
 	 */
-	void pin_congfig(inta cfg_a, intb cfg_b);
+	void pin_config(inta cfg_a, intb cfg_b);
 	
 	/** Timestamp pin configuration
 	 * 
 	 * @param setting To choose options: Compose value by ORing next constants: TS_PULLUP_80K, TS_PULLUP_40K, TSL_ACTIVE_HIGH, TSL_ACTIVE_LOW, TSIM_CMOS and TSIM_MECHANICAL
 	 */
-	void ts_congfig(int setting);
+	void ts_config(int setting);
 	
 	/** Timestamp register read
 	 * 

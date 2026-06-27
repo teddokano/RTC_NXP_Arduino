@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['dec2bcd_0',['dec2bcd',['../class_r_t_c___n_x_p.html#aca19044b8b7d4a8837d0e7e1f856cac9',1,'RTC_NXP']]],
-  ['devices_1',['Supported devices',['../md__r_e_a_d_m_e.html#autotoc_md2',1,'']]],
-  ['document_2',['Document',['../md__r_e_a_d_m_e.html#autotoc_md10',1,'']]]
+  ['_5fbit_5fop8_0',['_bit_op8',['../class_p_c_f2131__base.html#ae9e51679895d446e82f4fbcdbbb0dcc4',1,'PCF2131_base::_bit_op8()'],['../class_p_c_f85063__base.html#a3752e399d7a459a0e2a8e794fc747644',1,'PCF85063_base::_bit_op8()']]],
+  ['_5freg_5fr_1',['_reg_r',['../class_p_c_f2131__base.html#ae39854329d0c4427934c3b438c721436',1,'PCF2131_base::_reg_r(uint8_t reg, uint8_t *vp, int len)=0'],['../class_p_c_f2131__base.html#a1d6fba0462f241672ec0f5bfe0068c62',1,'PCF2131_base::_reg_r(uint8_t reg)=0'],['../class_p_c_f85063__base.html#aba6a9bca2ec39dd42c3157b4fb8d867a',1,'PCF85063_base::_reg_r(uint8_t reg, uint8_t *vp, int len)=0'],['../class_p_c_f85063__base.html#aabd414e9717c282f6a7908f12d2d9477',1,'PCF85063_base::_reg_r(uint8_t reg)=0']]],
+  ['_5freg_5fw_2',['_reg_w',['../class_p_c_f2131__base.html#afce61cf57d430348bdaf2292a37b4e43',1,'PCF2131_base::_reg_w(uint8_t reg, uint8_t *vp, int len)=0'],['../class_p_c_f2131__base.html#aed9f739001bb8d007c18da2db845b7e0',1,'PCF2131_base::_reg_w(uint8_t reg, uint8_t val)=0'],['../class_p_c_f85063__base.html#a906bbb548df5e8aa188de0262340d644',1,'PCF85063_base::_reg_w(uint8_t reg, uint8_t *vp, int len)=0'],['../class_p_c_f85063__base.html#a6649795f67cdbe4f9f7555c92e38517c',1,'PCF85063_base::_reg_w(uint8_t reg, uint8_t val)=0']]]
 ];

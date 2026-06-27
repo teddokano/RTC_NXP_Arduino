@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['libraries_0',['Related libraries',['../md__r_e_a_d_m_e.html#autotoc_md12',1,'']]],
-  ['list_20of_20sample_20code_1',['List of sample code',['../md__r_e_a_d_m_e.html#autotoc_md8',1,'']]]
+  ['changelog_0',['Changelog',['../md__c_h_a_n_g_e_l_o_g.html',1,'']]],
+  ['changes_20breaking_1',['API changes (breaking)',['../md__c_h_a_n_g_e_l_o_g.html#autotoc_md3',1,'']]],
+  ['code_2',['List of sample code',['../md__r_e_a_d_m_e.html#autotoc_md20',1,'']]],
+  ['code_20sample_3',['Code sample',['../md__r_e_a_d_m_e.html#autotoc_md15',1,'']]]
 ];

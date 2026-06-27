@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['libraries_0',['Related libraries',['../md__r_e_a_d_m_e.html#autotoc_md12',1,'']]],
-  ['list_20of_20sample_20code_1',['List of sample code',['../md__r_e_a_d_m_e.html#autotoc_md8',1,'']]]
+  ['features_0',['New features',['../md__c_h_a_n_g_e_l_o_g.html#autotoc_md2',1,'']]],
+  ['forfutureextention_1',['ForFutureExtention',['../class_for_future_extention.html',1,'ForFutureExtention'],['../class_for_future_extention.html#a46c348944109569d7834b03b41cb74a5',1,'ForFutureExtention::ForFutureExtention()']]]
 ];
