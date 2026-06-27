@@ -844,7 +844,7 @@ public:
 	 * @param period timer interval in second
 	 * @return actual timer set value in second
 	 */
-	float timer( float period );
+	float timer( float period, bool pulse = false );
 
 protected:
 	/** rtc_time
