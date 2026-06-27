@@ -25,16 +25,16 @@ void setup() {
   SPI.begin();
   pinMode(SS, OUTPUT);  //  Required for UNO R4
 
-  Serial.println("\n***** Hello, PCF2131! (I2C interface) *****");
+  Serial.println("\n***** Hello, PCF2131! (SPI interface) *****");
 
   delay(2000);  //  2 seconds wait for oscillator stabilization (just in case for if the PCF2131 is cold start)
 
   if (rtc.oscillator_stop()) {
     Serial.println("==== oscillator_stop detected :( ====");
-    rtc.bit_op8(PCF2131_I2C::Control_3, 0x1F, 0x00);  //  Battery switch-over function is enabled in standard mode and battery low detection function is enabled
+    rtc.bit_op8(PCF2131_SPI::Control_3, 0x1F, 0x00);  //  Battery switch-over function is enabled in standard mode and battery low detection function is enabled
     set_time();
   } else {
-    Serial.println("---- RTC has beeing kept running! :) ----");
+    Serial.println("---- RTC has been kept running! :) ----");
   }
 }
 

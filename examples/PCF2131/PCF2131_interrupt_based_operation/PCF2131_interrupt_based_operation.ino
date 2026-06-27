@@ -27,7 +27,7 @@
 void set_time(void);
 void int_cause_monitor(uint8_t* status);
 
-//#define INTERFACE_I2C
+#define INTERFACE_I2C
 
 #ifdef INTERFACE_I2C
 #pragma message : == == == == == COMPILING FOR PCF2131 with I2C INTERFACE == == == == ==
@@ -37,7 +37,7 @@ PCF2131_I2C rtc;
 PCF2131_SPI rtc;
 #endif
 
-#pragma message : TO RUN THIS SKETCH ON ARDUINO UNO R3P AND PCF2131 - ARD BOARDS, PIN8 and PIN9 MUST BE SHORTED TO PIN2 and PIN3(RESPECTIVELY) TO HANDLE INTERRUPT CORRECTLY
+#pragma message : TO RUN THIS SKETCH ON ARDUINO UNO R3 AND PCF2131 - ARD BOARDS, PIN8 and PIN9 MUST BE SHORTED TO PIN2 and PIN3(RESPECTIVELY) TO HANDLE INTERRUPT CORRECTLY
 
 const uint8_t intPin0 = 2;
 const uint8_t intPin1 = 3;
@@ -73,10 +73,10 @@ void setup() {
 
   if (rtc.oscillator_stop()) {
     Serial.println("==== oscillator_stop detected :( ====");
-    rtc.bit_op8(PCF2131_I2C::Control_3, 0x1F, 0x00);  //  Battery switch-over function is enabled in standard mode and battery low detection function is enabled
+    rtc.bit_op8(PCF2131_base::Control_3, 0x1F, 0x00);  //  Battery switch-over function is enabled in standard mode and battery low detection function is enabled
     set_time();
   } else {
-    Serial.println("---- RTC has beeing kept running! :) ----");
+    Serial.println("---- RTC has been kept running! :) ----");
   }
 
   rtc.int_clear();

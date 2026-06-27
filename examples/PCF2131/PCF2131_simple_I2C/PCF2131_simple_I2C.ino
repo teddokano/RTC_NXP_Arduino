@@ -34,7 +34,7 @@ void setup() {
     rtc.bit_op8(PCF2131_I2C::Control_3, 0x1F, 0x00);  //  Battery switch-over function is enabled in standard mode and battery low detection function is enabled
     set_time();
   } else {
-    Serial.println("---- RTC has beeing kept running! :) ----");
+    Serial.println("---- RTC has been kept running! :) ----");
   }
 }
 
