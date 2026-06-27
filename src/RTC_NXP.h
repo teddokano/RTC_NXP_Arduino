@@ -840,8 +840,9 @@ public:
 
 	
 	/** Timer setting
-	 * 
+	 *
 	 * @param period timer interval in second
+	 * @param pulse if true, interrupt output is a pulse; if false (default), interrupt flag is set
 	 * @return actual timer set value in second
 	 */
 	float timer( float period, bool pulse = false );
@@ -946,14 +947,15 @@ public:
 
 	
 	/** Timer setting
-	 * 
+	 *
 	 * @param period timer interval in second
+	 * @param pulse if true, interrupt output is a pulse; if false (default), interrupt flag is set
 	 * @return actual timer set value in second
 	 */
-	float timer( float period );
-	
+	float timer( float period, bool pulse = false );
+
 	/** Multiple register write
-	 * 
+	 *
 	 * @param reg register index/address/pointer
 	 * @param data pointer to data buffer
 	 * @param size data size
@@ -961,14 +963,14 @@ public:
 	void reg_w( uint8_t reg_adr, uint8_t *data, int size );
 
 	/** Single register write
-	 * 
+	 *
 	 * @param reg_adr register index/address/pointer
 	 * @param data register value
 	 */
 	void reg_w( uint8_t reg_adr, uint8_t data );
 
 	/** Multiple register read
-	 * 
+	 *
 	 * @param reg register index/address/pointer
 	 * @param data pointer to data buffer
 	 * @param size data size
@@ -976,7 +978,7 @@ public:
 	void reg_r( uint8_t reg_adr, uint8_t *data, int size );
 
 	/** Single register read
-	 * 
+	 *
 	 * @param reg register index/address/pointer
 	 * @return read data
 	 */
@@ -997,7 +999,7 @@ public:
 	uint8_t read_r8( uint8_t reg );
 
 	/** Register overwriting with bit-mask
-	 *	
+	 *
 	 *	Register can be updated by bit level
 	 *
 	 * @param reg register index/address/pointer
