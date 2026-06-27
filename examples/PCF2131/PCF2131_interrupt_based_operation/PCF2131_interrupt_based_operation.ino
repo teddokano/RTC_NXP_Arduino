@@ -3,7 +3,7 @@
  *  Demonstrates PCF2131 using 2 interrupt lines
  *
  *  *** IMPORTANT 0 ***
- *  *** TO RUN THIS SKETCH ON ARDUINO UNO R3P AND PCF2131-ARD BOARDS, PIN8 and PIN9 MUST BE SHORTED TO PIN2 and PIN3 (RESPECTIVELY) TO HANDLE INTERRUPT CORRECTLY
+ *  *** TO RUN THIS SKETCH ON ARDUINO UNO R3 AND PCF2131-ARD BOARDS, PIN8 and PIN9 MUST BE SHORTED TO PIN2 and PIN3 (RESPECTIVELY) TO HANDLE INTERRUPT CORRECTLY
  *
  *  *** IMPORTANT 1 ***
  *  *** TO USE "SPI INTERFACE", COMMENT OUT THE LINE OF "#define INTERFACE_I2C"
@@ -27,7 +27,7 @@
 void set_time(void);
 void int_cause_monitor(uint8_t* status);
 
-#define INTERFACE_I2C
+//#define INTERFACE_I2C
 
 #ifdef INTERFACE_I2C
 #pragma message : == == == == == COMPILING FOR PCF2131 with I2C INTERFACE == == == == ==
@@ -63,12 +63,17 @@ void setup() {
 #else
   Serial.println("\n***** Hello, PCF2131! (SPI interface) *****");
   SPI.begin();
+  pinMode(SS, OUTPUT);  //  Required for UNO R4
+
 #endif
+
+  delay(2000);  //  2 seconds wait for oscillator stabilization (just in case for if the PCF2131 is cold start)
 
   rtc.begin();
 
   if (rtc.oscillator_stop()) {
     Serial.println("==== oscillator_stop detected :( ====");
+    rtc.bit_op8(PCF2131_I2C::Control_3, 0x1F, 0x00);  //  Battery switch-over function is enabled in standard mode and battery low detection function is enabled
     set_time();
   } else {
     Serial.println("---- RTC has beeing kept running! :) ----");
@@ -112,7 +117,7 @@ void loop() {
 
 void set_time(void) {
   /*  !!!! "strptime()" is not available in Arduino's "time.h" !!!!
-  const char* current_time  = "2023-4-7 05:25:30";
+  const char* current_time  = "2026-6-27 18:52:30";
   const char* format  = "%Y-%m-%d %H:%M:%S";
   struct tm	tmv;
   strptime( current_time, format, &tmv );
@@ -120,9 +125,9 @@ void set_time(void) {
 
   struct tm now_tm;
 
-  now_tm.tm_year = 2023 - 1900;
-  now_tm.tm_mon = 4 - 1;  // It needs to be '3' if April
-  now_tm.tm_mday = 7;
+  now_tm.tm_year = 2026 - 1900;
+  now_tm.tm_mon = 6 - 1;  // It needs to be '5' if June
+  now_tm.tm_mday = 27;
   now_tm.tm_hour = 18;
   now_tm.tm_min = 52;
   now_tm.tm_sec = 30;
