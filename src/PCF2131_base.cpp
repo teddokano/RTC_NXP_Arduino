@@ -63,6 +63,13 @@ void PCF2131_base::set( struct tm* now_tmp )
 	_reg_w( _100th_Seconds, bf, sizeof( bf ) );
 
 	_bit_op8( Control_1, ~0x20, 0x00 );
+	
+	
+	//	OTP refresh
+	
+	_bit_op8( CLKOUT_ctl, ~0x20, 0x00 );	//	OTPR clear
+	_bit_op8( CLKOUT_ctl, ~0x20, 0x20 );	//	OTPR set
+	delay( 100 );	//	OTP refresh will be completed less than 100 ms
 }
 
 void PCF2131_base::alarm( alarm_setting digit, int val )
