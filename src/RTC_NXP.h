@@ -186,21 +186,23 @@ public:
 	time_t rtc_time( void );
 
 	/** set
-	 * 
+	 *
+	 * Sets calendar and time in RTC. Also performs OTP refresh after writing.
+	 *
 	 * @param now_tm struct to set calendar and time in RTC
 	 */
 	void set( struct tm* now_tm );
-	
-	
+
+
 	/** Alarm setting
-	 * 
+	 *
 	 * @param digit to specify which parameter to set: SECOND, MINUTE, HOUR, DAY, WEEKDAY in 'enum alarm_setting'
 	 * @param val Setting value. Set 0x80 to disabling
 	 */
 	void alarm( alarm_setting digit, int val );
 
 	/** Alarm setting
-	 * 
+	 *
 	 * @param digit to specify which parameter to set: SECOND, MINUTE, HOUR, DAY, WEEKDAY in 'enum alarm_setting'
 	 * @param val Setting value. Set 0x80 to disabling
 	 * @param int_sel Interrupt output selector. 0 for INT_A, 1 for INT_B
@@ -214,9 +216,9 @@ public:
 	/** Alarm interrupt disable
 	 */
 	void alarm_disable( void );
-	
+
 	/** Timestamp setting
-	 * 
+	 *
 	 * @param num timestamp number: 1~4
 	 * @param ts_setting event recording option. Choose LAST or FIRST in 'enum timestamp_setting'
 	 * @param int_sel Interrupt output selector. 0 for INT_A, 1 for INT_B
@@ -224,12 +226,12 @@ public:
 	void timestamp( int num, timestamp_setting ts_setting, int int_sel = 0 );
 
 	/** Getting timestamp info
-	 * 
+	 *
 	 * @param num timestamp number: 1~4
 	 * @return time_t
 	 */
 	time_t timestamp( int num );
-	
+
 	/** Interrupt clear
 	 */
 	uint8_t int_clear( void );
@@ -239,25 +241,25 @@ public:
 	uint8_t int_clear( uint8_t* state_p );
 
 	/** Enabling every second/minute interrupt
-	 * 
+	 *
 	 * @param sel choose DISABLE, EVERY_SECOND or EVERY_MINUTE in 'enum periodic_int_select'
 	 * @param int_sel Interrupt output selector. 0 for INT_A, 1 for INT_B
 	 */
 	void periodic_interrupt_enable( periodic_int_select sel, int int_sel = 0 );
 
-    /** Set clock output (CLKOUT)
+	/** Set clock output (CLKOUT)
 	 *
 	 * @param freq choose desired clock output (CLKOUT) frequency in 'enum clock_out_frequency'
 	 */
-    void set_clock_out(clock_out_frequency freq);
+	void set_clock_out(clock_out_frequency freq);
 
-    /** Trigger software reset
+	/** Trigger software reset
 	 */
-    void reset();
+	void reset();
 
-    /** Perform OTP refresh (loads factory-provided calibration data stored in EPROM)
+	/** Perform OTP refresh (loads factory-provided calibration data stored in EPROM)
 	 */
-    void otp_refresh();
+	void otp_refresh();
 
 protected:
 	/** Proxy method for interface  (pure virtual method) */
@@ -336,9 +338,20 @@ public:
 		LAST,
 		FIRST,
 	};
+	/** Clock output frequency descriptor */
+	enum clock_out_frequency {
+		FREQ_32768_HZ,
+		FREQ_16384_HZ,
+		FREQ_8192_HZ,
+		FREQ_4096_HZ,
+		FREQ_2048_HZ,
+		FREQ_1024_HZ,
+		FREQ_1_HZ,
+		FREQ_DISABLE
+	};
 
 	/** time
-	 * 
+	 *
 	 *	"time()" in "time.h" compatible method for RTC
 	 *
 	 * @param tp pointer to time_t variable
@@ -346,39 +359,41 @@ public:
 	 */
 	time_t time( time_t* tp );
 
-	/** Initializer 
+	/** Initializer
 	 * Just clears pending interrupt
 	 */
 	void begin( void );
 
 	/** Detector for oscillation stop
-	 * 
+	 *
 	 * @return true, if the OSF (Oscillator Stop Flag) is set
 	 */
 	bool oscillator_stop( void );
 
 	/** time
-	 * 
+	 *
 	 * @return time_t value of current time
 	 */
 	time_t rtc_time( void );
 
 	/** set
-	 * 
+	 *
+	 * Sets calendar and time in RTC. Also performs OTP refresh after writing.
+	 *
 	 * @param now_tm struct to set calendar and time in RTC
 	 */
 	void set( struct tm* now_tm );
-	
-	
+
+
 	/** Alarm setting
-	 * 
+	 *
 	 * @param digit to specify which parameter to set: SECOND, MINUTE, HOUR, DAY, WEEKDAY in 'enum alarm_setting'
 	 * @param val Setting value. Set 0x80 to disabling
 	 */
 	void alarm( alarm_setting digit, int val );
 
 	/** Alarm setting
-	 * 
+	 *
 	 * @param digit to specify which parameter to set: SECOND, MINUTE, HOUR, DAY, WEEKDAY in 'enum alarm_setting'
 	 * @param val Setting value. Set 0x80 to disabling
 	 * @param int_sel Interrupt output selector. 0 for INT_A, 1 for INT_B
@@ -392,9 +407,9 @@ public:
 	/** Alarm interrupt disable
 	 */
 	void alarm_disable( void );
-	
+
 	/** Timestamp setting
-	 * 
+	 *
 	 * @param num timestamp number: 1~4
 	 * @param ts_setting event recording option. Choose LAST or FIRST in 'enum timestamp_setting'
 	 * @param int_sel Interrupt output selector. 0 for INT_A, 1 for INT_B
@@ -402,12 +417,12 @@ public:
 	void timestamp( int num, timestamp_setting ts_setting, int int_sel = 0 );
 
 	/** Getting timestamp info
-	 * 
+	 *
 	 * @param num timestamp number: 1~4
 	 * @return time_t
 	 */
 	time_t timestamp( int num );
-	
+
 	/** Interrupt clear
 	 */
 	uint8_t int_clear( void );
@@ -417,14 +432,28 @@ public:
 	uint8_t int_clear( uint8_t* state_p );
 
 	/** Enabling every second/minute interrupt
-	 * 
+	 *
 	 * @param sel choose DISABLE, EVERY_SECOND or EVERY_MINUTE in 'enum periodic_int_select'
 	 * @param int_sel Interrupt output selector. 0 for INT_A, 1 for INT_B
 	 */
 	void periodic_interrupt_enable( periodic_int_select sel, int int_sel = 0 );
-	
+
+	/** Set clock output (CLKOUT)
+	 *
+	 * @param freq choose desired clock output (CLKOUT) frequency in 'enum clock_out_frequency'
+	 */
+	void set_clock_out(clock_out_frequency freq);
+
+	/** Trigger software reset
+	 */
+	void reset();
+
+	/** Perform OTP refresh (loads factory-provided calibration data stored in EPROM)
+	 */
+	void otp_refresh();
+
 	/** Multiple register write
-	 * 
+	 *
 	 * @param reg register index/address/pointer
 	 * @param data pointer to data buffer
 	 * @param size data size
@@ -432,14 +461,14 @@ public:
 	void reg_w( uint8_t reg_adr, uint8_t *data, int size );
 
 	/** Single register write
-	 * 
+	 *
 	 * @param reg_adr register index/address/pointer
 	 * @param data register value
 	 */
 	void reg_w( uint8_t reg_adr, uint8_t data );
 
 	/** Multiple register read
-	 * 
+	 *
 	 * @param reg register index/address/pointer
 	 * @param data pointer to data buffer
 	 * @param size data size
@@ -447,7 +476,7 @@ public:
 	void reg_r( uint8_t reg_adr, uint8_t *data, int size );
 
 	/** Single register read
-	 * 
+	 *
 	 * @param reg register index/address/pointer
 	 * @return read data
 	 */
@@ -468,7 +497,7 @@ public:
 	uint8_t read_r8( uint8_t reg );
 
 	/** Register overwriting with bit-mask
-	 *	
+	 *
 	 *	Register can be updated by bit level
 	 *
 	 * @param reg register index/address/pointer
@@ -476,7 +505,7 @@ public:
 	 * @param value value to overwrite
 	 */
 	void bit_op8(  uint8_t reg,  uint8_t mask,  uint8_t value );
-	
+
 #endif	//	DOXYGEN_ONLY
 
 private:
@@ -612,9 +641,20 @@ public:
 		LAST,
 		FIRST,
 	};
+	/** Clock output frequency descriptor */
+	enum clock_out_frequency {
+		FREQ_32768_HZ,
+		FREQ_16384_HZ,
+		FREQ_8192_HZ,
+		FREQ_4096_HZ,
+		FREQ_2048_HZ,
+		FREQ_1024_HZ,
+		FREQ_1_HZ,
+		FREQ_DISABLE
+	};
 
 	/** time
-	 * 
+	 *
 	 *	"time()" in "time.h" compatible method for RTC
 	 *
 	 * @param tp pointer to time_t variable
@@ -622,39 +662,41 @@ public:
 	 */
 	time_t time( time_t* tp );
 
-	/** Initializer 
+	/** Initializer
 	 * Just clears pending interrupt
 	 */
 	void begin( void );
 
 	/** Detector for oscillation stop
-	 * 
+	 *
 	 * @return true, if the OSF (Oscillator Stop Flag) is set
 	 */
 	bool oscillator_stop( void );
 
 	/** time
-	 * 
+	 *
 	 * @return time_t value of current time
 	 */
 	time_t rtc_time( void );
 
 	/** set
-	 * 
+	 *
+	 * Sets calendar and time in RTC. Also performs OTP refresh after writing.
+	 *
 	 * @param now_tm struct to set calendar and time in RTC
 	 */
 	void set( struct tm* now_tm );
-	
-	
+
+
 	/** Alarm setting
-	 * 
+	 *
 	 * @param digit to specify which parameter to set: SECOND, MINUTE, HOUR, DAY, WEEKDAY in 'enum alarm_setting'
 	 * @param val Setting value. Set 0x80 to disabling
 	 */
 	void alarm( alarm_setting digit, int val );
 
 	/** Alarm setting
-	 * 
+	 *
 	 * @param digit to specify which parameter to set: SECOND, MINUTE, HOUR, DAY, WEEKDAY in 'enum alarm_setting'
 	 * @param val Setting value. Set 0x80 to disabling
 	 * @param int_sel Interrupt output selector. 0 for INT_A, 1 for INT_B
@@ -668,9 +710,9 @@ public:
 	/** Alarm interrupt disable
 	 */
 	void alarm_disable( void );
-	
+
 	/** Timestamp setting
-	 * 
+	 *
 	 * @param num timestamp number: 1~4
 	 * @param ts_setting event recording option. Choose LAST or FIRST in 'enum timestamp_setting'
 	 * @param int_sel Interrupt output selector. 0 for INT_A, 1 for INT_B
@@ -678,12 +720,12 @@ public:
 	void timestamp( int num, timestamp_setting ts_setting, int int_sel = 0 );
 
 	/** Getting timestamp info
-	 * 
+	 *
 	 * @param num timestamp number: 1~4
 	 * @return time_t
 	 */
 	time_t timestamp( int num );
-	
+
 	/** Interrupt clear
 	 */
 	uint8_t int_clear( void );
@@ -693,14 +735,28 @@ public:
 	uint8_t int_clear( uint8_t* state_p );
 
 	/** Enabling every second/minute interrupt
-	 * 
+	 *
 	 * @param sel choose DISABLE, EVERY_SECOND or EVERY_MINUTE in 'enum periodic_int_select'
 	 * @param int_sel Interrupt output selector. 0 for INT_A, 1 for INT_B
 	 */
 	void periodic_interrupt_enable( periodic_int_select sel, int int_sel = 0 );
-	
+
+	/** Set clock output (CLKOUT)
+	 *
+	 * @param freq choose desired clock output (CLKOUT) frequency in 'enum clock_out_frequency'
+	 */
+	void set_clock_out(clock_out_frequency freq);
+
+	/** Trigger software reset
+	 */
+	void reset();
+
+	/** Perform OTP refresh (loads factory-provided calibration data stored in EPROM)
+	 */
+	void otp_refresh();
+
 #endif	//	DOXYGEN_ONLY
-	
+
 private:
 //	void txrx( uint8_t *data, uint16_t size );
 
