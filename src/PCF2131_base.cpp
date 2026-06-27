@@ -67,8 +67,7 @@ void PCF2131_base::set( struct tm* now_tmp )
 	
 	//	OTP refresh
 	
-	_bit_op8( CLKOUT_ctl, ~0x20, 0x00 );	//	OTPR clear
-	_bit_op8( CLKOUT_ctl, ~0x20, 0x20 );	//	OTPR set
+	otp_refresh();
 	delay( 100 );	//	OTP refresh will be completed less than 100 ms
 }
 
