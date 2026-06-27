@@ -44,7 +44,7 @@ void setup() {
     Serial.println("==== oscillator_stop detected :( ====");
     set_time();
   } else {
-    Serial.println("---- RTC has beeing kept running! :) ----");
+    Serial.println("---- RTC has been kept running! :) ----");
   }
 }
 

@@ -840,11 +840,12 @@ public:
 
 	
 	/** Timer setting
-	 * 
+	 *
 	 * @param period timer interval in second
+	 * @param pulse if true, interrupt output is a pulse; if false (default), interrupt flag is set
 	 * @return actual timer set value in second
 	 */
-	float timer( float period );
+	float timer( float period, bool pulse = false );
 
 protected:
 	/** rtc_time
@@ -946,14 +947,15 @@ public:
 
 	
 	/** Timer setting
-	 * 
+	 *
 	 * @param period timer interval in second
+	 * @param pulse if true, interrupt output is a pulse; if false (default), interrupt flag is set
 	 * @return actual timer set value in second
 	 */
-	float timer( float period );
-	
+	float timer( float period, bool pulse = false );
+
 	/** Multiple register write
-	 * 
+	 *
 	 * @param reg register index/address/pointer
 	 * @param data pointer to data buffer
 	 * @param size data size
@@ -961,14 +963,14 @@ public:
 	void reg_w( uint8_t reg_adr, uint8_t *data, int size );
 
 	/** Single register write
-	 * 
+	 *
 	 * @param reg_adr register index/address/pointer
 	 * @param data register value
 	 */
 	void reg_w( uint8_t reg_adr, uint8_t data );
 
 	/** Multiple register read
-	 * 
+	 *
 	 * @param reg register index/address/pointer
 	 * @param data pointer to data buffer
 	 * @param size data size
@@ -976,7 +978,7 @@ public:
 	void reg_r( uint8_t reg_adr, uint8_t *data, int size );
 
 	/** Single register read
-	 * 
+	 *
 	 * @param reg register index/address/pointer
 	 * @return read data
 	 */
@@ -997,7 +999,7 @@ public:
 	uint8_t read_r8( uint8_t reg );
 
 	/** Register overwriting with bit-mask
-	 *	
+	 *
 	 *	Register can be updated by bit level
 	 *
 	 * @param reg register index/address/pointer
@@ -1184,14 +1186,14 @@ public:
 	enum inta {
 		INTA_CLKOUT,
 		INTA_BATTERY_MODE_INDICATION,
-		INTA_INTTERRUPT,
+		INTA_INTERRUPT,
 		INTA_HIGH_Z,
 	};
 
 	/** INT_B pin setting descriptor */
 	enum intb {
 		INTB_DISABLE,
-		INTB_INTTERRUPT,
+		INTB_INTERRUPT,
 		INTB_CLKOUT,
 		INTB_INPUT_MODE,
 	};
@@ -1289,16 +1291,16 @@ public:
 
 	/** Pin configuration
 	 * 
-	 * @param cfg_a To choose INT_A pin configuration: Use CLKOUT, BATTERY_MODE_INDICATION, INTTERRUPT or HIGH_Z
-	 * @param cfg_b To choose INT_B pin configuration: Use DISABLE, INTTERRUPT, CLKOUT or INPUT_MODE
+	 * @param cfg_a To choose INT_A pin configuration: Use CLKOUT, BATTERY_MODE_INDICATION, INTERRUPT or HIGH_Z
+	 * @param cfg_b To choose INT_B pin configuration: Use DISABLE, INTERRUPT, CLKOUT or INPUT_MODE
 	 */
-	void pin_congfig(inta cfg_a, intb cfg_b);
+	void pin_config(inta cfg_a, intb cfg_b);
 	
 	/** Timestamp pin configuration
 	 * 
 	 * @param setting To choose options: Compose value by ORing next constants: TS_PULLUP_80K, TS_PULLUP_40K, TSL_ACTIVE_HIGH, TSL_ACTIVE_LOW, TSIM_CMOS and TSIM_MECHANICAL
 	 */
-	void ts_congfig(int setting);
+	void ts_config(int setting);
 	
 	/** Timestamp register read
 	 * 

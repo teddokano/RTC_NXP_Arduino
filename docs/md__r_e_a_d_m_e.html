@@ -27,7 +27,7 @@ mermaid.initialize({ startOnLoad: true, theme: theme });
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">RTC_NXP_Arduino<span id="projectnumber">&#160;1.1.3</span>
+   <div id="projectname">RTC_NXP_Arduino<span id="projectnumber">&#160;1.2.0</span>
    </div>
    <div id="projectbrief">RTC driver device operation sample code for Arduino</div>
   </td>
@@ -102,17 +102,17 @@ document.addEventListener('DOMContentLoaded', () => {
   <div class="headertitle"><div class="title">RTC_NXP_Arduino </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="autotoc_md0"></a></p>
+<div class="textblock"><p><a class="anchor" id="autotoc_md12"></a></p>
 <p>RTC device operation sample code for <a href="https://www.arduino.cc">Arduino</a></p>
 <blockquote class="doxtable">
 <p><b>Note</b> This library works with <a href="https://github.com/teddokano/I2C_device_Arduino"><span class="tt">I2C_device</span></a> library together. Please be sure the <span class="tt">I2C_device</span> library is imported in your environment before trying to build. </p>
 </blockquote>
 <p><img src="https://github.com/teddokano/additional_files/blob/main/RTC_NXP_Arduino/boards4.jpg" alt="Boards" class="inline"/> <br  />
  <em>PCF2131-ARD, PCF85063TP-ARD, PCF85063AT-ARD and PCF85263ATL-ARD : Arduino® Shield Evaluation Board for RTCs</em></p>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md1"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md13"></a>
 What is this?</h1>
 <p>An Arduino library for RTC devices with its sample code. <br  />
- A method of <span class="tt">time()</span> in each RTC device classes are cpmpatible to <span class="tt">time()</span> function in 'time.h'. The method is defined as same as <span class="tt">time_t time( time_t* tp )</span>. <br  />
+ A method of <span class="tt">time()</span> in each RTC device classes are compatible to <span class="tt">time()</span> function in 'time.h'. The method is defined as same as <span class="tt">time_t time( time_t* tp )</span>. <br  />
  It returns a value in the systems time stamp format of 'time.h'. <br  />
 </p>
 <p>To display the calendar/time, it can be written in this way.</p>
@@ -126,7 +126,7 @@ What is this?</h1>
 <div class="line">Serial.println( ctime( &amp;current_time ) );  <span class="comment">// Result will appear like -&gt; &quot;Sun Apr 09 07:11:37 2023&quot;</span></div>
 <div class="ttc" id="aclass_p_c_f2131___i2_c_html"><div class="ttname"><a href="class_p_c_f2131___i2_c.html">PCF2131_I2C</a></div><div class="ttdef"><b>Definition</b> <a href="_r_t_c___n_x_p_8h_source.html#l00295">RTC_NXP.h:296</a></div></div>
 <div class="ttc" id="aclass_p_c_f2131___i2_c_html_aa1ce66a7f0e82c41f590382653f42fb1"><div class="ttname"><a href="class_p_c_f2131___i2_c.html#aa1ce66a7f0e82c41f590382653f42fb1">PCF2131_I2C::time</a></div><div class="ttdeci">time_t time(time_t *tp)</div></div>
-</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md2"></a>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md14"></a>
 Supported devices</h1>
 <p>PCF2131, <a class="el" href="class_p_c_f85063_a.html">PCF85063A</a>, <a class="el" href="class_p_c_f85063_t_p.html">PCF85063TP</a> and <a class="el" href="class_p_c_f85263_a.html">PCF85263A</a> are supported. <br  />
  On PCF2131, both I²C and SPI can be used for interfacing MCU. Include device name header file (<span class="tt"><a class="el" href="_p_c_f85063_a_8h_source.html">PCF85063A.h</a></span>, <span class="tt"><a class="el" href="_p_c_f85063_t_p_8h_source.html">PCF85063TP.h</a></span>, <span class="tt"><a class="el" href="_p_c_f85063_t_p_8h_source.html">PCF85063TP.h</a></span> and for PCF2131, <span class="tt"><a class="el" href="_p_c_f2131___i2_c_8h_source.html">PCF2131_I2C.h</a></span>, <span class="tt"><a class="el" href="_p_c_f2131___s_p_i_8h_source.html">PCF2131_SPI.h</a></span>) to use those class libraries.</p>
@@ -145,7 +145,7 @@ Supported devices</h1>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><a href="https://www.nxp.com/products/peripherals-and-logic/signal-chain/real-time-clocks/rtcs-with-ic-bus/tiny-real-time-clock-calendar-with-alarm-function-battery-switch-over-time-stamp-input-and-ic-bus:PCF85263A">PCF85263A</a>  </td><td class="markdownTableBodyNone"><span class="tt"><a class="el" href="_p_c_f85263_a_8h_source.html">PCF85263A.h</a></span>  </td><td class="markdownTableBodyNone">Tiny Real-Time Clock/Calendar with Alarm Function, Battery Switch-Over, Time Stamp Input  </td><td class="markdownTableBodyNone">I²C  </td><td class="markdownTableBodyNone"><a href="https://www.nxp.com/design/development-boards/analog-toolbox/arduino-shields-solutions/pcf85263atl-ard-arduino-shield-tiny-real-time-clock:PCF85263ATL-ARD">PCF85263ATL-ARD Arduino® Shield Evaluation Board</a>  </td></tr>
 </table>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md3"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md15"></a>
 Code sample</h1>
 <div class="fragment"><div class="line"><span class="comment">// Very simple sample to use the &#39;PCF2131-ARD : Arduino® Shield Evaluation Board&#39;</span></div>
 <div class="line"> </div>
@@ -166,7 +166,7 @@ Code sample</h1>
 <div class="line">    Serial.println(<span class="stringliteral">&quot;==== oscillator_stop detected :( ====&quot;</span>);</div>
 <div class="line">    set_time();</div>
 <div class="line">  } <span class="keywordflow">else</span> {</div>
-<div class="line">    Serial.println(<span class="stringliteral">&quot;---- RTC has beeing kept running! :) ----&quot;</span>);</div>
+<div class="line">    Serial.println(<span class="stringliteral">&quot;---- RTC has been kept running! :) ----&quot;</span>);</div>
 <div class="line">  }</div>
 <div class="line">}</div>
 <div class="line"> </div>
@@ -185,18 +185,18 @@ Code sample</h1>
 <div class="line">..</div>
 <div class="ttc" id="aclass_p_c_f2131___i2_c_html_a5735b1001c8bc9ea095fe027fcb7a386"><div class="ttname"><a href="class_p_c_f2131___i2_c.html#a5735b1001c8bc9ea095fe027fcb7a386">PCF2131_I2C::oscillator_stop</a></div><div class="ttdeci">bool oscillator_stop(void)</div></div>
 <div class="ttc" id="aclass_p_c_f2131___i2_c_html_abf3b2ab8da628a05a40ee073af918ac6"><div class="ttname"><a href="class_p_c_f2131___i2_c.html#abf3b2ab8da628a05a40ee073af918ac6">PCF2131_I2C::begin</a></div><div class="ttdeci">void begin(void)</div></div>
-</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md4"></a>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md16"></a>
 Getting started</h1>
 <p>Use Library manager in Arduino IDE for easy install</p>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md5"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md17"></a>
 What's inside?</h1>
-<h2 class="doxsection"><a class="anchor" id="autotoc_md6"></a>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md18"></a>
 Examples</h2>
-<p>Examples are provided as scketch files.</p>
-<h3 class="doxsection"><a class="anchor" id="autotoc_md7"></a>
+<p>Examples are provided as sketch files.</p>
+<h3 class="doxsection"><a class="anchor" id="autotoc_md19"></a>
 How to use?</h3>
 <p>After library install, Choose menu on Arduino-IDE: <span class="tt">File</span>→<span class="tt">Examples</span>→<span class="tt">RTC_NXP_Arduino</span>→ <b>sketch for your try</b></p>
-<h3 class="doxsection"><a class="anchor" id="autotoc_md8"></a>
+<h3 class="doxsection"><a class="anchor" id="autotoc_md20"></a>
 List of sample code</h3>
 <table class="markdownTable">
 <tr class="markdownTableHead">
@@ -225,7 +225,7 @@ List of sample code</h3>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">PCF85263A_timestamp  </td><td class="markdownTableBodyNone"><a class="el" href="class_p_c_f85263_a.html">PCF85263A</a>  </td><td class="markdownTableBodyNone"><b>Timestamp</b> operation: Demonstrates timestamp feature  </td></tr>
 </table>
-<h3 class="doxsection"><a class="anchor" id="autotoc_md9"></a>
+<h3 class="doxsection"><a class="anchor" id="autotoc_md21"></a>
 TIPS</h3>
 <p>If you need to use different I²C bus on Arduino, it can be done like this. This sample shows how the <span class="tt">Wire1</span> on Arduino Due can be operated. <br  />
  </p><div class="fragment"><div class="line">include &lt;<a class="code hl_class" href="class_p_c_f2131___i2_c.html">PCF2131_I2C</a>.h&gt;</div>
@@ -234,12 +234,12 @@ TIPS</h3>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">void</span> setup() {</div>
 <div class="line">  Wire1.begin();</div>
-</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md10"></a>
+</div><!-- fragment --><h1 class="doxsection"><a class="anchor" id="autotoc_md22"></a>
 Document</h1>
 <p>For details of the library, please find descriptions in <a href="https://teddokano.github.io/RTC_NXP_Arduino/annotated.html">this document</a>.</p>
-<h1 class="doxsection"><a class="anchor" id="autotoc_md11"></a>
+<h1 class="doxsection"><a class="anchor" id="autotoc_md23"></a>
 References</h1>
-<h2 class="doxsection"><a class="anchor" id="autotoc_md12"></a>
+<h2 class="doxsection"><a class="anchor" id="autotoc_md24"></a>
 Related libraries</h2>
 <table class="markdownTable">
 <tr class="markdownTableHead">

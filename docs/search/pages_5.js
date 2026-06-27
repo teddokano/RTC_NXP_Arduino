@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['inside_0',['What&apos;s inside?',['../md__r_e_a_d_m_e.html#autotoc_md5',1,'']]],
-  ['is_20this_1',['What is this?',['../md__r_e_a_d_m_e.html#autotoc_md1',1,'']]]
+  ['breaking_0',['API changes (breaking)',['../md__c_h_a_n_g_e_l_o_g.html#autotoc_md3',1,'']]]
 ];

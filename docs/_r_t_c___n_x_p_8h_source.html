@@ -27,7 +27,7 @@ mermaid.initialize({ startOnLoad: true, theme: theme });
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">RTC_NXP_Arduino<span id="projectnumber">&#160;1.1.3</span>
+   <div id="projectname">RTC_NXP_Arduino<span id="projectnumber">&#160;1.2.0</span>
    </div>
    <div id="projectbrief">RTC driver device operation sample code for Arduino</div>
   </td>
@@ -565,391 +565,391 @@ document.addEventListener('DOMContentLoaded', () => {
 <div class="line"><a id="l00839" name="l00839"></a><span class="lineno">  839</span>    uint8_t <a class="code hl_function" href="class_p_c_f85063__base.html#a48c418c45b1b5b1d2546c7802e67acbe">int_clear</a>( <span class="keywordtype">void</span> );</div>
 <div class="line"><a id="l00840" name="l00840"></a><span class="lineno">  840</span> </div>
 <div class="line"><a id="l00841" name="l00841"></a><span class="lineno">  841</span>    </div>
-<div class="line"><a id="l00847" name="l00847"></a><span class="lineno">  847</span>    <span class="keywordtype">float</span> <a class="code hl_function" href="class_p_c_f85063__base.html#a781dfaf9ad89b046ecc9ef2d6e3ed165">timer</a>( <span class="keywordtype">float</span> period );</div>
-<div class="line"><a id="l00848" name="l00848"></a><span class="lineno">  848</span> </div>
-<div class="line"><a id="l00849" name="l00849"></a><span class="lineno">  849</span><span class="keyword">protected</span>:</div>
-<div class="line"><a id="l00854" name="l00854"></a><span class="lineno">  854</span>    time_t <a class="code hl_function" href="class_p_c_f85063__base.html#ade5a3b4b8bf3b76c6a3712938e5e3f7b">rtc_time</a>( <span class="keywordtype">void</span> );</div>
-<div class="line"><a id="l00855" name="l00855"></a><span class="lineno">  855</span></div>
-<div class="line"><a id="l00857" name="l00857"></a><span class="lineno"><a class="line" href="class_p_c_f85063__base.html#a906bbb548df5e8aa188de0262340d644">  857</a></span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="class_p_c_f85063__base.html#a906bbb548df5e8aa188de0262340d644">_reg_w</a>( uint8_t reg, uint8_t *vp, <span class="keywordtype">int</span> len )    = 0;</div>
-<div class="line"><a id="l00858" name="l00858"></a><span class="lineno">  858</span></div>
-<div class="line"><a id="l00860" name="l00860"></a><span class="lineno"><a class="line" href="class_p_c_f85063__base.html#aba6a9bca2ec39dd42c3157b4fb8d867a">  860</a></span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="class_p_c_f85063__base.html#aba6a9bca2ec39dd42c3157b4fb8d867a">_reg_r</a>( uint8_t reg, uint8_t *vp, <span class="keywordtype">int</span> len )    = 0;</div>
-<div class="line"><a id="l00861" name="l00861"></a><span class="lineno">  861</span></div>
-<div class="line"><a id="l00863" name="l00863"></a><span class="lineno"><a class="line" href="class_p_c_f85063__base.html#a6649795f67cdbe4f9f7555c92e38517c">  863</a></span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="class_p_c_f85063__base.html#a6649795f67cdbe4f9f7555c92e38517c">_reg_w</a>( uint8_t reg, uint8_t val ) = 0;</div>
-<div class="line"><a id="l00864" name="l00864"></a><span class="lineno">  864</span></div>
-<div class="line"><a id="l00866" name="l00866"></a><span class="lineno"><a class="line" href="class_p_c_f85063__base.html#aabd414e9717c282f6a7908f12d2d9477">  866</a></span>    <span class="keyword">virtual</span> uint8_t <a class="code hl_function" href="class_p_c_f85063__base.html#aabd414e9717c282f6a7908f12d2d9477">_reg_r</a>( uint8_t reg )   = 0;</div>
-<div class="line"><a id="l00867" name="l00867"></a><span class="lineno">  867</span></div>
-<div class="line"><a id="l00869" name="l00869"></a><span class="lineno"><a class="line" href="class_p_c_f85063__base.html#a3752e399d7a459a0e2a8e794fc747644">  869</a></span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="class_p_c_f85063__base.html#a3752e399d7a459a0e2a8e794fc747644">_bit_op8</a>( uint8_t reg, uint8_t mask, uint8_t val ) = 0;</div>
-<div class="line"><a id="l00870" name="l00870"></a><span class="lineno">  870</span>};</div>
+<div class="line"><a id="l00848" name="l00848"></a><span class="lineno">  848</span>    <span class="keywordtype">float</span> <a class="code hl_function" href="class_p_c_f85063__base.html#addc90574f062f648fb212343a534e3d4">timer</a>( <span class="keywordtype">float</span> period, <span class="keywordtype">bool</span> pulse = <span class="keyword">false</span> );</div>
+<div class="line"><a id="l00849" name="l00849"></a><span class="lineno">  849</span> </div>
+<div class="line"><a id="l00850" name="l00850"></a><span class="lineno">  850</span><span class="keyword">protected</span>:</div>
+<div class="line"><a id="l00855" name="l00855"></a><span class="lineno">  855</span>    time_t <a class="code hl_function" href="class_p_c_f85063__base.html#ade5a3b4b8bf3b76c6a3712938e5e3f7b">rtc_time</a>( <span class="keywordtype">void</span> );</div>
+<div class="line"><a id="l00856" name="l00856"></a><span class="lineno">  856</span></div>
+<div class="line"><a id="l00858" name="l00858"></a><span class="lineno"><a class="line" href="class_p_c_f85063__base.html#a906bbb548df5e8aa188de0262340d644">  858</a></span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="class_p_c_f85063__base.html#a906bbb548df5e8aa188de0262340d644">_reg_w</a>( uint8_t reg, uint8_t *vp, <span class="keywordtype">int</span> len )    = 0;</div>
+<div class="line"><a id="l00859" name="l00859"></a><span class="lineno">  859</span></div>
+<div class="line"><a id="l00861" name="l00861"></a><span class="lineno"><a class="line" href="class_p_c_f85063__base.html#aba6a9bca2ec39dd42c3157b4fb8d867a">  861</a></span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="class_p_c_f85063__base.html#aba6a9bca2ec39dd42c3157b4fb8d867a">_reg_r</a>( uint8_t reg, uint8_t *vp, <span class="keywordtype">int</span> len )    = 0;</div>
+<div class="line"><a id="l00862" name="l00862"></a><span class="lineno">  862</span></div>
+<div class="line"><a id="l00864" name="l00864"></a><span class="lineno"><a class="line" href="class_p_c_f85063__base.html#a6649795f67cdbe4f9f7555c92e38517c">  864</a></span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="class_p_c_f85063__base.html#a6649795f67cdbe4f9f7555c92e38517c">_reg_w</a>( uint8_t reg, uint8_t val ) = 0;</div>
+<div class="line"><a id="l00865" name="l00865"></a><span class="lineno">  865</span></div>
+<div class="line"><a id="l00867" name="l00867"></a><span class="lineno"><a class="line" href="class_p_c_f85063__base.html#aabd414e9717c282f6a7908f12d2d9477">  867</a></span>    <span class="keyword">virtual</span> uint8_t <a class="code hl_function" href="class_p_c_f85063__base.html#aabd414e9717c282f6a7908f12d2d9477">_reg_r</a>( uint8_t reg )   = 0;</div>
+<div class="line"><a id="l00868" name="l00868"></a><span class="lineno">  868</span></div>
+<div class="line"><a id="l00870" name="l00870"></a><span class="lineno"><a class="line" href="class_p_c_f85063__base.html#a3752e399d7a459a0e2a8e794fc747644">  870</a></span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="class_p_c_f85063__base.html#a3752e399d7a459a0e2a8e794fc747644">_bit_op8</a>( uint8_t reg, uint8_t mask, uint8_t val ) = 0;</div>
+<div class="line"><a id="l00871" name="l00871"></a><span class="lineno">  871</span>};</div>
 </div>
-<div class="line"><a id="l00871" name="l00871"></a><span class="lineno">  871</span> </div>
-<div class="foldopen" id="foldopen00872" data-start="{" data-end="};">
-<div class="line"><a id="l00872" name="l00872"></a><span class="lineno"><a class="line" href="class_p_c_f85063_a.html">  872</a></span><span class="keyword">class </span><a class="code hl_function" href="class_p_c_f85063_a.html#a74f730e5cd2234e158175701bcb37b9a">PCF85063A</a> : <span class="keyword">public</span> <a class="code hl_function" href="class_p_c_f85063__base.html#a8008642fa0f2ae67cd586a246e9557b1">PCF85063_base</a>, <span class="keyword">public</span> I2C_device</div>
-<div class="line"><a id="l00873" name="l00873"></a><span class="lineno">  873</span>{</div>
-<div class="line"><a id="l00874" name="l00874"></a><span class="lineno">  874</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00879" name="l00879"></a><span class="lineno">  879</span>    <a class="code hl_function" href="class_p_c_f85063_a.html#a74f730e5cd2234e158175701bcb37b9a">PCF85063A</a>( uint8_t i2c_address = (0xA2 &gt;&gt; 1) );</div>
-<div class="line"><a id="l00880" name="l00880"></a><span class="lineno">  880</span></div>
-<div class="line"><a id="l00886" name="l00886"></a><span class="lineno">  886</span>    <a class="code hl_function" href="class_p_c_f85063_a.html#a74f730e5cd2234e158175701bcb37b9a">PCF85063A</a>( TwoWire&amp; wire, uint8_t i2c_address = (0xA2 &gt;&gt; 1) );</div>
-<div class="line"><a id="l00887" name="l00887"></a><span class="lineno">  887</span></div>
-<div class="line"><a id="l00889" name="l00889"></a><span class="lineno">  889</span>    <span class="keyword">virtual</span> <a class="code hl_function" href="class_p_c_f85063_a.html#ac68e73f46135911d85dc36044b346f11">~PCF85063A</a>();</div>
-<div class="line"><a id="l00890" name="l00890"></a><span class="lineno">  890</span> </div>
-<div class="line"><a id="l00891" name="l00891"></a><span class="lineno">  891</span><span class="preprocessor">#if DOXYGEN_ONLY</span><span class="preprocessor"></span></div>
-<div class="foldopen" id="foldopen00893" data-start="{" data-end="};">
-<div class="line"><a id="l00893" name="l00893"></a><span class="lineno"><a class="line" href="class_p_c_f85063_a.html#a333ae3efab81b1835fd2271c86fd05c6">  893</a></span>    <span class="keyword">enum</span> <a class="code hl_enumeration" href="class_p_c_f85063_a.html#a333ae3efab81b1835fd2271c86fd05c6">reg_num</a> {</div>
-<div class="line"><a id="l00894" name="l00894"></a><span class="lineno">  894</span>        Control_1, Control_2,</div>
-<div class="line"><a id="l00895" name="l00895"></a><span class="lineno">  895</span>        Offset,</div>
-<div class="line"><a id="l00896" name="l00896"></a><span class="lineno">  896</span>        RAM_byte,</div>
-<div class="line"><a id="l00897" name="l00897"></a><span class="lineno">  897</span>        Seconds, Minutes, Hours, Days, Weekdays, Months, Years,</div>
-<div class="line"><a id="l00898" name="l00898"></a><span class="lineno">  898</span>        Second_alarm, Minute_alarm, Hour_alarm, Day_alarm, Weekday_alarm,</div>
-<div class="line"><a id="l00899" name="l00899"></a><span class="lineno">  899</span>        Timer_value, Timer_mode</div>
-<div class="line"><a id="l00900" name="l00900"></a><span class="lineno">  900</span>    };</div>
+<div class="line"><a id="l00872" name="l00872"></a><span class="lineno">  872</span> </div>
+<div class="foldopen" id="foldopen00873" data-start="{" data-end="};">
+<div class="line"><a id="l00873" name="l00873"></a><span class="lineno"><a class="line" href="class_p_c_f85063_a.html">  873</a></span><span class="keyword">class </span><a class="code hl_function" href="class_p_c_f85063_a.html#a74f730e5cd2234e158175701bcb37b9a">PCF85063A</a> : <span class="keyword">public</span> <a class="code hl_function" href="class_p_c_f85063__base.html#a8008642fa0f2ae67cd586a246e9557b1">PCF85063_base</a>, <span class="keyword">public</span> I2C_device</div>
+<div class="line"><a id="l00874" name="l00874"></a><span class="lineno">  874</span>{</div>
+<div class="line"><a id="l00875" name="l00875"></a><span class="lineno">  875</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00880" name="l00880"></a><span class="lineno">  880</span>    <a class="code hl_function" href="class_p_c_f85063_a.html#a74f730e5cd2234e158175701bcb37b9a">PCF85063A</a>( uint8_t i2c_address = (0xA2 &gt;&gt; 1) );</div>
+<div class="line"><a id="l00881" name="l00881"></a><span class="lineno">  881</span></div>
+<div class="line"><a id="l00887" name="l00887"></a><span class="lineno">  887</span>    <a class="code hl_function" href="class_p_c_f85063_a.html#a74f730e5cd2234e158175701bcb37b9a">PCF85063A</a>( TwoWire&amp; wire, uint8_t i2c_address = (0xA2 &gt;&gt; 1) );</div>
+<div class="line"><a id="l00888" name="l00888"></a><span class="lineno">  888</span></div>
+<div class="line"><a id="l00890" name="l00890"></a><span class="lineno">  890</span>    <span class="keyword">virtual</span> <a class="code hl_function" href="class_p_c_f85063_a.html#ac68e73f46135911d85dc36044b346f11">~PCF85063A</a>();</div>
+<div class="line"><a id="l00891" name="l00891"></a><span class="lineno">  891</span> </div>
+<div class="line"><a id="l00892" name="l00892"></a><span class="lineno">  892</span><span class="preprocessor">#if DOXYGEN_ONLY</span><span class="preprocessor"></span></div>
+<div class="foldopen" id="foldopen00894" data-start="{" data-end="};">
+<div class="line"><a id="l00894" name="l00894"></a><span class="lineno"><a class="line" href="class_p_c_f85063_a.html#a333ae3efab81b1835fd2271c86fd05c6">  894</a></span>    <span class="keyword">enum</span> <a class="code hl_enumeration" href="class_p_c_f85063_a.html#a333ae3efab81b1835fd2271c86fd05c6">reg_num</a> {</div>
+<div class="line"><a id="l00895" name="l00895"></a><span class="lineno">  895</span>        Control_1, Control_2,</div>
+<div class="line"><a id="l00896" name="l00896"></a><span class="lineno">  896</span>        Offset,</div>
+<div class="line"><a id="l00897" name="l00897"></a><span class="lineno">  897</span>        RAM_byte,</div>
+<div class="line"><a id="l00898" name="l00898"></a><span class="lineno">  898</span>        Seconds, Minutes, Hours, Days, Weekdays, Months, Years,</div>
+<div class="line"><a id="l00899" name="l00899"></a><span class="lineno">  899</span>        Second_alarm, Minute_alarm, Hour_alarm, Day_alarm, Weekday_alarm,</div>
+<div class="line"><a id="l00900" name="l00900"></a><span class="lineno">  900</span>        Timer_value, Timer_mode</div>
+<div class="line"><a id="l00901" name="l00901"></a><span class="lineno">  901</span>    };</div>
 </div>
-<div class="line"><a id="l00901" name="l00901"></a><span class="lineno">  901</span></div>
-<div class="line"><a id="l00909" name="l00909"></a><span class="lineno"><a class="line" href="class_p_c_f85063_a.html#a10f51478ca2a06fae5711e489a6ffcf0">  909</a></span>    time_t <a class="code hl_function" href="class_p_c_f85063_a.html#a10f51478ca2a06fae5711e489a6ffcf0">time</a>( time_t* tp );</div>
-<div class="line"><a id="l00910" name="l00910"></a><span class="lineno">  910</span></div>
-<div class="line"><a id="l00914" name="l00914"></a><span class="lineno"><a class="line" href="class_p_c_f85063_a.html#a15e3773f6e12ac5d624bfded1929c577">  914</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_p_c_f85063_a.html#a15e3773f6e12ac5d624bfded1929c577">begin</a>( <span class="keywordtype">void</span> );</div>
-<div class="line"><a id="l00915" name="l00915"></a><span class="lineno">  915</span>    </div>
-<div class="line"><a id="l00920" name="l00920"></a><span class="lineno"><a class="line" href="class_p_c_f85063_a.html#a90c19698171af0d85412a46b6588a893">  920</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_p_c_f85063_a.html#a90c19698171af0d85412a46b6588a893">set</a>( <span class="keyword">struct</span> tm* now_tm );</div>
-<div class="line"><a id="l00921" name="l00921"></a><span class="lineno">  921</span></div>
-<div class="line"><a id="l00926" name="l00926"></a><span class="lineno"><a class="line" href="class_p_c_f85063_a.html#aaa542a92d1169513f003f28bb2f1b978">  926</a></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="class_p_c_f85063_a.html#aaa542a92d1169513f003f28bb2f1b978">oscillator_stop</a>( <span class="keywordtype">void</span> );</div>
-<div class="line"><a id="l00927" name="l00927"></a><span class="lineno">  927</span>    </div>
-<div class="line"><a id="l00933" name="l00933"></a><span class="lineno"><a class="line" href="class_p_c_f85063_a.html#a277795a8dfba9b6af942bcc4e860e624">  933</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_p_c_f85063_a.html#a277795a8dfba9b6af942bcc4e860e624">alarm</a>( <a class="code hl_enumeration" href="class_r_t_c___n_x_p.html#aa11396067a7c0e240e169d4862539866">alarm_setting</a> digit, <span class="keywordtype">int</span> val );</div>
-<div class="line"><a id="l00934" name="l00934"></a><span class="lineno">  934</span></div>
-<div class="line"><a id="l00937" name="l00937"></a><span class="lineno"><a class="line" href="class_p_c_f85063_a.html#a9ec37f2fbce941cfd3cd474b9631ea2d">  937</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_p_c_f85063_a.html#a9ec37f2fbce941cfd3cd474b9631ea2d">alarm_clear</a>( <span class="keywordtype">void</span> );</div>
-<div class="line"><a id="l00938" name="l00938"></a><span class="lineno">  938</span></div>
-<div class="line"><a id="l00941" name="l00941"></a><span class="lineno"><a class="line" href="class_p_c_f85063_a.html#aa303d4b1753a174b339ccae1907cdee7">  941</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_p_c_f85063_a.html#aa303d4b1753a174b339ccae1907cdee7">alarm_disable</a>( <span class="keywordtype">void</span> );</div>
-<div class="line"><a id="l00942" name="l00942"></a><span class="lineno">  942</span></div>
-<div class="line"><a id="l00945" name="l00945"></a><span class="lineno"><a class="line" href="class_p_c_f85063_a.html#a2bd4d413251456251058782015aa624c">  945</a></span>    uint8_t <a class="code hl_function" href="class_p_c_f85063_a.html#a2bd4d413251456251058782015aa624c">int_clear</a>( <span class="keywordtype">void</span> );</div>
-<div class="line"><a id="l00946" name="l00946"></a><span class="lineno">  946</span> </div>
-<div class="line"><a id="l00947" name="l00947"></a><span class="lineno">  947</span>    </div>
-<div class="line"><a id="l00953" name="l00953"></a><span class="lineno"><a class="line" href="class_p_c_f85063_a.html#a32092d7eb382d2055f4673b089d6b55c">  953</a></span>    <span class="keywordtype">float</span> <a class="code hl_function" href="class_p_c_f85063_a.html#a32092d7eb382d2055f4673b089d6b55c">timer</a>( <span class="keywordtype">float</span> period );</div>
-<div class="line"><a id="l00954" name="l00954"></a><span class="lineno">  954</span>    </div>
-<div class="line"><a id="l00961" name="l00961"></a><span class="lineno"><a class="line" href="class_p_c_f85063_a.html#abb65b42f556baaea1566a38c87794150">  961</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_p_c_f85063_a.html#abb65b42f556baaea1566a38c87794150">reg_w</a>( uint8_t reg_adr, uint8_t *data, <span class="keywordtype">int</span> size );</div>
-<div class="line"><a id="l00962" name="l00962"></a><span class="lineno">  962</span></div>
-<div class="line"><a id="l00968" name="l00968"></a><span class="lineno"><a class="line" href="class_p_c_f85063_a.html#a99ebd1b629f214c50f73d64a09c6b473">  968</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_p_c_f85063_a.html#a99ebd1b629f214c50f73d64a09c6b473">reg_w</a>( uint8_t reg_adr, uint8_t data );</div>
-<div class="line"><a id="l00969" name="l00969"></a><span class="lineno">  969</span></div>
-<div class="line"><a id="l00976" name="l00976"></a><span class="lineno"><a class="line" href="class_p_c_f85063_a.html#a55a84409405e9908b997638b25767be6">  976</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_p_c_f85063_a.html#a55a84409405e9908b997638b25767be6">reg_r</a>( uint8_t reg_adr, uint8_t *data, <span class="keywordtype">int</span> size );</div>
-<div class="line"><a id="l00977" name="l00977"></a><span class="lineno">  977</span></div>
-<div class="line"><a id="l00983" name="l00983"></a><span class="lineno"><a class="line" href="class_p_c_f85063_a.html#a5e9fac2c2210a005ecaa731f9e3c17b2">  983</a></span>    uint8_t <a class="code hl_function" href="class_p_c_f85063_a.html#a5e9fac2c2210a005ecaa731f9e3c17b2">reg_r</a>( uint8_t reg_adr );</div>
-<div class="line"><a id="l00984" name="l00984"></a><span class="lineno">  984</span></div>
-<div class="line"><a id="l00990" name="l00990"></a><span class="lineno"><a class="line" href="class_p_c_f85063_a.html#ac5709fbb36677d12e709f063797a2fa1">  990</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_p_c_f85063_a.html#ac5709fbb36677d12e709f063797a2fa1">write_r8</a>( uint8_t reg, uint8_t val );</div>
-<div class="line"><a id="l00991" name="l00991"></a><span class="lineno">  991</span></div>
-<div class="line"><a id="l00997" name="l00997"></a><span class="lineno"><a class="line" href="class_p_c_f85063_a.html#a40f567dfb37cd3a232342a7696c6980f">  997</a></span>    uint8_t <a class="code hl_function" href="class_p_c_f85063_a.html#a40f567dfb37cd3a232342a7696c6980f">read_r8</a>( uint8_t reg );</div>
-<div class="line"><a id="l00998" name="l00998"></a><span class="lineno">  998</span></div>
-<div class="line"><a id="l01007" name="l01007"></a><span class="lineno"><a class="line" href="class_p_c_f85063_a.html#abeda19e28d17172126dc7e5be212c9c1"> 1007</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_p_c_f85063_a.html#abeda19e28d17172126dc7e5be212c9c1">bit_op8</a>(  uint8_t reg,  uint8_t mask,  uint8_t value );</div>
-<div class="line"><a id="l01008" name="l01008"></a><span class="lineno"> 1008</span> </div>
-<div class="line"><a id="l01009" name="l01009"></a><span class="lineno"> 1009</span><span class="preprocessor">#endif  </span><span class="comment">//  DOXYGEN_ONLY</span></div>
+<div class="line"><a id="l00902" name="l00902"></a><span class="lineno">  902</span></div>
+<div class="line"><a id="l00910" name="l00910"></a><span class="lineno"><a class="line" href="class_p_c_f85063_a.html#a10f51478ca2a06fae5711e489a6ffcf0">  910</a></span>    time_t <a class="code hl_function" href="class_p_c_f85063_a.html#a10f51478ca2a06fae5711e489a6ffcf0">time</a>( time_t* tp );</div>
+<div class="line"><a id="l00911" name="l00911"></a><span class="lineno">  911</span></div>
+<div class="line"><a id="l00915" name="l00915"></a><span class="lineno"><a class="line" href="class_p_c_f85063_a.html#a15e3773f6e12ac5d624bfded1929c577">  915</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_p_c_f85063_a.html#a15e3773f6e12ac5d624bfded1929c577">begin</a>( <span class="keywordtype">void</span> );</div>
+<div class="line"><a id="l00916" name="l00916"></a><span class="lineno">  916</span>    </div>
+<div class="line"><a id="l00921" name="l00921"></a><span class="lineno"><a class="line" href="class_p_c_f85063_a.html#a90c19698171af0d85412a46b6588a893">  921</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_p_c_f85063_a.html#a90c19698171af0d85412a46b6588a893">set</a>( <span class="keyword">struct</span> tm* now_tm );</div>
+<div class="line"><a id="l00922" name="l00922"></a><span class="lineno">  922</span></div>
+<div class="line"><a id="l00927" name="l00927"></a><span class="lineno"><a class="line" href="class_p_c_f85063_a.html#aaa542a92d1169513f003f28bb2f1b978">  927</a></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="class_p_c_f85063_a.html#aaa542a92d1169513f003f28bb2f1b978">oscillator_stop</a>( <span class="keywordtype">void</span> );</div>
+<div class="line"><a id="l00928" name="l00928"></a><span class="lineno">  928</span>    </div>
+<div class="line"><a id="l00934" name="l00934"></a><span class="lineno"><a class="line" href="class_p_c_f85063_a.html#a277795a8dfba9b6af942bcc4e860e624">  934</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_p_c_f85063_a.html#a277795a8dfba9b6af942bcc4e860e624">alarm</a>( <a class="code hl_enumeration" href="class_r_t_c___n_x_p.html#aa11396067a7c0e240e169d4862539866">alarm_setting</a> digit, <span class="keywordtype">int</span> val );</div>
+<div class="line"><a id="l00935" name="l00935"></a><span class="lineno">  935</span></div>
+<div class="line"><a id="l00938" name="l00938"></a><span class="lineno"><a class="line" href="class_p_c_f85063_a.html#a9ec37f2fbce941cfd3cd474b9631ea2d">  938</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_p_c_f85063_a.html#a9ec37f2fbce941cfd3cd474b9631ea2d">alarm_clear</a>( <span class="keywordtype">void</span> );</div>
+<div class="line"><a id="l00939" name="l00939"></a><span class="lineno">  939</span></div>
+<div class="line"><a id="l00942" name="l00942"></a><span class="lineno"><a class="line" href="class_p_c_f85063_a.html#aa303d4b1753a174b339ccae1907cdee7">  942</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_p_c_f85063_a.html#aa303d4b1753a174b339ccae1907cdee7">alarm_disable</a>( <span class="keywordtype">void</span> );</div>
+<div class="line"><a id="l00943" name="l00943"></a><span class="lineno">  943</span></div>
+<div class="line"><a id="l00946" name="l00946"></a><span class="lineno"><a class="line" href="class_p_c_f85063_a.html#a2bd4d413251456251058782015aa624c">  946</a></span>    uint8_t <a class="code hl_function" href="class_p_c_f85063_a.html#a2bd4d413251456251058782015aa624c">int_clear</a>( <span class="keywordtype">void</span> );</div>
+<div class="line"><a id="l00947" name="l00947"></a><span class="lineno">  947</span> </div>
+<div class="line"><a id="l00948" name="l00948"></a><span class="lineno">  948</span>    </div>
+<div class="line"><a id="l00955" name="l00955"></a><span class="lineno"><a class="line" href="class_p_c_f85063_a.html#a1ef5a35bbed91a3f981990ed436c1142">  955</a></span>    <span class="keywordtype">float</span> <a class="code hl_function" href="class_p_c_f85063_a.html#a1ef5a35bbed91a3f981990ed436c1142">timer</a>( <span class="keywordtype">float</span> period, <span class="keywordtype">bool</span> pulse = <span class="keyword">false</span> );</div>
+<div class="line"><a id="l00956" name="l00956"></a><span class="lineno">  956</span></div>
+<div class="line"><a id="l00963" name="l00963"></a><span class="lineno"><a class="line" href="class_p_c_f85063_a.html#abb65b42f556baaea1566a38c87794150">  963</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_p_c_f85063_a.html#abb65b42f556baaea1566a38c87794150">reg_w</a>( uint8_t reg_adr, uint8_t *data, <span class="keywordtype">int</span> size );</div>
+<div class="line"><a id="l00964" name="l00964"></a><span class="lineno">  964</span></div>
+<div class="line"><a id="l00970" name="l00970"></a><span class="lineno"><a class="line" href="class_p_c_f85063_a.html#a99ebd1b629f214c50f73d64a09c6b473">  970</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_p_c_f85063_a.html#a99ebd1b629f214c50f73d64a09c6b473">reg_w</a>( uint8_t reg_adr, uint8_t data );</div>
+<div class="line"><a id="l00971" name="l00971"></a><span class="lineno">  971</span></div>
+<div class="line"><a id="l00978" name="l00978"></a><span class="lineno"><a class="line" href="class_p_c_f85063_a.html#a55a84409405e9908b997638b25767be6">  978</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_p_c_f85063_a.html#a55a84409405e9908b997638b25767be6">reg_r</a>( uint8_t reg_adr, uint8_t *data, <span class="keywordtype">int</span> size );</div>
+<div class="line"><a id="l00979" name="l00979"></a><span class="lineno">  979</span></div>
+<div class="line"><a id="l00985" name="l00985"></a><span class="lineno"><a class="line" href="class_p_c_f85063_a.html#a5e9fac2c2210a005ecaa731f9e3c17b2">  985</a></span>    uint8_t <a class="code hl_function" href="class_p_c_f85063_a.html#a5e9fac2c2210a005ecaa731f9e3c17b2">reg_r</a>( uint8_t reg_adr );</div>
+<div class="line"><a id="l00986" name="l00986"></a><span class="lineno">  986</span></div>
+<div class="line"><a id="l00992" name="l00992"></a><span class="lineno"><a class="line" href="class_p_c_f85063_a.html#ac5709fbb36677d12e709f063797a2fa1">  992</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_p_c_f85063_a.html#ac5709fbb36677d12e709f063797a2fa1">write_r8</a>( uint8_t reg, uint8_t val );</div>
+<div class="line"><a id="l00993" name="l00993"></a><span class="lineno">  993</span></div>
+<div class="line"><a id="l00999" name="l00999"></a><span class="lineno"><a class="line" href="class_p_c_f85063_a.html#a40f567dfb37cd3a232342a7696c6980f">  999</a></span>    uint8_t <a class="code hl_function" href="class_p_c_f85063_a.html#a40f567dfb37cd3a232342a7696c6980f">read_r8</a>( uint8_t reg );</div>
+<div class="line"><a id="l01000" name="l01000"></a><span class="lineno"> 1000</span></div>
+<div class="line"><a id="l01009" name="l01009"></a><span class="lineno"><a class="line" href="class_p_c_f85063_a.html#abeda19e28d17172126dc7e5be212c9c1"> 1009</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_p_c_f85063_a.html#abeda19e28d17172126dc7e5be212c9c1">bit_op8</a>(  uint8_t reg,  uint8_t mask,  uint8_t value );</div>
 <div class="line"><a id="l01010" name="l01010"></a><span class="lineno"> 1010</span> </div>
-<div class="line"><a id="l01011" name="l01011"></a><span class="lineno"> 1011</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l01013" name="l01013"></a><span class="lineno"> 1013</span>    <span class="keywordtype">void</span> _reg_w( uint8_t reg, uint8_t *vp, <span class="keywordtype">int</span> len );</div>
-<div class="line"><a id="l01014" name="l01014"></a><span class="lineno"> 1014</span></div>
-<div class="line"><a id="l01016" name="l01016"></a><span class="lineno"> 1016</span>    <span class="keywordtype">void</span> _reg_r( uint8_t reg, uint8_t *vp, <span class="keywordtype">int</span> len );</div>
-<div class="line"><a id="l01017" name="l01017"></a><span class="lineno"> 1017</span></div>
-<div class="line"><a id="l01019" name="l01019"></a><span class="lineno"> 1019</span>    <span class="keywordtype">void</span> _reg_w( uint8_t reg, uint8_t val );</div>
-<div class="line"><a id="l01020" name="l01020"></a><span class="lineno"> 1020</span></div>
-<div class="line"><a id="l01022" name="l01022"></a><span class="lineno"> 1022</span>    uint8_t _reg_r( uint8_t reg );</div>
-<div class="line"><a id="l01023" name="l01023"></a><span class="lineno"> 1023</span></div>
-<div class="line"><a id="l01025" name="l01025"></a><span class="lineno"> 1025</span>    <span class="keywordtype">void</span> _bit_op8( uint8_t reg, uint8_t mask, uint8_t val );</div>
-<div class="line"><a id="l01026" name="l01026"></a><span class="lineno"> 1026</span>};</div>
+<div class="line"><a id="l01011" name="l01011"></a><span class="lineno"> 1011</span><span class="preprocessor">#endif  </span><span class="comment">//  DOXYGEN_ONLY</span></div>
+<div class="line"><a id="l01012" name="l01012"></a><span class="lineno"> 1012</span> </div>
+<div class="line"><a id="l01013" name="l01013"></a><span class="lineno"> 1013</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l01015" name="l01015"></a><span class="lineno"> 1015</span>    <span class="keywordtype">void</span> _reg_w( uint8_t reg, uint8_t *vp, <span class="keywordtype">int</span> len );</div>
+<div class="line"><a id="l01016" name="l01016"></a><span class="lineno"> 1016</span></div>
+<div class="line"><a id="l01018" name="l01018"></a><span class="lineno"> 1018</span>    <span class="keywordtype">void</span> _reg_r( uint8_t reg, uint8_t *vp, <span class="keywordtype">int</span> len );</div>
+<div class="line"><a id="l01019" name="l01019"></a><span class="lineno"> 1019</span></div>
+<div class="line"><a id="l01021" name="l01021"></a><span class="lineno"> 1021</span>    <span class="keywordtype">void</span> _reg_w( uint8_t reg, uint8_t val );</div>
+<div class="line"><a id="l01022" name="l01022"></a><span class="lineno"> 1022</span></div>
+<div class="line"><a id="l01024" name="l01024"></a><span class="lineno"> 1024</span>    uint8_t _reg_r( uint8_t reg );</div>
+<div class="line"><a id="l01025" name="l01025"></a><span class="lineno"> 1025</span></div>
+<div class="line"><a id="l01027" name="l01027"></a><span class="lineno"> 1027</span>    <span class="keywordtype">void</span> _bit_op8( uint8_t reg, uint8_t mask, uint8_t val );</div>
+<div class="line"><a id="l01028" name="l01028"></a><span class="lineno"> 1028</span>};</div>
 </div>
-<div class="line"><a id="l01027" name="l01027"></a><span class="lineno"> 1027</span> </div>
-<div class="foldopen" id="foldopen01028" data-start="{" data-end="};">
-<div class="line"><a id="l01028" name="l01028"></a><span class="lineno"><a class="line" href="class_p_c_f85063_t_p.html"> 1028</a></span><span class="keyword">class </span><a class="code hl_function" href="class_p_c_f85063_t_p.html#a7dfdab8be37c14e0cfb2bd6bf7597a3d">PCF85063TP</a> : <span class="keyword">public</span> <a class="code hl_function" href="class_p_c_f85063_a.html#a74f730e5cd2234e158175701bcb37b9a">PCF85063A</a></div>
-<div class="line"><a id="l01029" name="l01029"></a><span class="lineno"> 1029</span>{</div>
-<div class="line"><a id="l01030" name="l01030"></a><span class="lineno"> 1030</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l01035" name="l01035"></a><span class="lineno"> 1035</span>    <a class="code hl_function" href="class_p_c_f85063_t_p.html#a7dfdab8be37c14e0cfb2bd6bf7597a3d">PCF85063TP</a>( uint8_t i2c_address = (0xA2 &gt;&gt; 1) );</div>
-<div class="line"><a id="l01036" name="l01036"></a><span class="lineno"> 1036</span></div>
-<div class="line"><a id="l01042" name="l01042"></a><span class="lineno"> 1042</span>    <a class="code hl_function" href="class_p_c_f85063_t_p.html#a7dfdab8be37c14e0cfb2bd6bf7597a3d">PCF85063TP</a>( TwoWire&amp; wire, uint8_t i2c_address = (0xA2 &gt;&gt; 1) );</div>
-<div class="line"><a id="l01043" name="l01043"></a><span class="lineno"> 1043</span></div>
-<div class="line"><a id="l01045" name="l01045"></a><span class="lineno"> 1045</span>    <span class="keyword">virtual</span> <a class="code hl_function" href="class_p_c_f85063_t_p.html#a6aa1bd1300dc3ea7318009cbd24d1b36">~PCF85063TP</a>();</div>
-<div class="line"><a id="l01046" name="l01046"></a><span class="lineno"> 1046</span>    </div>
-<div class="line"><a id="l01047" name="l01047"></a><span class="lineno"> 1047</span><span class="preprocessor">#if DOXYGEN_ONLY</span><span class="preprocessor"></span></div>
-<div class="foldopen" id="foldopen01049" data-start="{" data-end="};">
-<div class="line"><a id="l01049" name="l01049"></a><span class="lineno"><a class="line" href="class_p_c_f85063_t_p.html#af9b9dcc35b7c177a214ecf9ac5972218"> 1049</a></span>    <span class="keyword">enum</span> <a class="code hl_enumeration" href="class_p_c_f85063_t_p.html#af9b9dcc35b7c177a214ecf9ac5972218">reg_num</a> {</div>
-<div class="line"><a id="l01050" name="l01050"></a><span class="lineno"> 1050</span>        Control_1, Control_2,</div>
-<div class="line"><a id="l01051" name="l01051"></a><span class="lineno"> 1051</span>        Offset,</div>
-<div class="line"><a id="l01052" name="l01052"></a><span class="lineno"> 1052</span>        RAM_byte,</div>
-<div class="line"><a id="l01053" name="l01053"></a><span class="lineno"> 1053</span>        Seconds, Minutes, Hours, Days, Weekdays, Months, Years,</div>
-<div class="line"><a id="l01054" name="l01054"></a><span class="lineno"> 1054</span>    };</div>
+<div class="line"><a id="l01029" name="l01029"></a><span class="lineno"> 1029</span> </div>
+<div class="foldopen" id="foldopen01030" data-start="{" data-end="};">
+<div class="line"><a id="l01030" name="l01030"></a><span class="lineno"><a class="line" href="class_p_c_f85063_t_p.html"> 1030</a></span><span class="keyword">class </span><a class="code hl_function" href="class_p_c_f85063_t_p.html#a7dfdab8be37c14e0cfb2bd6bf7597a3d">PCF85063TP</a> : <span class="keyword">public</span> <a class="code hl_function" href="class_p_c_f85063_a.html#a74f730e5cd2234e158175701bcb37b9a">PCF85063A</a></div>
+<div class="line"><a id="l01031" name="l01031"></a><span class="lineno"> 1031</span>{</div>
+<div class="line"><a id="l01032" name="l01032"></a><span class="lineno"> 1032</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l01037" name="l01037"></a><span class="lineno"> 1037</span>    <a class="code hl_function" href="class_p_c_f85063_t_p.html#a7dfdab8be37c14e0cfb2bd6bf7597a3d">PCF85063TP</a>( uint8_t i2c_address = (0xA2 &gt;&gt; 1) );</div>
+<div class="line"><a id="l01038" name="l01038"></a><span class="lineno"> 1038</span></div>
+<div class="line"><a id="l01044" name="l01044"></a><span class="lineno"> 1044</span>    <a class="code hl_function" href="class_p_c_f85063_t_p.html#a7dfdab8be37c14e0cfb2bd6bf7597a3d">PCF85063TP</a>( TwoWire&amp; wire, uint8_t i2c_address = (0xA2 &gt;&gt; 1) );</div>
+<div class="line"><a id="l01045" name="l01045"></a><span class="lineno"> 1045</span></div>
+<div class="line"><a id="l01047" name="l01047"></a><span class="lineno"> 1047</span>    <span class="keyword">virtual</span> <a class="code hl_function" href="class_p_c_f85063_t_p.html#a6aa1bd1300dc3ea7318009cbd24d1b36">~PCF85063TP</a>();</div>
+<div class="line"><a id="l01048" name="l01048"></a><span class="lineno"> 1048</span>    </div>
+<div class="line"><a id="l01049" name="l01049"></a><span class="lineno"> 1049</span><span class="preprocessor">#if DOXYGEN_ONLY</span><span class="preprocessor"></span></div>
+<div class="foldopen" id="foldopen01051" data-start="{" data-end="};">
+<div class="line"><a id="l01051" name="l01051"></a><span class="lineno"><a class="line" href="class_p_c_f85063_t_p.html#af9b9dcc35b7c177a214ecf9ac5972218"> 1051</a></span>    <span class="keyword">enum</span> <a class="code hl_enumeration" href="class_p_c_f85063_t_p.html#af9b9dcc35b7c177a214ecf9ac5972218">reg_num</a> {</div>
+<div class="line"><a id="l01052" name="l01052"></a><span class="lineno"> 1052</span>        Control_1, Control_2,</div>
+<div class="line"><a id="l01053" name="l01053"></a><span class="lineno"> 1053</span>        Offset,</div>
+<div class="line"><a id="l01054" name="l01054"></a><span class="lineno"> 1054</span>        RAM_byte,</div>
+<div class="line"><a id="l01055" name="l01055"></a><span class="lineno"> 1055</span>        Seconds, Minutes, Hours, Days, Weekdays, Months, Years,</div>
+<div class="line"><a id="l01056" name="l01056"></a><span class="lineno"> 1056</span>    };</div>
 </div>
-<div class="line"><a id="l01055" name="l01055"></a><span class="lineno"> 1055</span></div>
-<div class="line"><a id="l01062" name="l01062"></a><span class="lineno"><a class="line" href="class_p_c_f85063_t_p.html#ae99cac7846bc79d9fbfee3352dd543f7"> 1062</a></span>    time_t <a class="code hl_function" href="class_p_c_f85063_t_p.html#ae99cac7846bc79d9fbfee3352dd543f7">time</a>( time_t* tp );</div>
-<div class="line"><a id="l01063" name="l01063"></a><span class="lineno"> 1063</span>    </div>
-<div class="line"><a id="l01067" name="l01067"></a><span class="lineno"><a class="line" href="class_p_c_f85063_t_p.html#a13fdd536da7b4facd694c78157e84370"> 1067</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_p_c_f85063_t_p.html#a13fdd536da7b4facd694c78157e84370">begin</a>( <span class="keywordtype">void</span> );</div>
-<div class="line"><a id="l01068" name="l01068"></a><span class="lineno"> 1068</span>    </div>
-<div class="line"><a id="l01073" name="l01073"></a><span class="lineno"><a class="line" href="class_p_c_f85063_t_p.html#aa75c703ccb7cfbdb89439151f0bc082c"> 1073</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_p_c_f85063_t_p.html#aa75c703ccb7cfbdb89439151f0bc082c">set</a>( <span class="keyword">struct</span> tm* now_tm );</div>
-<div class="line"><a id="l01074" name="l01074"></a><span class="lineno"> 1074</span></div>
-<div class="line"><a id="l01079" name="l01079"></a><span class="lineno"><a class="line" href="class_p_c_f85063_t_p.html#ac61f1171b40a12b42d56a1805dcc9f48"> 1079</a></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="class_p_c_f85063_t_p.html#ac61f1171b40a12b42d56a1805dcc9f48">oscillator_stop</a>( <span class="keywordtype">void</span> );</div>
-<div class="line"><a id="l01080" name="l01080"></a><span class="lineno"> 1080</span>    </div>
-<div class="line"><a id="l01087" name="l01087"></a><span class="lineno"><a class="line" href="class_p_c_f85063_t_p.html#a08e6d54973b3b060de3a5bb36defa892"> 1087</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_p_c_f85063_t_p.html#a08e6d54973b3b060de3a5bb36defa892">reg_w</a>( uint8_t reg_adr, uint8_t *data, <span class="keywordtype">int</span> size );</div>
-<div class="line"><a id="l01088" name="l01088"></a><span class="lineno"> 1088</span></div>
-<div class="line"><a id="l01094" name="l01094"></a><span class="lineno"><a class="line" href="class_p_c_f85063_t_p.html#ab24a81e9df38a6b04e739ccd4d4ce1eb"> 1094</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_p_c_f85063_t_p.html#ab24a81e9df38a6b04e739ccd4d4ce1eb">reg_w</a>( uint8_t reg_adr, uint8_t data );</div>
-<div class="line"><a id="l01095" name="l01095"></a><span class="lineno"> 1095</span></div>
-<div class="line"><a id="l01102" name="l01102"></a><span class="lineno"><a class="line" href="class_p_c_f85063_t_p.html#aa9bb509081ce2e789a0968be5ce11833"> 1102</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_p_c_f85063_t_p.html#aa9bb509081ce2e789a0968be5ce11833">reg_r</a>( uint8_t reg_adr, uint8_t *data, <span class="keywordtype">int</span> size );</div>
-<div class="line"><a id="l01103" name="l01103"></a><span class="lineno"> 1103</span></div>
-<div class="line"><a id="l01109" name="l01109"></a><span class="lineno"><a class="line" href="class_p_c_f85063_t_p.html#a451c8ad3fcaf8d8d501f7a137d38c835"> 1109</a></span>    uint8_t <a class="code hl_function" href="class_p_c_f85063_t_p.html#a451c8ad3fcaf8d8d501f7a137d38c835">reg_r</a>( uint8_t reg_adr );</div>
-<div class="line"><a id="l01110" name="l01110"></a><span class="lineno"> 1110</span></div>
-<div class="line"><a id="l01116" name="l01116"></a><span class="lineno"><a class="line" href="class_p_c_f85063_t_p.html#a403845b4de96cb8552b61f5eb94b77e6"> 1116</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_p_c_f85063_t_p.html#a403845b4de96cb8552b61f5eb94b77e6">write_r8</a>( uint8_t reg, uint8_t val );</div>
-<div class="line"><a id="l01117" name="l01117"></a><span class="lineno"> 1117</span></div>
-<div class="line"><a id="l01123" name="l01123"></a><span class="lineno"><a class="line" href="class_p_c_f85063_t_p.html#a782d9db2d98a42a3e36606ffaade6c8d"> 1123</a></span>    uint8_t <a class="code hl_function" href="class_p_c_f85063_t_p.html#a782d9db2d98a42a3e36606ffaade6c8d">read_r8</a>( uint8_t reg );</div>
-<div class="line"><a id="l01124" name="l01124"></a><span class="lineno"> 1124</span></div>
-<div class="line"><a id="l01133" name="l01133"></a><span class="lineno"><a class="line" href="class_p_c_f85063_t_p.html#a462e972596df39519571d1219199c115"> 1133</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_p_c_f85063_t_p.html#a462e972596df39519571d1219199c115">bit_op8</a>(  uint8_t reg,  uint8_t mask,  uint8_t value );</div>
-<div class="line"><a id="l01134" name="l01134"></a><span class="lineno"> 1134</span> </div>
-<div class="line"><a id="l01135" name="l01135"></a><span class="lineno"> 1135</span><span class="preprocessor">#endif  </span><span class="comment">//  DOXYGEN_ONLY</span></div>
+<div class="line"><a id="l01057" name="l01057"></a><span class="lineno"> 1057</span></div>
+<div class="line"><a id="l01064" name="l01064"></a><span class="lineno"><a class="line" href="class_p_c_f85063_t_p.html#ae99cac7846bc79d9fbfee3352dd543f7"> 1064</a></span>    time_t <a class="code hl_function" href="class_p_c_f85063_t_p.html#ae99cac7846bc79d9fbfee3352dd543f7">time</a>( time_t* tp );</div>
+<div class="line"><a id="l01065" name="l01065"></a><span class="lineno"> 1065</span>    </div>
+<div class="line"><a id="l01069" name="l01069"></a><span class="lineno"><a class="line" href="class_p_c_f85063_t_p.html#a13fdd536da7b4facd694c78157e84370"> 1069</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_p_c_f85063_t_p.html#a13fdd536da7b4facd694c78157e84370">begin</a>( <span class="keywordtype">void</span> );</div>
+<div class="line"><a id="l01070" name="l01070"></a><span class="lineno"> 1070</span>    </div>
+<div class="line"><a id="l01075" name="l01075"></a><span class="lineno"><a class="line" href="class_p_c_f85063_t_p.html#aa75c703ccb7cfbdb89439151f0bc082c"> 1075</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_p_c_f85063_t_p.html#aa75c703ccb7cfbdb89439151f0bc082c">set</a>( <span class="keyword">struct</span> tm* now_tm );</div>
+<div class="line"><a id="l01076" name="l01076"></a><span class="lineno"> 1076</span></div>
+<div class="line"><a id="l01081" name="l01081"></a><span class="lineno"><a class="line" href="class_p_c_f85063_t_p.html#ac61f1171b40a12b42d56a1805dcc9f48"> 1081</a></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="class_p_c_f85063_t_p.html#ac61f1171b40a12b42d56a1805dcc9f48">oscillator_stop</a>( <span class="keywordtype">void</span> );</div>
+<div class="line"><a id="l01082" name="l01082"></a><span class="lineno"> 1082</span>    </div>
+<div class="line"><a id="l01089" name="l01089"></a><span class="lineno"><a class="line" href="class_p_c_f85063_t_p.html#a08e6d54973b3b060de3a5bb36defa892"> 1089</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_p_c_f85063_t_p.html#a08e6d54973b3b060de3a5bb36defa892">reg_w</a>( uint8_t reg_adr, uint8_t *data, <span class="keywordtype">int</span> size );</div>
+<div class="line"><a id="l01090" name="l01090"></a><span class="lineno"> 1090</span></div>
+<div class="line"><a id="l01096" name="l01096"></a><span class="lineno"><a class="line" href="class_p_c_f85063_t_p.html#ab24a81e9df38a6b04e739ccd4d4ce1eb"> 1096</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_p_c_f85063_t_p.html#ab24a81e9df38a6b04e739ccd4d4ce1eb">reg_w</a>( uint8_t reg_adr, uint8_t data );</div>
+<div class="line"><a id="l01097" name="l01097"></a><span class="lineno"> 1097</span></div>
+<div class="line"><a id="l01104" name="l01104"></a><span class="lineno"><a class="line" href="class_p_c_f85063_t_p.html#aa9bb509081ce2e789a0968be5ce11833"> 1104</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_p_c_f85063_t_p.html#aa9bb509081ce2e789a0968be5ce11833">reg_r</a>( uint8_t reg_adr, uint8_t *data, <span class="keywordtype">int</span> size );</div>
+<div class="line"><a id="l01105" name="l01105"></a><span class="lineno"> 1105</span></div>
+<div class="line"><a id="l01111" name="l01111"></a><span class="lineno"><a class="line" href="class_p_c_f85063_t_p.html#a451c8ad3fcaf8d8d501f7a137d38c835"> 1111</a></span>    uint8_t <a class="code hl_function" href="class_p_c_f85063_t_p.html#a451c8ad3fcaf8d8d501f7a137d38c835">reg_r</a>( uint8_t reg_adr );</div>
+<div class="line"><a id="l01112" name="l01112"></a><span class="lineno"> 1112</span></div>
+<div class="line"><a id="l01118" name="l01118"></a><span class="lineno"><a class="line" href="class_p_c_f85063_t_p.html#a403845b4de96cb8552b61f5eb94b77e6"> 1118</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_p_c_f85063_t_p.html#a403845b4de96cb8552b61f5eb94b77e6">write_r8</a>( uint8_t reg, uint8_t val );</div>
+<div class="line"><a id="l01119" name="l01119"></a><span class="lineno"> 1119</span></div>
+<div class="line"><a id="l01125" name="l01125"></a><span class="lineno"><a class="line" href="class_p_c_f85063_t_p.html#a782d9db2d98a42a3e36606ffaade6c8d"> 1125</a></span>    uint8_t <a class="code hl_function" href="class_p_c_f85063_t_p.html#a782d9db2d98a42a3e36606ffaade6c8d">read_r8</a>( uint8_t reg );</div>
+<div class="line"><a id="l01126" name="l01126"></a><span class="lineno"> 1126</span></div>
+<div class="line"><a id="l01135" name="l01135"></a><span class="lineno"><a class="line" href="class_p_c_f85063_t_p.html#a462e972596df39519571d1219199c115"> 1135</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_p_c_f85063_t_p.html#a462e972596df39519571d1219199c115">bit_op8</a>(  uint8_t reg,  uint8_t mask,  uint8_t value );</div>
 <div class="line"><a id="l01136" name="l01136"></a><span class="lineno"> 1136</span> </div>
-<div class="line"><a id="l01137" name="l01137"></a><span class="lineno"> 1137</span>};</div>
-</div>
+<div class="line"><a id="l01137" name="l01137"></a><span class="lineno"> 1137</span><span class="preprocessor">#endif  </span><span class="comment">//  DOXYGEN_ONLY</span></div>
 <div class="line"><a id="l01138" name="l01138"></a><span class="lineno"> 1138</span> </div>
-<div class="foldopen" id="foldopen01139" data-start="{" data-end="};">
-<div class="line"><a id="l01139" name="l01139"></a><span class="lineno"><a class="line" href="class_p_c_f85263_a.html"> 1139</a></span><span class="keyword">class </span><a class="code hl_function" href="class_p_c_f85263_a.html#ac8bf70232b2a0f1b520d20ec7a0681aa">PCF85263A</a> : <span class="keyword">public</span> <a class="code hl_function" href="class_r_t_c___n_x_p.html#a42923db96d555782c8c426c85af122e4">RTC_NXP</a>, <span class="keyword">public</span> I2C_device</div>
-<div class="line"><a id="l01140" name="l01140"></a><span class="lineno"> 1140</span>{</div>
-<div class="line"><a id="l01141" name="l01141"></a><span class="lineno"> 1141</span><span class="keyword">public</span>:</div>
-<div class="foldopen" id="foldopen01143" data-start="{" data-end="};">
-<div class="line"><a id="l01143" name="l01143"></a><span class="lineno"><a class="line" href="class_p_c_f85263_a.html#aa8b27745f67151341314514efb025411"> 1143</a></span>    <span class="keyword">enum</span> <a class="code hl_enumeration" href="class_p_c_f85263_a.html#aa8b27745f67151341314514efb025411">reg_num</a> {</div>
-<div class="line"><a id="l01144" name="l01144"></a><span class="lineno"> 1144</span>        _100th_seconds, Seconds, Minutes, Hours, Days, Weekdays, Months, Years,</div>
-<div class="line"><a id="l01145" name="l01145"></a><span class="lineno"> 1145</span>        Second_alarm1, Minute_alarm1, Hour_alarm1, Day_alarm1, Month_alarm1,</div>
-<div class="line"><a id="l01146" name="l01146"></a><span class="lineno"> 1146</span>        Minute_alarm2, Hour_alarm2, Weekday_alarm2,</div>
-<div class="line"><a id="l01147" name="l01147"></a><span class="lineno"> 1147</span>        Alarm_enables,</div>
-<div class="line"><a id="l01148" name="l01148"></a><span class="lineno"> 1148</span>        TSR1_seconds, TSR1_minutes, TSR1_hours, TSR1_days, TSR1_months, TSR1_years,</div>
-<div class="line"><a id="l01149" name="l01149"></a><span class="lineno"> 1149</span>        TSR2_seconds, TSR2_minutes, TSR2_hours, TSR2_days, TSR2_months, TSR2_years,</div>
-<div class="line"><a id="l01150" name="l01150"></a><span class="lineno"> 1150</span>        TSR3_seconds, TSR3_minutes, TSR3_hours, TSR3_days, TSR3_months, TSR3_years,</div>
-<div class="line"><a id="l01151" name="l01151"></a><span class="lineno"> 1151</span>        TSR_mode,</div>
-<div class="line"><a id="l01152" name="l01152"></a><span class="lineno"> 1152</span>        Offset, Oscillator, Battery_switch, Pin_IO, Function,</div>
-<div class="line"><a id="l01153" name="l01153"></a><span class="lineno"> 1153</span>        INTA_enable, INTB_enable, Flags,</div>
-<div class="line"><a id="l01154" name="l01154"></a><span class="lineno"> 1154</span>        RAM_byte, WatchDog, Stop_enable, Resets,</div>
-<div class="line"><a id="l01155" name="l01155"></a><span class="lineno"> 1155</span> </div>
-<div class="line"><a id="l01156" name="l01156"></a><span class="lineno"> 1156</span>        Hours_xx_xx_00 = 0x03, Hours_xx_00_xx, Hours_00_xx_xx, Reserved0, Reserved1, </div>
-<div class="line"><a id="l01157" name="l01157"></a><span class="lineno"> 1157</span>        Second_alm1, Minute_alm1, Hr_xx_xx_00_alm1, Hr_xx_00_xx_alm1, Hr_00_xx_xx_alm1, </div>
-<div class="line"><a id="l01158" name="l01158"></a><span class="lineno"> 1158</span>        Minute_alm2, Hr_xx_00_alm2, Hr_00_xx_alm2, </div>
-<div class="line"><a id="l01159" name="l01159"></a><span class="lineno"> 1159</span>        TSR1_hr_xx_xx_00 = 0x13, TSR1_hr_xx_00_xx, TSR1_hr_00_xx_xx, Reserved2, </div>
-<div class="line"><a id="l01160" name="l01160"></a><span class="lineno"> 1160</span>        TSR2_hr_xx_xx_00 = 0x19, TSR2_hr_xx_00_xx, TSR2_hr_00_xx_xx, Reserved3, </div>
-<div class="line"><a id="l01161" name="l01161"></a><span class="lineno"> 1161</span>        TSR3_hr_xx_xx_00 = 0x1F, TSR3_hr_xx_00_xx, TSR3_hr_00_xx_xx, Reserved4,     </div>
-<div class="line"><a id="l01162" name="l01162"></a><span class="lineno"> 1162</span>    };</div>
+<div class="line"><a id="l01139" name="l01139"></a><span class="lineno"> 1139</span>};</div>
 </div>
-<div class="line"><a id="l01163" name="l01163"></a><span class="lineno"> 1163</span>    </div>
-<div class="foldopen" id="foldopen01165" data-start="{" data-end="};">
-<div class="line"><a id="l01165" name="l01165"></a><span class="lineno"><a class="line" href="class_p_c_f85263_a.html#a9022b57b3608c69e928ee5219b17cc34"> 1165</a></span>    <span class="keyword">enum</span> <a class="code hl_enumeration" href="class_p_c_f85263_a.html#a9022b57b3608c69e928ee5219b17cc34">alarm_setting_85263A</a> {</div>
-<div class="line"><a id="l01166" name="l01166"></a><span class="lineno"> 1166</span>        SECOND,</div>
-<div class="line"><a id="l01167" name="l01167"></a><span class="lineno"> 1167</span>        MINUTE,</div>
-<div class="line"><a id="l01168" name="l01168"></a><span class="lineno"> 1168</span>        HOUR,</div>
-<div class="line"><a id="l01169" name="l01169"></a><span class="lineno"> 1169</span>        DAY,</div>
-<div class="line"><a id="l01170" name="l01170"></a><span class="lineno"> 1170</span>        MONTH,</div>
-<div class="line"><a id="l01171" name="l01171"></a><span class="lineno"> 1171</span>        MINUTE2,</div>
-<div class="line"><a id="l01172" name="l01172"></a><span class="lineno"> 1172</span>        HOUR2,</div>
-<div class="line"><a id="l01173" name="l01173"></a><span class="lineno"> 1173</span>        WEEKDAY2,</div>
-<div class="line"><a id="l01174" name="l01174"></a><span class="lineno"> 1174</span>    };</div>
+<div class="line"><a id="l01140" name="l01140"></a><span class="lineno"> 1140</span> </div>
+<div class="foldopen" id="foldopen01141" data-start="{" data-end="};">
+<div class="line"><a id="l01141" name="l01141"></a><span class="lineno"><a class="line" href="class_p_c_f85263_a.html"> 1141</a></span><span class="keyword">class </span><a class="code hl_function" href="class_p_c_f85263_a.html#ac8bf70232b2a0f1b520d20ec7a0681aa">PCF85263A</a> : <span class="keyword">public</span> <a class="code hl_function" href="class_r_t_c___n_x_p.html#a42923db96d555782c8c426c85af122e4">RTC_NXP</a>, <span class="keyword">public</span> I2C_device</div>
+<div class="line"><a id="l01142" name="l01142"></a><span class="lineno"> 1142</span>{</div>
+<div class="line"><a id="l01143" name="l01143"></a><span class="lineno"> 1143</span><span class="keyword">public</span>:</div>
+<div class="foldopen" id="foldopen01145" data-start="{" data-end="};">
+<div class="line"><a id="l01145" name="l01145"></a><span class="lineno"><a class="line" href="class_p_c_f85263_a.html#aa8b27745f67151341314514efb025411"> 1145</a></span>    <span class="keyword">enum</span> <a class="code hl_enumeration" href="class_p_c_f85263_a.html#aa8b27745f67151341314514efb025411">reg_num</a> {</div>
+<div class="line"><a id="l01146" name="l01146"></a><span class="lineno"> 1146</span>        _100th_seconds, Seconds, Minutes, Hours, Days, Weekdays, Months, Years,</div>
+<div class="line"><a id="l01147" name="l01147"></a><span class="lineno"> 1147</span>        Second_alarm1, Minute_alarm1, Hour_alarm1, Day_alarm1, Month_alarm1,</div>
+<div class="line"><a id="l01148" name="l01148"></a><span class="lineno"> 1148</span>        Minute_alarm2, Hour_alarm2, Weekday_alarm2,</div>
+<div class="line"><a id="l01149" name="l01149"></a><span class="lineno"> 1149</span>        Alarm_enables,</div>
+<div class="line"><a id="l01150" name="l01150"></a><span class="lineno"> 1150</span>        TSR1_seconds, TSR1_minutes, TSR1_hours, TSR1_days, TSR1_months, TSR1_years,</div>
+<div class="line"><a id="l01151" name="l01151"></a><span class="lineno"> 1151</span>        TSR2_seconds, TSR2_minutes, TSR2_hours, TSR2_days, TSR2_months, TSR2_years,</div>
+<div class="line"><a id="l01152" name="l01152"></a><span class="lineno"> 1152</span>        TSR3_seconds, TSR3_minutes, TSR3_hours, TSR3_days, TSR3_months, TSR3_years,</div>
+<div class="line"><a id="l01153" name="l01153"></a><span class="lineno"> 1153</span>        TSR_mode,</div>
+<div class="line"><a id="l01154" name="l01154"></a><span class="lineno"> 1154</span>        Offset, Oscillator, Battery_switch, Pin_IO, Function,</div>
+<div class="line"><a id="l01155" name="l01155"></a><span class="lineno"> 1155</span>        INTA_enable, INTB_enable, Flags,</div>
+<div class="line"><a id="l01156" name="l01156"></a><span class="lineno"> 1156</span>        RAM_byte, WatchDog, Stop_enable, Resets,</div>
+<div class="line"><a id="l01157" name="l01157"></a><span class="lineno"> 1157</span> </div>
+<div class="line"><a id="l01158" name="l01158"></a><span class="lineno"> 1158</span>        Hours_xx_xx_00 = 0x03, Hours_xx_00_xx, Hours_00_xx_xx, Reserved0, Reserved1, </div>
+<div class="line"><a id="l01159" name="l01159"></a><span class="lineno"> 1159</span>        Second_alm1, Minute_alm1, Hr_xx_xx_00_alm1, Hr_xx_00_xx_alm1, Hr_00_xx_xx_alm1, </div>
+<div class="line"><a id="l01160" name="l01160"></a><span class="lineno"> 1160</span>        Minute_alm2, Hr_xx_00_alm2, Hr_00_xx_alm2, </div>
+<div class="line"><a id="l01161" name="l01161"></a><span class="lineno"> 1161</span>        TSR1_hr_xx_xx_00 = 0x13, TSR1_hr_xx_00_xx, TSR1_hr_00_xx_xx, Reserved2, </div>
+<div class="line"><a id="l01162" name="l01162"></a><span class="lineno"> 1162</span>        TSR2_hr_xx_xx_00 = 0x19, TSR2_hr_xx_00_xx, TSR2_hr_00_xx_xx, Reserved3, </div>
+<div class="line"><a id="l01163" name="l01163"></a><span class="lineno"> 1163</span>        TSR3_hr_xx_xx_00 = 0x1F, TSR3_hr_xx_00_xx, TSR3_hr_00_xx_xx, Reserved4,     </div>
+<div class="line"><a id="l01164" name="l01164"></a><span class="lineno"> 1164</span>    };</div>
 </div>
-<div class="line"><a id="l01175" name="l01175"></a><span class="lineno"> 1175</span>    </div>
-<div class="foldopen" id="foldopen01177" data-start="{" data-end="};">
-<div class="line"><a id="l01177" name="l01177"></a><span class="lineno"><a class="line" href="class_p_c_f85263_a.html#ada70b814df16b266ea08c9cb30804396"> 1177</a></span>    <span class="keyword">enum</span> <a class="code hl_enumeration" href="class_p_c_f85263_a.html#ada70b814df16b266ea08c9cb30804396">periodic_int_select</a> {</div>
-<div class="line"><a id="l01178" name="l01178"></a><span class="lineno"> 1178</span>        DISABLE,</div>
-<div class="line"><a id="l01179" name="l01179"></a><span class="lineno"> 1179</span>        EVERY_SECOND,</div>
-<div class="line"><a id="l01180" name="l01180"></a><span class="lineno"> 1180</span>        EVERY_MINUTE,</div>
-<div class="line"><a id="l01181" name="l01181"></a><span class="lineno"> 1181</span>    };</div>
+<div class="line"><a id="l01165" name="l01165"></a><span class="lineno"> 1165</span>    </div>
+<div class="foldopen" id="foldopen01167" data-start="{" data-end="};">
+<div class="line"><a id="l01167" name="l01167"></a><span class="lineno"><a class="line" href="class_p_c_f85263_a.html#a9022b57b3608c69e928ee5219b17cc34"> 1167</a></span>    <span class="keyword">enum</span> <a class="code hl_enumeration" href="class_p_c_f85263_a.html#a9022b57b3608c69e928ee5219b17cc34">alarm_setting_85263A</a> {</div>
+<div class="line"><a id="l01168" name="l01168"></a><span class="lineno"> 1168</span>        SECOND,</div>
+<div class="line"><a id="l01169" name="l01169"></a><span class="lineno"> 1169</span>        MINUTE,</div>
+<div class="line"><a id="l01170" name="l01170"></a><span class="lineno"> 1170</span>        HOUR,</div>
+<div class="line"><a id="l01171" name="l01171"></a><span class="lineno"> 1171</span>        DAY,</div>
+<div class="line"><a id="l01172" name="l01172"></a><span class="lineno"> 1172</span>        MONTH,</div>
+<div class="line"><a id="l01173" name="l01173"></a><span class="lineno"> 1173</span>        MINUTE2,</div>
+<div class="line"><a id="l01174" name="l01174"></a><span class="lineno"> 1174</span>        HOUR2,</div>
+<div class="line"><a id="l01175" name="l01175"></a><span class="lineno"> 1175</span>        WEEKDAY2,</div>
+<div class="line"><a id="l01176" name="l01176"></a><span class="lineno"> 1176</span>    };</div>
 </div>
-<div class="line"><a id="l01182" name="l01182"></a><span class="lineno"> 1182</span></div>
-<div class="foldopen" id="foldopen01184" data-start="{" data-end="};">
-<div class="line"><a id="l01184" name="l01184"></a><span class="lineno"><a class="line" href="class_p_c_f85263_a.html#a8cd044df48a2001ac2514e5a2dd8dad6"> 1184</a></span>    <span class="keyword">enum</span> <a class="code hl_enumeration" href="class_p_c_f85263_a.html#a8cd044df48a2001ac2514e5a2dd8dad6">inta</a> {</div>
-<div class="line"><a id="l01185" name="l01185"></a><span class="lineno"> 1185</span>        INTA_CLKOUT,</div>
-<div class="line"><a id="l01186" name="l01186"></a><span class="lineno"> 1186</span>        INTA_BATTERY_MODE_INDICATION,</div>
-<div class="line"><a id="l01187" name="l01187"></a><span class="lineno"> 1187</span>        INTA_INTTERRUPT,</div>
-<div class="line"><a id="l01188" name="l01188"></a><span class="lineno"> 1188</span>        INTA_HIGH_Z,</div>
-<div class="line"><a id="l01189" name="l01189"></a><span class="lineno"> 1189</span>    };</div>
+<div class="line"><a id="l01177" name="l01177"></a><span class="lineno"> 1177</span>    </div>
+<div class="foldopen" id="foldopen01179" data-start="{" data-end="};">
+<div class="line"><a id="l01179" name="l01179"></a><span class="lineno"><a class="line" href="class_p_c_f85263_a.html#ada70b814df16b266ea08c9cb30804396"> 1179</a></span>    <span class="keyword">enum</span> <a class="code hl_enumeration" href="class_p_c_f85263_a.html#ada70b814df16b266ea08c9cb30804396">periodic_int_select</a> {</div>
+<div class="line"><a id="l01180" name="l01180"></a><span class="lineno"> 1180</span>        DISABLE,</div>
+<div class="line"><a id="l01181" name="l01181"></a><span class="lineno"> 1181</span>        EVERY_SECOND,</div>
+<div class="line"><a id="l01182" name="l01182"></a><span class="lineno"> 1182</span>        EVERY_MINUTE,</div>
+<div class="line"><a id="l01183" name="l01183"></a><span class="lineno"> 1183</span>    };</div>
 </div>
-<div class="line"><a id="l01190" name="l01190"></a><span class="lineno"> 1190</span></div>
-<div class="foldopen" id="foldopen01192" data-start="{" data-end="};">
-<div class="line"><a id="l01192" name="l01192"></a><span class="lineno"><a class="line" href="class_p_c_f85263_a.html#a1816caad9f3a66240bd899c2a2d6d2ae"> 1192</a></span>    <span class="keyword">enum</span> <a class="code hl_enumeration" href="class_p_c_f85263_a.html#a1816caad9f3a66240bd899c2a2d6d2ae">intb</a> {</div>
-<div class="line"><a id="l01193" name="l01193"></a><span class="lineno"> 1193</span>        INTB_DISABLE,</div>
-<div class="line"><a id="l01194" name="l01194"></a><span class="lineno"> 1194</span>        INTB_INTTERRUPT,</div>
-<div class="line"><a id="l01195" name="l01195"></a><span class="lineno"> 1195</span>        INTB_CLKOUT,</div>
-<div class="line"><a id="l01196" name="l01196"></a><span class="lineno"> 1196</span>        INTB_INPUT_MODE,</div>
-<div class="line"><a id="l01197" name="l01197"></a><span class="lineno"> 1197</span>    };</div>
+<div class="line"><a id="l01184" name="l01184"></a><span class="lineno"> 1184</span></div>
+<div class="foldopen" id="foldopen01186" data-start="{" data-end="};">
+<div class="line"><a id="l01186" name="l01186"></a><span class="lineno"><a class="line" href="class_p_c_f85263_a.html#a8cd044df48a2001ac2514e5a2dd8dad6"> 1186</a></span>    <span class="keyword">enum</span> <a class="code hl_enumeration" href="class_p_c_f85263_a.html#a8cd044df48a2001ac2514e5a2dd8dad6">inta</a> {</div>
+<div class="line"><a id="l01187" name="l01187"></a><span class="lineno"> 1187</span>        INTA_CLKOUT,</div>
+<div class="line"><a id="l01188" name="l01188"></a><span class="lineno"> 1188</span>        INTA_BATTERY_MODE_INDICATION,</div>
+<div class="line"><a id="l01189" name="l01189"></a><span class="lineno"> 1189</span>        INTA_INTERRUPT,</div>
+<div class="line"><a id="l01190" name="l01190"></a><span class="lineno"> 1190</span>        INTA_HIGH_Z,</div>
+<div class="line"><a id="l01191" name="l01191"></a><span class="lineno"> 1191</span>    };</div>
 </div>
-<div class="line"><a id="l01198" name="l01198"></a><span class="lineno"> 1198</span></div>
-<div class="foldopen" id="foldopen01200" data-start="{" data-end="};">
-<div class="line"><a id="l01200" name="l01200"></a><span class="lineno"><a class="line" href="class_p_c_f85263_a.html#a5a002fd033a255abadc485673a13f632"> 1200</a></span>    <span class="keyword">enum</span> <a class="code hl_enumeration" href="class_p_c_f85263_a.html#a5a002fd033a255abadc485673a13f632">ts_in</a> {</div>
-<div class="line"><a id="l01201" name="l01201"></a><span class="lineno"> 1201</span>        TS_PULLUP_80K   = 0x00,</div>
-<div class="line"><a id="l01202" name="l01202"></a><span class="lineno"> 1202</span>        TS_PULLUP_40K   = 0x40,</div>
-<div class="line"><a id="l01203" name="l01203"></a><span class="lineno"> 1203</span>        TSL_ACTIVE_HIGH = 0x00,</div>
-<div class="line"><a id="l01204" name="l01204"></a><span class="lineno"> 1204</span>        TSL_ACTIVE_LOW  = 0x20,</div>
-<div class="line"><a id="l01205" name="l01205"></a><span class="lineno"> 1205</span>        TSIM_CMOS       = 0x00,</div>
-<div class="line"><a id="l01206" name="l01206"></a><span class="lineno"> 1206</span>        TSIM_MECHANICAL = 0x10,</div>
-<div class="line"><a id="l01207" name="l01207"></a><span class="lineno"> 1207</span>    };</div>
+<div class="line"><a id="l01192" name="l01192"></a><span class="lineno"> 1192</span></div>
+<div class="foldopen" id="foldopen01194" data-start="{" data-end="};">
+<div class="line"><a id="l01194" name="l01194"></a><span class="lineno"><a class="line" href="class_p_c_f85263_a.html#a1816caad9f3a66240bd899c2a2d6d2ae"> 1194</a></span>    <span class="keyword">enum</span> <a class="code hl_enumeration" href="class_p_c_f85263_a.html#a1816caad9f3a66240bd899c2a2d6d2ae">intb</a> {</div>
+<div class="line"><a id="l01195" name="l01195"></a><span class="lineno"> 1195</span>        INTB_DISABLE,</div>
+<div class="line"><a id="l01196" name="l01196"></a><span class="lineno"> 1196</span>        INTB_INTERRUPT,</div>
+<div class="line"><a id="l01197" name="l01197"></a><span class="lineno"> 1197</span>        INTB_CLKOUT,</div>
+<div class="line"><a id="l01198" name="l01198"></a><span class="lineno"> 1198</span>        INTB_INPUT_MODE,</div>
+<div class="line"><a id="l01199" name="l01199"></a><span class="lineno"> 1199</span>    };</div>
 </div>
-<div class="line"><a id="l01208" name="l01208"></a><span class="lineno"> 1208</span></div>
-<div class="line"><a id="l01213" name="l01213"></a><span class="lineno"> 1213</span>    <a class="code hl_function" href="class_p_c_f85263_a.html#ac8bf70232b2a0f1b520d20ec7a0681aa">PCF85263A</a>( uint8_t i2c_address = (0xA2 &gt;&gt; 1) );</div>
-<div class="line"><a id="l01214" name="l01214"></a><span class="lineno"> 1214</span></div>
-<div class="line"><a id="l01220" name="l01220"></a><span class="lineno"> 1220</span>    <a class="code hl_function" href="class_p_c_f85263_a.html#ac8bf70232b2a0f1b520d20ec7a0681aa">PCF85263A</a>( TwoWire&amp; wire, uint8_t i2c_address = (0xA2 &gt;&gt; 1) );</div>
-<div class="line"><a id="l01221" name="l01221"></a><span class="lineno"> 1221</span></div>
-<div class="line"><a id="l01223" name="l01223"></a><span class="lineno"> 1223</span>    <span class="keyword">virtual</span> <a class="code hl_function" href="class_p_c_f85263_a.html#a3f0029574164fb2e0389148f72c344a0">~PCF85263A</a>();</div>
-<div class="line"><a id="l01224" name="l01224"></a><span class="lineno"> 1224</span>    </div>
-<div class="line"><a id="l01228" name="l01228"></a><span class="lineno"> 1228</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_p_c_f85263_a.html#a6712ee0d45b9ba8131335d8c7271fc3c">begin</a>( <span class="keywordtype">void</span> );</div>
-<div class="line"><a id="l01229" name="l01229"></a><span class="lineno"> 1229</span>    </div>
-<div class="line"><a id="l01234" name="l01234"></a><span class="lineno"> 1234</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_p_c_f85263_a.html#afb67e2345588ac0ffe0b604085f15558">set</a>( <span class="keyword">struct</span> tm* now_tm );</div>
-<div class="line"><a id="l01235" name="l01235"></a><span class="lineno"> 1235</span></div>
-<div class="line"><a id="l01240" name="l01240"></a><span class="lineno"> 1240</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="class_p_c_f85263_a.html#ab26e486c988b5dfbcd93c4495fbe57ba">oscillator_stop</a>( <span class="keywordtype">void</span> );</div>
-<div class="line"><a id="l01241" name="l01241"></a><span class="lineno"> 1241</span>    </div>
-<div class="line"><a id="l01247" name="l01247"></a><span class="lineno"> 1247</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_p_c_f85263_a.html#a2a9982777653cbeb19a35a315c06d169">alarm</a>( <a class="code hl_enumeration" href="class_r_t_c___n_x_p.html#aa11396067a7c0e240e169d4862539866">alarm_setting</a> digit, <span class="keywordtype">int</span> val );</div>
-<div class="line"><a id="l01248" name="l01248"></a><span class="lineno"> 1248</span></div>
-<div class="line"><a id="l01255" name="l01255"></a><span class="lineno"> 1255</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_p_c_f85263_a.html#a2a9982777653cbeb19a35a315c06d169">alarm</a>( <a class="code hl_enumeration" href="class_r_t_c___n_x_p.html#aa11396067a7c0e240e169d4862539866">alarm_setting</a> digit, <span class="keywordtype">int</span> val, <span class="keywordtype">int</span> int_sel );</div>
-<div class="line"><a id="l01256" name="l01256"></a><span class="lineno"> 1256</span></div>
-<div class="line"><a id="l01263" name="l01263"></a><span class="lineno"> 1263</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_p_c_f85263_a.html#a2a9982777653cbeb19a35a315c06d169">alarm</a>( <a class="code hl_enumeration" href="class_p_c_f85263_a.html#a9022b57b3608c69e928ee5219b17cc34">alarm_setting_85263A</a> digit, <span class="keywordtype">int</span> val, <span class="keywordtype">int</span> int_sel = 0 );</div>
-<div class="line"><a id="l01264" name="l01264"></a><span class="lineno"> 1264</span></div>
-<div class="line"><a id="l01267" name="l01267"></a><span class="lineno"> 1267</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_p_c_f85263_a.html#ad05c015b277153634c68b24afea5031f">alarm_clear</a>( <span class="keywordtype">void</span> );</div>
-<div class="line"><a id="l01268" name="l01268"></a><span class="lineno"> 1268</span></div>
-<div class="line"><a id="l01271" name="l01271"></a><span class="lineno"> 1271</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_p_c_f85263_a.html#a0e511345150f4f65be057d967fe024a2">alarm_disable</a>( <span class="keywordtype">void</span> );</div>
-<div class="line"><a id="l01272" name="l01272"></a><span class="lineno"> 1272</span></div>
-<div class="line"><a id="l01275" name="l01275"></a><span class="lineno"> 1275</span>    uint8_t <a class="code hl_function" href="class_p_c_f85263_a.html#a33e66e2dc3995f1f1d70d90db9432e20">int_clear</a>( <span class="keywordtype">void</span> );</div>
-<div class="line"><a id="l01276" name="l01276"></a><span class="lineno"> 1276</span></div>
-<div class="line"><a id="l01281" name="l01281"></a><span class="lineno"> 1281</span>    time_t <a class="code hl_function" href="class_p_c_f85263_a.html#aeb95373e246e282bbc7ca98b15fbe7ea">rtc_time</a>( <span class="keywordtype">void</span> );</div>
-<div class="line"><a id="l01282" name="l01282"></a><span class="lineno"> 1282</span></div>
-<div class="line"><a id="l01288" name="l01288"></a><span class="lineno"> 1288</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_p_c_f85263_a.html#a3316e2fa3c299e0895bd57b1c14178a1">periodic_interrupt_enable</a>( <a class="code hl_enumeration" href="class_p_c_f85263_a.html#ada70b814df16b266ea08c9cb30804396">periodic_int_select</a> sel, <span class="keywordtype">int</span> int_sel = 0 );</div>
-<div class="line"><a id="l01289" name="l01289"></a><span class="lineno"> 1289</span></div>
-<div class="line"><a id="l01295" name="l01295"></a><span class="lineno"> 1295</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_p_c_f85263_a.html#a0639de735886ca92b24cd8b000344ef5">pin_congfig</a>(<a class="code hl_enumeration" href="class_p_c_f85263_a.html#a8cd044df48a2001ac2514e5a2dd8dad6">inta</a> cfg_a, <a class="code hl_enumeration" href="class_p_c_f85263_a.html#a1816caad9f3a66240bd899c2a2d6d2ae">intb</a> cfg_b);</div>
-<div class="line"><a id="l01296" name="l01296"></a><span class="lineno"> 1296</span>    </div>
-<div class="line"><a id="l01301" name="l01301"></a><span class="lineno"> 1301</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_p_c_f85263_a.html#a13f1e1e5b55f4e8106c61c818604045f">ts_congfig</a>(<span class="keywordtype">int</span> setting);</div>
-<div class="line"><a id="l01302" name="l01302"></a><span class="lineno"> 1302</span>    </div>
-<div class="line"><a id="l01307" name="l01307"></a><span class="lineno"> 1307</span>    time_t <a class="code hl_function" href="class_p_c_f85263_a.html#a64007834aedbd9a052f176339ff53b2c">timestamp</a>( <span class="keywordtype">int</span> num );</div>
-<div class="line"><a id="l01308" name="l01308"></a><span class="lineno"> 1308</span> </div>
-<div class="line"><a id="l01309" name="l01309"></a><span class="lineno"> 1309</span><span class="preprocessor">#if DOXYGEN_ONLY</span><span class="preprocessor"></span></div>
-<div class="line"><a id="l01317" name="l01317"></a><span class="lineno"><a class="line" href="class_p_c_f85263_a.html#afd975b90b8712da5300ed9b3a7075845"> 1317</a></span>    time_t <a class="code hl_function" href="class_p_c_f85263_a.html#afd975b90b8712da5300ed9b3a7075845">time</a>( time_t* tp );</div>
-<div class="line"><a id="l01318" name="l01318"></a><span class="lineno"> 1318</span>    </div>
-<div class="line"><a id="l01325" name="l01325"></a><span class="lineno"><a class="line" href="class_p_c_f85263_a.html#ad899c2d5abeb65cf5dda80b1538fde9a"> 1325</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_p_c_f85263_a.html#ad899c2d5abeb65cf5dda80b1538fde9a">reg_w</a>( uint8_t reg_adr, uint8_t *data, <span class="keywordtype">int</span> size );</div>
-<div class="line"><a id="l01326" name="l01326"></a><span class="lineno"> 1326</span></div>
-<div class="line"><a id="l01332" name="l01332"></a><span class="lineno"><a class="line" href="class_p_c_f85263_a.html#aa5cc52f0c97ee024eb9f8db09eb5cb2d"> 1332</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_p_c_f85263_a.html#aa5cc52f0c97ee024eb9f8db09eb5cb2d">reg_w</a>( uint8_t reg_adr, uint8_t data );</div>
-<div class="line"><a id="l01333" name="l01333"></a><span class="lineno"> 1333</span></div>
-<div class="line"><a id="l01340" name="l01340"></a><span class="lineno"><a class="line" href="class_p_c_f85263_a.html#aa6ebeb9fb3cce722e83f11f9532384a0"> 1340</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_p_c_f85263_a.html#aa6ebeb9fb3cce722e83f11f9532384a0">reg_r</a>( uint8_t reg_adr, uint8_t *data, <span class="keywordtype">int</span> size );</div>
-<div class="line"><a id="l01341" name="l01341"></a><span class="lineno"> 1341</span></div>
-<div class="line"><a id="l01347" name="l01347"></a><span class="lineno"><a class="line" href="class_p_c_f85263_a.html#a4a3718cb907ad154c375274c8735f96b"> 1347</a></span>    uint8_t <a class="code hl_function" href="class_p_c_f85263_a.html#a4a3718cb907ad154c375274c8735f96b">reg_r</a>( uint8_t reg_adr );</div>
-<div class="line"><a id="l01348" name="l01348"></a><span class="lineno"> 1348</span></div>
-<div class="line"><a id="l01354" name="l01354"></a><span class="lineno"><a class="line" href="class_p_c_f85263_a.html#aef93f74204b8691aaa3d87ee2740fe10"> 1354</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_p_c_f85263_a.html#aef93f74204b8691aaa3d87ee2740fe10">write_r8</a>( uint8_t reg, uint8_t val );</div>
-<div class="line"><a id="l01355" name="l01355"></a><span class="lineno"> 1355</span></div>
-<div class="line"><a id="l01361" name="l01361"></a><span class="lineno"><a class="line" href="class_p_c_f85263_a.html#a8f09238b6f9ad85e4bad6c0ac3fd694f"> 1361</a></span>    uint8_t <a class="code hl_function" href="class_p_c_f85263_a.html#a8f09238b6f9ad85e4bad6c0ac3fd694f">read_r8</a>( uint8_t reg );</div>
-<div class="line"><a id="l01362" name="l01362"></a><span class="lineno"> 1362</span></div>
-<div class="line"><a id="l01371" name="l01371"></a><span class="lineno"><a class="line" href="class_p_c_f85263_a.html#ab5841ee5f69d3b769b1a26e37f80d449"> 1371</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_p_c_f85263_a.html#ab5841ee5f69d3b769b1a26e37f80d449">bit_op8</a>(  uint8_t reg,  uint8_t mask,  uint8_t value );</div>
-<div class="line"><a id="l01372" name="l01372"></a><span class="lineno"> 1372</span> </div>
-<div class="line"><a id="l01373" name="l01373"></a><span class="lineno"> 1373</span><span class="preprocessor">#endif  </span><span class="comment">//  DOXYGEN_ONLY</span></div>
+<div class="line"><a id="l01200" name="l01200"></a><span class="lineno"> 1200</span></div>
+<div class="foldopen" id="foldopen01202" data-start="{" data-end="};">
+<div class="line"><a id="l01202" name="l01202"></a><span class="lineno"><a class="line" href="class_p_c_f85263_a.html#a5a002fd033a255abadc485673a13f632"> 1202</a></span>    <span class="keyword">enum</span> <a class="code hl_enumeration" href="class_p_c_f85263_a.html#a5a002fd033a255abadc485673a13f632">ts_in</a> {</div>
+<div class="line"><a id="l01203" name="l01203"></a><span class="lineno"> 1203</span>        TS_PULLUP_80K   = 0x00,</div>
+<div class="line"><a id="l01204" name="l01204"></a><span class="lineno"> 1204</span>        TS_PULLUP_40K   = 0x40,</div>
+<div class="line"><a id="l01205" name="l01205"></a><span class="lineno"> 1205</span>        TSL_ACTIVE_HIGH = 0x00,</div>
+<div class="line"><a id="l01206" name="l01206"></a><span class="lineno"> 1206</span>        TSL_ACTIVE_LOW  = 0x20,</div>
+<div class="line"><a id="l01207" name="l01207"></a><span class="lineno"> 1207</span>        TSIM_CMOS       = 0x00,</div>
+<div class="line"><a id="l01208" name="l01208"></a><span class="lineno"> 1208</span>        TSIM_MECHANICAL = 0x10,</div>
+<div class="line"><a id="l01209" name="l01209"></a><span class="lineno"> 1209</span>    };</div>
+</div>
+<div class="line"><a id="l01210" name="l01210"></a><span class="lineno"> 1210</span></div>
+<div class="line"><a id="l01215" name="l01215"></a><span class="lineno"> 1215</span>    <a class="code hl_function" href="class_p_c_f85263_a.html#ac8bf70232b2a0f1b520d20ec7a0681aa">PCF85263A</a>( uint8_t i2c_address = (0xA2 &gt;&gt; 1) );</div>
+<div class="line"><a id="l01216" name="l01216"></a><span class="lineno"> 1216</span></div>
+<div class="line"><a id="l01222" name="l01222"></a><span class="lineno"> 1222</span>    <a class="code hl_function" href="class_p_c_f85263_a.html#ac8bf70232b2a0f1b520d20ec7a0681aa">PCF85263A</a>( TwoWire&amp; wire, uint8_t i2c_address = (0xA2 &gt;&gt; 1) );</div>
+<div class="line"><a id="l01223" name="l01223"></a><span class="lineno"> 1223</span></div>
+<div class="line"><a id="l01225" name="l01225"></a><span class="lineno"> 1225</span>    <span class="keyword">virtual</span> <a class="code hl_function" href="class_p_c_f85263_a.html#a3f0029574164fb2e0389148f72c344a0">~PCF85263A</a>();</div>
+<div class="line"><a id="l01226" name="l01226"></a><span class="lineno"> 1226</span>    </div>
+<div class="line"><a id="l01230" name="l01230"></a><span class="lineno"> 1230</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_p_c_f85263_a.html#a6712ee0d45b9ba8131335d8c7271fc3c">begin</a>( <span class="keywordtype">void</span> );</div>
+<div class="line"><a id="l01231" name="l01231"></a><span class="lineno"> 1231</span>    </div>
+<div class="line"><a id="l01236" name="l01236"></a><span class="lineno"> 1236</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_p_c_f85263_a.html#afb67e2345588ac0ffe0b604085f15558">set</a>( <span class="keyword">struct</span> tm* now_tm );</div>
+<div class="line"><a id="l01237" name="l01237"></a><span class="lineno"> 1237</span></div>
+<div class="line"><a id="l01242" name="l01242"></a><span class="lineno"> 1242</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="class_p_c_f85263_a.html#ab26e486c988b5dfbcd93c4495fbe57ba">oscillator_stop</a>( <span class="keywordtype">void</span> );</div>
+<div class="line"><a id="l01243" name="l01243"></a><span class="lineno"> 1243</span>    </div>
+<div class="line"><a id="l01249" name="l01249"></a><span class="lineno"> 1249</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_p_c_f85263_a.html#a2a9982777653cbeb19a35a315c06d169">alarm</a>( <a class="code hl_enumeration" href="class_r_t_c___n_x_p.html#aa11396067a7c0e240e169d4862539866">alarm_setting</a> digit, <span class="keywordtype">int</span> val );</div>
+<div class="line"><a id="l01250" name="l01250"></a><span class="lineno"> 1250</span></div>
+<div class="line"><a id="l01257" name="l01257"></a><span class="lineno"> 1257</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_p_c_f85263_a.html#a2a9982777653cbeb19a35a315c06d169">alarm</a>( <a class="code hl_enumeration" href="class_r_t_c___n_x_p.html#aa11396067a7c0e240e169d4862539866">alarm_setting</a> digit, <span class="keywordtype">int</span> val, <span class="keywordtype">int</span> int_sel );</div>
+<div class="line"><a id="l01258" name="l01258"></a><span class="lineno"> 1258</span></div>
+<div class="line"><a id="l01265" name="l01265"></a><span class="lineno"> 1265</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_p_c_f85263_a.html#a2a9982777653cbeb19a35a315c06d169">alarm</a>( <a class="code hl_enumeration" href="class_p_c_f85263_a.html#a9022b57b3608c69e928ee5219b17cc34">alarm_setting_85263A</a> digit, <span class="keywordtype">int</span> val, <span class="keywordtype">int</span> int_sel = 0 );</div>
+<div class="line"><a id="l01266" name="l01266"></a><span class="lineno"> 1266</span></div>
+<div class="line"><a id="l01269" name="l01269"></a><span class="lineno"> 1269</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_p_c_f85263_a.html#ad05c015b277153634c68b24afea5031f">alarm_clear</a>( <span class="keywordtype">void</span> );</div>
+<div class="line"><a id="l01270" name="l01270"></a><span class="lineno"> 1270</span></div>
+<div class="line"><a id="l01273" name="l01273"></a><span class="lineno"> 1273</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_p_c_f85263_a.html#a0e511345150f4f65be057d967fe024a2">alarm_disable</a>( <span class="keywordtype">void</span> );</div>
+<div class="line"><a id="l01274" name="l01274"></a><span class="lineno"> 1274</span></div>
+<div class="line"><a id="l01277" name="l01277"></a><span class="lineno"> 1277</span>    uint8_t <a class="code hl_function" href="class_p_c_f85263_a.html#a33e66e2dc3995f1f1d70d90db9432e20">int_clear</a>( <span class="keywordtype">void</span> );</div>
+<div class="line"><a id="l01278" name="l01278"></a><span class="lineno"> 1278</span></div>
+<div class="line"><a id="l01283" name="l01283"></a><span class="lineno"> 1283</span>    time_t <a class="code hl_function" href="class_p_c_f85263_a.html#aeb95373e246e282bbc7ca98b15fbe7ea">rtc_time</a>( <span class="keywordtype">void</span> );</div>
+<div class="line"><a id="l01284" name="l01284"></a><span class="lineno"> 1284</span></div>
+<div class="line"><a id="l01290" name="l01290"></a><span class="lineno"> 1290</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_p_c_f85263_a.html#a3316e2fa3c299e0895bd57b1c14178a1">periodic_interrupt_enable</a>( <a class="code hl_enumeration" href="class_p_c_f85263_a.html#ada70b814df16b266ea08c9cb30804396">periodic_int_select</a> sel, <span class="keywordtype">int</span> int_sel = 0 );</div>
+<div class="line"><a id="l01291" name="l01291"></a><span class="lineno"> 1291</span></div>
+<div class="line"><a id="l01297" name="l01297"></a><span class="lineno"> 1297</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_p_c_f85263_a.html#ad40882d708a5cbb684be39833e398227">pin_config</a>(<a class="code hl_enumeration" href="class_p_c_f85263_a.html#a8cd044df48a2001ac2514e5a2dd8dad6">inta</a> cfg_a, <a class="code hl_enumeration" href="class_p_c_f85263_a.html#a1816caad9f3a66240bd899c2a2d6d2ae">intb</a> cfg_b);</div>
+<div class="line"><a id="l01298" name="l01298"></a><span class="lineno"> 1298</span>    </div>
+<div class="line"><a id="l01303" name="l01303"></a><span class="lineno"> 1303</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_p_c_f85263_a.html#a762af5877219fe11b323f035101058d6">ts_config</a>(<span class="keywordtype">int</span> setting);</div>
+<div class="line"><a id="l01304" name="l01304"></a><span class="lineno"> 1304</span>    </div>
+<div class="line"><a id="l01309" name="l01309"></a><span class="lineno"> 1309</span>    time_t <a class="code hl_function" href="class_p_c_f85263_a.html#a64007834aedbd9a052f176339ff53b2c">timestamp</a>( <span class="keywordtype">int</span> num );</div>
+<div class="line"><a id="l01310" name="l01310"></a><span class="lineno"> 1310</span> </div>
+<div class="line"><a id="l01311" name="l01311"></a><span class="lineno"> 1311</span><span class="preprocessor">#if DOXYGEN_ONLY</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l01319" name="l01319"></a><span class="lineno"><a class="line" href="class_p_c_f85263_a.html#afd975b90b8712da5300ed9b3a7075845"> 1319</a></span>    time_t <a class="code hl_function" href="class_p_c_f85263_a.html#afd975b90b8712da5300ed9b3a7075845">time</a>( time_t* tp );</div>
+<div class="line"><a id="l01320" name="l01320"></a><span class="lineno"> 1320</span>    </div>
+<div class="line"><a id="l01327" name="l01327"></a><span class="lineno"><a class="line" href="class_p_c_f85263_a.html#ad899c2d5abeb65cf5dda80b1538fde9a"> 1327</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_p_c_f85263_a.html#ad899c2d5abeb65cf5dda80b1538fde9a">reg_w</a>( uint8_t reg_adr, uint8_t *data, <span class="keywordtype">int</span> size );</div>
+<div class="line"><a id="l01328" name="l01328"></a><span class="lineno"> 1328</span></div>
+<div class="line"><a id="l01334" name="l01334"></a><span class="lineno"><a class="line" href="class_p_c_f85263_a.html#aa5cc52f0c97ee024eb9f8db09eb5cb2d"> 1334</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_p_c_f85263_a.html#aa5cc52f0c97ee024eb9f8db09eb5cb2d">reg_w</a>( uint8_t reg_adr, uint8_t data );</div>
+<div class="line"><a id="l01335" name="l01335"></a><span class="lineno"> 1335</span></div>
+<div class="line"><a id="l01342" name="l01342"></a><span class="lineno"><a class="line" href="class_p_c_f85263_a.html#aa6ebeb9fb3cce722e83f11f9532384a0"> 1342</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_p_c_f85263_a.html#aa6ebeb9fb3cce722e83f11f9532384a0">reg_r</a>( uint8_t reg_adr, uint8_t *data, <span class="keywordtype">int</span> size );</div>
+<div class="line"><a id="l01343" name="l01343"></a><span class="lineno"> 1343</span></div>
+<div class="line"><a id="l01349" name="l01349"></a><span class="lineno"><a class="line" href="class_p_c_f85263_a.html#a4a3718cb907ad154c375274c8735f96b"> 1349</a></span>    uint8_t <a class="code hl_function" href="class_p_c_f85263_a.html#a4a3718cb907ad154c375274c8735f96b">reg_r</a>( uint8_t reg_adr );</div>
+<div class="line"><a id="l01350" name="l01350"></a><span class="lineno"> 1350</span></div>
+<div class="line"><a id="l01356" name="l01356"></a><span class="lineno"><a class="line" href="class_p_c_f85263_a.html#aef93f74204b8691aaa3d87ee2740fe10"> 1356</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_p_c_f85263_a.html#aef93f74204b8691aaa3d87ee2740fe10">write_r8</a>( uint8_t reg, uint8_t val );</div>
+<div class="line"><a id="l01357" name="l01357"></a><span class="lineno"> 1357</span></div>
+<div class="line"><a id="l01363" name="l01363"></a><span class="lineno"><a class="line" href="class_p_c_f85263_a.html#a8f09238b6f9ad85e4bad6c0ac3fd694f"> 1363</a></span>    uint8_t <a class="code hl_function" href="class_p_c_f85263_a.html#a8f09238b6f9ad85e4bad6c0ac3fd694f">read_r8</a>( uint8_t reg );</div>
+<div class="line"><a id="l01364" name="l01364"></a><span class="lineno"> 1364</span></div>
+<div class="line"><a id="l01373" name="l01373"></a><span class="lineno"><a class="line" href="class_p_c_f85263_a.html#ab5841ee5f69d3b769b1a26e37f80d449"> 1373</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_p_c_f85263_a.html#ab5841ee5f69d3b769b1a26e37f80d449">bit_op8</a>(  uint8_t reg,  uint8_t mask,  uint8_t value );</div>
 <div class="line"><a id="l01374" name="l01374"></a><span class="lineno"> 1374</span> </div>
-<div class="line"><a id="l01375" name="l01375"></a><span class="lineno"> 1375</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l01376" name="l01376"></a><span class="lineno"> 1376</span>    <span class="keywordtype">void</span> set_alarm( <span class="keywordtype">int</span> digit, <span class="keywordtype">int</span> val, <span class="keywordtype">int</span> int_sel );</div>
-<div class="line"><a id="l01377" name="l01377"></a><span class="lineno"> 1377</span>};</div>
+<div class="line"><a id="l01375" name="l01375"></a><span class="lineno"> 1375</span><span class="preprocessor">#endif  </span><span class="comment">//  DOXYGEN_ONLY</span></div>
+<div class="line"><a id="l01376" name="l01376"></a><span class="lineno"> 1376</span> </div>
+<div class="line"><a id="l01377" name="l01377"></a><span class="lineno"> 1377</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l01378" name="l01378"></a><span class="lineno"> 1378</span>    <span class="keywordtype">void</span> set_alarm( <span class="keywordtype">int</span> digit, <span class="keywordtype">int</span> val, <span class="keywordtype">int</span> int_sel );</div>
+<div class="line"><a id="l01379" name="l01379"></a><span class="lineno"> 1379</span>};</div>
 </div>
-<div class="line"><a id="l01378" name="l01378"></a><span class="lineno"> 1378</span> </div>
-<div class="foldopen" id="foldopen01379" data-start="{" data-end="};">
-<div class="line"><a id="l01379" name="l01379"></a><span class="lineno"><a class="line" href="class_p_c_f85053_a.html"> 1379</a></span><span class="keyword">class </span><a class="code hl_function" href="class_p_c_f85053_a.html#a7e4454d5a497c113ed2a38d3733f75f4">PCF85053A</a> : <span class="keyword">public</span> <a class="code hl_function" href="class_r_t_c___n_x_p.html#a42923db96d555782c8c426c85af122e4">RTC_NXP</a>, <span class="keyword">public</span> I2C_device</div>
-<div class="line"><a id="l01380" name="l01380"></a><span class="lineno"> 1380</span>{</div>
-<div class="line"><a id="l01381" name="l01381"></a><span class="lineno"> 1381</span><span class="keyword">public</span>:</div>
-<div class="foldopen" id="foldopen01383" data-start="{" data-end="};">
-<div class="line"><a id="l01383" name="l01383"></a><span class="lineno"><a class="line" href="class_p_c_f85053_a.html#ab7f4ad9c87ac514866160f256eb7af1e"> 1383</a></span>    <span class="keyword">enum</span> <a class="code hl_enumeration" href="class_p_c_f85053_a.html#ab7f4ad9c87ac514866160f256eb7af1e">reg_num</a> {</div>
-<div class="line"><a id="l01384" name="l01384"></a><span class="lineno"> 1384</span>        Seconds, Seconds_alarm, Minutes, Minutes_alarm, Hours, Hours_alarm, </div>
-<div class="line"><a id="l01385" name="l01385"></a><span class="lineno"> 1385</span>        Day_of_the_Week, Day_of_the_Month, Month, Year,</div>
-<div class="line"><a id="l01386" name="l01386"></a><span class="lineno"> 1386</span>        Control_Register, Status_Register,</div>
-<div class="line"><a id="l01387" name="l01387"></a><span class="lineno"> 1387</span>        CLKOUT_Control,</div>
-<div class="line"><a id="l01388" name="l01388"></a><span class="lineno"> 1388</span>        _2nd_Control_Register,</div>
-<div class="line"><a id="l01389" name="l01389"></a><span class="lineno"> 1389</span>        Scratchpad, Version_Register, </div>
-<div class="line"><a id="l01390" name="l01390"></a><span class="lineno"> 1390</span>        Vendor_ID_Register, Model_Register,</div>
-<div class="line"><a id="l01391" name="l01391"></a><span class="lineno"> 1391</span>        Offset, Oscillator, </div>
-<div class="line"><a id="l01392" name="l01392"></a><span class="lineno"> 1392</span>        Access_config, </div>
-<div class="line"><a id="l01393" name="l01393"></a><span class="lineno"> 1393</span>        Sec_timestp, Min_timestp, Hour_timestp, DayWk_timestp, DayMon_timestp, Mon_timestp, Year_timestp, </div>
-<div class="line"><a id="l01394" name="l01394"></a><span class="lineno"> 1394</span>        R_code1, R_code2    </div>
-<div class="line"><a id="l01395" name="l01395"></a><span class="lineno"> 1395</span>    };</div>
+<div class="line"><a id="l01380" name="l01380"></a><span class="lineno"> 1380</span> </div>
+<div class="foldopen" id="foldopen01381" data-start="{" data-end="};">
+<div class="line"><a id="l01381" name="l01381"></a><span class="lineno"><a class="line" href="class_p_c_f85053_a.html"> 1381</a></span><span class="keyword">class </span><a class="code hl_function" href="class_p_c_f85053_a.html#a7e4454d5a497c113ed2a38d3733f75f4">PCF85053A</a> : <span class="keyword">public</span> <a class="code hl_function" href="class_r_t_c___n_x_p.html#a42923db96d555782c8c426c85af122e4">RTC_NXP</a>, <span class="keyword">public</span> I2C_device</div>
+<div class="line"><a id="l01382" name="l01382"></a><span class="lineno"> 1382</span>{</div>
+<div class="line"><a id="l01383" name="l01383"></a><span class="lineno"> 1383</span><span class="keyword">public</span>:</div>
+<div class="foldopen" id="foldopen01385" data-start="{" data-end="};">
+<div class="line"><a id="l01385" name="l01385"></a><span class="lineno"><a class="line" href="class_p_c_f85053_a.html#ab7f4ad9c87ac514866160f256eb7af1e"> 1385</a></span>    <span class="keyword">enum</span> <a class="code hl_enumeration" href="class_p_c_f85053_a.html#ab7f4ad9c87ac514866160f256eb7af1e">reg_num</a> {</div>
+<div class="line"><a id="l01386" name="l01386"></a><span class="lineno"> 1386</span>        Seconds, Seconds_alarm, Minutes, Minutes_alarm, Hours, Hours_alarm, </div>
+<div class="line"><a id="l01387" name="l01387"></a><span class="lineno"> 1387</span>        Day_of_the_Week, Day_of_the_Month, Month, Year,</div>
+<div class="line"><a id="l01388" name="l01388"></a><span class="lineno"> 1388</span>        Control_Register, Status_Register,</div>
+<div class="line"><a id="l01389" name="l01389"></a><span class="lineno"> 1389</span>        CLKOUT_Control,</div>
+<div class="line"><a id="l01390" name="l01390"></a><span class="lineno"> 1390</span>        _2nd_Control_Register,</div>
+<div class="line"><a id="l01391" name="l01391"></a><span class="lineno"> 1391</span>        Scratchpad, Version_Register, </div>
+<div class="line"><a id="l01392" name="l01392"></a><span class="lineno"> 1392</span>        Vendor_ID_Register, Model_Register,</div>
+<div class="line"><a id="l01393" name="l01393"></a><span class="lineno"> 1393</span>        Offset, Oscillator, </div>
+<div class="line"><a id="l01394" name="l01394"></a><span class="lineno"> 1394</span>        Access_config, </div>
+<div class="line"><a id="l01395" name="l01395"></a><span class="lineno"> 1395</span>        Sec_timestp, Min_timestp, Hour_timestp, DayWk_timestp, DayMon_timestp, Mon_timestp, Year_timestp, </div>
+<div class="line"><a id="l01396" name="l01396"></a><span class="lineno"> 1396</span>        R_code1, R_code2    </div>
+<div class="line"><a id="l01397" name="l01397"></a><span class="lineno"> 1397</span>    };</div>
 </div>
-<div class="line"><a id="l01396" name="l01396"></a><span class="lineno"> 1396</span>    </div>
-<div class="line"><a id="l01401" name="l01401"></a><span class="lineno"> 1401</span>    <a class="code hl_function" href="class_p_c_f85053_a.html#a7e4454d5a497c113ed2a38d3733f75f4">PCF85053A</a>( uint8_t i2c_address = (0xDE &gt;&gt; 1) );</div>
-<div class="line"><a id="l01402" name="l01402"></a><span class="lineno"> 1402</span></div>
-<div class="line"><a id="l01408" name="l01408"></a><span class="lineno"> 1408</span>    <a class="code hl_function" href="class_p_c_f85053_a.html#a7e4454d5a497c113ed2a38d3733f75f4">PCF85053A</a>( TwoWire&amp; wire, uint8_t i2c_address = (0xDE &gt;&gt; 1) );</div>
-<div class="line"><a id="l01409" name="l01409"></a><span class="lineno"> 1409</span></div>
-<div class="line"><a id="l01411" name="l01411"></a><span class="lineno"> 1411</span>    <span class="keyword">virtual</span> <a class="code hl_function" href="class_p_c_f85053_a.html#a41ae74e80ff3fd29bff9021bd3fbeb60">~PCF85053A</a>();</div>
-<div class="line"><a id="l01412" name="l01412"></a><span class="lineno"> 1412</span>    </div>
-<div class="line"><a id="l01416" name="l01416"></a><span class="lineno"> 1416</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_p_c_f85053_a.html#a1e94b9ee75bd714d2c51f99a1a775627">begin</a>( <span class="keywordtype">void</span> );</div>
-<div class="line"><a id="l01417" name="l01417"></a><span class="lineno"> 1417</span>    </div>
-<div class="line"><a id="l01422" name="l01422"></a><span class="lineno"> 1422</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_p_c_f85053_a.html#aeb4f154de3223e3a0cb421596da855b0">set</a>( <span class="keyword">struct</span> tm* now_tm );</div>
-<div class="line"><a id="l01423" name="l01423"></a><span class="lineno"> 1423</span></div>
-<div class="line"><a id="l01428" name="l01428"></a><span class="lineno"> 1428</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="class_p_c_f85053_a.html#a6b3a9f0f329de387cf40ceb55f64c36b">oscillator_stop</a>( <span class="keywordtype">void</span> );</div>
-<div class="line"><a id="l01429" name="l01429"></a><span class="lineno"> 1429</span>    </div>
-<div class="line"><a id="l01435" name="l01435"></a><span class="lineno"> 1435</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_p_c_f85053_a.html#ae90f68d455fbf099c03e264fa001dd0d">alarm</a>( <a class="code hl_enumeration" href="class_r_t_c___n_x_p.html#aa11396067a7c0e240e169d4862539866">alarm_setting</a> digit, <span class="keywordtype">int</span> val );</div>
-<div class="line"><a id="l01436" name="l01436"></a><span class="lineno"> 1436</span></div>
-<div class="line"><a id="l01439" name="l01439"></a><span class="lineno"> 1439</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_p_c_f85053_a.html#a6379c884f6e7206260c6ccc56f9c467e">alarm_clear</a>( <span class="keywordtype">void</span> );</div>
-<div class="line"><a id="l01440" name="l01440"></a><span class="lineno"> 1440</span></div>
-<div class="line"><a id="l01443" name="l01443"></a><span class="lineno"> 1443</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_p_c_f85053_a.html#a50e269b49f1a4ab26bda2fa5c985da67">alarm_disable</a>( <span class="keywordtype">void</span> );</div>
-<div class="line"><a id="l01444" name="l01444"></a><span class="lineno"> 1444</span></div>
-<div class="line"><a id="l01447" name="l01447"></a><span class="lineno"> 1447</span>    uint8_t <a class="code hl_function" href="class_p_c_f85053_a.html#aa81da80ac76086377e4f1c5665e9c5ce">int_clear</a>( <span class="keywordtype">void</span> );</div>
-<div class="line"><a id="l01448" name="l01448"></a><span class="lineno"> 1448</span></div>
-<div class="line"><a id="l01453" name="l01453"></a><span class="lineno"> 1453</span>    time_t <a class="code hl_function" href="class_p_c_f85053_a.html#ac88c0495145c211fe387ae56586bd4a9">rtc_time</a>( <span class="keywordtype">void</span> );</div>
-<div class="line"><a id="l01454" name="l01454"></a><span class="lineno"> 1454</span> </div>
-<div class="line"><a id="l01455" name="l01455"></a><span class="lineno"> 1455</span><span class="preprocessor">#if DOXYGEN_ONLY</span><span class="preprocessor"></span></div>
-<div class="line"><a id="l01463" name="l01463"></a><span class="lineno"><a class="line" href="class_p_c_f85053_a.html#a1f56d68f1839c607d835e606125c33e6"> 1463</a></span>    time_t <a class="code hl_function" href="class_p_c_f85053_a.html#a1f56d68f1839c607d835e606125c33e6">time</a>( time_t* tp );</div>
-<div class="line"><a id="l01464" name="l01464"></a><span class="lineno"> 1464</span>    </div>
-<div class="line"><a id="l01471" name="l01471"></a><span class="lineno"><a class="line" href="class_p_c_f85053_a.html#a36ed7c5f93abc7ca3dc738598e207ef2"> 1471</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_p_c_f85053_a.html#a36ed7c5f93abc7ca3dc738598e207ef2">reg_w</a>( uint8_t reg_adr, uint8_t *data, <span class="keywordtype">int</span> size );</div>
-<div class="line"><a id="l01472" name="l01472"></a><span class="lineno"> 1472</span></div>
-<div class="line"><a id="l01478" name="l01478"></a><span class="lineno"><a class="line" href="class_p_c_f85053_a.html#ab718ef8d24df241cf511002dccb3928b"> 1478</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_p_c_f85053_a.html#ab718ef8d24df241cf511002dccb3928b">reg_w</a>( uint8_t reg_adr, uint8_t data );</div>
-<div class="line"><a id="l01479" name="l01479"></a><span class="lineno"> 1479</span></div>
-<div class="line"><a id="l01486" name="l01486"></a><span class="lineno"><a class="line" href="class_p_c_f85053_a.html#a72e84dade4fded533c10ad21814106e0"> 1486</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_p_c_f85053_a.html#a72e84dade4fded533c10ad21814106e0">reg_r</a>( uint8_t reg_adr, uint8_t *data, <span class="keywordtype">int</span> size );</div>
-<div class="line"><a id="l01487" name="l01487"></a><span class="lineno"> 1487</span></div>
-<div class="line"><a id="l01493" name="l01493"></a><span class="lineno"><a class="line" href="class_p_c_f85053_a.html#a2d89329226fb0ed22f4140271b636424"> 1493</a></span>    uint8_t <a class="code hl_function" href="class_p_c_f85053_a.html#a2d89329226fb0ed22f4140271b636424">reg_r</a>( uint8_t reg_adr );</div>
-<div class="line"><a id="l01494" name="l01494"></a><span class="lineno"> 1494</span></div>
-<div class="line"><a id="l01500" name="l01500"></a><span class="lineno"><a class="line" href="class_p_c_f85053_a.html#a2a09025b4769eec1cdca903437821def"> 1500</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_p_c_f85053_a.html#a2a09025b4769eec1cdca903437821def">write_r8</a>( uint8_t reg, uint8_t val );</div>
-<div class="line"><a id="l01501" name="l01501"></a><span class="lineno"> 1501</span></div>
-<div class="line"><a id="l01507" name="l01507"></a><span class="lineno"><a class="line" href="class_p_c_f85053_a.html#a90a7bd5a4b5033d3fdd7f97115602fb7"> 1507</a></span>    uint8_t <a class="code hl_function" href="class_p_c_f85053_a.html#a90a7bd5a4b5033d3fdd7f97115602fb7">read_r8</a>( uint8_t reg );</div>
-<div class="line"><a id="l01508" name="l01508"></a><span class="lineno"> 1508</span></div>
-<div class="line"><a id="l01517" name="l01517"></a><span class="lineno"><a class="line" href="class_p_c_f85053_a.html#a613e15973beb25a573e92c6aa420c23a"> 1517</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_p_c_f85053_a.html#a613e15973beb25a573e92c6aa420c23a">bit_op8</a>(  uint8_t reg,  uint8_t mask,  uint8_t value );</div>
-<div class="line"><a id="l01518" name="l01518"></a><span class="lineno"> 1518</span> </div>
-<div class="line"><a id="l01519" name="l01519"></a><span class="lineno"> 1519</span><span class="preprocessor">#endif  </span><span class="comment">//  DOXYGEN_ONLY</span></div>
-<div class="line"><a id="l01520" name="l01520"></a><span class="lineno"> 1520</span>    </div>
-<div class="line"><a id="l01521" name="l01521"></a><span class="lineno"> 1521</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l01522" name="l01522"></a><span class="lineno"> 1522</span>    <span class="comment">//static inline constexpr uint8_t alarm_offsets[]   = { 1, 3, 5 };</span></div>
-<div class="line"><a id="l01523" name="l01523"></a><span class="lineno"> 1523</span>    <span class="keyword">static</span> <span class="keywordtype">int</span> alarm_offsets[ 3 ];</div>
-<div class="line"><a id="l01524" name="l01524"></a><span class="lineno"> 1524</span>};</div>
+<div class="line"><a id="l01398" name="l01398"></a><span class="lineno"> 1398</span>    </div>
+<div class="line"><a id="l01403" name="l01403"></a><span class="lineno"> 1403</span>    <a class="code hl_function" href="class_p_c_f85053_a.html#a7e4454d5a497c113ed2a38d3733f75f4">PCF85053A</a>( uint8_t i2c_address = (0xDE &gt;&gt; 1) );</div>
+<div class="line"><a id="l01404" name="l01404"></a><span class="lineno"> 1404</span></div>
+<div class="line"><a id="l01410" name="l01410"></a><span class="lineno"> 1410</span>    <a class="code hl_function" href="class_p_c_f85053_a.html#a7e4454d5a497c113ed2a38d3733f75f4">PCF85053A</a>( TwoWire&amp; wire, uint8_t i2c_address = (0xDE &gt;&gt; 1) );</div>
+<div class="line"><a id="l01411" name="l01411"></a><span class="lineno"> 1411</span></div>
+<div class="line"><a id="l01413" name="l01413"></a><span class="lineno"> 1413</span>    <span class="keyword">virtual</span> <a class="code hl_function" href="class_p_c_f85053_a.html#a41ae74e80ff3fd29bff9021bd3fbeb60">~PCF85053A</a>();</div>
+<div class="line"><a id="l01414" name="l01414"></a><span class="lineno"> 1414</span>    </div>
+<div class="line"><a id="l01418" name="l01418"></a><span class="lineno"> 1418</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_p_c_f85053_a.html#a1e94b9ee75bd714d2c51f99a1a775627">begin</a>( <span class="keywordtype">void</span> );</div>
+<div class="line"><a id="l01419" name="l01419"></a><span class="lineno"> 1419</span>    </div>
+<div class="line"><a id="l01424" name="l01424"></a><span class="lineno"> 1424</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_p_c_f85053_a.html#aeb4f154de3223e3a0cb421596da855b0">set</a>( <span class="keyword">struct</span> tm* now_tm );</div>
+<div class="line"><a id="l01425" name="l01425"></a><span class="lineno"> 1425</span></div>
+<div class="line"><a id="l01430" name="l01430"></a><span class="lineno"> 1430</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="class_p_c_f85053_a.html#a6b3a9f0f329de387cf40ceb55f64c36b">oscillator_stop</a>( <span class="keywordtype">void</span> );</div>
+<div class="line"><a id="l01431" name="l01431"></a><span class="lineno"> 1431</span>    </div>
+<div class="line"><a id="l01437" name="l01437"></a><span class="lineno"> 1437</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_p_c_f85053_a.html#ae90f68d455fbf099c03e264fa001dd0d">alarm</a>( <a class="code hl_enumeration" href="class_r_t_c___n_x_p.html#aa11396067a7c0e240e169d4862539866">alarm_setting</a> digit, <span class="keywordtype">int</span> val );</div>
+<div class="line"><a id="l01438" name="l01438"></a><span class="lineno"> 1438</span></div>
+<div class="line"><a id="l01441" name="l01441"></a><span class="lineno"> 1441</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_p_c_f85053_a.html#a6379c884f6e7206260c6ccc56f9c467e">alarm_clear</a>( <span class="keywordtype">void</span> );</div>
+<div class="line"><a id="l01442" name="l01442"></a><span class="lineno"> 1442</span></div>
+<div class="line"><a id="l01445" name="l01445"></a><span class="lineno"> 1445</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_p_c_f85053_a.html#a50e269b49f1a4ab26bda2fa5c985da67">alarm_disable</a>( <span class="keywordtype">void</span> );</div>
+<div class="line"><a id="l01446" name="l01446"></a><span class="lineno"> 1446</span></div>
+<div class="line"><a id="l01449" name="l01449"></a><span class="lineno"> 1449</span>    uint8_t <a class="code hl_function" href="class_p_c_f85053_a.html#aa81da80ac76086377e4f1c5665e9c5ce">int_clear</a>( <span class="keywordtype">void</span> );</div>
+<div class="line"><a id="l01450" name="l01450"></a><span class="lineno"> 1450</span></div>
+<div class="line"><a id="l01455" name="l01455"></a><span class="lineno"> 1455</span>    time_t <a class="code hl_function" href="class_p_c_f85053_a.html#ac88c0495145c211fe387ae56586bd4a9">rtc_time</a>( <span class="keywordtype">void</span> );</div>
+<div class="line"><a id="l01456" name="l01456"></a><span class="lineno"> 1456</span> </div>
+<div class="line"><a id="l01457" name="l01457"></a><span class="lineno"> 1457</span><span class="preprocessor">#if DOXYGEN_ONLY</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l01465" name="l01465"></a><span class="lineno"><a class="line" href="class_p_c_f85053_a.html#a1f56d68f1839c607d835e606125c33e6"> 1465</a></span>    time_t <a class="code hl_function" href="class_p_c_f85053_a.html#a1f56d68f1839c607d835e606125c33e6">time</a>( time_t* tp );</div>
+<div class="line"><a id="l01466" name="l01466"></a><span class="lineno"> 1466</span>    </div>
+<div class="line"><a id="l01473" name="l01473"></a><span class="lineno"><a class="line" href="class_p_c_f85053_a.html#a36ed7c5f93abc7ca3dc738598e207ef2"> 1473</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_p_c_f85053_a.html#a36ed7c5f93abc7ca3dc738598e207ef2">reg_w</a>( uint8_t reg_adr, uint8_t *data, <span class="keywordtype">int</span> size );</div>
+<div class="line"><a id="l01474" name="l01474"></a><span class="lineno"> 1474</span></div>
+<div class="line"><a id="l01480" name="l01480"></a><span class="lineno"><a class="line" href="class_p_c_f85053_a.html#ab718ef8d24df241cf511002dccb3928b"> 1480</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_p_c_f85053_a.html#ab718ef8d24df241cf511002dccb3928b">reg_w</a>( uint8_t reg_adr, uint8_t data );</div>
+<div class="line"><a id="l01481" name="l01481"></a><span class="lineno"> 1481</span></div>
+<div class="line"><a id="l01488" name="l01488"></a><span class="lineno"><a class="line" href="class_p_c_f85053_a.html#a72e84dade4fded533c10ad21814106e0"> 1488</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_p_c_f85053_a.html#a72e84dade4fded533c10ad21814106e0">reg_r</a>( uint8_t reg_adr, uint8_t *data, <span class="keywordtype">int</span> size );</div>
+<div class="line"><a id="l01489" name="l01489"></a><span class="lineno"> 1489</span></div>
+<div class="line"><a id="l01495" name="l01495"></a><span class="lineno"><a class="line" href="class_p_c_f85053_a.html#a2d89329226fb0ed22f4140271b636424"> 1495</a></span>    uint8_t <a class="code hl_function" href="class_p_c_f85053_a.html#a2d89329226fb0ed22f4140271b636424">reg_r</a>( uint8_t reg_adr );</div>
+<div class="line"><a id="l01496" name="l01496"></a><span class="lineno"> 1496</span></div>
+<div class="line"><a id="l01502" name="l01502"></a><span class="lineno"><a class="line" href="class_p_c_f85053_a.html#a2a09025b4769eec1cdca903437821def"> 1502</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_p_c_f85053_a.html#a2a09025b4769eec1cdca903437821def">write_r8</a>( uint8_t reg, uint8_t val );</div>
+<div class="line"><a id="l01503" name="l01503"></a><span class="lineno"> 1503</span></div>
+<div class="line"><a id="l01509" name="l01509"></a><span class="lineno"><a class="line" href="class_p_c_f85053_a.html#a90a7bd5a4b5033d3fdd7f97115602fb7"> 1509</a></span>    uint8_t <a class="code hl_function" href="class_p_c_f85053_a.html#a90a7bd5a4b5033d3fdd7f97115602fb7">read_r8</a>( uint8_t reg );</div>
+<div class="line"><a id="l01510" name="l01510"></a><span class="lineno"> 1510</span></div>
+<div class="line"><a id="l01519" name="l01519"></a><span class="lineno"><a class="line" href="class_p_c_f85053_a.html#a613e15973beb25a573e92c6aa420c23a"> 1519</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_p_c_f85053_a.html#a613e15973beb25a573e92c6aa420c23a">bit_op8</a>(  uint8_t reg,  uint8_t mask,  uint8_t value );</div>
+<div class="line"><a id="l01520" name="l01520"></a><span class="lineno"> 1520</span> </div>
+<div class="line"><a id="l01521" name="l01521"></a><span class="lineno"> 1521</span><span class="preprocessor">#endif  </span><span class="comment">//  DOXYGEN_ONLY</span></div>
+<div class="line"><a id="l01522" name="l01522"></a><span class="lineno"> 1522</span>    </div>
+<div class="line"><a id="l01523" name="l01523"></a><span class="lineno"> 1523</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l01524" name="l01524"></a><span class="lineno"> 1524</span>    <span class="comment">//static inline constexpr uint8_t alarm_offsets[]   = { 1, 3, 5 };</span></div>
+<div class="line"><a id="l01525" name="l01525"></a><span class="lineno"> 1525</span>    <span class="keyword">static</span> <span class="keywordtype">int</span> alarm_offsets[ 3 ];</div>
+<div class="line"><a id="l01526" name="l01526"></a><span class="lineno"> 1526</span>};</div>
 </div>
-<div class="line"><a id="l01525" name="l01525"></a><span class="lineno"> 1525</span> </div>
-<div class="foldopen" id="foldopen01526" data-start="{" data-end="};">
-<div class="line"><a id="l01526" name="l01526"></a><span class="lineno"><a class="line" href="class_for_future_extention.html"> 1526</a></span><span class="keyword">class </span><a class="code hl_function" href="class_for_future_extention.html#a46c348944109569d7834b03b41cb74a5">ForFutureExtention</a> : <span class="keyword">public</span> <a class="code hl_function" href="class_r_t_c___n_x_p.html#a42923db96d555782c8c426c85af122e4">RTC_NXP</a>, <span class="keyword">public</span> I2C_device</div>
-<div class="line"><a id="l01527" name="l01527"></a><span class="lineno"> 1527</span>{</div>
-<div class="line"><a id="l01528" name="l01528"></a><span class="lineno"> 1528</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l01530" name="l01530"></a><span class="lineno"><a class="line" href="class_for_future_extention.html#a46c348944109569d7834b03b41cb74a5"> 1530</a></span>    <a class="code hl_function" href="class_for_future_extention.html#a46c348944109569d7834b03b41cb74a5">ForFutureExtention</a>();</div>
-<div class="line"><a id="l01531" name="l01531"></a><span class="lineno"> 1531</span></div>
-<div class="line"><a id="l01533" name="l01533"></a><span class="lineno"><a class="line" href="class_for_future_extention.html#a65fc368aa96790b38d1b3e3990a4d873"> 1533</a></span>    <span class="keyword">virtual</span> <a class="code hl_function" href="class_for_future_extention.html#a65fc368aa96790b38d1b3e3990a4d873">~ForFutureExtention</a>();</div>
-<div class="line"><a id="l01534" name="l01534"></a><span class="lineno"> 1534</span>    </div>
-<div class="line"><a id="l01538" name="l01538"></a><span class="lineno"><a class="line" href="class_for_future_extention.html#a9c814102e6e1644b34b794bbdd93027e"> 1538</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_for_future_extention.html#a9c814102e6e1644b34b794bbdd93027e">begin</a>( <span class="keywordtype">void</span> );</div>
-<div class="line"><a id="l01539" name="l01539"></a><span class="lineno"> 1539</span>    </div>
-<div class="line"><a id="l01544" name="l01544"></a><span class="lineno"><a class="line" href="class_for_future_extention.html#afae88fc08af5cec9fe3bfdffb6960759"> 1544</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_for_future_extention.html#afae88fc08af5cec9fe3bfdffb6960759">set</a>( <span class="keyword">struct</span> tm* now_tm );</div>
-<div class="line"><a id="l01545" name="l01545"></a><span class="lineno"> 1545</span></div>
-<div class="line"><a id="l01550" name="l01550"></a><span class="lineno"><a class="line" href="class_for_future_extention.html#ababeaa0f56a0df822ad42d6d4e53299a"> 1550</a></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="class_for_future_extention.html#ababeaa0f56a0df822ad42d6d4e53299a">oscillator_stop</a>( <span class="keywordtype">void</span> );</div>
-<div class="line"><a id="l01551" name="l01551"></a><span class="lineno"> 1551</span>    </div>
-<div class="line"><a id="l01556" name="l01556"></a><span class="lineno"><a class="line" href="class_for_future_extention.html#a18af1fee433d47e983ce9848d8f3e591"> 1556</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_for_future_extention.html#a18af1fee433d47e983ce9848d8f3e591">alarm</a>( <a class="code hl_enumeration" href="class_r_t_c___n_x_p.html#aa11396067a7c0e240e169d4862539866">alarm_setting</a> digit, <span class="keywordtype">int</span> val );</div>
-<div class="line"><a id="l01557" name="l01557"></a><span class="lineno"> 1557</span></div>
-<div class="line"><a id="l01560" name="l01560"></a><span class="lineno"><a class="line" href="class_for_future_extention.html#a2e4726dc9a78f989bbf9fc4edf18293c"> 1560</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_for_future_extention.html#a2e4726dc9a78f989bbf9fc4edf18293c">alarm_clear</a>( <span class="keywordtype">void</span> );</div>
-<div class="line"><a id="l01561" name="l01561"></a><span class="lineno"> 1561</span></div>
-<div class="line"><a id="l01564" name="l01564"></a><span class="lineno"><a class="line" href="class_for_future_extention.html#ae37dc459f72fac3dac1c3d5122fdb118"> 1564</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_for_future_extention.html#ae37dc459f72fac3dac1c3d5122fdb118">alarm_disable</a>( <span class="keywordtype">void</span> );</div>
-<div class="line"><a id="l01565" name="l01565"></a><span class="lineno"> 1565</span></div>
-<div class="line"><a id="l01568" name="l01568"></a><span class="lineno"><a class="line" href="class_for_future_extention.html#a733b735409418610841fa7228d226540"> 1568</a></span>    uint8_t <a class="code hl_function" href="class_for_future_extention.html#a733b735409418610841fa7228d226540">int_clear</a>( <span class="keywordtype">void</span> );</div>
-<div class="line"><a id="l01569" name="l01569"></a><span class="lineno"> 1569</span> </div>
-<div class="line"><a id="l01570" name="l01570"></a><span class="lineno"> 1570</span>    </div>
-<div class="line"><a id="l01571" name="l01571"></a><span class="lineno"> 1571</span><span class="preprocessor">#if DOXYGEN_ONLY</span><span class="preprocessor"></span></div>
-<div class="line"><a id="l01579" name="l01579"></a><span class="lineno"><a class="line" href="class_for_future_extention.html#a34379d6655972d284be8ff87fc5aecd2"> 1579</a></span>    time_t <a class="code hl_function" href="class_for_future_extention.html#a34379d6655972d284be8ff87fc5aecd2">time</a>( time_t* tp );</div>
-<div class="line"><a id="l01580" name="l01580"></a><span class="lineno"> 1580</span>    </div>
-<div class="line"><a id="l01587" name="l01587"></a><span class="lineno"><a class="line" href="class_for_future_extention.html#ab8d7b42ccaf6d2040ffbb4c70f858f9b"> 1587</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_for_future_extention.html#ab8d7b42ccaf6d2040ffbb4c70f858f9b">reg_w</a>( uint8_t reg_adr, uint8_t *data, <span class="keywordtype">int</span> size );</div>
-<div class="line"><a id="l01588" name="l01588"></a><span class="lineno"> 1588</span></div>
-<div class="line"><a id="l01594" name="l01594"></a><span class="lineno"><a class="line" href="class_for_future_extention.html#a385819226fa2a84c5f23238d4356238e"> 1594</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_for_future_extention.html#a385819226fa2a84c5f23238d4356238e">reg_w</a>( uint8_t reg_adr, uint8_t data );</div>
-<div class="line"><a id="l01595" name="l01595"></a><span class="lineno"> 1595</span></div>
-<div class="line"><a id="l01602" name="l01602"></a><span class="lineno"><a class="line" href="class_for_future_extention.html#ae752a3907c2aa4aac8b502f203082641"> 1602</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_for_future_extention.html#ae752a3907c2aa4aac8b502f203082641">reg_r</a>( uint8_t reg_adr, uint8_t *data, <span class="keywordtype">int</span> size );</div>
-<div class="line"><a id="l01603" name="l01603"></a><span class="lineno"> 1603</span></div>
-<div class="line"><a id="l01609" name="l01609"></a><span class="lineno"><a class="line" href="class_for_future_extention.html#a5866a8d7d4ad6a7d84b2a9b31896818b"> 1609</a></span>    uint8_t <a class="code hl_function" href="class_for_future_extention.html#a5866a8d7d4ad6a7d84b2a9b31896818b">reg_r</a>( uint8_t reg_adr );</div>
-<div class="line"><a id="l01610" name="l01610"></a><span class="lineno"> 1610</span></div>
-<div class="line"><a id="l01616" name="l01616"></a><span class="lineno"><a class="line" href="class_for_future_extention.html#ae9cd268b77e75e3c5cd88651550f8fa5"> 1616</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_for_future_extention.html#ae9cd268b77e75e3c5cd88651550f8fa5">write_r8</a>( uint8_t reg, uint8_t val );</div>
-<div class="line"><a id="l01617" name="l01617"></a><span class="lineno"> 1617</span></div>
-<div class="line"><a id="l01623" name="l01623"></a><span class="lineno"><a class="line" href="class_for_future_extention.html#affa1f43e22ec27a5a446fba6da36bea7"> 1623</a></span>    uint8_t <a class="code hl_function" href="class_for_future_extention.html#affa1f43e22ec27a5a446fba6da36bea7">read_r8</a>( uint8_t reg );</div>
-<div class="line"><a id="l01624" name="l01624"></a><span class="lineno"> 1624</span></div>
-<div class="line"><a id="l01633" name="l01633"></a><span class="lineno"><a class="line" href="class_for_future_extention.html#adc0d3cb5c61eb5d7489d29207e6a4297"> 1633</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_for_future_extention.html#adc0d3cb5c61eb5d7489d29207e6a4297">bit_op8</a>(  uint8_t reg,  uint8_t mask,  uint8_t value );</div>
-<div class="line"><a id="l01634" name="l01634"></a><span class="lineno"> 1634</span> </div>
-<div class="line"><a id="l01635" name="l01635"></a><span class="lineno"> 1635</span><span class="preprocessor">#endif  </span><span class="comment">//  DOXYGEN_ONLY</span></div>
+<div class="line"><a id="l01527" name="l01527"></a><span class="lineno"> 1527</span> </div>
+<div class="foldopen" id="foldopen01528" data-start="{" data-end="};">
+<div class="line"><a id="l01528" name="l01528"></a><span class="lineno"><a class="line" href="class_for_future_extention.html"> 1528</a></span><span class="keyword">class </span><a class="code hl_function" href="class_for_future_extention.html#a46c348944109569d7834b03b41cb74a5">ForFutureExtention</a> : <span class="keyword">public</span> <a class="code hl_function" href="class_r_t_c___n_x_p.html#a42923db96d555782c8c426c85af122e4">RTC_NXP</a>, <span class="keyword">public</span> I2C_device</div>
+<div class="line"><a id="l01529" name="l01529"></a><span class="lineno"> 1529</span>{</div>
+<div class="line"><a id="l01530" name="l01530"></a><span class="lineno"> 1530</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l01532" name="l01532"></a><span class="lineno"><a class="line" href="class_for_future_extention.html#a46c348944109569d7834b03b41cb74a5"> 1532</a></span>    <a class="code hl_function" href="class_for_future_extention.html#a46c348944109569d7834b03b41cb74a5">ForFutureExtention</a>();</div>
+<div class="line"><a id="l01533" name="l01533"></a><span class="lineno"> 1533</span></div>
+<div class="line"><a id="l01535" name="l01535"></a><span class="lineno"><a class="line" href="class_for_future_extention.html#a65fc368aa96790b38d1b3e3990a4d873"> 1535</a></span>    <span class="keyword">virtual</span> <a class="code hl_function" href="class_for_future_extention.html#a65fc368aa96790b38d1b3e3990a4d873">~ForFutureExtention</a>();</div>
+<div class="line"><a id="l01536" name="l01536"></a><span class="lineno"> 1536</span>    </div>
+<div class="line"><a id="l01540" name="l01540"></a><span class="lineno"><a class="line" href="class_for_future_extention.html#a9c814102e6e1644b34b794bbdd93027e"> 1540</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_for_future_extention.html#a9c814102e6e1644b34b794bbdd93027e">begin</a>( <span class="keywordtype">void</span> );</div>
+<div class="line"><a id="l01541" name="l01541"></a><span class="lineno"> 1541</span>    </div>
+<div class="line"><a id="l01546" name="l01546"></a><span class="lineno"><a class="line" href="class_for_future_extention.html#afae88fc08af5cec9fe3bfdffb6960759"> 1546</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_for_future_extention.html#afae88fc08af5cec9fe3bfdffb6960759">set</a>( <span class="keyword">struct</span> tm* now_tm );</div>
+<div class="line"><a id="l01547" name="l01547"></a><span class="lineno"> 1547</span></div>
+<div class="line"><a id="l01552" name="l01552"></a><span class="lineno"><a class="line" href="class_for_future_extention.html#ababeaa0f56a0df822ad42d6d4e53299a"> 1552</a></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="class_for_future_extention.html#ababeaa0f56a0df822ad42d6d4e53299a">oscillator_stop</a>( <span class="keywordtype">void</span> );</div>
+<div class="line"><a id="l01553" name="l01553"></a><span class="lineno"> 1553</span>    </div>
+<div class="line"><a id="l01558" name="l01558"></a><span class="lineno"><a class="line" href="class_for_future_extention.html#a18af1fee433d47e983ce9848d8f3e591"> 1558</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_for_future_extention.html#a18af1fee433d47e983ce9848d8f3e591">alarm</a>( <a class="code hl_enumeration" href="class_r_t_c___n_x_p.html#aa11396067a7c0e240e169d4862539866">alarm_setting</a> digit, <span class="keywordtype">int</span> val );</div>
+<div class="line"><a id="l01559" name="l01559"></a><span class="lineno"> 1559</span></div>
+<div class="line"><a id="l01562" name="l01562"></a><span class="lineno"><a class="line" href="class_for_future_extention.html#a2e4726dc9a78f989bbf9fc4edf18293c"> 1562</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_for_future_extention.html#a2e4726dc9a78f989bbf9fc4edf18293c">alarm_clear</a>( <span class="keywordtype">void</span> );</div>
+<div class="line"><a id="l01563" name="l01563"></a><span class="lineno"> 1563</span></div>
+<div class="line"><a id="l01566" name="l01566"></a><span class="lineno"><a class="line" href="class_for_future_extention.html#ae37dc459f72fac3dac1c3d5122fdb118"> 1566</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_for_future_extention.html#ae37dc459f72fac3dac1c3d5122fdb118">alarm_disable</a>( <span class="keywordtype">void</span> );</div>
+<div class="line"><a id="l01567" name="l01567"></a><span class="lineno"> 1567</span></div>
+<div class="line"><a id="l01570" name="l01570"></a><span class="lineno"><a class="line" href="class_for_future_extention.html#a733b735409418610841fa7228d226540"> 1570</a></span>    uint8_t <a class="code hl_function" href="class_for_future_extention.html#a733b735409418610841fa7228d226540">int_clear</a>( <span class="keywordtype">void</span> );</div>
+<div class="line"><a id="l01571" name="l01571"></a><span class="lineno"> 1571</span> </div>
+<div class="line"><a id="l01572" name="l01572"></a><span class="lineno"> 1572</span>    </div>
+<div class="line"><a id="l01573" name="l01573"></a><span class="lineno"> 1573</span><span class="preprocessor">#if DOXYGEN_ONLY</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l01581" name="l01581"></a><span class="lineno"><a class="line" href="class_for_future_extention.html#a34379d6655972d284be8ff87fc5aecd2"> 1581</a></span>    time_t <a class="code hl_function" href="class_for_future_extention.html#a34379d6655972d284be8ff87fc5aecd2">time</a>( time_t* tp );</div>
+<div class="line"><a id="l01582" name="l01582"></a><span class="lineno"> 1582</span>    </div>
+<div class="line"><a id="l01589" name="l01589"></a><span class="lineno"><a class="line" href="class_for_future_extention.html#ab8d7b42ccaf6d2040ffbb4c70f858f9b"> 1589</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_for_future_extention.html#ab8d7b42ccaf6d2040ffbb4c70f858f9b">reg_w</a>( uint8_t reg_adr, uint8_t *data, <span class="keywordtype">int</span> size );</div>
+<div class="line"><a id="l01590" name="l01590"></a><span class="lineno"> 1590</span></div>
+<div class="line"><a id="l01596" name="l01596"></a><span class="lineno"><a class="line" href="class_for_future_extention.html#a385819226fa2a84c5f23238d4356238e"> 1596</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_for_future_extention.html#a385819226fa2a84c5f23238d4356238e">reg_w</a>( uint8_t reg_adr, uint8_t data );</div>
+<div class="line"><a id="l01597" name="l01597"></a><span class="lineno"> 1597</span></div>
+<div class="line"><a id="l01604" name="l01604"></a><span class="lineno"><a class="line" href="class_for_future_extention.html#ae752a3907c2aa4aac8b502f203082641"> 1604</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_for_future_extention.html#ae752a3907c2aa4aac8b502f203082641">reg_r</a>( uint8_t reg_adr, uint8_t *data, <span class="keywordtype">int</span> size );</div>
+<div class="line"><a id="l01605" name="l01605"></a><span class="lineno"> 1605</span></div>
+<div class="line"><a id="l01611" name="l01611"></a><span class="lineno"><a class="line" href="class_for_future_extention.html#a5866a8d7d4ad6a7d84b2a9b31896818b"> 1611</a></span>    uint8_t <a class="code hl_function" href="class_for_future_extention.html#a5866a8d7d4ad6a7d84b2a9b31896818b">reg_r</a>( uint8_t reg_adr );</div>
+<div class="line"><a id="l01612" name="l01612"></a><span class="lineno"> 1612</span></div>
+<div class="line"><a id="l01618" name="l01618"></a><span class="lineno"><a class="line" href="class_for_future_extention.html#ae9cd268b77e75e3c5cd88651550f8fa5"> 1618</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_for_future_extention.html#ae9cd268b77e75e3c5cd88651550f8fa5">write_r8</a>( uint8_t reg, uint8_t val );</div>
+<div class="line"><a id="l01619" name="l01619"></a><span class="lineno"> 1619</span></div>
+<div class="line"><a id="l01625" name="l01625"></a><span class="lineno"><a class="line" href="class_for_future_extention.html#affa1f43e22ec27a5a446fba6da36bea7"> 1625</a></span>    uint8_t <a class="code hl_function" href="class_for_future_extention.html#affa1f43e22ec27a5a446fba6da36bea7">read_r8</a>( uint8_t reg );</div>
+<div class="line"><a id="l01626" name="l01626"></a><span class="lineno"> 1626</span></div>
+<div class="line"><a id="l01635" name="l01635"></a><span class="lineno"><a class="line" href="class_for_future_extention.html#adc0d3cb5c61eb5d7489d29207e6a4297"> 1635</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_for_future_extention.html#adc0d3cb5c61eb5d7489d29207e6a4297">bit_op8</a>(  uint8_t reg,  uint8_t mask,  uint8_t value );</div>
 <div class="line"><a id="l01636" name="l01636"></a><span class="lineno"> 1636</span> </div>
-<div class="line"><a id="l01637" name="l01637"></a><span class="lineno"> 1637</span><span class="keyword">protected</span>:</div>
-<div class="line"><a id="l01642" name="l01642"></a><span class="lineno"><a class="line" href="class_for_future_extention.html#a72622c55c8891f0c95fcbdbd02bed8d3"> 1642</a></span>    time_t <a class="code hl_function" href="class_for_future_extention.html#a72622c55c8891f0c95fcbdbd02bed8d3">rtc_time</a>( <span class="keywordtype">void</span> );</div>
-<div class="line"><a id="l01643" name="l01643"></a><span class="lineno"> 1643</span>};</div>
+<div class="line"><a id="l01637" name="l01637"></a><span class="lineno"> 1637</span><span class="preprocessor">#endif  </span><span class="comment">//  DOXYGEN_ONLY</span></div>
+<div class="line"><a id="l01638" name="l01638"></a><span class="lineno"> 1638</span> </div>
+<div class="line"><a id="l01639" name="l01639"></a><span class="lineno"> 1639</span><span class="keyword">protected</span>:</div>
+<div class="line"><a id="l01644" name="l01644"></a><span class="lineno"><a class="line" href="class_for_future_extention.html#a72622c55c8891f0c95fcbdbd02bed8d3"> 1644</a></span>    time_t <a class="code hl_function" href="class_for_future_extention.html#a72622c55c8891f0c95fcbdbd02bed8d3">rtc_time</a>( <span class="keywordtype">void</span> );</div>
+<div class="line"><a id="l01645" name="l01645"></a><span class="lineno"> 1645</span>};</div>
 </div>
-<div class="line"><a id="l01644" name="l01644"></a><span class="lineno"> 1644</span> </div>
-<div class="line"><a id="l01645" name="l01645"></a><span class="lineno"> 1645</span> </div>
-<div class="line"><a id="l01646" name="l01646"></a><span class="lineno"> 1646</span><span class="preprocessor">#endif </span><span class="comment">//   ARDUINO_RTC_DRIVER_NXP_ARD_H</span></div>
+<div class="line"><a id="l01646" name="l01646"></a><span class="lineno"> 1646</span> </div>
+<div class="line"><a id="l01647" name="l01647"></a><span class="lineno"> 1647</span> </div>
+<div class="line"><a id="l01648" name="l01648"></a><span class="lineno"> 1648</span><span class="preprocessor">#endif </span><span class="comment">//   ARDUINO_RTC_DRIVER_NXP_ARD_H</span></div>
 <div class="ttc" id="aclass_for_future_extention_html_a18af1fee433d47e983ce9848d8f3e591"><div class="ttname"><a href="class_for_future_extention.html#a18af1fee433d47e983ce9848d8f3e591">ForFutureExtention::alarm</a></div><div class="ttdeci">void alarm(alarm_setting digit, int val)</div></div>
 <div class="ttc" id="aclass_for_future_extention_html_a2e4726dc9a78f989bbf9fc4edf18293c"><div class="ttname"><a href="class_for_future_extention.html#a2e4726dc9a78f989bbf9fc4edf18293c">ForFutureExtention::alarm_clear</a></div><div class="ttdeci">void alarm_clear(void)</div></div>
 <div class="ttc" id="aclass_for_future_extention_html_a34379d6655972d284be8ff87fc5aecd2"><div class="ttname"><a href="class_for_future_extention.html#a34379d6655972d284be8ff87fc5aecd2">ForFutureExtention::time</a></div><div class="ttdeci">time_t time(time_t *tp)</div></div>
@@ -1060,7 +1060,7 @@ document.addEventListener('DOMContentLoaded', () => {
 <div class="ttc" id="aclass_p_c_f85053_a_html_a90a7bd5a4b5033d3fdd7f97115602fb7"><div class="ttname"><a href="class_p_c_f85053_a.html#a90a7bd5a4b5033d3fdd7f97115602fb7">PCF85053A::read_r8</a></div><div class="ttdeci">uint8_t read_r8(uint8_t reg)</div></div>
 <div class="ttc" id="aclass_p_c_f85053_a_html_aa81da80ac76086377e4f1c5665e9c5ce"><div class="ttname"><a href="class_p_c_f85053_a.html#aa81da80ac76086377e4f1c5665e9c5ce">PCF85053A::int_clear</a></div><div class="ttdeci">uint8_t int_clear(void)</div><div class="ttdef"><b>Definition</b> <a href="_p_c_f85053_a_8cpp_source.html#l00056">PCF85053A.cpp:56</a></div></div>
 <div class="ttc" id="aclass_p_c_f85053_a_html_ab718ef8d24df241cf511002dccb3928b"><div class="ttname"><a href="class_p_c_f85053_a.html#ab718ef8d24df241cf511002dccb3928b">PCF85053A::reg_w</a></div><div class="ttdeci">void reg_w(uint8_t reg_adr, uint8_t data)</div></div>
-<div class="ttc" id="aclass_p_c_f85053_a_html_ab7f4ad9c87ac514866160f256eb7af1e"><div class="ttname"><a href="class_p_c_f85053_a.html#ab7f4ad9c87ac514866160f256eb7af1e">PCF85053A::reg_num</a></div><div class="ttdeci">reg_num</div><div class="ttdef"><b>Definition</b> <a href="#l01383">RTC_NXP.h:1383</a></div></div>
+<div class="ttc" id="aclass_p_c_f85053_a_html_ab7f4ad9c87ac514866160f256eb7af1e"><div class="ttname"><a href="class_p_c_f85053_a.html#ab7f4ad9c87ac514866160f256eb7af1e">PCF85053A::reg_num</a></div><div class="ttdeci">reg_num</div><div class="ttdef"><b>Definition</b> <a href="#l01385">RTC_NXP.h:1385</a></div></div>
 <div class="ttc" id="aclass_p_c_f85053_a_html_ac88c0495145c211fe387ae56586bd4a9"><div class="ttname"><a href="class_p_c_f85053_a.html#ac88c0495145c211fe387ae56586bd4a9">PCF85053A::rtc_time</a></div><div class="ttdeci">time_t rtc_time(void)</div><div class="ttdef"><b>Definition</b> <a href="_p_c_f85053_a_8cpp_source.html#l00064">PCF85053A.cpp:64</a></div></div>
 <div class="ttc" id="aclass_p_c_f85053_a_html_ae90f68d455fbf099c03e264fa001dd0d"><div class="ttname"><a href="class_p_c_f85053_a.html#ae90f68d455fbf099c03e264fa001dd0d">PCF85053A::alarm</a></div><div class="ttdeci">void alarm(alarm_setting digit, int val)</div><div class="ttdef"><b>Definition</b> <a href="_p_c_f85053_a_8cpp_source.html#l00038">PCF85053A.cpp:38</a></div></div>
 <div class="ttc" id="aclass_p_c_f85053_a_html_aeb4f154de3223e3a0cb421596da855b0"><div class="ttname"><a href="class_p_c_f85053_a.html#aeb4f154de3223e3a0cb421596da855b0">PCF85053A::set</a></div><div class="ttdeci">void set(struct tm *now_tm)</div><div class="ttdef"><b>Definition</b> <a href="_p_c_f85053_a_8cpp_source.html#l00009">PCF85053A.cpp:9</a></div></div>
@@ -1072,7 +1072,6 @@ document.addEventListener('DOMContentLoaded', () => {
 <div class="ttc" id="aclass_p_c_f85063__base_html_a5bb6ffde539d9db076798bba550b5f4b"><div class="ttname"><a href="class_p_c_f85063__base.html#a5bb6ffde539d9db076798bba550b5f4b">PCF85063_base::alarm_disable</a></div><div class="ttdeci">void alarm_disable(void)</div><div class="ttdef"><b>Definition</b> <a href="_p_c_f85063_a_8cpp_source.html#l00055">PCF85063A.cpp:55</a></div></div>
 <div class="ttc" id="aclass_p_c_f85063__base_html_a5c2deb26cd0e1514d5b516c396754a92"><div class="ttname"><a href="class_p_c_f85063__base.html#a5c2deb26cd0e1514d5b516c396754a92">PCF85063_base::alarm</a></div><div class="ttdeci">void alarm(alarm_setting digit, int val)</div><div class="ttdef"><b>Definition</b> <a href="_p_c_f85063_a_8cpp_source.html#l00043">PCF85063A.cpp:43</a></div></div>
 <div class="ttc" id="aclass_p_c_f85063__base_html_a6649795f67cdbe4f9f7555c92e38517c"><div class="ttname"><a href="class_p_c_f85063__base.html#a6649795f67cdbe4f9f7555c92e38517c">PCF85063_base::_reg_w</a></div><div class="ttdeci">virtual void _reg_w(uint8_t reg, uint8_t val)=0</div></div>
-<div class="ttc" id="aclass_p_c_f85063__base_html_a781dfaf9ad89b046ecc9ef2d6e3ed165"><div class="ttname"><a href="class_p_c_f85063__base.html#a781dfaf9ad89b046ecc9ef2d6e3ed165">PCF85063_base::timer</a></div><div class="ttdeci">float timer(float period)</div><div class="ttdef"><b>Definition</b> <a href="_p_c_f85063_a_8cpp_source.html#l00068">PCF85063A.cpp:68</a></div></div>
 <div class="ttc" id="aclass_p_c_f85063__base_html_a8008642fa0f2ae67cd586a246e9557b1"><div class="ttname"><a href="class_p_c_f85063__base.html#a8008642fa0f2ae67cd586a246e9557b1">PCF85063_base::PCF85063_base</a></div><div class="ttdeci">PCF85063_base()</div><div class="ttdef"><b>Definition</b> <a href="_p_c_f85063_a_8cpp_source.html#l00003">PCF85063A.cpp:3</a></div></div>
 <div class="ttc" id="aclass_p_c_f85063__base_html_a906bbb548df5e8aa188de0262340d644"><div class="ttname"><a href="class_p_c_f85063__base.html#a906bbb548df5e8aa188de0262340d644">PCF85063_base::_reg_w</a></div><div class="ttdeci">virtual void _reg_w(uint8_t reg, uint8_t *vp, int len)=0</div></div>
 <div class="ttc" id="aclass_p_c_f85063__base_html_a9506fdf04fb7492ec6c052d4f71c27a3"><div class="ttname"><a href="class_p_c_f85063__base.html#a9506fdf04fb7492ec6c052d4f71c27a3">PCF85063_base::begin</a></div><div class="ttdeci">void begin(void)</div><div class="ttdef"><b>Definition</b> <a href="_p_c_f85063_a_8cpp_source.html#l00011">PCF85063A.cpp:11</a></div></div>
@@ -1080,17 +1079,18 @@ document.addEventListener('DOMContentLoaded', () => {
 <div class="ttc" id="aclass_p_c_f85063__base_html_aba6a9bca2ec39dd42c3157b4fb8d867a"><div class="ttname"><a href="class_p_c_f85063__base.html#aba6a9bca2ec39dd42c3157b4fb8d867a">PCF85063_base::_reg_r</a></div><div class="ttdeci">virtual void _reg_r(uint8_t reg, uint8_t *vp, int len)=0</div></div>
 <div class="ttc" id="aclass_p_c_f85063__base_html_abeb6a2ea7264081f94e6d498dc9f8144"><div class="ttname"><a href="class_p_c_f85063__base.html#abeb6a2ea7264081f94e6d498dc9f8144">PCF85063_base::~PCF85063_base</a></div><div class="ttdeci">virtual ~PCF85063_base()</div><div class="ttdef"><b>Definition</b> <a href="_p_c_f85063_a_8cpp_source.html#l00007">PCF85063A.cpp:7</a></div></div>
 <div class="ttc" id="aclass_p_c_f85063__base_html_adba207214f4139e34fa96165786d023f"><div class="ttname"><a href="class_p_c_f85063__base.html#adba207214f4139e34fa96165786d023f">PCF85063_base::alarm_clear</a></div><div class="ttdeci">void alarm_clear(void)</div><div class="ttdef"><b>Definition</b> <a href="_p_c_f85063_a_8cpp_source.html#l00050">PCF85063A.cpp:50</a></div></div>
-<div class="ttc" id="aclass_p_c_f85063__base_html_ade5a3b4b8bf3b76c6a3712938e5e3f7b"><div class="ttname"><a href="class_p_c_f85063__base.html#ade5a3b4b8bf3b76c6a3712938e5e3f7b">PCF85063_base::rtc_time</a></div><div class="ttdeci">time_t rtc_time(void)</div><div class="ttdef"><b>Definition</b> <a href="_p_c_f85063_a_8cpp_source.html#l00100">PCF85063A.cpp:100</a></div></div>
+<div class="ttc" id="aclass_p_c_f85063__base_html_addc90574f062f648fb212343a534e3d4"><div class="ttname"><a href="class_p_c_f85063__base.html#addc90574f062f648fb212343a534e3d4">PCF85063_base::timer</a></div><div class="ttdeci">float timer(float period, bool pulse=false)</div><div class="ttdef"><b>Definition</b> <a href="_p_c_f85063_a_8cpp_source.html#l00068">PCF85063A.cpp:68</a></div></div>
+<div class="ttc" id="aclass_p_c_f85063__base_html_ade5a3b4b8bf3b76c6a3712938e5e3f7b"><div class="ttname"><a href="class_p_c_f85063__base.html#ade5a3b4b8bf3b76c6a3712938e5e3f7b">PCF85063_base::rtc_time</a></div><div class="ttdeci">time_t rtc_time(void)</div><div class="ttdef"><b>Definition</b> <a href="_p_c_f85063_a_8cpp_source.html#l00107">PCF85063A.cpp:107</a></div></div>
 <div class="ttc" id="aclass_p_c_f85063_a_html_a10f51478ca2a06fae5711e489a6ffcf0"><div class="ttname"><a href="class_p_c_f85063_a.html#a10f51478ca2a06fae5711e489a6ffcf0">PCF85063A::time</a></div><div class="ttdeci">time_t time(time_t *tp)</div></div>
 <div class="ttc" id="aclass_p_c_f85063_a_html_a15e3773f6e12ac5d624bfded1929c577"><div class="ttname"><a href="class_p_c_f85063_a.html#a15e3773f6e12ac5d624bfded1929c577">PCF85063A::begin</a></div><div class="ttdeci">void begin(void)</div></div>
+<div class="ttc" id="aclass_p_c_f85063_a_html_a1ef5a35bbed91a3f981990ed436c1142"><div class="ttname"><a href="class_p_c_f85063_a.html#a1ef5a35bbed91a3f981990ed436c1142">PCF85063A::timer</a></div><div class="ttdeci">float timer(float period, bool pulse=false)</div></div>
 <div class="ttc" id="aclass_p_c_f85063_a_html_a277795a8dfba9b6af942bcc4e860e624"><div class="ttname"><a href="class_p_c_f85063_a.html#a277795a8dfba9b6af942bcc4e860e624">PCF85063A::alarm</a></div><div class="ttdeci">void alarm(alarm_setting digit, int val)</div></div>
 <div class="ttc" id="aclass_p_c_f85063_a_html_a2bd4d413251456251058782015aa624c"><div class="ttname"><a href="class_p_c_f85063_a.html#a2bd4d413251456251058782015aa624c">PCF85063A::int_clear</a></div><div class="ttdeci">uint8_t int_clear(void)</div></div>
-<div class="ttc" id="aclass_p_c_f85063_a_html_a32092d7eb382d2055f4673b089d6b55c"><div class="ttname"><a href="class_p_c_f85063_a.html#a32092d7eb382d2055f4673b089d6b55c">PCF85063A::timer</a></div><div class="ttdeci">float timer(float period)</div></div>
-<div class="ttc" id="aclass_p_c_f85063_a_html_a333ae3efab81b1835fd2271c86fd05c6"><div class="ttname"><a href="class_p_c_f85063_a.html#a333ae3efab81b1835fd2271c86fd05c6">PCF85063A::reg_num</a></div><div class="ttdeci">reg_num</div><div class="ttdef"><b>Definition</b> <a href="#l00893">RTC_NXP.h:893</a></div></div>
+<div class="ttc" id="aclass_p_c_f85063_a_html_a333ae3efab81b1835fd2271c86fd05c6"><div class="ttname"><a href="class_p_c_f85063_a.html#a333ae3efab81b1835fd2271c86fd05c6">PCF85063A::reg_num</a></div><div class="ttdeci">reg_num</div><div class="ttdef"><b>Definition</b> <a href="#l00894">RTC_NXP.h:894</a></div></div>
 <div class="ttc" id="aclass_p_c_f85063_a_html_a40f567dfb37cd3a232342a7696c6980f"><div class="ttname"><a href="class_p_c_f85063_a.html#a40f567dfb37cd3a232342a7696c6980f">PCF85063A::read_r8</a></div><div class="ttdeci">uint8_t read_r8(uint8_t reg)</div></div>
 <div class="ttc" id="aclass_p_c_f85063_a_html_a55a84409405e9908b997638b25767be6"><div class="ttname"><a href="class_p_c_f85063_a.html#a55a84409405e9908b997638b25767be6">PCF85063A::reg_r</a></div><div class="ttdeci">void reg_r(uint8_t reg_adr, uint8_t *data, int size)</div></div>
 <div class="ttc" id="aclass_p_c_f85063_a_html_a5e9fac2c2210a005ecaa731f9e3c17b2"><div class="ttname"><a href="class_p_c_f85063_a.html#a5e9fac2c2210a005ecaa731f9e3c17b2">PCF85063A::reg_r</a></div><div class="ttdeci">uint8_t reg_r(uint8_t reg_adr)</div></div>
-<div class="ttc" id="aclass_p_c_f85063_a_html_a74f730e5cd2234e158175701bcb37b9a"><div class="ttname"><a href="class_p_c_f85063_a.html#a74f730e5cd2234e158175701bcb37b9a">PCF85063A::PCF85063A</a></div><div class="ttdeci">PCF85063A(uint8_t i2c_address=(0xA2 &gt; &gt; 1))</div><div class="ttdef"><b>Definition</b> <a href="_p_c_f85063_a_8cpp_source.html#l00120">PCF85063A.cpp:120</a></div></div>
+<div class="ttc" id="aclass_p_c_f85063_a_html_a74f730e5cd2234e158175701bcb37b9a"><div class="ttname"><a href="class_p_c_f85063_a.html#a74f730e5cd2234e158175701bcb37b9a">PCF85063A::PCF85063A</a></div><div class="ttdeci">PCF85063A(uint8_t i2c_address=(0xA2 &gt; &gt; 1))</div><div class="ttdef"><b>Definition</b> <a href="_p_c_f85063_a_8cpp_source.html#l00127">PCF85063A.cpp:127</a></div></div>
 <div class="ttc" id="aclass_p_c_f85063_a_html_a90c19698171af0d85412a46b6588a893"><div class="ttname"><a href="class_p_c_f85063_a.html#a90c19698171af0d85412a46b6588a893">PCF85063A::set</a></div><div class="ttdeci">void set(struct tm *now_tm)</div></div>
 <div class="ttc" id="aclass_p_c_f85063_a_html_a99ebd1b629f214c50f73d64a09c6b473"><div class="ttname"><a href="class_p_c_f85063_a.html#a99ebd1b629f214c50f73d64a09c6b473">PCF85063A::reg_w</a></div><div class="ttdeci">void reg_w(uint8_t reg_adr, uint8_t data)</div></div>
 <div class="ttc" id="aclass_p_c_f85063_a_html_a9ec37f2fbce941cfd3cd474b9631ea2d"><div class="ttname"><a href="class_p_c_f85063_a.html#a9ec37f2fbce941cfd3cd474b9631ea2d">PCF85063A::alarm_clear</a></div><div class="ttdeci">void alarm_clear(void)</div></div>
@@ -1099,7 +1099,7 @@ document.addEventListener('DOMContentLoaded', () => {
 <div class="ttc" id="aclass_p_c_f85063_a_html_abb65b42f556baaea1566a38c87794150"><div class="ttname"><a href="class_p_c_f85063_a.html#abb65b42f556baaea1566a38c87794150">PCF85063A::reg_w</a></div><div class="ttdeci">void reg_w(uint8_t reg_adr, uint8_t *data, int size)</div></div>
 <div class="ttc" id="aclass_p_c_f85063_a_html_abeda19e28d17172126dc7e5be212c9c1"><div class="ttname"><a href="class_p_c_f85063_a.html#abeda19e28d17172126dc7e5be212c9c1">PCF85063A::bit_op8</a></div><div class="ttdeci">void bit_op8(uint8_t reg, uint8_t mask, uint8_t value)</div></div>
 <div class="ttc" id="aclass_p_c_f85063_a_html_ac5709fbb36677d12e709f063797a2fa1"><div class="ttname"><a href="class_p_c_f85063_a.html#ac5709fbb36677d12e709f063797a2fa1">PCF85063A::write_r8</a></div><div class="ttdeci">void write_r8(uint8_t reg, uint8_t val)</div></div>
-<div class="ttc" id="aclass_p_c_f85063_a_html_ac68e73f46135911d85dc36044b346f11"><div class="ttname"><a href="class_p_c_f85063_a.html#ac68e73f46135911d85dc36044b346f11">PCF85063A::~PCF85063A</a></div><div class="ttdeci">virtual ~PCF85063A()</div><div class="ttdef"><b>Definition</b> <a href="_p_c_f85063_a_8cpp_source.html#l00128">PCF85063A.cpp:128</a></div></div>
+<div class="ttc" id="aclass_p_c_f85063_a_html_ac68e73f46135911d85dc36044b346f11"><div class="ttname"><a href="class_p_c_f85063_a.html#ac68e73f46135911d85dc36044b346f11">PCF85063A::~PCF85063A</a></div><div class="ttdeci">virtual ~PCF85063A()</div><div class="ttdef"><b>Definition</b> <a href="_p_c_f85063_a_8cpp_source.html#l00135">PCF85063A.cpp:135</a></div></div>
 <div class="ttc" id="aclass_p_c_f85063_t_p_html_a08e6d54973b3b060de3a5bb36defa892"><div class="ttname"><a href="class_p_c_f85063_t_p.html#a08e6d54973b3b060de3a5bb36defa892">PCF85063TP::reg_w</a></div><div class="ttdeci">void reg_w(uint8_t reg_adr, uint8_t *data, int size)</div></div>
 <div class="ttc" id="aclass_p_c_f85063_t_p_html_a13fdd536da7b4facd694c78157e84370"><div class="ttname"><a href="class_p_c_f85063_t_p.html#a13fdd536da7b4facd694c78157e84370">PCF85063TP::begin</a></div><div class="ttdeci">void begin(void)</div></div>
 <div class="ttc" id="aclass_p_c_f85063_t_p_html_a403845b4de96cb8552b61f5eb94b77e6"><div class="ttname"><a href="class_p_c_f85063_t_p.html#a403845b4de96cb8552b61f5eb94b77e6">PCF85063TP::write_r8</a></div><div class="ttdeci">void write_r8(uint8_t reg, uint8_t val)</div></div>
@@ -1113,31 +1113,31 @@ document.addEventListener('DOMContentLoaded', () => {
 <div class="ttc" id="aclass_p_c_f85063_t_p_html_ab24a81e9df38a6b04e739ccd4d4ce1eb"><div class="ttname"><a href="class_p_c_f85063_t_p.html#ab24a81e9df38a6b04e739ccd4d4ce1eb">PCF85063TP::reg_w</a></div><div class="ttdeci">void reg_w(uint8_t reg_adr, uint8_t data)</div></div>
 <div class="ttc" id="aclass_p_c_f85063_t_p_html_ac61f1171b40a12b42d56a1805dcc9f48"><div class="ttname"><a href="class_p_c_f85063_t_p.html#ac61f1171b40a12b42d56a1805dcc9f48">PCF85063TP::oscillator_stop</a></div><div class="ttdeci">bool oscillator_stop(void)</div></div>
 <div class="ttc" id="aclass_p_c_f85063_t_p_html_ae99cac7846bc79d9fbfee3352dd543f7"><div class="ttname"><a href="class_p_c_f85063_t_p.html#ae99cac7846bc79d9fbfee3352dd543f7">PCF85063TP::time</a></div><div class="ttdeci">time_t time(time_t *tp)</div></div>
-<div class="ttc" id="aclass_p_c_f85063_t_p_html_af9b9dcc35b7c177a214ecf9ac5972218"><div class="ttname"><a href="class_p_c_f85063_t_p.html#af9b9dcc35b7c177a214ecf9ac5972218">PCF85063TP::reg_num</a></div><div class="ttdeci">reg_num</div><div class="ttdef"><b>Definition</b> <a href="#l01049">RTC_NXP.h:1049</a></div></div>
-<div class="ttc" id="aclass_p_c_f85263_a_html_a0639de735886ca92b24cd8b000344ef5"><div class="ttname"><a href="class_p_c_f85263_a.html#a0639de735886ca92b24cd8b000344ef5">PCF85263A::pin_congfig</a></div><div class="ttdeci">void pin_congfig(inta cfg_a, intb cfg_b)</div><div class="ttdef"><b>Definition</b> <a href="_p_c_f85263_a_8cpp_source.html#l00128">PCF85263A.cpp:128</a></div></div>
+<div class="ttc" id="aclass_p_c_f85063_t_p_html_af9b9dcc35b7c177a214ecf9ac5972218"><div class="ttname"><a href="class_p_c_f85063_t_p.html#af9b9dcc35b7c177a214ecf9ac5972218">PCF85063TP::reg_num</a></div><div class="ttdeci">reg_num</div><div class="ttdef"><b>Definition</b> <a href="#l01051">RTC_NXP.h:1051</a></div></div>
 <div class="ttc" id="aclass_p_c_f85263_a_html_a0e511345150f4f65be057d967fe024a2"><div class="ttname"><a href="class_p_c_f85263_a.html#a0e511345150f4f65be057d967fe024a2">PCF85263A::alarm_disable</a></div><div class="ttdeci">void alarm_disable(void)</div><div class="ttdef"><b>Definition</b> <a href="_p_c_f85263_a_8cpp_source.html#l00088">PCF85263A.cpp:88</a></div></div>
-<div class="ttc" id="aclass_p_c_f85263_a_html_a13f1e1e5b55f4e8106c61c818604045f"><div class="ttname"><a href="class_p_c_f85263_a.html#a13f1e1e5b55f4e8106c61c818604045f">PCF85263A::ts_congfig</a></div><div class="ttdeci">void ts_congfig(int setting)</div><div class="ttdef"><b>Definition</b> <a href="_p_c_f85263_a_8cpp_source.html#l00133">PCF85263A.cpp:133</a></div></div>
-<div class="ttc" id="aclass_p_c_f85263_a_html_a1816caad9f3a66240bd899c2a2d6d2ae"><div class="ttname"><a href="class_p_c_f85263_a.html#a1816caad9f3a66240bd899c2a2d6d2ae">PCF85263A::intb</a></div><div class="ttdeci">intb</div><div class="ttdef"><b>Definition</b> <a href="#l01192">RTC_NXP.h:1192</a></div></div>
+<div class="ttc" id="aclass_p_c_f85263_a_html_a1816caad9f3a66240bd899c2a2d6d2ae"><div class="ttname"><a href="class_p_c_f85263_a.html#a1816caad9f3a66240bd899c2a2d6d2ae">PCF85263A::intb</a></div><div class="ttdeci">intb</div><div class="ttdef"><b>Definition</b> <a href="#l01194">RTC_NXP.h:1194</a></div></div>
 <div class="ttc" id="aclass_p_c_f85263_a_html_a2a9982777653cbeb19a35a315c06d169"><div class="ttname"><a href="class_p_c_f85263_a.html#a2a9982777653cbeb19a35a315c06d169">PCF85263A::alarm</a></div><div class="ttdeci">void alarm(alarm_setting digit, int val)</div><div class="ttdef"><b>Definition</b> <a href="_p_c_f85263_a_8cpp_source.html#l00050">PCF85263A.cpp:50</a></div></div>
 <div class="ttc" id="aclass_p_c_f85263_a_html_a3316e2fa3c299e0895bd57b1c14178a1"><div class="ttname"><a href="class_p_c_f85263_a.html#a3316e2fa3c299e0895bd57b1c14178a1">PCF85263A::periodic_interrupt_enable</a></div><div class="ttdeci">void periodic_interrupt_enable(periodic_int_select sel, int int_sel=0)</div><div class="ttdef"><b>Definition</b> <a href="_p_c_f85263_a_8cpp_source.html#l00120">PCF85263A.cpp:120</a></div></div>
 <div class="ttc" id="aclass_p_c_f85263_a_html_a33e66e2dc3995f1f1d70d90db9432e20"><div class="ttname"><a href="class_p_c_f85263_a.html#a33e66e2dc3995f1f1d70d90db9432e20">PCF85263A::int_clear</a></div><div class="ttdeci">uint8_t int_clear(void)</div><div class="ttdef"><b>Definition</b> <a href="_p_c_f85263_a_8cpp_source.html#l00094">PCF85263A.cpp:94</a></div></div>
 <div class="ttc" id="aclass_p_c_f85263_a_html_a3f0029574164fb2e0389148f72c344a0"><div class="ttname"><a href="class_p_c_f85263_a.html#a3f0029574164fb2e0389148f72c344a0">PCF85263A::~PCF85263A</a></div><div class="ttdeci">virtual ~PCF85263A()</div><div class="ttdef"><b>Definition</b> <a href="_p_c_f85263_a_8cpp_source.html#l00011">PCF85263A.cpp:11</a></div></div>
 <div class="ttc" id="aclass_p_c_f85263_a_html_a4a3718cb907ad154c375274c8735f96b"><div class="ttname"><a href="class_p_c_f85263_a.html#a4a3718cb907ad154c375274c8735f96b">PCF85263A::reg_r</a></div><div class="ttdeci">uint8_t reg_r(uint8_t reg_adr)</div></div>
-<div class="ttc" id="aclass_p_c_f85263_a_html_a5a002fd033a255abadc485673a13f632"><div class="ttname"><a href="class_p_c_f85263_a.html#a5a002fd033a255abadc485673a13f632">PCF85263A::ts_in</a></div><div class="ttdeci">ts_in</div><div class="ttdef"><b>Definition</b> <a href="#l01200">RTC_NXP.h:1200</a></div></div>
+<div class="ttc" id="aclass_p_c_f85263_a_html_a5a002fd033a255abadc485673a13f632"><div class="ttname"><a href="class_p_c_f85263_a.html#a5a002fd033a255abadc485673a13f632">PCF85263A::ts_in</a></div><div class="ttdeci">ts_in</div><div class="ttdef"><b>Definition</b> <a href="#l01202">RTC_NXP.h:1202</a></div></div>
 <div class="ttc" id="aclass_p_c_f85263_a_html_a64007834aedbd9a052f176339ff53b2c"><div class="ttname"><a href="class_p_c_f85263_a.html#a64007834aedbd9a052f176339ff53b2c">PCF85263A::timestamp</a></div><div class="ttdeci">time_t timestamp(int num)</div><div class="ttdef"><b>Definition</b> <a href="_p_c_f85263_a_8cpp_source.html#l00139">PCF85263A.cpp:139</a></div></div>
 <div class="ttc" id="aclass_p_c_f85263_a_html_a6712ee0d45b9ba8131335d8c7271fc3c"><div class="ttname"><a href="class_p_c_f85263_a.html#a6712ee0d45b9ba8131335d8c7271fc3c">PCF85263A::begin</a></div><div class="ttdeci">void begin(void)</div><div class="ttdef"><b>Definition</b> <a href="_p_c_f85263_a_8cpp_source.html#l00015">PCF85263A.cpp:15</a></div></div>
-<div class="ttc" id="aclass_p_c_f85263_a_html_a8cd044df48a2001ac2514e5a2dd8dad6"><div class="ttname"><a href="class_p_c_f85263_a.html#a8cd044df48a2001ac2514e5a2dd8dad6">PCF85263A::inta</a></div><div class="ttdeci">inta</div><div class="ttdef"><b>Definition</b> <a href="#l01184">RTC_NXP.h:1184</a></div></div>
+<div class="ttc" id="aclass_p_c_f85263_a_html_a762af5877219fe11b323f035101058d6"><div class="ttname"><a href="class_p_c_f85263_a.html#a762af5877219fe11b323f035101058d6">PCF85263A::ts_config</a></div><div class="ttdeci">void ts_config(int setting)</div><div class="ttdef"><b>Definition</b> <a href="_p_c_f85263_a_8cpp_source.html#l00133">PCF85263A.cpp:133</a></div></div>
+<div class="ttc" id="aclass_p_c_f85263_a_html_a8cd044df48a2001ac2514e5a2dd8dad6"><div class="ttname"><a href="class_p_c_f85263_a.html#a8cd044df48a2001ac2514e5a2dd8dad6">PCF85263A::inta</a></div><div class="ttdeci">inta</div><div class="ttdef"><b>Definition</b> <a href="#l01186">RTC_NXP.h:1186</a></div></div>
 <div class="ttc" id="aclass_p_c_f85263_a_html_a8f09238b6f9ad85e4bad6c0ac3fd694f"><div class="ttname"><a href="class_p_c_f85263_a.html#a8f09238b6f9ad85e4bad6c0ac3fd694f">PCF85263A::read_r8</a></div><div class="ttdeci">uint8_t read_r8(uint8_t reg)</div></div>
-<div class="ttc" id="aclass_p_c_f85263_a_html_a9022b57b3608c69e928ee5219b17cc34"><div class="ttname"><a href="class_p_c_f85263_a.html#a9022b57b3608c69e928ee5219b17cc34">PCF85263A::alarm_setting_85263A</a></div><div class="ttdeci">alarm_setting_85263A</div><div class="ttdef"><b>Definition</b> <a href="#l01165">RTC_NXP.h:1165</a></div></div>
+<div class="ttc" id="aclass_p_c_f85263_a_html_a9022b57b3608c69e928ee5219b17cc34"><div class="ttname"><a href="class_p_c_f85263_a.html#a9022b57b3608c69e928ee5219b17cc34">PCF85263A::alarm_setting_85263A</a></div><div class="ttdeci">alarm_setting_85263A</div><div class="ttdef"><b>Definition</b> <a href="#l01167">RTC_NXP.h:1167</a></div></div>
 <div class="ttc" id="aclass_p_c_f85263_a_html_aa5cc52f0c97ee024eb9f8db09eb5cb2d"><div class="ttname"><a href="class_p_c_f85263_a.html#aa5cc52f0c97ee024eb9f8db09eb5cb2d">PCF85263A::reg_w</a></div><div class="ttdeci">void reg_w(uint8_t reg_adr, uint8_t data)</div></div>
 <div class="ttc" id="aclass_p_c_f85263_a_html_aa6ebeb9fb3cce722e83f11f9532384a0"><div class="ttname"><a href="class_p_c_f85263_a.html#aa6ebeb9fb3cce722e83f11f9532384a0">PCF85263A::reg_r</a></div><div class="ttdeci">void reg_r(uint8_t reg_adr, uint8_t *data, int size)</div></div>
-<div class="ttc" id="aclass_p_c_f85263_a_html_aa8b27745f67151341314514efb025411"><div class="ttname"><a href="class_p_c_f85263_a.html#aa8b27745f67151341314514efb025411">PCF85263A::reg_num</a></div><div class="ttdeci">reg_num</div><div class="ttdef"><b>Definition</b> <a href="#l01143">RTC_NXP.h:1143</a></div></div>
+<div class="ttc" id="aclass_p_c_f85263_a_html_aa8b27745f67151341314514efb025411"><div class="ttname"><a href="class_p_c_f85263_a.html#aa8b27745f67151341314514efb025411">PCF85263A::reg_num</a></div><div class="ttdeci">reg_num</div><div class="ttdef"><b>Definition</b> <a href="#l01145">RTC_NXP.h:1145</a></div></div>
 <div class="ttc" id="aclass_p_c_f85263_a_html_ab26e486c988b5dfbcd93c4495fbe57ba"><div class="ttname"><a href="class_p_c_f85263_a.html#ab26e486c988b5dfbcd93c4495fbe57ba">PCF85263A::oscillator_stop</a></div><div class="ttdeci">bool oscillator_stop(void)</div><div class="ttdef"><b>Definition</b> <a href="_p_c_f85263_a_8cpp_source.html#l00045">PCF85263A.cpp:45</a></div></div>
 <div class="ttc" id="aclass_p_c_f85263_a_html_ab5841ee5f69d3b769b1a26e37f80d449"><div class="ttname"><a href="class_p_c_f85263_a.html#ab5841ee5f69d3b769b1a26e37f80d449">PCF85263A::bit_op8</a></div><div class="ttdeci">void bit_op8(uint8_t reg, uint8_t mask, uint8_t value)</div></div>
 <div class="ttc" id="aclass_p_c_f85263_a_html_ac8bf70232b2a0f1b520d20ec7a0681aa"><div class="ttname"><a href="class_p_c_f85263_a.html#ac8bf70232b2a0f1b520d20ec7a0681aa">PCF85263A::PCF85263A</a></div><div class="ttdeci">PCF85263A(uint8_t i2c_address=(0xA2 &gt; &gt; 1))</div><div class="ttdef"><b>Definition</b> <a href="_p_c_f85263_a_8cpp_source.html#l00003">PCF85263A.cpp:3</a></div></div>
 <div class="ttc" id="aclass_p_c_f85263_a_html_ad05c015b277153634c68b24afea5031f"><div class="ttname"><a href="class_p_c_f85263_a.html#ad05c015b277153634c68b24afea5031f">PCF85263A::alarm_clear</a></div><div class="ttdeci">void alarm_clear(void)</div><div class="ttdef"><b>Definition</b> <a href="_p_c_f85263_a_8cpp_source.html#l00083">PCF85263A.cpp:83</a></div></div>
+<div class="ttc" id="aclass_p_c_f85263_a_html_ad40882d708a5cbb684be39833e398227"><div class="ttname"><a href="class_p_c_f85263_a.html#ad40882d708a5cbb684be39833e398227">PCF85263A::pin_config</a></div><div class="ttdeci">void pin_config(inta cfg_a, intb cfg_b)</div><div class="ttdef"><b>Definition</b> <a href="_p_c_f85263_a_8cpp_source.html#l00128">PCF85263A.cpp:128</a></div></div>
 <div class="ttc" id="aclass_p_c_f85263_a_html_ad899c2d5abeb65cf5dda80b1538fde9a"><div class="ttname"><a href="class_p_c_f85263_a.html#ad899c2d5abeb65cf5dda80b1538fde9a">PCF85263A::reg_w</a></div><div class="ttdeci">void reg_w(uint8_t reg_adr, uint8_t *data, int size)</div></div>
-<div class="ttc" id="aclass_p_c_f85263_a_html_ada70b814df16b266ea08c9cb30804396"><div class="ttname"><a href="class_p_c_f85263_a.html#ada70b814df16b266ea08c9cb30804396">PCF85263A::periodic_int_select</a></div><div class="ttdeci">periodic_int_select</div><div class="ttdef"><b>Definition</b> <a href="#l01177">RTC_NXP.h:1177</a></div></div>
+<div class="ttc" id="aclass_p_c_f85263_a_html_ada70b814df16b266ea08c9cb30804396"><div class="ttname"><a href="class_p_c_f85263_a.html#ada70b814df16b266ea08c9cb30804396">PCF85263A::periodic_int_select</a></div><div class="ttdeci">periodic_int_select</div><div class="ttdef"><b>Definition</b> <a href="#l01179">RTC_NXP.h:1179</a></div></div>
 <div class="ttc" id="aclass_p_c_f85263_a_html_aeb95373e246e282bbc7ca98b15fbe7ea"><div class="ttname"><a href="class_p_c_f85263_a.html#aeb95373e246e282bbc7ca98b15fbe7ea">PCF85263A::rtc_time</a></div><div class="ttdeci">time_t rtc_time(void)</div><div class="ttdef"><b>Definition</b> <a href="_p_c_f85263_a_8cpp_source.html#l00102">PCF85263A.cpp:102</a></div></div>
 <div class="ttc" id="aclass_p_c_f85263_a_html_aef93f74204b8691aaa3d87ee2740fe10"><div class="ttname"><a href="class_p_c_f85263_a.html#aef93f74204b8691aaa3d87ee2740fe10">PCF85263A::write_r8</a></div><div class="ttdeci">void write_r8(uint8_t reg, uint8_t val)</div></div>
 <div class="ttc" id="aclass_p_c_f85263_a_html_afb67e2345588ac0ffe0b604085f15558"><div class="ttname"><a href="class_p_c_f85263_a.html#afb67e2345588ac0ffe0b604085f15558">PCF85263A::set</a></div><div class="ttdeci">void set(struct tm *now_tm)</div><div class="ttdef"><b>Definition</b> <a href="_p_c_f85263_a_8cpp_source.html#l00019">PCF85263A.cpp:19</a></div></div>

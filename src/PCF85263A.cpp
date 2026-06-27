@@ -125,12 +125,12 @@ void PCF85263A::periodic_interrupt_enable( periodic_int_select sel, int int_sel 
 	bit_op8( INTA_enable + int_sel, ~0x40, (sel ? 1 : 0) << 6 );
 }
 
-void PCF85263A::pin_congfig( inta cfg_a, intb cfg_b ) 
+void PCF85263A::pin_config( inta cfg_a, intb cfg_b ) 
 {
 	bit_op8(Pin_IO, ~0x0F, (cfg_b << 2) | cfg_a);
 }
 
-void PCF85263A::ts_congfig( int setting )
+void PCF85263A::ts_config( int setting )
 {
 	bit_op8( Pin_IO, 0x0F, setting );
 	bit_op8( INTA_enable, ~0x04, 0x04 );	

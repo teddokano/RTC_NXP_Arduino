@@ -10,7 +10,7 @@ _PCF2131-ARD, PCF85063TP-ARD, PCF85063AT-ARD and PCF85263ATL-ARD : Arduino® Shi
 
 ## What is this?
 An Arduino library for RTC devices with its sample code.   
-A method of `time()` in each RTC device classes are cpmpatible to `time()` function in 'time.h'. The method is defined as same as `time_t time( time_t* tp )`.  
+A method of `time()` in each RTC device classes are compatible to `time()` function in 'time.h'. The method is defined as same as `time_t time( time_t* tp )`.  
 It returns a value in the systems time stamp format of 'time.h'.  
 
 To display the calendar/time, it can be written in this way. 
@@ -61,7 +61,7 @@ void setup() {
     Serial.println("==== oscillator_stop detected :( ====");
     set_time();
   } else {
-    Serial.println("---- RTC has beeing kept running! :) ----");
+    Serial.println("---- RTC has been kept running! :) ----");
   }
 }
 
@@ -88,7 +88,7 @@ Use Library manager in Arduino IDE for easy install
 # What's inside?
 
 ## Examples
-Examples are provided as scketch files.
+Examples are provided as sketch files.
 
 ### How to use?
 

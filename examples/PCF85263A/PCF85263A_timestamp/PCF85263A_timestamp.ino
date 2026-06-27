@@ -38,11 +38,11 @@ void setup() {
     Serial.println("==== oscillator_stop detected :( ====");
     set_time();
   } else {
-    Serial.println("---- RTC has beeing kept running! :) ----");
+    Serial.println("---- RTC has been kept running! :) ----");
   }
 
-  rtc.pin_congfig(PCF85263A::INTA_INTTERRUPT, PCF85263A::INTB_INPUT_MODE);
-  rtc.ts_congfig(PCF85263A::TSL_ACTIVE_LOW | PCF85263A::TSIM_MECHANICAL);
+  rtc.pin_config(PCF85263A::INTA_INTERRUPT, PCF85263A::INTB_INPUT_MODE);
+  rtc.ts_config(PCF85263A::TSL_ACTIVE_LOW | PCF85263A::TSIM_MECHANICAL);
 
   //  TSR_mode setting:
   //  Even if it is set to capture "First TS pin event", this sketch will show the timestamp as Last event.
