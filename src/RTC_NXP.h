@@ -89,6 +89,19 @@ public:
 	 */
 	virtual uint8_t int_clear( void )	= 0;
 
+	/** Clock offset calibration (pure virtual method)
+	 *
+	 *	Converts a frequency correction ratio into the device's offset register
+	 *	encoding and applies it. The hardware only supports discrete steps, so the
+	 *	value is rounded to the nearest representable step (and, on parts with
+	 *	multiple correction modes, the mode giving the smallest rounding error is
+	 *	selected automatically).
+	 *
+	 * @param ratio desired frequency correction as a ratio, e.g. -10 ppm = -10.0e-6 (positive speeds up, negative slows down)
+	 * @return the ratio actually applied, after rounding to the nearest representable step
+	 */
+	virtual float set_clock_offset( float ratio )	= 0;
+
 protected:
 	/** rtc_time (pure virtual method)
 	 * 
@@ -260,6 +273,17 @@ public:
 	/** Perform OTP refresh (loads factory-provided calibration data stored in EPROM)
 	 */
 	void otp_refresh();
+
+	/** Clock offset calibration
+	 *
+	 *	Applies a frequency correction via the Aging_offset register (AO[3:0]).
+	 *	The register covers a range of -14 to +16 ppm in 2 ppm steps, so this is
+	 *	intended for aging/manufacturing trim, not general-purpose calibration.
+	 *
+	 * @param ratio desired frequency correction as a ratio, e.g. -10 ppm = -10.0e-6
+	 * @return the ratio actually applied, after rounding to the nearest representable step
+	 */
+	float set_clock_offset( float ratio );
 
 protected:
 	/** Proxy method for interface  (pure virtual method) */
@@ -451,6 +475,13 @@ public:
 	/** Perform OTP refresh (loads factory-provided calibration data stored in EPROM)
 	 */
 	void otp_refresh();
+
+	/** Clock offset calibration
+	 *
+	 * @param ratio desired frequency correction as a ratio, e.g. -10 ppm = -10.0e-6
+	 * @return the ratio actually applied, after rounding to the nearest representable step
+	 */
+	float set_clock_offset( float ratio );
 
 	/** Multiple register write
 	 *
@@ -755,6 +786,13 @@ public:
 	 */
 	void otp_refresh();
 
+	/** Clock offset calibration
+	 *
+	 * @param ratio desired frequency correction as a ratio, e.g. -10 ppm = -10.0e-6
+	 * @return the ratio actually applied, after rounding to the nearest representable step
+	 */
+	float set_clock_offset( float ratio );
+
 #endif	//	DOXYGEN_ONLY
 
 private:
@@ -847,9 +885,20 @@ public:
 	 */
 	float timer( float period, bool pulse = false );
 
+	/** Clock offset calibration
+	 *
+	 *	Applies a frequency correction via the Offset register (address 02h).
+	 *	The register offers two correction modes (normal / coarse); the mode giving
+	 *	the smallest rounding error for the requested ratio is selected automatically.
+	 *
+	 * @param ratio desired frequency correction as a ratio, e.g. -10 ppm = -10.0e-6
+	 * @return the ratio actually applied, after rounding to the nearest representable step
+	 */
+	float set_clock_offset( float ratio );
+
 protected:
 	/** rtc_time
-	 * 
+	 *
 	 * @return time_t returns RTC time in time_t format
 	 */
 	time_t rtc_time( void );
@@ -953,6 +1002,13 @@ public:
 	 * @return actual timer set value in second
 	 */
 	float timer( float period, bool pulse = false );
+
+	/** Clock offset calibration
+	 *
+	 * @param ratio desired frequency correction as a ratio, e.g. -10 ppm = -10.0e-6
+	 * @return the ratio actually applied, after rounding to the nearest representable step
+	 */
+	float set_clock_offset( float ratio );
 
 	/** Multiple register write
 	 *
@@ -1303,23 +1359,35 @@ public:
 	void ts_config(int setting);
 	
 	/** Timestamp register read
-	 * 
+	 *
 	 * @param num timestamp index
 	 */
 	time_t timestamp( int num );
 
+	/** Clock offset calibration
+	 *
+	 *	Applies a frequency correction via the Offset register (address 24h).
+	 *	The OFFM bit in the Oscillator register (address 25h) selects normal or
+	 *	fast correction mode; the mode giving the smallest rounding error for the
+	 *	requested ratio is selected automatically.
+	 *
+	 * @param ratio desired frequency correction as a ratio, e.g. -10 ppm = -10.0e-6
+	 * @return the ratio actually applied, after rounding to the nearest representable step
+	 */
+	float set_clock_offset( float ratio );
+
 #if DOXYGEN_ONLY
 	/** time
-	 * 
+	 *
 	 *	"time()" in "time.h" compatible method for RTC
 	 *
 	 * @param tp pointer to time_t variable
 	 * @return time_t value of current time
 	 */
 	time_t time( time_t* tp );
-	
+
 	/** Multiple register write
-	 * 
+	 *
 	 * @param reg register index/address/pointer
 	 * @param data pointer to data buffer
 	 * @param size data size
@@ -1449,14 +1517,26 @@ public:
 	uint8_t int_clear( void );
 
 	/** rtc_time
-	 * 
+	 *
 	 * @return time_t returns RTC time in time_t format
 	 */
 	time_t rtc_time( void );
 
+	/** Clock offset calibration
+	 *
+	 *	Applies a frequency correction via the Offset register (address 12h).
+	 *	The OFFM bit in the Oscillator register (address 13h) selects normal or
+	 *	fast correction mode; the mode giving the smallest rounding error for the
+	 *	requested ratio is selected automatically.
+	 *
+	 * @param ratio desired frequency correction as a ratio, e.g. -10 ppm = -10.0e-6
+	 * @return the ratio actually applied, after rounding to the nearest representable step
+	 */
+	float set_clock_offset( float ratio );
+
 #if DOXYGEN_ONLY
 	/** time
-	 * 
+	 *
 	 *	"time()" in "time.h" compatible method for RTC
 	 *
 	 * @param tp pointer to time_t variable

@@ -27,7 +27,7 @@ mermaid.initialize({ startOnLoad: true, theme: theme });
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">RTC_NXP_Arduino<span id="projectnumber">&#160;1.2.0</span>
+   <div id="projectname">RTC_NXP_Arduino<span id="projectnumber">&#160;1.2.1</span>
    </div>
    <div id="projectbrief">RTC driver device operation sample code for Arduino</div>
   </td>
@@ -338,6 +338,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a9710eb4e9c0f34c27698bf20e7e6c1e1" id="r_a9710eb4e9c0f34c27698bf20e7e6c1e1"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a9710eb4e9c0f34c27698bf20e7e6c1e1">set_clock_out</a> (<a class="el" href="#a0861c79fed5ec98399cf7a9fae1c526f">clock_out_frequency</a> freq)</td></tr>
 <tr class="memitem:a5ccaf0ad0c5eba9886ffdf2e07c73151" id="r_a5ccaf0ad0c5eba9886ffdf2e07c73151"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a5ccaf0ad0c5eba9886ffdf2e07c73151">reset</a> ()</td></tr>
 <tr class="memitem:a126c524d42a36a157bc809625e29720d" id="r_a126c524d42a36a157bc809625e29720d"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a126c524d42a36a157bc809625e29720d">otp_refresh</a> ()</td></tr>
+<tr class="memitem:ad1b697112a05a7aed883765b4732d1e8" id="r_ad1b697112a05a7aed883765b4732d1e8"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="#ad1b697112a05a7aed883765b4732d1e8">set_clock_offset</a> (float ratio)</td></tr>
 <tr class="inherit_header pub_methods_class_p_c_f2131__base"><td colspan="2">Public Member Functions inherited from <a class="el" href="class_p_c_f2131__base.html">PCF2131_base</a></td></tr>
 <tr class="memitem:a3b6b797a1aab62a31ca48d03472bd778 pub_methods_class_p_c_f2131__base" id="r_a3b6b797a1aab62a31ca48d03472bd778"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="class_p_c_f2131__base.html#a3b6b797a1aab62a31ca48d03472bd778">PCF2131_base</a> ()</td></tr>
 <tr class="memitem:a9273d1db9b4b9e7a1b0912c46f4497ac pub_methods_class_p_c_f2131__base" id="r_a9273d1db9b4b9e7a1b0912c46f4497ac"><td class="memItemLeft">virtual&#160;</td><td class="memItemRight"><a class="el" href="class_p_c_f2131__base.html#a9273d1db9b4b9e7a1b0912c46f4497ac">~PCF2131_base</a> ()</td></tr>
@@ -373,7 +374,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="textblock"><p><a class="el" href="class_p_c_f2131___s_p_i.html">PCF2131_SPI</a> class</p>
 <p>PCF2131 class driver using SPI interface </p>
 
-<p class="definition">Definition at line <a class="el" href="_r_t_c___n_x_p_8h_source.html#l00608">608</a> of file <a class="el" href="_r_t_c___n_x_p_8h_source.html">RTC_NXP.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_r_t_c___n_x_p_8h_source.html#l00639">639</a> of file <a class="el" href="_r_t_c___n_x_p_8h_source.html">RTC_NXP.h</a>.</p>
 </div><a name="doc-enum-members" id="doc-enum-members"></a><h2 id="header-doc-enum-members" class="groupheader">Member Enumeration Documentation</h2>
 <a id="a0861c79fed5ec98399cf7a9fae1c526f" name="a0861c79fed5ec98399cf7a9fae1c526f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0861c79fed5ec98399cf7a9fae1c526f">&#9670;&#160;</a></span>clock_out_frequency</h2>
@@ -388,7 +389,7 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 <p>Clock output frequency descriptor </p>
 
-<p class="definition">Definition at line <a class="el" href="_r_t_c___n_x_p_8h_source.html#l00645">645</a> of file <a class="el" href="_r_t_c___n_x_p_8h_source.html">RTC_NXP.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_r_t_c___n_x_p_8h_source.html#l00676">676</a> of file <a class="el" href="_r_t_c___n_x_p_8h_source.html">RTC_NXP.h</a>.</p>
 
 </div>
 </div>
@@ -405,7 +406,7 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 <p>Periodic interrupt selection descriptor </p>
 
-<p class="definition">Definition at line <a class="el" href="_r_t_c___n_x_p_8h_source.html#l00634">634</a> of file <a class="el" href="_r_t_c___n_x_p_8h_source.html">RTC_NXP.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_r_t_c___n_x_p_8h_source.html#l00665">665</a> of file <a class="el" href="_r_t_c___n_x_p_8h_source.html">RTC_NXP.h</a>.</p>
 
 </div>
 </div>
@@ -422,7 +423,7 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 <p>Name of the PCF2131 registers </p>
 
-<p class="definition">Definition at line <a class="el" href="_r_t_c___n_x_p_8h_source.html#l00619">619</a> of file <a class="el" href="_r_t_c___n_x_p_8h_source.html">RTC_NXP.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_r_t_c___n_x_p_8h_source.html#l00650">650</a> of file <a class="el" href="_r_t_c___n_x_p_8h_source.html">RTC_NXP.h</a>.</p>
 
 </div>
 </div>
@@ -439,7 +440,7 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 <p>Timestamp setting descriptor </p>
 
-<p class="definition">Definition at line <a class="el" href="_r_t_c___n_x_p_8h_source.html#l00640">640</a> of file <a class="el" href="_r_t_c___n_x_p_8h_source.html">RTC_NXP.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_r_t_c___n_x_p_8h_source.html#l00671">671</a> of file <a class="el" href="_r_t_c___n_x_p_8h_source.html">RTC_NXP.h</a>.</p>
 
 </div>
 </div>
@@ -852,6 +853,41 @@ Additional Inherited Members</h2></td></tr>
 </dl>
 
 <p>Reimplemented from <a class="el" href="class_p_c_f2131__base.html#a3d59a120d2836fc9ddb2348993c2e94f">PCF2131_base</a>.</p>
+
+</div>
+</div>
+<a id="ad1b697112a05a7aed883765b4732d1e8" name="ad1b697112a05a7aed883765b4732d1e8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad1b697112a05a7aed883765b4732d1e8">&#9670;&#160;</a></span>set_clock_offset()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float PCF2131_SPI::set_clock_offset </td>
+          <td>(</td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>ratio</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Clock offset calibration</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ratio</td><td>desired frequency correction as a ratio, e.g. -10 ppm = -10.0e-6 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the ratio actually applied, after rounding to the nearest representable step </dd></dl>
+
+<p>Reimplemented from <a class="el" href="class_p_c_f2131__base.html#a8aca047d139abfe1f1b13c69cd90238c">PCF2131_base</a>.</p>
 
 </div>
 </div>

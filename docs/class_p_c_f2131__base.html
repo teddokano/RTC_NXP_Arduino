@@ -27,7 +27,7 @@ mermaid.initialize({ startOnLoad: true, theme: theme });
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">RTC_NXP_Arduino<span id="projectnumber">&#160;1.2.0</span>
+   <div id="projectname">RTC_NXP_Arduino<span id="projectnumber">&#160;1.2.1</span>
    </div>
    <div id="projectbrief">RTC driver device operation sample code for Arduino</div>
   </td>
@@ -247,6 +247,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a65efacf914d16fff371a7dcb56a5d25d" id="r_a65efacf914d16fff371a7dcb56a5d25d"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a65efacf914d16fff371a7dcb56a5d25d">set_clock_out</a> (<a class="el" href="#a59133fa511edab6958a574f02568f55e">clock_out_frequency</a> freq)</td></tr>
 <tr class="memitem:a5fb2e01ce8cf78a2394a148b8a0653cb" id="r_a5fb2e01ce8cf78a2394a148b8a0653cb"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a5fb2e01ce8cf78a2394a148b8a0653cb">reset</a> ()</td></tr>
 <tr class="memitem:a0f79126b1fc097cababcd5ba072e52a5" id="r_a0f79126b1fc097cababcd5ba072e52a5"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a0f79126b1fc097cababcd5ba072e52a5">otp_refresh</a> ()</td></tr>
+<tr class="memitem:a8aca047d139abfe1f1b13c69cd90238c" id="r_a8aca047d139abfe1f1b13c69cd90238c"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="#a8aca047d139abfe1f1b13c69cd90238c">set_clock_offset</a> (float ratio)</td></tr>
 <tr class="inherit_header pub_methods_class_r_t_c___n_x_p"><td colspan="2">Public Member Functions inherited from <a class="el" href="class_r_t_c___n_x_p.html">RTC_NXP</a></td></tr>
 <tr class="memitem:a42923db96d555782c8c426c85af122e4 pub_methods_class_r_t_c___n_x_p" id="r_a42923db96d555782c8c426c85af122e4"><td class="memItemLeft">&#160;</td><td class="memItemRight"><a class="el" href="class_r_t_c___n_x_p.html#a42923db96d555782c8c426c85af122e4">RTC_NXP</a> ()</td></tr>
 <tr class="memitem:ad8b82f3d96d3ee866b2ba0b5e77de9fd pub_methods_class_r_t_c___n_x_p" id="r_ad8b82f3d96d3ee866b2ba0b5e77de9fd"><td class="memItemLeft">virtual&#160;</td><td class="memItemRight"><a class="el" href="class_r_t_c___n_x_p.html#ad8b82f3d96d3ee866b2ba0b5e77de9fd">~RTC_NXP</a> ()</td></tr>
@@ -270,7 +271,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="textblock"><p><a class="el" href="class_p_c_f2131__base.html">PCF2131_base</a> class</p>
 <p>A base class for PCF2131 Implementing register operation with abstracted interface </p>
 
-<p class="definition">Definition at line <a class="el" href="_r_t_c___n_x_p_8h_source.html#l00123">123</a> of file <a class="el" href="_r_t_c___n_x_p_8h_source.html">RTC_NXP.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_r_t_c___n_x_p_8h_source.html#l00136">136</a> of file <a class="el" href="_r_t_c___n_x_p_8h_source.html">RTC_NXP.h</a>.</p>
 </div><a name="doc-enum-members" id="doc-enum-members"></a><h2 id="header-doc-enum-members" class="groupheader">Member Enumeration Documentation</h2>
 <a id="a59133fa511edab6958a574f02568f55e" name="a59133fa511edab6958a574f02568f55e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a59133fa511edab6958a574f02568f55e">&#9670;&#160;</a></span>clock_out_frequency</h2>
@@ -285,7 +286,7 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 <p>Clock output frequency descriptor </p>
 
-<p class="definition">Definition at line <a class="el" href="_r_t_c___n_x_p_8h_source.html#l00153">153</a> of file <a class="el" href="_r_t_c___n_x_p_8h_source.html">RTC_NXP.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_r_t_c___n_x_p_8h_source.html#l00166">166</a> of file <a class="el" href="_r_t_c___n_x_p_8h_source.html">RTC_NXP.h</a>.</p>
 
 </div>
 </div>
@@ -302,7 +303,7 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 <p>Periodic interrupt selection descriptor </p>
 
-<p class="definition">Definition at line <a class="el" href="_r_t_c___n_x_p_8h_source.html#l00142">142</a> of file <a class="el" href="_r_t_c___n_x_p_8h_source.html">RTC_NXP.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_r_t_c___n_x_p_8h_source.html#l00155">155</a> of file <a class="el" href="_r_t_c___n_x_p_8h_source.html">RTC_NXP.h</a>.</p>
 
 </div>
 </div>
@@ -319,7 +320,7 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 <p>Name of the PCF2131 registers </p>
 
-<p class="definition">Definition at line <a class="el" href="_r_t_c___n_x_p_8h_source.html#l00127">127</a> of file <a class="el" href="_r_t_c___n_x_p_8h_source.html">RTC_NXP.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_r_t_c___n_x_p_8h_source.html#l00140">140</a> of file <a class="el" href="_r_t_c___n_x_p_8h_source.html">RTC_NXP.h</a>.</p>
 
 </div>
 </div>
@@ -336,7 +337,7 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 <p>Timestamp setting descriptor </p>
 
-<p class="definition">Definition at line <a class="el" href="_r_t_c___n_x_p_8h_source.html#l00148">148</a> of file <a class="el" href="_r_t_c___n_x_p_8h_source.html">RTC_NXP.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_r_t_c___n_x_p_8h_source.html#l00161">161</a> of file <a class="el" href="_r_t_c___n_x_p_8h_source.html">RTC_NXP.h</a>.</p>
 
 </div>
 </div>
@@ -423,7 +424,7 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 <p>Proxy method for interface (pure virtual method) </p>
 
-<p class="reference">Referenced by <a class="el" href="_p_c_f2131__base_8cpp_source.html#l00079">alarm()</a>, <a class="el" href="_p_c_f2131__base_8cpp_source.html#l00087">alarm_clear()</a>, <a class="el" href="_p_c_f2131__base_8cpp_source.html#l00092">alarm_disable()</a>, <a class="el" href="_p_c_f2131__base_8cpp_source.html#l00186">otp_refresh()</a>, <a class="el" href="_p_c_f2131__base_8cpp_source.html#l00161">periodic_interrupt_enable()</a>, <a class="el" href="_p_c_f2131__base_8cpp_source.html#l00041">set()</a>, <a class="el" href="_p_c_f2131__base_8cpp_source.html#l00176">set_clock_out()</a>, and <a class="el" href="_p_c_f2131__base_8cpp_source.html#l00097">timestamp()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="_p_c_f2131__base_8cpp_source.html#l00079">alarm()</a>, <a class="el" href="_p_c_f2131__base_8cpp_source.html#l00087">alarm_clear()</a>, <a class="el" href="_p_c_f2131__base_8cpp_source.html#l00092">alarm_disable()</a>, <a class="el" href="_p_c_f2131__base_8cpp_source.html#l00199">otp_refresh()</a>, <a class="el" href="_p_c_f2131__base_8cpp_source.html#l00161">periodic_interrupt_enable()</a>, <a class="el" href="_p_c_f2131__base_8cpp_source.html#l00041">set()</a>, <a class="el" href="_p_c_f2131__base_8cpp_source.html#l00176">set_clock_out()</a>, and <a class="el" href="_p_c_f2131__base_8cpp_source.html#l00097">timestamp()</a>.</p>
 
 </div>
 </div>
@@ -523,7 +524,7 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 <p>Proxy method for interface (pure virtual method) </p>
 
-<p class="reference">Referenced by <a class="el" href="_p_c_f2131__base_8cpp_source.html#l00079">alarm()</a>, <a class="el" href="_p_c_f2131__base_8cpp_source.html#l00145">int_clear()</a>, <a class="el" href="_p_c_f2131__base_8cpp_source.html#l00181">reset()</a>, and <a class="el" href="_p_c_f2131__base_8cpp_source.html#l00041">set()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="_p_c_f2131__base_8cpp_source.html#l00079">alarm()</a>, <a class="el" href="_p_c_f2131__base_8cpp_source.html#l00145">int_clear()</a>, <a class="el" href="_p_c_f2131__base_8cpp_source.html#l00181">reset()</a>, <a class="el" href="_p_c_f2131__base_8cpp_source.html#l00041">set()</a>, and <a class="el" href="_p_c_f2131__base_8cpp_source.html#l00186">set_clock_offset()</a>.</p>
 
 </div>
 </div>
@@ -838,7 +839,7 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 <p>Perform OTP refresh (loads factory-provided calibration data stored in EPROM) </p>
 
-<p class="definition">Definition at line <a class="el" href="_p_c_f2131__base_8cpp_source.html#l00186">186</a> of file <a class="el" href="_p_c_f2131__base_8cpp_source.html">PCF2131_base.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_p_c_f2131__base_8cpp_source.html#l00199">199</a> of file <a class="el" href="_p_c_f2131__base_8cpp_source.html">PCF2131_base.cpp</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="_p_c_f2131__base_8cpp_source.html#l00041">set()</a>.</p>
 
@@ -964,6 +965,46 @@ Additional Inherited Members</h2></td></tr>
 <p>Reimplemented in <a class="el" href="class_p_c_f2131___i2_c.html#a2b9cb78248f8f9aefcf439bc1adae389">PCF2131_I2C</a>, and <a class="el" href="class_p_c_f2131___s_p_i.html#aef062a54afeb23ade227e956173840a1">PCF2131_SPI</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="_p_c_f2131__base_8cpp_source.html#l00041">41</a> of file <a class="el" href="_p_c_f2131__base_8cpp_source.html">PCF2131_base.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a8aca047d139abfe1f1b13c69cd90238c" name="a8aca047d139abfe1f1b13c69cd90238c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8aca047d139abfe1f1b13c69cd90238c">&#9670;&#160;</a></span>set_clock_offset()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float PCF2131_base::set_clock_offset </td>
+          <td>(</td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>ratio</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Clock offset calibration</p>
+<p>Applies a frequency correction via the Aging_offset register (AO[3:0]). The register covers a range of -14 to +16 ppm in 2 ppm steps, so this is intended for aging/manufacturing trim, not general-purpose calibration.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ratio</td><td>desired frequency correction as a ratio, e.g. -10 ppm = -10.0e-6 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the ratio actually applied, after rounding to the nearest representable step </dd></dl>
+
+<p>Implements <a class="el" href="class_r_t_c___n_x_p.html#aaea6b5e19844ff073d458b8d6332ff2f">RTC_NXP</a>.</p>
+
+<p>Reimplemented in <a class="el" href="class_p_c_f2131___i2_c.html#a4111cefa1f66be965e8d05dccc5339a8">PCF2131_I2C</a>, and <a class="el" href="class_p_c_f2131___s_p_i.html#ad1b697112a05a7aed883765b4732d1e8">PCF2131_SPI</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="_p_c_f2131__base_8cpp_source.html#l00186">186</a> of file <a class="el" href="_p_c_f2131__base_8cpp_source.html">PCF2131_base.cpp</a>.</p>
 
 </div>
 </div>

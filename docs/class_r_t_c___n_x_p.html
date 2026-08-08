@@ -27,7 +27,7 @@ mermaid.initialize({ startOnLoad: true, theme: theme });
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">RTC_NXP_Arduino<span id="projectnumber">&#160;1.2.0</span>
+   <div id="projectname">RTC_NXP_Arduino<span id="projectnumber">&#160;1.2.1</span>
    </div>
    <div id="projectbrief">RTC driver device operation sample code for Arduino</div>
   </td>
@@ -155,6 +155,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ae57ace46169081c925f4dc56b02b1dc2" id="r_ae57ace46169081c925f4dc56b02b1dc2"><td class="memItemLeft">virtual void&#160;</td><td class="memItemRight"><a class="el" href="#ae57ace46169081c925f4dc56b02b1dc2">alarm_clear</a> (void)=0</td></tr>
 <tr class="memitem:a4e99b9bc5317ea17e46cb15d600f3ff5" id="r_a4e99b9bc5317ea17e46cb15d600f3ff5"><td class="memItemLeft">virtual void&#160;</td><td class="memItemRight"><a class="el" href="#a4e99b9bc5317ea17e46cb15d600f3ff5">alarm_disable</a> (void)=0</td></tr>
 <tr class="memitem:a27a8e28251350f0236e1688e84ccbe5e" id="r_a27a8e28251350f0236e1688e84ccbe5e"><td class="memItemLeft">virtual uint8_t&#160;</td><td class="memItemRight"><a class="el" href="#a27a8e28251350f0236e1688e84ccbe5e">int_clear</a> (void)=0</td></tr>
+<tr class="memitem:aaea6b5e19844ff073d458b8d6332ff2f" id="r_aaea6b5e19844ff073d458b8d6332ff2f"><td class="memItemLeft">virtual float&#160;</td><td class="memItemRight"><a class="el" href="#aaea6b5e19844ff073d458b8d6332ff2f">set_clock_offset</a> (float ratio)=0</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pro-methods" class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
@@ -385,7 +386,7 @@ Static Protected Member Functions</h2></td></tr>
 
 <p class="definition">Definition at line <a class="el" href="_r_t_c___n_x_p_8cpp_source.html#l00019">19</a> of file <a class="el" href="_r_t_c___n_x_p_8cpp_source.html">RTC_NXP.cpp</a>.</p>
 
-<p class="reference">Referenced by <a class="el" href="_p_c_f2131__base_8cpp_source.html#l00022">PCF2131_base::rtc_time()</a>, <a class="el" href="_p_c_f85053_a_8cpp_source.html#l00064">PCF85053A::rtc_time()</a>, <a class="el" href="_p_c_f85063_a_8cpp_source.html#l00107">PCF85063_base::rtc_time()</a>, <a class="el" href="_p_c_f85263_a_8cpp_source.html#l00102">PCF85263A::rtc_time()</a>, <a class="el" href="_p_c_f2131__base_8cpp_source.html#l00112">PCF2131_base::timestamp()</a>, and <a class="el" href="_p_c_f85263_a_8cpp_source.html#l00139">PCF85263A::timestamp()</a>.</p>
+<p class="reference">Referenced by <a class="el" href="_p_c_f2131__base_8cpp_source.html#l00022">PCF2131_base::rtc_time()</a>, <a class="el" href="_p_c_f85053_a_8cpp_source.html#l00064">PCF85053A::rtc_time()</a>, <a class="el" href="_p_c_f85063_a_8cpp_source.html#l00133">PCF85063_base::rtc_time()</a>, <a class="el" href="_p_c_f85263_a_8cpp_source.html#l00102">PCF85263A::rtc_time()</a>, <a class="el" href="_p_c_f2131__base_8cpp_source.html#l00112">PCF2131_base::timestamp()</a>, and <a class="el" href="_p_c_f85263_a_8cpp_source.html#l00166">PCF85263A::timestamp()</a>.</p>
 
 </div>
 </div>
@@ -573,6 +574,42 @@ Static Protected Member Functions</h2></td></tr>
 </dl>
 
 <p>Implemented in <a class="el" href="class_for_future_extention.html#afae88fc08af5cec9fe3bfdffb6960759">ForFutureExtention</a>, <a class="el" href="class_p_c_f2131__base.html#a3d59a120d2836fc9ddb2348993c2e94f">PCF2131_base</a>, <a class="el" href="class_p_c_f2131___i2_c.html#a2b9cb78248f8f9aefcf439bc1adae389">PCF2131_I2C</a>, <a class="el" href="class_p_c_f2131___s_p_i.html#aef062a54afeb23ade227e956173840a1">PCF2131_SPI</a>, <a class="el" href="class_p_c_f85053_a.html#aeb4f154de3223e3a0cb421596da855b0">PCF85053A</a>, <a class="el" href="class_p_c_f85063__base.html#a10b58d508f3cfdaedb86c603a327923e">PCF85063_base</a>, <a class="el" href="class_p_c_f85063_a.html#a90c19698171af0d85412a46b6588a893">PCF85063A</a>, <a class="el" href="class_p_c_f85063_t_p.html#aa75c703ccb7cfbdb89439151f0bc082c">PCF85063TP</a>, and <a class="el" href="class_p_c_f85263_a.html#afb67e2345588ac0ffe0b604085f15558">PCF85263A</a>.</p>
+
+</div>
+</div>
+<a id="aaea6b5e19844ff073d458b8d6332ff2f" name="aaea6b5e19844ff073d458b8d6332ff2f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaea6b5e19844ff073d458b8d6332ff2f">&#9670;&#160;</a></span>set_clock_offset()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual float RTC_NXP::set_clock_offset </td>
+          <td>(</td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>ratio</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel pure-virtual">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Clock offset calibration (pure virtual method)</p>
+<p>Converts a frequency correction ratio into the device's offset register encoding and applies it. The hardware only supports discrete steps, so the value is rounded to the nearest representable step (and, on parts with multiple correction modes, the mode giving the smallest rounding error is selected automatically).</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ratio</td><td>desired frequency correction as a ratio, e.g. -10 ppm = -10.0e-6 (positive speeds up, negative slows down) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the ratio actually applied, after rounding to the nearest representable step </dd></dl>
+
+<p>Implemented in <a class="el" href="class_p_c_f2131__base.html#a8aca047d139abfe1f1b13c69cd90238c">PCF2131_base</a>, <a class="el" href="class_p_c_f2131___i2_c.html#a4111cefa1f66be965e8d05dccc5339a8">PCF2131_I2C</a>, <a class="el" href="class_p_c_f2131___s_p_i.html#ad1b697112a05a7aed883765b4732d1e8">PCF2131_SPI</a>, <a class="el" href="class_p_c_f85053_a.html#ac1c330f23233db938a90eb7ecf7bb67b">PCF85053A</a>, <a class="el" href="class_p_c_f85063__base.html#af4947b1da7f3063658d1fa816dcc8cb6">PCF85063_base</a>, <a class="el" href="class_p_c_f85063_a.html#a629c776e9719d372ed0288ae6a9fa269">PCF85063A</a>, and <a class="el" href="class_p_c_f85263_a.html#af08b763594bae5bc85d57325420ed222">PCF85263A</a>.</p>
 
 </div>
 </div>

@@ -27,7 +27,7 @@ mermaid.initialize({ startOnLoad: true, theme: theme });
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">RTC_NXP_Arduino<span id="projectnumber">&#160;1.2.0</span>
+   <div id="projectname">RTC_NXP_Arduino<span id="projectnumber">&#160;1.2.1</span>
    </div>
    <div id="projectbrief">RTC driver device operation sample code for Arduino</div>
   </td>
@@ -131,11 +131,12 @@ document.addEventListener('DOMContentLoaded', () => {
   <tr class="odd"><td class="entry"><a class="el" href="class_for_future_extention.html#a72622c55c8891f0c95fcbdbd02bed8d3">rtc_time</a>(void)</td><td class="entry"><a class="el" href="class_for_future_extention.html">ForFutureExtention</a></td><td class="entry"><span class="mlabel">protected</span><span class="mlabel">virtual</span></td></tr>
   <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>SECOND</b> enum value (defined in <a class="el" href="class_r_t_c___n_x_p.html">RTC_NXP</a>)</td><td class="entry"><a class="el" href="class_r_t_c___n_x_p.html">RTC_NXP</a></td><td class="entry"></td></tr>
   <tr class="odd"><td class="entry"><a class="el" href="class_for_future_extention.html#afae88fc08af5cec9fe3bfdffb6960759">set</a>(struct tm *now_tm)</td><td class="entry"><a class="el" href="class_for_future_extention.html">ForFutureExtention</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="class_for_future_extention.html#a34379d6655972d284be8ff87fc5aecd2">time</a>(time_t *tp)</td><td class="entry"><a class="el" href="class_for_future_extention.html">ForFutureExtention</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="odd"><td class="entry"><b>WEEKDAY</b> enum value (defined in <a class="el" href="class_r_t_c___n_x_p.html">RTC_NXP</a>)</td><td class="entry"><a class="el" href="class_r_t_c___n_x_p.html">RTC_NXP</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="class_for_future_extention.html#ae9cd268b77e75e3c5cd88651550f8fa5">write_r8</a>(uint8_t reg, uint8_t val)</td><td class="entry"><a class="el" href="class_for_future_extention.html">ForFutureExtention</a></td><td class="entry"></td></tr>
-  <tr class="odd"><td class="entry"><a class="el" href="class_for_future_extention.html#a65fc368aa96790b38d1b3e3990a4d873">~ForFutureExtention</a>()</td><td class="entry"><a class="el" href="class_for_future_extention.html">ForFutureExtention</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="class_r_t_c___n_x_p.html#ad8b82f3d96d3ee866b2ba0b5e77de9fd">~RTC_NXP</a>()</td><td class="entry"><a class="el" href="class_r_t_c___n_x_p.html">RTC_NXP</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_r_t_c___n_x_p.html#aaea6b5e19844ff073d458b8d6332ff2f">set_clock_offset</a>(float ratio)=0</td><td class="entry"><a class="el" href="class_r_t_c___n_x_p.html">RTC_NXP</a></td><td class="entry"><span class="mlabel">pure virtual</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="class_for_future_extention.html#a34379d6655972d284be8ff87fc5aecd2">time</a>(time_t *tp)</td><td class="entry"><a class="el" href="class_for_future_extention.html">ForFutureExtention</a></td><td class="entry"></td></tr>
+  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>WEEKDAY</b> enum value (defined in <a class="el" href="class_r_t_c___n_x_p.html">RTC_NXP</a>)</td><td class="entry"><a class="el" href="class_r_t_c___n_x_p.html">RTC_NXP</a></td><td class="entry"></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="class_for_future_extention.html#ae9cd268b77e75e3c5cd88651550f8fa5">write_r8</a>(uint8_t reg, uint8_t val)</td><td class="entry"><a class="el" href="class_for_future_extention.html">ForFutureExtention</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_for_future_extention.html#a65fc368aa96790b38d1b3e3990a4d873">~ForFutureExtention</a>()</td><td class="entry"><a class="el" href="class_for_future_extention.html">ForFutureExtention</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="class_r_t_c___n_x_p.html#ad8b82f3d96d3ee866b2ba0b5e77de9fd">~RTC_NXP</a>()</td><td class="entry"><a class="el" href="class_r_t_c___n_x_p.html">RTC_NXP</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
 </table></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

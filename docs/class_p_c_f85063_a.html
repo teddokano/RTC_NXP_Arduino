@@ -27,7 +27,7 @@ mermaid.initialize({ startOnLoad: true, theme: theme });
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">RTC_NXP_Arduino<span id="projectnumber">&#160;1.2.0</span>
+   <div id="projectname">RTC_NXP_Arduino<span id="projectnumber">&#160;1.2.1</span>
    </div>
    <div id="projectbrief">RTC driver device operation sample code for Arduino</div>
   </td>
@@ -199,6 +199,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aa303d4b1753a174b339ccae1907cdee7" id="r_aa303d4b1753a174b339ccae1907cdee7"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#aa303d4b1753a174b339ccae1907cdee7">alarm_disable</a> (void)</td></tr>
 <tr class="memitem:a2bd4d413251456251058782015aa624c" id="r_a2bd4d413251456251058782015aa624c"><td class="memItemLeft">uint8_t&#160;</td><td class="memItemRight"><a class="el" href="#a2bd4d413251456251058782015aa624c">int_clear</a> (void)</td></tr>
 <tr class="memitem:a1ef5a35bbed91a3f981990ed436c1142" id="r_a1ef5a35bbed91a3f981990ed436c1142"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="#a1ef5a35bbed91a3f981990ed436c1142">timer</a> (float period, bool pulse=false)</td></tr>
+<tr class="memitem:a629c776e9719d372ed0288ae6a9fa269" id="r_a629c776e9719d372ed0288ae6a9fa269"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="#a629c776e9719d372ed0288ae6a9fa269">set_clock_offset</a> (float ratio)</td></tr>
 <tr class="memitem:abb65b42f556baaea1566a38c87794150" id="r_abb65b42f556baaea1566a38c87794150"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#abb65b42f556baaea1566a38c87794150">reg_w</a> (uint8_t reg_adr, uint8_t *data, int size)</td></tr>
 <tr class="memitem:a99ebd1b629f214c50f73d64a09c6b473" id="r_a99ebd1b629f214c50f73d64a09c6b473"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a99ebd1b629f214c50f73d64a09c6b473">reg_w</a> (uint8_t reg_adr, uint8_t data)</td></tr>
 <tr class="memitem:a55a84409405e9908b997638b25767be6" id="r_a55a84409405e9908b997638b25767be6"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a55a84409405e9908b997638b25767be6">reg_r</a> (uint8_t reg_adr, uint8_t *data, int size)</td></tr>
@@ -225,7 +226,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_r_t_c___n_x_p_8h_source.html#l00873">873</a> of file <a class="el" href="_r_t_c___n_x_p_8h_source.html">RTC_NXP.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_r_t_c___n_x_p_8h_source.html#l00922">922</a> of file <a class="el" href="_r_t_c___n_x_p_8h_source.html">RTC_NXP.h</a>.</p>
 </div><a name="doc-enum-members" id="doc-enum-members"></a><h2 id="header-doc-enum-members" class="groupheader">Member Enumeration Documentation</h2>
 <a id="a333ae3efab81b1835fd2271c86fd05c6" name="a333ae3efab81b1835fd2271c86fd05c6"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a333ae3efab81b1835fd2271c86fd05c6">&#9670;&#160;</a></span>reg_num</h2>
@@ -240,7 +241,7 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 <p>Name of the <a class="el" href="class_p_c_f85063_a.html">PCF85063A</a> registers </p>
 
-<p class="definition">Definition at line <a class="el" href="_r_t_c___n_x_p_8h_source.html#l00894">894</a> of file <a class="el" href="_r_t_c___n_x_p_8h_source.html">RTC_NXP.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_r_t_c___n_x_p_8h_source.html#l00943">943</a> of file <a class="el" href="_r_t_c___n_x_p_8h_source.html">RTC_NXP.h</a>.</p>
 
 </div>
 </div>
@@ -267,7 +268,7 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_p_c_f85063_a_8cpp_source.html#l00127">127</a> of file <a class="el" href="_p_c_f85063_a_8cpp_source.html">PCF85063A.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_p_c_f85063_a_8cpp_source.html#l00153">153</a> of file <a class="el" href="_p_c_f85063_a_8cpp_source.html">PCF85063A.cpp</a>.</p>
 
 <p class="reference">Referenced by <a class="el" href="_p_c_f85063_t_p_8cpp_source.html#l00013">PCF85063TP::PCF85063TP()</a>, and <a class="el" href="_p_c_f85063_t_p_8cpp_source.html#l00009">PCF85063TP::PCF85063TP()</a>.</p>
 
@@ -300,7 +301,7 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_p_c_f85063_a_8cpp_source.html#l00131">131</a> of file <a class="el" href="_p_c_f85063_a_8cpp_source.html">PCF85063A.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_p_c_f85063_a_8cpp_source.html#l00157">157</a> of file <a class="el" href="_p_c_f85063_a_8cpp_source.html">PCF85063A.cpp</a>.</p>
 
 </div>
 </div>
@@ -328,7 +329,7 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 <p>Destructor </p>
 
-<p class="definition">Definition at line <a class="el" href="_p_c_f85063_a_8cpp_source.html#l00135">135</a> of file <a class="el" href="_p_c_f85063_a_8cpp_source.html">PCF85063A.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_p_c_f85063_a_8cpp_source.html#l00161">161</a> of file <a class="el" href="_p_c_f85063_a_8cpp_source.html">PCF85063A.cpp</a>.</p>
 
 </div>
 </div>
@@ -735,6 +736,41 @@ Additional Inherited Members</h2></td></tr>
 <p>Reimplemented from <a class="el" href="class_p_c_f85063__base.html#a10b58d508f3cfdaedb86c603a327923e">PCF85063_base</a>.</p>
 
 <p>Reimplemented in <a class="el" href="class_p_c_f85063_t_p.html#aa75c703ccb7cfbdb89439151f0bc082c">PCF85063TP</a>.</p>
+
+</div>
+</div>
+<a id="a629c776e9719d372ed0288ae6a9fa269" name="a629c776e9719d372ed0288ae6a9fa269"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a629c776e9719d372ed0288ae6a9fa269">&#9670;&#160;</a></span>set_clock_offset()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float PCF85063A::set_clock_offset </td>
+          <td>(</td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>ratio</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Clock offset calibration</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ratio</td><td>desired frequency correction as a ratio, e.g. -10 ppm = -10.0e-6 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the ratio actually applied, after rounding to the nearest representable step </dd></dl>
+
+<p>Reimplemented from <a class="el" href="class_p_c_f85063__base.html#af4947b1da7f3063658d1fa816dcc8cb6">PCF85063_base</a>.</p>
 
 </div>
 </div>

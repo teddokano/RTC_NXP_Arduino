@@ -183,6 +183,19 @@ void PCF2131_base::reset()
     _reg_w(SR_Reset, 0b00101100);
 }
 
+float PCF2131_base::set_clock_offset( float ratio )
+{
+	const float	ppm		= ratio * 1.0e6f;
+	const float	step	= 2.0f;	//	AO[3:0]: 2 ppm per LSB, -14 to +16 ppm range
+
+	int	ao	= 8 - (int)(ppm / step + (ppm < 0 ? -0.5f : 0.5f));
+	ao	= (ao > 15) ? 15 : (ao < 0) ? 0 : ao;
+
+	_reg_w( Aging_offset, (uint8_t)ao );
+
+	return (8 - ao) * step * 1.0e-6f;
+}
+
 void PCF2131_base::otp_refresh()
 {
     _bit_op8(CLKOUT_ctl, ~0b00100000, 0b00000000);
