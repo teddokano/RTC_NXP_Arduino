@@ -104,6 +104,32 @@ float PCF85063_base::timer( float period, bool pulse )
 	return v * sf[tcf];
 }
 
+float PCF85063_base::set_clock_offset( float ratio )
+{
+	const float	ppm			= ratio * 1.0e6f;
+	const float	step_normal	= 4.34f;	//	MODE=0: correction once every two hours
+	const float	step_coarse	= 4.069f;	//	MODE=1: correction once every 4 minutes
+
+	int	v_normal	= (int)(ppm / step_normal + (ppm < 0 ? -0.5f : 0.5f));
+	int	v_coarse	= (int)(ppm / step_coarse + (ppm < 0 ? -0.5f : 0.5f));
+
+	v_normal	= (v_normal >  63) ?  63 : (v_normal < -64) ? -64 : v_normal;
+	v_coarse	= (v_coarse >  63) ?  63 : (v_coarse < -64) ? -64 : v_coarse;
+
+	float	err_normal	= ppm - v_normal * step_normal;
+	float	err_coarse	= ppm - v_coarse * step_coarse;
+
+	err_normal	= (err_normal < 0) ? -err_normal : err_normal;
+	err_coarse	= (err_coarse < 0) ? -err_coarse : err_coarse;
+
+	bool	coarse	= err_coarse < err_normal;
+	int		v		= coarse ? v_coarse : v_normal;
+
+	_reg_w( Offset, (uint8_t)((coarse ? 0x80 : 0x00) | (v & 0x7F)) );
+
+	return v * (coarse ? step_coarse : step_normal) * 1.0e-6f;
+}
+
 time_t PCF85063_base::rtc_time( void )
 {
 	struct tm	now_tm;

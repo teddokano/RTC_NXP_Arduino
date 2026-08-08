@@ -24,6 +24,7 @@ bcd2dec	KEYWORD2
 dec2bcd	KEYWORD2
 timestamp	KEYWORD2
 timer	KEYWORD2
+set_clock_offset	KEYWORD2
 
 ##########
 # register names

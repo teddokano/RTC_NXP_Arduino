@@ -136,6 +136,33 @@ void PCF85263A::ts_config( int setting )
 	bit_op8( INTA_enable, ~0x04, 0x04 );	
 }
 
+float PCF85263A::set_clock_offset( float ratio )
+{
+	const float	ppm			= ratio * 1.0e6f;
+	const float	step_normal	= 2.170f;	//	OFFM=0: correction triggered every 4 hours
+	const float	step_fast	= 2.0345f;	//	OFFM=1: correction triggered every 8 minutes
+
+	int	v_normal	= (int)(ppm / step_normal + (ppm < 0 ? -0.5f : 0.5f));
+	int	v_fast		= (int)(ppm / step_fast  + (ppm < 0 ? -0.5f : 0.5f));
+
+	v_normal	= (v_normal >  127) ?  127 : (v_normal < -128) ? -128 : v_normal;
+	v_fast		= (v_fast   >  127) ?  127 : (v_fast   < -128) ? -128 : v_fast;
+
+	float	err_normal	= ppm - v_normal * step_normal;
+	float	err_fast	= ppm - v_fast * step_fast;
+
+	err_normal	= (err_normal < 0) ? -err_normal : err_normal;
+	err_fast	= (err_fast < 0) ? -err_fast : err_fast;
+
+	bool	fast	= err_fast < err_normal;
+	int		v		= fast ? v_fast : v_normal;
+
+	bit_op8( Oscillator, ~0x40, fast ? 0x40 : 0x00 );
+	reg_w( Offset, (uint8_t)v );
+
+	return v * (fast ? step_fast : step_normal) * 1.0e-6f;
+}
+
 time_t PCF85263A::timestamp( int num )
 {
 	struct tm	ts_tm;
