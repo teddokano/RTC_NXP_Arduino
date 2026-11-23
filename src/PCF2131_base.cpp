@@ -79,7 +79,7 @@ void PCF2131_base::alarm( alarm_setting digit, int val )
 void PCF2131_base::alarm( alarm_setting digit, int val, int int_sel )
 {
 	int	v = (val == 0x80) ? 0x80 : dec2bcd( val );
-	_reg_w( Second_alarm + digit, v );
+	_reg_w( Second_alarm + (int)digit, v );
 	_bit_op8( int_mask_reg[ int_sel ][ 0 ], ~0x04, 0x00 );
 	_bit_op8( Control_2, ~0x02, 0x02 );
 }

@@ -43,7 +43,7 @@ bool PCF85063_base::oscillator_stop( void )
 void PCF85063_base::alarm( alarm_setting digit, int val )
 {
 	int	v = (val == 0x80) ? 0x80 : dec2bcd( val );
-	_reg_w( Second_alarm + digit, v );
+	_reg_w( Second_alarm + (int)digit, v );
 	_bit_op8( Control_2, (uint8_t)(~0x80), 0x80 );
 }
 

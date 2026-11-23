@@ -100,7 +100,7 @@ Sketch|Target|Feature
 ---|---|---
 PCF2131_simple_I2C					|PCF2131	|**Simple** sample for just getting current time **via I²C** in every second
 PCF2131_simple_SPI					|PCF2131	|**Simple** sample for just getting current time **via SPI** in every second
-PCF2131_interrupt_based_operation	|PCF2131	|**Interrupt based** operation: Demonstrates second/minute, alarm and timestamp features.<br/>**IMPORTANT:** On the PCF2131-ARD shield board, **short D8<-->D2 and D9<-->D3 pins**
+PCF2131_interrupt_based_operation	|PCF2131	|**Interrupt based** operation: Demonstrates second/minute, alarm and timestamp features.<br/>**IMPORTANT:** On the PCF2131-ARD shield board, **short D8<-->D2 and D9<-->D3 pins** (not needed with [mcx-arduino-core](https://github.com/teddokano/mcx-arduino-core): D8/D9 are used directly)
 PCF85053A_simple					|PCF85053A	|**Simple** sample for just getting current time in every second
 PCF85053A_interrupt_based_operation	|PCF85053A	|**Interrupt based** operation: Demonstrates alarm feature
 PCF85063A_simple					|PCF85063A	|**Simple** sample for just getting current time in every second
