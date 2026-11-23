@@ -4,6 +4,7 @@
  *
  *  *** IMPORTANT 0 ***
  *  *** TO RUN THIS SKETCH ON ARDUINO UNO R3 AND PCF2131-ARD BOARDS, PIN8 and PIN9 MUST BE SHORTED TO PIN2 and PIN3 (RESPECTIVELY) TO HANDLE INTERRUPT CORRECTLY
+ *  *** (NOT NEEDED WITH mcx-arduino-core: ANY PIN CAN TAKE AN INTERRUPT, SO PIN8 and PIN9 ARE USED DIRECTLY)
  *
  *  *** IMPORTANT 1 ***
  *  *** TO USE "SPI INTERFACE", COMMENT OUT THE LINE OF "#define INTERFACE_I2C"
@@ -37,10 +38,16 @@ PCF2131_I2C rtc;
 PCF2131_SPI rtc;
 #endif
 
+#ifdef ARDUINO_ARCH_MCX
+//  mcx-arduino-core can attach an interrupt to any pin: take INT-A/INT-B from PCF2131-ARD's D8/D9 directly
+#pragma message "mcx-arduino-core: INT pins are D8 and D9 (no jumper wires needed)"
+const uint8_t intPin0 = 8;
+const uint8_t intPin1 = 9;
+#else
 #pragma message "TO RUN THIS SKETCH ON ARDUINO UNO R3 AND PCF2131-ARD BOARDS, PIN8 and PIN9 MUST BE SHORTED TO PIN2 and PIN3 (RESPECTIVELY) TO HANDLE INTERRUPT CORRECTLY"
-
 const uint8_t intPin0 = 2;
 const uint8_t intPin1 = 3;
+#endif
 bool int_flag0 = false;
 bool int_flag1 = false;
 
@@ -93,8 +100,10 @@ void setup() {
   rtc.periodic_interrupt_enable(PCF2131_base::EVERY_SECOND);
   rtc.alarm(PCF2131_base::SECOND, 37, 1);
 
+#ifndef ARDUINO_ARCH_MCX
   Serial.println("    *** If it seems the demo is not working, check the INT pins ***");
   Serial.println("    ***   D2<--->D8, D3<--->D9 are needed to be connected       ***");
+#endif
 }
 
 
